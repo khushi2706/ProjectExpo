@@ -19,6 +19,16 @@ const userSchema = new Schema({
         required: true,
         minlength: 6
     },
+    
+    userType: {
+        type: String,
+        required: true,
+        enum: ["Student", "Professor"],
+    },
+    university: {
+        type: String,
+        required: true,
+    },
 
 })
 
