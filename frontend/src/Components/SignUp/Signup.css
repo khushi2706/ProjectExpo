@@ -1,0 +1,48 @@
+
+.sign-in-button {
+    background-color: #2C5EFF; 
+    border-radius: 7px; 
+    border-color: none; 
+    border-width: 0ch;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.sign-in-button:hover {
+    cursor: pointer;
+}
+
+.sign-in-input-field-container {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.sign-in-input-fields {
+    margin-left: 20px; 
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: poppins;
+}
+
+.sign-in-with-google-button {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 13%;
+    justify-content: center;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.sign-in-with-google-button:hover {
+    cursor: pointer;
+}
