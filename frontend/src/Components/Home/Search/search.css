@@ -29,16 +29,17 @@
 
 .search-bar-button {
     background-color: #2C5EFF; 
-    border-radius: 12px; 
+    border-radius: 9px; 
     border-color: none; 
     border-width: 0ch;
     color: white;
     font-weight: 400;
+    font-family: 'poppins';
     font-size: 18px;
     padding-left: 40px;
     padding-right: 40px;
     margin-left: 20px;
-    box-shadow: 0px 0px 25px 10px #A4B6EE;
+    box-shadow: 0px 0px 22px 4px #A4B6EE;
 }
 
 .search-bar-button:hover {
