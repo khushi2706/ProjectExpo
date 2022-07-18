@@ -34,6 +34,8 @@ var CollegeSchema = new Schema({
         enum: ['goverment', 'private', 'grant-in-aid']
     },
 
+    
+
     univeristy_id: {
         type: Schema.Types.ObjectId,
         ref: 'University',
