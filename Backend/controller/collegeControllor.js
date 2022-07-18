@@ -29,7 +29,13 @@ const getAllColleges = async (req, res, next) => {
 
 const addNewCollege = async (req, res, next) => {
     console.log(req.body);
-    const { name, address, city, state, zip, user } = req.body;
+    const { name, 
+        information,
+        address,
+        city,
+        state,
+        url,
+        type, } = req.body;
 
     let existingUser;
 
@@ -45,12 +51,13 @@ const addNewCollege = async (req, res, next) => {
     }
 
     const college = new College({
-        name,
+        name, 
+        information,
         address,
         city,
         state,
-        zip,
-        user,
+        url,
+        type,
     });
 
     try {
