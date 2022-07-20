@@ -3,7 +3,7 @@ import bvm_logo from '../../Assets/Images/BVM_logo.png'
 export default function University(props) {
     return (
         <>
-            <div style={{width: '15%', 
+            <div style={{width: '17vw', 
                         height: '350px',
                         textAlign: 'center', 
                         boxShadow: "0px 0px 8px 1px #B5B5B5",
@@ -11,10 +11,11 @@ export default function University(props) {
                         marginTop: 30,
                         padding: 15,
                         borderRadius: 15,
-                        fontFamily: 'poppins'}}>
+                        fontFamily: 'poppins',
+                        flexWrap: 'wrap'}}>
                 <img src={bvm_logo} width="50vw" height="50vh"/>
                 <div style={{textAlign: 'center',
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: 'bold',
                             marginTop: 10}}>
                     {props.title}
