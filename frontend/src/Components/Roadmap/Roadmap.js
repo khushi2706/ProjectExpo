@@ -1,38 +1,33 @@
 import React,{ useEffect, useState }  from 'react'
 import Header from '../Common/Header'
 import Search from './Search/Search'
-import axios from 'axios'
 import RoadmapCard from './RoadmapCard'
 
-
-export default function Roadmap() {
-  const [roadmaps, setRoadmap] = useState();
-  const sendRequest = async () =>{
-    console.log("hey");
-    const res = await axios
-    .get("http://localhost:5000/api/roadmap")
-    .catch((err) => console.log(err));
-    const data = await res.data;
-    return data;
-  };
-  useEffect(() => {
-    console.log("hi");
-    sendRequest().then((data) => setRoadmap(data.roadmap));
-  }, []);
-
-  console.log(roadmaps);
+export default function Roadmap() 
+{
+  const [roadmaps,setRoadmaps]= useState([]);
+  useEffect(()=>{
+   fetch("http://localhost:5000/api/roadmap")
+   .then(res=>res.json())
+   .then((data)=>{
+    console.log(data.roadmaps);
+    setRoadmaps({...data.roadmaps});
+   })
+ 
+},[]);
   return (
    <>
     <Header/>
     <Search/>
    <div className='container mt-3'>
-        {
-          roadmaps && roadmaps.map((roadmap,index) =>
-         
-          <RoadmapCard/>
-          )
-
-        }
+    
+       { 
+       roadmaps &&
+       Object.keys([roadmaps]).map((item)=>{
+        return( <RoadmapCard key={item} />)
+       
+       })
+       }
    </div>
    </>
   )
