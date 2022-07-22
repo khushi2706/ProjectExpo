@@ -23,8 +23,17 @@ export default function Roadmap()
     
        { 
        roadmaps &&
-       Object.keys([roadmaps]).map((item)=>{
-        return( <RoadmapCard key={item} />)
+       Object.values([roadmaps]).map((item,index)=>{
+        
+          console.log(item)
+        return( 
+        <RoadmapCard key={index} 
+          title = {item[0].title}
+          desc = {item[0].desc}
+          link = {item[0].link}
+        />
+        )
+
        
        })
        }
