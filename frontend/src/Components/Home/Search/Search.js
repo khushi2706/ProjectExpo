@@ -1,10 +1,10 @@
 import React from 'react'
 import './search.css'
-export default function Search() {
+export default function Search(props) {
     return (
         <div style={{ width: "100%" }}>
             <div style={{ paddingLeft: 40, paddingRight: 40, justifyContent: "left" }}>
-                <div className="container-search-box-title">Find, learn and grow</div>
+                
                 <div style={{ marginTop: 40 }} />
                 <div
                     style={{
@@ -25,7 +25,7 @@ export default function Search() {
                         <input
                             type="text"
                             className="search-bar-input-box"
-                            placeholder="Search Projects..."
+                            placeholder={props.title}
                         />
                     </div>
                     {/*Search button*/}

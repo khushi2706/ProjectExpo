@@ -5,7 +5,8 @@ export default function Home() {
   return (
     <>
     <Header/>
-    <Search/>
+    <div className="container-search-box-title">Find, learn and grow</div>
+    <Search title="Search Project..."/>
     </>
   )
 }
