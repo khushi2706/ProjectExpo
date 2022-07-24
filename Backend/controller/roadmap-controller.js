@@ -5,6 +5,7 @@ const Roadmap = require("../model/Roadmap");
 const User = require("../model/User");
 
 const getAllRoadmaps = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     let roadmaps;
     try {
         roadmaps = await Roadmap.find();
@@ -26,13 +27,14 @@ const getAllRoadmaps = async (req, res, next) => {
 };
 
 const addNewRoadmaps = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     console.log(req.body);
-    const { title, desc, link, user } = req.body;
+    const { title, desc, ImgLink,RoadmapLink, user } = req.body;
 
     let existingUser;
 
     try {
-        console.log(title, desc ,user);
+        console.log(title, desc ,user,ImgLink,RoadmapLink);
         existingUser = await User.findById(user);
         console.log(existingUser);
     } catch (e) {
@@ -45,7 +47,8 @@ const addNewRoadmaps = async (req, res, next) => {
     const roadmap = new Roadmap({
         title,
         desc,
-        link,
+        ImgLink,
+        RoadmapLink,
         user,
     });
 

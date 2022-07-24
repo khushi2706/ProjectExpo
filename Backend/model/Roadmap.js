@@ -11,7 +11,12 @@ const roadmapSchema = new Schema({
         type: String,
         required: true,
     },
-    link:
+    ImgLink:
+    {
+        type: String,
+        required : true,
+    },
+    RoadmapLink:
     {
         type: String,
         required : true,
