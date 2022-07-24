@@ -46,6 +46,11 @@ export default function Header() {
                 Find Mentor
               </a>
             </li>
+            <li className="nav-item">
+              <a href="/university" className="nav-link">
+                University
+              </a>
+            </li>
           </ul>
         </div>
         <div className="profile w-5 h-5">
