@@ -1,10 +1,11 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Signup from './Components/SignUp/Signup'
 import Home from './Components/Home/Home';
-import Login from './Components/Login/Login';
 import Roadmap from './Components/Roadmap/Roadmap';
-import University from './Components/University/University'
+import University from './Components/University/University';
+import ProjectMain from './Components/Project/ProjectMain';
+import Login from './Components/Login/Login';
+import Signup from './Components/SignUp/Signup';
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route index path="/Login" element={ <Login/> } />
         <Route index path="/roadmap" element={ <Roadmap/> } />
         <Route index path="/university" element= { <University/> } />
+        <Route index path="/project" element = { <ProjectMain/> } />
       </Routes>   
 
      </BrowserRouter>
