@@ -5,8 +5,8 @@ import RoadmapCard from "./RoadmapCard";
 import axios from "axios";
 
 export default function Roadmap() {
-  const [roadmaps, setRoadmaps] = useState();
 
+  const [roadmaps, setRoadmaps] =  useState();
   const sendReq = async () => {
     const res = await axios
       .get("http://localhost:5000/api/roadmap")
@@ -16,11 +16,10 @@ export default function Roadmap() {
   };
   useEffect(() => {
     sendReq().then((data) => {
-      console.log("-----------------");
-      console.log(data.roadmaps);
       setRoadmaps(data.roadmaps);
     });
   }, []);
+  console.log(roadmaps);
   return (
     <div>
        <Header />
@@ -29,6 +28,7 @@ export default function Roadmap() {
       {roadmaps &&
         roadmaps.map((roadmap, index) => (
           <RoadmapCard
+          key = {index}
           id={roadmap._id}
             rp = {roadmap}
           />
