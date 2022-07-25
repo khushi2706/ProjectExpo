@@ -1,11 +1,15 @@
 .main-div
 {
     padding: 20px;
+    width: 90%;
+    border-radius: 20px;
+    text-align: left;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .title
 {
     font-weight: 600;
+    font-size: 1.3pc;
 }
 .tag{
     font-weight: 600;

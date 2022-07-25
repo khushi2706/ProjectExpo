@@ -7,7 +7,8 @@ export default function ProjectMain() {
     <>
     <Header/>
     <Search/>
-    <div className="container row">
+    <div className="d-flex row mt-5 justify-content-center w-100">
+      <ProjectDiv/>
       <ProjectDiv/>
     </div>
     </>

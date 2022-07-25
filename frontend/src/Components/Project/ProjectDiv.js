@@ -3,7 +3,7 @@ import "./CSS/ProjectDiv.css";
 
 export default function ProjectDiv() {
   return (
-    <div className="main-div">
+    <div className="main-div mt-3">
       <div className="col row">
         <div className="col-8">
           <p className="title">
@@ -28,7 +28,7 @@ export default function ProjectDiv() {
         </p>
       </div>
       <div className="row">
-        <div className="col-8">
+        <div className="col-8 d-flex  justify-content-left">
           <span className="tag lan-Tag">Machine learning</span>
           <span className="tag lan-Tag">Python</span>
         </div>
