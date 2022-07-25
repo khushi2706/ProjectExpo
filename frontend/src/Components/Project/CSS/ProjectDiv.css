@@ -1,4 +1,32 @@
-#titile
+.main-div
 {
-    color: red;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.title
+{
+    font-weight: 600;
+}
+.tag{
+    font-weight: 600;
+    padding: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.lan-Tag{
+    color: rgba(44, 94, 255, 1);
+    background-color: rgba(213, 227, 254, 1);
+}
+
+.clg-Tag{
+    background-color:  rgba(255, 245, 220, 1);
+    color: rgba(222, 186, 129, 1);;
+}
+
+.auth-Tag{
+    background-color: rgba(189, 241, 212, 0.973);
+    color: rgba(82, 182, 125, 1);
 }
