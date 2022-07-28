@@ -6,7 +6,6 @@ require("./config/db");
 const roadmapRoute = require("./routes/roadmap-routes");
 const projectRoute = require("./routes/projectRoute");
 
-console.log(projectRoute);
 //create the app
 const app = express();
 

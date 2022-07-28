@@ -1,13 +1,14 @@
 import React from "react";
 import "./CSS/ProjectDiv.css";
 
-export default function ProjectDiv() {
+export default function ProjectDiv(props) {
+  const project = props.project
   return (
     <div className="main-div mt-3">
       <div className="col row">
         <div className="col-8">
           <p className="title">
-            Attendance management system using machine learning
+           {project.title}
           </p>
         </div>
         <div className="col-4">
@@ -15,16 +16,13 @@ export default function ProjectDiv() {
           <span>4.3k</span>
           <span>
             {" "}
-            <i class="fa-solid fa-thumbs-up"></i>
+            <i className="fa-solid fa-thumbs-up"></i>
           </span>
         </div>
       </div>
       <div className="text-left">
         <p className="text-left">
-          There is an intrinsic positive relationship between classattendance
-          and the performance of students in the academicenvironment. For the
-          learning to occur more naturally, itis necessary to encourage presence
-          and participation...
+        {project.desc}
         </p>
       </div>
       <div className="row">

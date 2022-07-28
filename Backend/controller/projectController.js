@@ -1,8 +1,8 @@
 const Project = require("../model/Project")
 
 const getAllProjects = async(req,res,next)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     
-    console.log("helloooee");
     let projects;
 
     try {
@@ -21,7 +21,6 @@ const getAllProjects = async(req,res,next)=>{
             },
         });
     }
-    console.log(projects);
     return res.status(200).json({ projects })
 }
 
