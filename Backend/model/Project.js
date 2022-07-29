@@ -15,6 +15,21 @@ var ProjectSchema = new Schema({
         type: String,
         required : true,
     },
+    author:
+    {
+        type: String,
+        required: true,
+    },
+    languagesTag:[{
+        type: String
+    }],
+    likes:{
+        type:Number,
+        defalut:0
+    },
+    college:{
+        type: String,
+    },
     user : {
         type: mongoose.Types.ObjectId,
         ref:"User",
