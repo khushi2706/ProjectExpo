@@ -6,6 +6,7 @@ import University from './Components/University/University';
 import ProjectMain from './Components/Project/ProjectMain';
 import Login from './Components/Login/Login';
 import Signup from './Components/SignUp/Signup';
+import ProjectView from './Components/Project/ProjectView';
 function App() {
 
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route index path="/roadmap" element={ <Roadmap/> } />
         <Route index path="/university" element= { <University/> } />
         <Route index path="/project" element = { <ProjectMain/> } />
+        <Route index path="/viewProject/:id" element = { <ProjectView/> } />
       </Routes>   
 
      </BrowserRouter>

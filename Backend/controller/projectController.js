@@ -24,4 +24,22 @@ const getAllProjects = async(req,res,next)=>{
     return res.status(200).json({ projects })
 }
 
-module.exports = { getAllProjects }
+const getProjectById = async(req,res,next) => {
+    const ProId = req.params.id;
+
+    let project;
+    try{
+        project = await Project.findById(ProId);
+    }
+    catch(e)
+    {
+        return console.log(e);
+    }
+
+    if(!project)
+    return res.status(500).json({ message: "not Found" })
+
+    return res.status(200).json({project});
+}
+
+module.exports = { getAllProjects , getProjectById }

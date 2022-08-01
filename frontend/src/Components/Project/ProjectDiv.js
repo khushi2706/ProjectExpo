@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./CSS/ProjectDiv.css";
 
 export default function ProjectDiv(props) {
@@ -9,9 +10,12 @@ export default function ProjectDiv(props) {
     <div className="main-div mt-3">
       <div className="col row">
         <div className="col-8">
-          <p className="title">
-           {project.title}
-          </p>
+          <Link to={{ pathname:`/viewProject/${project._id}` }}>
+            
+          <p className="title"> {project.title}</p>
+           
+            </Link>  
+      
         </div>
         <div className="col-4">
           <span className="tag clg-Tag">{ project.college }</span>
