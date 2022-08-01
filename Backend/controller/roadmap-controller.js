@@ -28,7 +28,7 @@ const getAllRoadmaps = async (req, res, next) => {
 
 const addNewRoadmaps = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
-    console.log(req.body);
+
     const { title, desc, ImgLink,RoadmapLink, user } = req.body;
 
     let existingUser;
@@ -75,4 +75,23 @@ const addNewRoadmaps = async (req, res, next) => {
         });
     }
 };
-module.exports = { getAllRoadmaps, addNewRoadmaps };
+
+const getRoadmapById = async (req,res,next)=>
+{
+    res.set('Access-Control-Allow-Origin', '*');
+
+    const roadmapId = req.params.id;
+
+    let roadmap;
+    try {
+        roadmap = await Roadmap.findById(roadmapId);
+    } catch (e) {
+        console.log(e);
+    }
+
+    if(!roadmap)
+    return res.status(500).json({ message : "Not found" });
+
+    return res.status(200).json({roadmap});
+}
+module.exports = { getAllRoadmaps, addNewRoadmaps , getRoadmapById };
