@@ -17,7 +17,7 @@ const getAllColleges = async (req, res, next) => {
         return res.status(404).json({
             success: false,
             response: {
-                code: college_added_fail,
+                code: college_found_fail,
                 message: "college not found",
             },
         });
