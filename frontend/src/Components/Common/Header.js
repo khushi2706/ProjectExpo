@@ -42,7 +42,7 @@ export default function Header() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/find-mentor">
+              <a className="nav-link" href="/mentor">
                 Find Mentor
               </a>
             </li>

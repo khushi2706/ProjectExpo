@@ -15,9 +15,13 @@ var MentorSchema = new Schema({
     UserId:{
         type:String,
     },
+    aboutMentor:{
+        type:String,
+    },
     Contact:{
         type:String,
     },
+
     
 })
 
