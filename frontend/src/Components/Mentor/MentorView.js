@@ -43,7 +43,7 @@ export default function MentorView() {
               }}
             >
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                src={mentor.MentorImg}
                 alt="Avatar"
                 className="img-fluid my-5"
                 style={{ width: 80 }}
@@ -59,18 +59,18 @@ export default function MentorView() {
                 <div className="row pt-1">
                   <div className="col-6 mb-3">
                     <h6>Email</h6>
-                    <p className="text-muted">{mentor.Contact}</p>
+                    <p className="text-muted">{mentor.Email}</p>
                   </div>
                   <div className="col-6 mb-3">
-                    <h6>Phone</h6>
-                    <p className="text-muted">123 456 789</p>
+                    <h6>Telegram</h6>
+                    <a href={mentor.TelegramId} className="text-muted">{mentor.TelegramId}</a>
                   </div>
                 </div>
                 <h6>About Mentor</h6>
                 <hr className="mt-0 mb-4" />
                 <div className="row pt-1">
                   <p>
-
+                  {mentor.aboutMentor} 
                   </p>
                 </div>
                 <div className="d-flex justify-content-start">
@@ -81,7 +81,7 @@ export default function MentorView() {
                     <i className="fab fa-twitter fa-lg me-3" />
                   </a>
                   <a href="#!">
-                    <i className="fab fa-instagram fa-lg" />
+                    <i className="fab fa-linkedin fa-lg" />
                   </a>
                 </div>
               </div>

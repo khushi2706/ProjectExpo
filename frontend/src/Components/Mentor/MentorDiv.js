@@ -7,18 +7,18 @@ export default function MentorDiv(props) {
   const tags = mentor.languagesTag;
   console.log(typeof tags);
   return (
-    <div className="main-div mt-3">
-      <div className="col row">
-        <div className="col-8">
+    <div className="card col-md-4 m-3">
+      <div className="card-body">
+        <div className="card-title">
           <Link to={{ pathname: `/viewmentor/${mentor._id}` }}>
             <p className="title"> {mentor.Name}</p>
           </Link>
         </div>
-        <div className="col-4">
+        <div className="card-text">
           <span className="tag clg-Tag">{mentor.Speciality}</span>
         </div>
       </div>
-      <div className="text-left">
+      <div className="card-text">
         <p className="text-left">{mentor.aboutMentor}</p>
       </div>
     </div>
