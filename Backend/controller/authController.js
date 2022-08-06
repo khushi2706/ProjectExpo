@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
-const User = require("../models/User"); // User model
+const User = require("../model/User"); // User model
 const Joi = require('@hapi/joi');
-const { registerSchema, loginSchema } = require('../utils/userValidations');
+const { registerSchema, loginSchema } = require('../utils/userValidation');
 
 
 exports.isAuth = (req,res,next) => {
@@ -97,3 +97,23 @@ exports.authChecker = (req, res) => {
     return res.status(401).json({ msg: "Unauthorized" });
   }
 };
+
+exports.getUserById = async (req, res, next)=>
+{
+  res.set('Access-Control-Allow-Origin', '*');
+
+  const userId = req.params.id;
+  let user;
+
+  try {
+    user = await User.find({"_id": "62ee40fb9213c7847612af05"});
+  } catch (e) {
+    console.log(e);
+  }
+
+  if (!user) {
+    return res.status(500).json({ message : "Not found" });
+  }
+
+  return res.status(200).json({user});
+}
