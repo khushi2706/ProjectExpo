@@ -9,16 +9,24 @@ var MentorSchema = new Schema({
     Speciality:{
         type:String,
     },
+    MentorImg:{
+        type:String,
+    },
     TypeOfUser:{
         type:String,
     },
     UserId:{
         type:String,
     },
-    Contact:{
+    aboutMentor:{
         type:String,
     },
-    
+    Email:{
+        type:String,
+    },
+    TelegramId:{
+        type:String,
+    }
 })
 
 module.exports = mongoose.model("Mentor",MentorSchema);

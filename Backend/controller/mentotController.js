@@ -5,6 +5,7 @@ const Mentor = require("../model/Mentor");
 const User = require("../model/User");
 
 const getAllMentor = async(req,res,next) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     let Mentors;
 
     try {
@@ -27,8 +28,28 @@ const getAllMentor = async(req,res,next) =>{
     return res.status(200).json({ Mentors });
 }
 
+const getMentorById = async (req,res,next) => {
+
+res.set('Access-Control-Allow-Origin', '*');
+
+    const mentorId = req.params.id;
+
+    let mentor;
+    try {
+        mentor = await Mentor.findById(mentorId);
+    } catch (e) {
+        console.log(e);
+    }
+
+    if(!mentor)
+    return res.status(500).json({ message : "Not found" });
+
+    return res.status(200).json({mentor});
+}
+
 const addNewMentor = async (req,res,next) => {
     console.log(req.body);
+    res.set('Access-Control-Allow-Origin', '*');
 
     const { Name , Speciality , TypeOfUser , UserId , Contact }
     = req.body;
@@ -55,4 +76,4 @@ const addNewMentor = async (req,res,next) => {
     
 }
 
-module.exports = { getAllMentor , addNewMentor }
+module.exports = { getAllMentor , addNewMentor, getMentorById }
