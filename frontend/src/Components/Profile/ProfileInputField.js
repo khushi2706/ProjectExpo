@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileInputField.css";
 export default function ProfileInputField(props) {
+  const [val,setVal] = useState(props.vale)
   return (
     <>
       <div
@@ -9,6 +10,7 @@ export default function ProfileInputField(props) {
           flexDirection: "column",
           fontFamily: "poppins",
           marginTop: 10,
+          flexGrow:1
         }}
       >
         <div
@@ -23,9 +25,11 @@ export default function ProfileInputField(props) {
         <div>
           <input
             className="input-field"
-            type={"text"}
+            type={props.title}
             placeholder={props.placeholder}
-            value={props.value}
+            value={val}
+            onChange={e => setVal(e.target.value)}
+            name="val"
           />
         </div>
       </div>

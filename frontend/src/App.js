@@ -12,6 +12,7 @@ import ProjectView from "./Components/Project/ProjectView";
 import RoadmapView from "./Components/Roadmap/RoadmapView";
 import Profile from "./Components/Profile/Profile";
 import Blog from "./Components/Blog/Blog";
+import UniProfile from "./Components/UniversityProfile/UniProfile";
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
             <Route index path="/profile" element={<Profile />} />
             <Route index path="/blog" element={<Blog/>}/>
             <Route index path="/mentor" element={<Mentor/>}/>
+            <Route index path="/universityprofile" element={<UniProfile/>}/>
             <Route index path="/viewmentor/:id" element={<MentorView/>}/>
           </Routes>
         </BrowserRouter>
