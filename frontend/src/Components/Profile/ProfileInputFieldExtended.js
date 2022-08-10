@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileInputFieldExtended.css";
 export default function ProfileInputFieldExtended(props) {
+  const [message, setMessage] = useState('');
+
+  const handleChange = event => {
+    setMessage(event.target.value);
+
+    // 👇️ this is the input field itself
+    console.log(event.target);
+
+    // 👇️ this is the new value of the input
+    console.log(event.target.value);
+  };
+
   return (
     <>
       <div
@@ -26,8 +38,8 @@ export default function ProfileInputFieldExtended(props) {
             type={"text"}
             placeholder={props.placeholder}
 
-            value={props.value}
-
+            onChange={handleChange}
+        value={message}
 
           />
         </div>
