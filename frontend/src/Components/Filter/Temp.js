@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Filterlist from "../../Assets/Images/Filter list.svg";
 import "./Filter.css";
@@ -8,49 +9,11 @@ import university from "../../Assets/Images/University.svg";
 import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function Filter() {
-    const tag= [];
-    const lan=[];
-    const uni=[];
-    const time=[];
+    const tag= ["Web"];
+    const lan=["React"];
+    const uni=["BVM"];
+    const time=["2022"];
     const [list,setList] = useState(tag);
-   const [list1,setList1] =useState(uni);
-
-   const [list2,setList2] =useState(time);
-
-   const [list3,setList3] =useState(lan);
-   const cancell = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq = [...list];
-    mq.splice(idd,1);
-    setList(mq)
-   }
-
-   const cancell1 = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq1 = [...list1];
-    mq1.splice(idd,1);
-    setList1(mq1)
-
-   }
-
-   const cancell2 = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq2 = [...list2];
-    mq2.splice(idd,1);
-    setList2(mq2)
-
-   }
-
-   const cancell3 = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq3 = [...list3];
-    mq3.splice(idd,1);
-    setList1(mq3)
-   }
 
 
 
@@ -59,7 +22,7 @@ export default function Filter() {
     const [inputt1,setInputt1] = useState("");
     const [inputt2,setInputt2] = useState("");
     const [inputt3,setInputt3] = useState("");
-    const [f1,setf1] = useState("false");
+   
     const handleAdd = () => {
         
 if((list.includes(inputt))==false){
@@ -67,28 +30,26 @@ if((list.includes(inputt))==false){
         ...prev,
         inputt
       ])
-      setf1("true")
+      
 }
-if((list1.includes(inputt1))==false){
-    setList1((prev)=>[
+if((list.includes(inputt1))==false){
+    setList((prev)=>[
         ...prev,
         inputt1
       ])
 }
-if((list2.includes(inputt2))==false){
-    setList2((prev)=>[
+if((list.includes(inputt2))==false){
+    setList((prev)=>[
         ...prev,
         inputt2
       ])
 }
-if((list3.includes(inputt3))==false){
-    setList3((prev)=>[
+if((list.includes(inputt3))==false){
+    setList((prev)=>[
         ...prev,
         inputt3
       ])
 }
-
-
 }
   return (
     <div className="AppliedFilter">
@@ -150,31 +111,19 @@ if((list3.includes(inputt3))==false){
 
           <div className="tagflex applydiv selectedtag">
           
-          {  list.map((ele,index) => {
+          { list.length >0 &&   list.map((ele,key) => {
             return (
-                <span className="tag auth-Tag" id={index} onClick={cancell}>{ele} <CancelIcon  className="cancelitem"/></span>
-             
-            );
-          })}
-          {list1.map((ele,index) => {
-            return (
-                <span className="tag auth-Tag" id={index} onClick={cancell1}>{ele} <CancelIcon  className="cancelitem"/></span>
-             
-            );
-          })}
-          {list2.map((ele,index) => {
-            return (
-                <span className="tag auth-Tag" id={index} onClick={cancell2}>{ele} <CancelIcon  className="cancelitem"/></span>
-             
-            );
-          })}
-          {list3.map((ele,index) => {
-            return (
-                <span className="tag auth-Tag" id={index} onClick={cancell3}>{ele} <CancelIcon  className="cancelitem"/></span>
+                <span className="tag auth-Tag" key={key}>{ele}  <CancelIcon  className="cancelitem"/></span>
              
             );
           })}
           
+          {
+            flag=="true" && 
+            ( <h4 href='' className=" tagofsearch" >
+            {searchinput} <CancelIcon onClick={cancelItem} className="cancelitem"/>
+            </h4>)
+           } 
         
           </div>
         </div>

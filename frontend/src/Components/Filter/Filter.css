@@ -75,3 +75,36 @@
     margin-top: auto;
     margin-bottom:auto; 
 }
+
+.tagflex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filterbtn{
+    height: 51px;
+    width: 80%;
+}
+
+.applydiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputfil{
+    padding: 10px;
+    text-align: center;
+}
+
+.selectedtag{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.selectedtag span{
+    margin: 4px;
+}
