@@ -25,7 +25,10 @@ export default function ProfileInputFieldExtended(props) {
             className="input-field"
             type={"text"}
             placeholder={props.placeholder}
+
             value={props.value}
+
+
           />
         </div>
       </div>

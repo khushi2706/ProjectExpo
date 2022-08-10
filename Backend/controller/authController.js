@@ -103,6 +103,7 @@ exports.getUserById = async (req, res, next)=>
   res.set('Access-Control-Allow-Origin', '*');
 
   const userId = req.params.id;
+
   let user;
 
   try {
@@ -111,9 +112,11 @@ exports.getUserById = async (req, res, next)=>
     console.log(e);
   }
 
+
   if (!user) {
     return res.status(500).json({ message : "Not found" });
   }
+
 
   return res.status(200).json({user});
 }
