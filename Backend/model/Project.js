@@ -29,6 +29,13 @@ var ProjectSchema = new Schema(
         required: true,
         enum: [ "Software", "Hardware"]
     },
+    isChecked:{
+        type: Boolean,
+        defalut: false
+    },
+    uniqueRate:{
+        type : Number
+    },
     UserId : {
         type: mongoose.Types.ObjectId,
         ref:"User",
