@@ -8,6 +8,9 @@ const projectRoute = require("./routes/projectRoute");
 const mentorRoute = require("./routes/mentorRoutes");
 const userRoute = require("./routes/userRoutes");
 const collgeRoute = require("./routes/collegeRoutes");
+const departmentRoute = require("./routes/departmentRoute");
+const SubjectRoute = require("./routes/subjectRoute");
+
 //create the app
 const app = express();
 
@@ -25,6 +28,8 @@ app.use('/api/roadmap' , roadmapRoute);
 app.use('/api/mentor' , mentorRoute);
 app.use('/api/user' , userRoute);
 app.use('/api/college',collgeRoute);
+app.use('/api/department', departmentRoute);
+app.use('/api/subject',SubjectRoute);
 
 
 //define port

@@ -23,6 +23,11 @@ const UniversitySchema = new Schema({
         type: String,
         require: true
     },
+    UserId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
 })
 
 module.exports = mongoose.model("University" , UniversitySchema)

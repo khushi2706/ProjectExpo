@@ -16,10 +16,10 @@ var subjectSchema = new Schema({
         required: true
     },
     Year: {
-        type: String,
+        type: Number,
         required: true
     },
 
 })
 
-module.exports = new mongoose.Model("Subject" , subjectSchema);
+module.exports =  mongoose.model("Subject" , subjectSchema);
