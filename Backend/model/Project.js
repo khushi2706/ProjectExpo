@@ -1,4 +1,5 @@
 //create a model where all the data of projects is stored with reference to user and college
+const { bool } = require('@hapi/joi');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ProjectSchema = new Schema(
@@ -39,7 +40,7 @@ var ProjectSchema = new Schema(
         default: null
     },
     isPrivete:{
-        type: Boolen,
+        type: Boolean,
         default : true,
     },
     Date:{

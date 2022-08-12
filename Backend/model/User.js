@@ -11,17 +11,13 @@ const userSchema = new Schema({
     Password: {
         type: String,
         required: true,
-        minlength: 6
     },   
     UserType: {
         type: String,
         required: true,
         enum: ["Student", "Professor" , "College-admin"]
     },
-    UserId: {
-        type: String,
-        required: true
-    }
+    
    
 });
 

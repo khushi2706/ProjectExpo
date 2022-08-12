@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 
 var CollegeSchema = new Schema({
-    Cname: {
+    CName: {
         type: String,
         required: true
     },
@@ -33,9 +33,13 @@ var CollegeSchema = new Schema({
         required: true,
         enum: ['goverment', 'private', 'grant-in-aid']
     },
-    Uni_id: {
+    UniId: {
         type: Schema.Types.ObjectId,
         ref: 'University',
+    },
+    UserId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     CollegeImg : {
