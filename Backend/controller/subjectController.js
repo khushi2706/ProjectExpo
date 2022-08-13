@@ -32,7 +32,12 @@ const addNewSubject = async (req, res, next) => {
   const {  SubName,
     SubInfo,
     DepartmentId,
-    Year
+    Year,
+    Eligibility,
+Objective,
+Credit,
+CourseCode
+
      } = req.body;
 
   try {
@@ -49,7 +54,11 @@ const addNewSubject = async (req, res, next) => {
         SubName,
         SubInfo,
         DepartmentId,
-        Year
+        Year,
+        Eligibility,
+        Objective,
+        Credit,
+        CourseCode
     });
 
     await newSubject.save();
