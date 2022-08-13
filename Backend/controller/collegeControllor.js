@@ -237,6 +237,39 @@ const updateCollege = async (req, res, next) => {
     return res.status(200).json({ college });
 }
 
+const changeCollgeProfile = async(req,res,next) =>{
+    res.set('Access-Control-Allow-Origin', '*');
+    const {
+         collegeId,
+         CollegeNewImg
+         } = req.body;
+
+    
+    try {
+
+        const filter = { _id: collegeId };
+const update = { CollegeImg : CollegeNewImg };
+
+       await College.findOneAndUpdate(filter,
+            update);
+       
+    } catch (error) {
+        return res.status(400).json({
+            success : false,
+            response : {
+                error
+            }
+        })
+    }
+    return res.status(200).json({
+        success: true,
+        response: {
+            code: "college_Update_success",
+            message: "",
+            data: {},
+        },
+    });
+}
 
 const deleteCollege = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -264,4 +297,4 @@ const deleteCollege = async (req, res, next) => {
 }
 
 
-module.exports = { getAllColleges, addNewCollege, getCollegeById, updateCollege, deleteCollege ,getCollegeByUserId };
+module.exports = { getAllColleges, addNewCollege, getCollegeById, updateCollege, deleteCollege ,getCollegeByUserId , changeCollgeProfile };
