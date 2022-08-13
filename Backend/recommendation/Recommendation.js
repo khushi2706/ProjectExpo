@@ -1,6 +1,6 @@
 const spawn = require("child_process").spawn;
 
-const pythoneProcess = spawn('python3', ["Recommendation.py"]);
+const pythoneProcess = spawn('python', ["Recommendation.py"]);
 
 pythoneProcess.stdout.on('data', (data) => {
     str = data.toString();

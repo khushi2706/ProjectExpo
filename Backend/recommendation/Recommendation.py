@@ -15,6 +15,8 @@ index = df.index
 df["Combined_features"] = df["Title"]+" " + \
     df["Desc"]+" "+df["Author"]+" "+df["LanguageTag"]
 
+df['index'] = index
+
 cv = CountVectorizer()
 count_matrix = cv.fit_transform(df["Combined_features"])
 
