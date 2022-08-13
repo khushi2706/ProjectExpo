@@ -6,6 +6,7 @@ const User = require("../model/User");
 var ObjectId = require('mongodb').ObjectID;
 
 const getAllColleges = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     let colleges;
     try {
         colleges = await College.find();
@@ -32,7 +33,7 @@ const getAllColleges = async (req, res, next) => {
 
 
 const addNewCollege = async (req, res, next) => {
-   
+    res.set('Access-Control-Allow-Origin', '*');
     const {
         Email,
         Pass,
@@ -111,6 +112,7 @@ const addNewCollege = async (req, res, next) => {
 
 
 const getCollegeById = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { id } = req.params;
     let college;
     try {
@@ -137,6 +139,7 @@ const getCollegeById = async (req, res, next) => {
 }
 
 const getCollegeByUserId = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { UserId } = req.params;
     let college;
     try {
@@ -163,6 +166,7 @@ const getCollegeByUserId = async (req, res, next) => {
 }
 
 const updateCollege = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { id } = req.params;
     const { 
         CName,
@@ -231,6 +235,7 @@ const updateCollege = async (req, res, next) => {
 
 
 const deleteCollege = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { id } = req.params;
     const clg = College.findById(id).UserId;
 

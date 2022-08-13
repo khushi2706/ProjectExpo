@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose")
 
 const getAllStudent = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
   let students;
   try {
     students = await Student.find();
@@ -106,6 +107,7 @@ const addNewStudent = async (req, res, next) => {
 };
 
 const getAllStudentByDepartId = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
     const {departId} = req.params;
     let students;
     try {

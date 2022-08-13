@@ -27,7 +27,7 @@ const getAllProjects = async(req,res,next)=>{
 
 const getProjectById = async(req,res,next) => {
     const ProId = req.params.id;
-
+    res.set('Access-Control-Allow-Origin', '*');
     let project;
     try{
         project = await Project.findById(ProId);
@@ -44,7 +44,7 @@ const getProjectById = async(req,res,next) => {
 }
 const getProjectByUserId = async(req,res,next) => {
     const UserId = req.params;
-
+    res.set('Access-Control-Allow-Origin', '*');
     let project;
     try{
         project = await Project.find(UserId);
@@ -60,6 +60,7 @@ const getProjectByUserId = async(req,res,next) => {
     return res.status(200).json({project});
 }
 const addNewProject = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
     const {  
         PName,
         Desc,
