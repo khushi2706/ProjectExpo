@@ -3,6 +3,7 @@ const Department = require("../model/Department");
 
 const getAllSubject = async (req, res, next) => {
   let subjects;
+  res.set('Access-Control-Allow-Origin', '*');
   try {
     subjects = await Subject.find();
   } catch (e) {
@@ -27,6 +28,7 @@ const getAllSubject = async (req, res, next) => {
 };
 
 const addNewSubject = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const {  SubName,
     SubInfo,
     DepartmentId,
@@ -68,6 +70,7 @@ const addNewSubject = async (req, res, next) => {
 };
 
 const getAllSubByDepartId = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
     const {departId} = req.params;
     console.log(departId);
     let subjects;

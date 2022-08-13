@@ -4,6 +4,7 @@ const Department = require("../model/Department");
 const College = require("../model/College");
 
 const getAllDepartment = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
   let departments;
   try {
     departments = await Department.find();
@@ -30,7 +31,7 @@ const getAllDepartment = async (req, res, next) => {
 
 const addNewDepartment = async (req, res, next) => {
   const {  DepartName, CollegeId } = req.body;
-
+  res.set('Access-Control-Allow-Origin', '*');
   try {
     //Check if college is exist
     let CollegeExist = await College.findById(CollegeId);
@@ -64,7 +65,8 @@ const addNewDepartment = async (req, res, next) => {
 };
 
 const getAllDepByCollegeId = async (req, res, next) => {
-    const {clgId} = req.params;
+  res.set('Access-Control-Allow-Origin', '*');  
+  const {clgId} = req.params;
     console.log(clgId);
     let departments;
     try {
