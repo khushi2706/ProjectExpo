@@ -1,8 +1,9 @@
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
-import numpy as np
 import requests
+import json
+import sys
 r = requests.get('http://localhost:5000/api/Project')
 my_dict = r.json()
 my_dict = my_dict.get('projects')
@@ -54,6 +55,10 @@ def get_language_from_index(index):
     return df[df.index == index]['LanguageTag'].values[0]
 
 
+def get_id_from_index(index):
+    return df[df.index == index]['_id'].values[0]
+
+
 userAuthor = ['joneschelsey', 'ypittman', 'ubrock', 'juanli']
 userLang = ['Node JS', 'Python']
 
@@ -62,7 +67,7 @@ def getByLike():
     recLike = []
     for project in sorted_similar_project:
         #         print(project[0])
-        recLike.append(get_title_from_index(project[0]))
+        recLike.append(get_id_from_index(project[0]))
         if len(recLike) >= 30:
             break
     return recLike
@@ -77,7 +82,7 @@ def getByLan():
         for i in lan:
             if i.strip() in userLang:
                 #                 print(project[0])
-                recLan.add(get_title_from_index(project[0]))
+                recLan.add(get_id_from_index(project[0]))
         if len(recLan) >= 30:
             break
     return recLan
@@ -92,7 +97,13 @@ def getByAuthor():
         for i in auth:
             if i.strip() in userAuthor:
                 #                 print(project[0])
-                recAuth.append(get_title_from_index(project[0]))
+                recAuth.append(get_id_from_index(project[0]))
         if len(recAuth) >= 30:
             break
     return recAuth
+
+
+ans = json.dumps(getByLike())
+print(ans)
+
+sys.stdout.flush()
