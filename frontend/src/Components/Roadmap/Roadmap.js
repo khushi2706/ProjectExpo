@@ -12,6 +12,7 @@ export default function Roadmap() {
       .get("http://localhost:5000/api/roadmap")
       .catch((err) => console.log(err));
     const data = await res.data;
+    
     return data;
   };
   useEffect(() => {

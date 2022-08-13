@@ -10,7 +10,8 @@ const userRoute = require("./routes/userRoutes");
 const collgeRoute = require("./routes/collegeRoutes");
 const departmentRoute = require("./routes/departmentRoute");
 const SubjectRoute = require("./routes/subjectRoute");
-
+const ProfessorRoute = require("./routes/professorRoute");
+const StudentRoute = require("./routes/studentRoute");
 //create the app
 const app = express();
 
@@ -30,7 +31,8 @@ app.use('/api/user' , userRoute);
 app.use('/api/college',collgeRoute);
 app.use('/api/department', departmentRoute);
 app.use('/api/subject',SubjectRoute);
-
+app.use('/api/professor', ProfessorRoute);
+app.use('/api/student',StudentRoute);
 
 //define port
 
