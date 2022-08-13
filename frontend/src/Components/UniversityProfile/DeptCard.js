@@ -13,7 +13,7 @@ export default function DeptCard(props) {
                         borderRadius: 15,
                         fontFamily: 'poppins',
                         flexWrap: 'wrap'}}>
-                <img src="https://bigeye.ug/wp-content/uploads/2016/05/Couple-travel.jpg" width="50vw" height="50vh"/>
+            
                 <div style={{textAlign: 'center',
                             fontSize: 16,
                             fontWeight: 'bold',

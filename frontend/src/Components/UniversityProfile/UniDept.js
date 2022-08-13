@@ -14,17 +14,58 @@ function UniDept() {
     const handleClick = ()=>{
         
     }
-    const Fruits = [
-        { name: 'Computer Engineering' },
-        { name: 'Civil Engineering' },
-        { name: 'Electrical Engineering' },
-        { name: 'Electronics Engineering' },
-        { name: 'Production Engineering' },
-        { name: 'Electronics and Communication Engineering' },
-        { name: 'Mechanical Engineering' },
-        { name: 'Structural Engineering' }
-      ];
-  return (
+
+    const [user, setUser] = useState();
+
+const sendRequest = async () => {
+  const res = await axios
+    .get('http://localhost:5000/api/department/getByCollgeId/62f774557a6fe95024e17b2b')
+    .catch((err) => console.log(err));
+  const data = await res.data;
+  console.log(data);
+  console.log("-----");
+  return data;
+};
+
+
+const [uni, setUni] = useState();
+
+const sendRequest2 = async () => {
+  const res = await axios
+    .get('http://localhost:5000/api/college/collegeId/62f774557a6fe95024e17b2b')
+    .catch((err) => console.log(err));
+  const data = await res.data;
+  console.log(data);
+  console.log("-----");
+  return data;
+};
+
+
+useEffect(() => {
+    sendRequest().then((data) => setUser(data.departments));
+
+    console.log(user);
+   
+    sendRequest2().then((data) => setUni(data.college));
+    console.log("-----------+");
+    console.log(uni);
+  
+  }, []);
+
+
+    // const Fruits = [
+    //     { name: 'Computer Engineering' },
+    //     { name: 'Civil Engineering' },
+    //     { name: 'Electrical Engineering' },
+    //     { name: 'Electronics Engineering' },
+    //     { name: 'Production Engineering' },
+    //     { name: 'Electronics and Communication Engineering' },
+    //     { name: 'Mechanical Engineering' },
+    //     { name: 'Structural Engineering' }
+    //   ];
+  return ( 
+    <>
+    {user && 
     <div
     style={{
       display: "flex",
@@ -61,7 +102,8 @@ function UniDept() {
               textAlign: "start",
             }}
           >
-            Birla Vishwakarma..
+          {uni  && 
+            uni.CName.substring(0,17)}..
           </div>
 
           <div
@@ -71,8 +113,8 @@ function UniDept() {
               color: "#9B9B9B",
               fontWeight: "500",
             }}
-          >
-            bvmengineering@bvm..
+          >{uni  && 
+            uni.CollegeEmail}
           </div>
         </div>
       </div>
@@ -160,12 +202,17 @@ function UniDept() {
    <div>
    <div className='container'>
    <div className='row'>
-   {Fruits.map(data => (
+   {user.map((data,index)=> (
+
     <div className='col-md-4'>
+    <>
+    
     <DeptCard
-    title={data.name}
+    key={index}
+    title={data.DepartName}
     SubCardType="EDIT OR DELETE"
-    /></div>
+    /></>
+    </div>
    ))}
    </div></div>
    
@@ -188,8 +235,9 @@ style={{
 
 
   </div>
+}
    
-
+</>
   )
 }
 

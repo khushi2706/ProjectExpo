@@ -10,8 +10,30 @@ import { NavLink } from "react-router-dom";
 
 
 function UniProfile() {
+  
+const [user, setUser] = useState();
+
+const sendRequest = async () => {
+  const res = await axios
+    .get('http://localhost:5000/api/college/collegeId/62f774557a6fe95024e17b2b')
+    .catch((err) => console.log(err));
+  const data = await res.data;
+  console.log(data);
+  console.log("-----");
+  return data;
+};
+useEffect(() => {
+  sendRequest().then((data) => setUser(data.college));
+  console.log("-----------+");
+  console.log(user);
+
+  console.log("--------------+");
+ 
+}, []);
+
   return (
    <>
+   {user && 
    <div
        style={{
          display: "flex",
@@ -48,7 +70,9 @@ function UniProfile() {
                  textAlign: "start",
                }}
              >
-               Birla Vishwakarma..
+             {user  && 
+              user.CName.substring(0,17)}..
+
              </div>
 
              <div
@@ -59,7 +83,8 @@ function UniProfile() {
                  fontWeight: "500",
                }}
              >
-               bvmengineering@bvm..
+             {user  && 
+              user.CollegeEmail}
              </div>
            </div>
          </div>
@@ -80,7 +105,7 @@ function UniProfile() {
          <SideBarOption icon="groups" title="Faculty" />
          </NavLink>
 
-         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/unversitysubjects">
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universitysubjects">
          <SideBarOption icon="groups" title="Subjects" />
          </NavLink>
         
@@ -146,7 +171,10 @@ function UniProfile() {
 
       <div>
       <img className="profilepic" style={{width:"907px" , height:"343px",margin:"10px",padding:"5px"}} src="https://tse3.mm.bing.net/th?id=OIP.MnwaoGEMyJ4apfF-tH-KVAHaES&pid=Api&P=0" alt="college photo"/>
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/editimg">
       <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"/>
+         </NavLink>
+      
       </div>
 
       
@@ -156,7 +184,7 @@ function UniProfile() {
           <ProfileInputField
             title={"College Name"}
             placeholder={"Ex: Birla Vishwakarma Mahavidyalaya"}
-            vale={"Birla Vishwakarma Mahavidyalaya"}
+            vale={user.CName}
           />
         </div>
 
@@ -164,7 +192,8 @@ function UniProfile() {
           <ProfileInputField
             title={"College Information"}
             placeholder={"Ex: Re-engineer curricula to meet global  employment requirements. Promote innovative practices at all levels."}
-            vale={"Re-engineer curricula to meet global  employment requirements. Promote innovative practices at all levels."}
+            vale={user.CollegeInfo}
+
           />
         </div>
 
@@ -172,13 +201,13 @@ function UniProfile() {
           <ProfileInputField
             title={"Email"}
             placeholder={"Ex: Dvala453@gmail.com"}
-            vale={"principal@bvmengineering.ac.in"}
+            vale={user.CollegeEmail}
           />
           <div style={{ marginLeft: 10 ,flexGrow:"1"}}>
             <ProfileInputField
               title={"Type"}
               placeholder={"Ex: Private"}
-              vale={"Private"}
+              vale={user.Ctype}
             />
           </div>
         </div>
@@ -187,7 +216,7 @@ function UniProfile() {
           <ProfileInputField
             title={"Address"}
             placeholder={"Ex: Mota Bazar, Vallabh Vidyanagar"}
-            vale={"Mota Bazar, Vallabh Vidyanagar"}
+            vale={user.Address}
           />
         </div>
 
@@ -195,13 +224,13 @@ function UniProfile() {
           <ProfileInputField 
           title={"District"} 
           placeholder={"Ex: Anand"} 
-          vale={"Anand"}
+          vale={user.District}
           />
           <div style={{ marginLeft: 10,flexGrow:"1" }}>
             <ProfileInputField
               title={"State"}
               placeholder={"Ex: Gujarat"}
-              vale={"Gujarat"}
+              vale={user.State}
             />
           </div>
         </div>
@@ -232,7 +261,7 @@ function UniProfile() {
             marginBottom:"50px"
           }}
         >
-          <Button title={"Apply Changes"} />
+          <Button title={"Request For Edit"} />
         </div>
       </div>
 
@@ -242,6 +271,7 @@ function UniProfile() {
 
 
      </div>
+        }
    </>
   )
 }
