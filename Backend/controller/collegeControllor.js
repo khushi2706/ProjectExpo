@@ -244,13 +244,14 @@ const changeCollgeProfile = async(req,res,next) =>{
          CollegeNewImg
          } = req.body;
 
+         console.log(collegeId , CollegeNewImg);
     
     try {
 
         const filter = { _id: collegeId };
-const update = { CollegeImg : CollegeNewImg };
+        const update = { CollegeImg : CollegeNewImg };
 
-       await College.findOneAndUpdate(filter,
+       await College.findByIdAndUpdate(collegeId,
             update);
        
     } catch (error) {
