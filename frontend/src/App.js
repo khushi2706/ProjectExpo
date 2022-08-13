@@ -13,6 +13,8 @@ import RoadmapView from "./Components/Roadmap/RoadmapView";
 import Profile from "./Components/Profile/Profile";
 import Blog from "./Components/Blog/Blog";
 import UniProfile from "./Components/UniversityProfile/UniProfile";
+import UniSubject from "./Components/UniversityProfile/UniSubject";
+import UniDept from "./Components/UniversityProfile/UniDept";
 function App() {
   return (
     <>
@@ -32,6 +34,9 @@ function App() {
             <Route index path="/mentor" element={<Mentor/>}/>
             <Route index path="/universityprofile" element={<UniProfile/>}/>
             <Route index path="/viewmentor/:id" element={<MentorView/>}/>
+            <Route index path="/unversitysubjects" element={<UniSubject/>}/>
+            <Route index path="/universityfaculty" element={<Mentor/>}/>
+            <Route index path="/universitydepartment" element={<UniDept/>}/>
           </Routes>
         </BrowserRouter>
       </div>

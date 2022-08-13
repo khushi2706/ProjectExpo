@@ -3,6 +3,7 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/material": "^5.10.0",
-    "material-icons-react": "^1.0.4"
+    "material-icons-react": "^1.0.4",
+    "react-bootstrap": "^2.5.0"
   }
 }

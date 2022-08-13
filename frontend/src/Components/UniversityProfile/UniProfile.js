@@ -6,6 +6,7 @@ import ProfileInputFieldExtended from "../Profile/ProfileInputFieldExtended";
 import SideBarOption from "../Profile/SideBarOption";
 import axios from "axios"
 import "./UniProfile.css"
+import { NavLink } from "react-router-dom";
 
 
 function UniProfile() {
@@ -67,10 +68,24 @@ function UniProfile() {
 
          {/* options */}
          <div style={{position:"sticky",top:"130px",padding:"10px"}}>
-         <SideBarOption icon="person" title="Profile" />
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universityprofile">
+         <SideBarOption icon="person"  title="Profile" />
+         </NavLink>
+         
+         <NavLink className="" style={{textDecoration:"none" ,color:"black" }} to="/universitydepartment">
          <SideBarOption icon="book" title="Department" />
+         </NavLink>
+
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universityfaculty">
          <SideBarOption icon="groups" title="Faculty" />
+         </NavLink>
+
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/unversitysubjects">
          <SideBarOption icon="groups" title="Subjects" />
+         </NavLink>
+        
+        
+        
          </div>
          
        </div>
