@@ -44,7 +44,9 @@ const addNewCollege = async (req, res, next) => {
         Address,
         District,
         State,
-        CollegeImg
+        CollegeImg,
+        CollegeWebsite,
+    UniName
          } = req.body;
 
     const UserType = "College-admin";
@@ -84,7 +86,9 @@ const addNewCollege = async (req, res, next) => {
             District,
             State,
             UserId,
-            CollegeImg
+            CollegeImg,
+            CollegeWebsite,
+            UniName
         });    
         await college.save();
       
