@@ -6,17 +6,9 @@ import SideBarOption from "./SideBarOption";
 import axios from "axios";
 
 export default function Profile() {
-  const [singleUser, setSingleUser] = useState({
-    Fname: "",
-    Lname: "",
-    DoB: "",
-    AboutMe: "",
-    Gender: "",
-    DepartmentId: "",
-    UserId: "",
-  });
+  const [singleUser, setSingleUser] = useState();
 
-  const studentId = "62f8bfc2b273758939de55e7";
+  const studentId = "62f779d74af7b7b96e43a2f7";
 
   const sendReq = async () => {
     const res = await axios
@@ -29,8 +21,8 @@ export default function Profile() {
 
   useEffect(() => {
     sendReq().then((data) => {
-      //console.log(data);
-      setSingleUser(data[0]);
+      console.log(data);
+      setSingleUser(data);
     });
   }, []);
   console.log(singleUser);

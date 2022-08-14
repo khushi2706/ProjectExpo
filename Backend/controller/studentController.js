@@ -130,7 +130,7 @@ const getStudentById = async (req, res, next) => {
   let student;
   //console.log("StudentId:" + studentId);
   try {
-    student = await Student.find({ _id: studentId });
+    student = await Student.findById(studentId);
     //console.log(student);
   } catch (e) {
     console.log("Exception: " + e);
