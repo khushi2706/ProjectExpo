@@ -177,9 +177,8 @@ useEffect(() => {
       <div className="popup-container" id="pop_Container">
             <div className="popup-box">
               <form 
-              action='http://localhost:3000/universityprofile'
-              id='uploadForm'
-                
+              action='http://localhost:3000/collegeprofile'
+              id='uploadForm' 
               method='post' 
               encType="multipart/form-data">
               <input type="file" id="uploadfile"/> 
