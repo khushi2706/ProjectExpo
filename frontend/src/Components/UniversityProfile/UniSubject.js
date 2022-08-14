@@ -121,7 +121,7 @@ function UniSubject() {
               <NavLink
                 className=""
                 style={{ textDecoration: "none", color: "black" }}
-                to="/universityprofile"
+                to="/collegeprofile"
               >
                 <SideBarOption icon="person" title="Profile" />
               </NavLink>
@@ -129,7 +129,7 @@ function UniSubject() {
               <NavLink
                 className=""
                 style={{ textDecoration: "none", color: "black" }}
-                to="/universitydepartment"
+                to="/collegedepartment"
               >
                 <SideBarOption icon="book" title="Department" />
               </NavLink>
@@ -137,7 +137,7 @@ function UniSubject() {
               <NavLink
                 className=""
                 style={{ textDecoration: "none", color: "black" }}
-                to="/universityfaculty"
+                to="/collegefaculty"
               >
                 <SideBarOption icon="groups" title="Faculty" />
               </NavLink>
@@ -145,7 +145,7 @@ function UniSubject() {
               <NavLink
                 className=""
                 style={{ textDecoration: "none", color: "black" }}
-                to="/unversitysubjects"
+                to="/collegesubjects"
               >
                 <SideBarOption icon="groups" title="Subjects" />
               </NavLink>
