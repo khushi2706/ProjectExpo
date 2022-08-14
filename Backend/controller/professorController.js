@@ -41,6 +41,8 @@ const addNewProfessor = async (req, res, next) => {
     DoB,
     Gender,
     DepartmentId,
+    ProfileImg,
+    PubEmail
     } = req.body;
 
     const UserType = "Professor"
@@ -86,7 +88,9 @@ const addNewProfessor = async (req, res, next) => {
         DoB,
         Gender,
         DepartmentId,
-        UserId  
+        UserId  ,
+        ProfileImg,
+        PubEmail
     });
     await newProfessor.save();
     session.commitTransaction();
