@@ -34,14 +34,11 @@ const addNewUniversity = async (req, res, next) => {
     const {
         Email,
         Pass,
-        CName,
-        UniversityInfo,
-        UniversityEmail,
-        Ctype,
+        UName,
+        UType,
         Address,
         District,
         State,
-        UniversityImg
          } = req.body;
 
     const UserType = "University-admin";
@@ -72,18 +69,16 @@ const addNewUniversity = async (req, res, next) => {
         session.startTransaction();
         user  = await newUser.save();
         const UserId = user._id;
-        const University = new University({
-            CName,
-            UniversityInfo,
-            UniversityEmail,
-            Ctype,
+        console.log("making uni");
+        const university = new University({
+            UName,
+            UType,
             Address,
             District,
             State,
             UserId,
-            UniversityImg
         });    
-        await University.save();
+        await university.save();
       
         session.commitTransaction();
        

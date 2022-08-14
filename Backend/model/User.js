@@ -15,7 +15,7 @@ const userSchema = new Schema({
     UserType: {
         type: String,
         required: true,
-        enum: ["Student", "Professor" , "College-admin"]
+        enum: ["Student", "Professor" , "College-admin" , "University-admin"]
     },
     
    
