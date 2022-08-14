@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { ReactDOM } from "react";
 import Header from "../Common/Header";
+import ProgressBar from "./ProgressBar";
+import { NavLink } from "react-router-dom";
 
 var sty = {
   backgroundColor: "#57bcff",
@@ -13,59 +15,50 @@ var sty = {
 
 export default function Project_1() {
   var [tags, setTags] = useState("");
-
+  
   const Tags = (event) => {
     var str = event.target.value;
     setTags(str);
   };
 
+
+
   return (
     <>
       <Header />
+
+
      <div className="container mt-5">
-     <div className="progress" style={{ height: "30px" }}>
-        <div
-          className="progress-bar flex-row justify-content-center"
-          role="progressbar"
-          style={{ width: "33%", borderRadius: "4%" }}
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <div
-            style={sty}
-            className="d-flex flex-row justify-content-center align-items-center "
-          >
-            <span style={{ fontSize: "18px" }}>1</span>
-          </div>
-        </div>
-      </div>
+     <ProgressBar wid="33%" num="1"/>
+     
+   
 
       <div className=" p-3 mt-4 ">
         <form>
           <div className="form-group row mt-4">
             <label
               for="name"
-              className="col-sm-2 col-form-label font-weight-bold"
+              className="col-sm-2 col-form-label downn font-weight-bold"
             >
               <strong>Name:</strong>
             </label>
             <div className="col-sm-10">
               <input
                 type="text"
-                className="form-control"
+                className="form-control form-input"
                 id="name"
-                placeholder=""
+                placeholder="Enter Your Project Name"
+                required
               />
             </div>
           </div>
 
           <div className="form-group row mt-3">
-            <label for="desc" className="col-sm-2 col-form-label">
+            <label for="desc" className="col-sm-2 downn col-form-label">
               <strong>Description:</strong>
             </label>
             <div className="col-sm-10">
-              <textarea className="form-control" id="desc" rows="3"></textarea>
+              <textarea className="form-control f-textarea" id="desc" placeholder="Describe your project in min 25 words" rows="3"  required></textarea>
             </div>
           </div>
 
@@ -79,7 +72,7 @@ export default function Project_1() {
 
               <div className="form-check form-check-inline mt-1">
                 <input
-                  className="form-check-input"
+                  className="form-check-input "
                   type="radio"
                   name="type"
                   id="software"
@@ -117,6 +110,7 @@ export default function Project_1() {
                   name="privacy"
                   id="public"
                   value="public"
+                 
                 />
                 <label className="form-check-label" for="public">
                   Public
@@ -150,26 +144,30 @@ export default function Project_1() {
           </div>
 
           <div class="form-group row mt-3">
-            <label for="inputPassword" class="col-sm-2 col-form-label">
+            <label for="inputPassword" class="col-sm-2 downn col-form-label">
               <strong>Tags:</strong>
             </label>
             <div class="col-sm-10">
               <input
                 onChange={Tags}
                 type="text"
-                class="form-control"
+                class="form-control form-input"
                 id="Tag"
-                placeholder=""
+                placeholder="Enter Applicable Tag Like.. Machine Learning - MERN Stack Application"
+                required
               />
             </div>
-            <div className="w-100 text-center">{tags};</div>
+            <div className="w-100 text-center">{tags}</div>
           </div>
 
           <div className="d-flex flex-row-reverse  mt-3 ">
             <div className="w-25">
-              <button type="submit" className="btn btn-primary m-auto ">
-                Next
-              </button>
+            <NavLink className="" to="/UploadProject/Stage2">
+            <button type="submit" style={{height:"41px"}} className=" search-bar-button  m-auto " >
+            Next
+          </button>
+          </NavLink>
+              
             </div>
           </div>
         </form>

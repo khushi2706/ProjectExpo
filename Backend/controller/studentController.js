@@ -113,7 +113,7 @@ const getAllStudentByDepartId = async (req, res, next) => {
     const {departId} = req.params;
     let students;
     try {
-      students = await Student.find({ DepartId : departId });
+      students = await Student.find({ DepartmentId : departId });
     } catch (e) {
       return res.status(400).json({
         success: false,

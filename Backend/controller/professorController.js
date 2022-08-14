@@ -118,7 +118,7 @@ const getAllProfByDepartId = async (req, res, next) => {
 
     let professors;
     try {
-      professors = await Professor.find({ DepartId : departId });
+      professors = await Professor.find({ DepartmentId : departId });
     } catch (e) {
       return res.status(400).json({
         success: false,
