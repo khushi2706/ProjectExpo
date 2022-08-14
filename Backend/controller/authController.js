@@ -2,8 +2,8 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User"); // User model
 const Joi = require('@hapi/joi');
 const { registerSchema, loginSchema } = require('../utils/userValidation');
-const jwt = require("jsonwebtoken");
-const JWT_SECRET = "thisIs@$ecretKey"
+// const jwt = require("jsonwebtoken");
+// const JWT_SECRET = "thisIs@$ecretKey"
 
 const getAllUser = async (req,res,next) =>{
   let users;
@@ -82,7 +82,7 @@ const loginUser = async (req,res,next) =>{
    if(!isPasswordCorrect){
        return res.status(400).json({message: "Incorrect Password!"});
    }
-   const authToken = jwt.sign(existingUser.toJSON(),JWT_SECRET);
+  //  const authToken = jwt.sign(existingUser.toJSON(),JWT_SECRET);
 
    return res.status(200).json({userType: existingUser.UserType , authToken});
     
