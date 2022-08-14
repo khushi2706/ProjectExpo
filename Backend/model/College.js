@@ -4,43 +4,56 @@ var Schema = mongoose.Schema;
 
 
 var CollegeSchema = new Schema({
-    name: {
+    CName: {
         type: String,
         required: true
     },
-    information: {
+    CollegeInfo: {
         type: String,
         required: true
     },
-    address: {
+    CollegeEmail: {
         type: String,
         required: true
     },
-    city: {
+    Address: {
         type: String,
         required: true
     },
-    state: {
+    District: {
         type: String,
         required: true
     },
-    url: {
+    State: {
         type: String,
         required: true
     },
-    type : {
+    Ctype : {
         type: String,
         required: true,
         enum: ['goverment', 'private', 'grant-in-aid']
     },
-
-    
-
-    univeristy_id: {
+    UniId: {
         type: Schema.Types.ObjectId,
         ref: 'University',
+    },
+    UserId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
-    }
+    },
+    CollegeImg : {
+        type: String,
+        default : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    },
+    CollegeWebsite: {
+        type: String,
+        required: true
+    },
+    UniName: {
+        type: String,
+        required: true
+    },
 });
 
 

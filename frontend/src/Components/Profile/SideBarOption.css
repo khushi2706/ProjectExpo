@@ -1,0 +1,29 @@
+.option-container {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+
+/* background: #d1c9c9,
+          justifyItems: "center",
+          width: 250,
+          borderRadius: 10,
+          marginTop: 20, */
+
+.option-container:hover {
+    display: flex;
+    background: #d1c9c9;
+    justify-content: center;
+    width: 250px;
+    border-radius: 7px;
+    margin-top: 20px;
+    background-color: #D5E3FE;
+    color: #2C5EFF;
+    cursor: pointer;
+}
+
+.option-container:hover > div > i{
+    color: green;
+}
