@@ -17,11 +17,14 @@ const upload = multer({
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     metadata: (req, file, cb) => {
+      
       cb(null, { fieldName: file.fieldname })
     },
     key: (req, file, cb) => {
+      console.log(file);
       cb(null, 'University/' + file.originalname)
-    }
+    },
+    
   }
   
   )

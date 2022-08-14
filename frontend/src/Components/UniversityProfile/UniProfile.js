@@ -181,7 +181,7 @@ useEffect(() => {
               id='uploadForm' 
               method='post' 
               encType="multipart/form-data">
-              <input type="file" id="uploadfile"/> 
+              <input type="file" name="inputFile" id="uploadfile"/> 
               <button type="submit" value="Submit">Upload</button>
               </form>
             </div>
