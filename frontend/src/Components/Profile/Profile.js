@@ -7,35 +7,30 @@ import axios from "axios";
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState({
-    address: "",
-    dob: "",
-    email: "",
-    first_name: "",
-    gender: "",
-    last_name: "",
-    password: "",
-    profile_pic: "",
-    university: "",
-    university_id: "",
-    user_id: "",
-    user_type: "",
-    _id: "",
+    Fname: "",
+    Lname: "",
+    DoB: "",
+    AboutMe: "",
+    Gender: "",
+    DepartmentId: "",
+    UserId: "",
   });
 
-  const userId = "62ee3ed48b77963213ff078e";
+  const studentId = "62f8bfc2b273758939de55e7";
 
   const sendReq = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/user/getUserById/${userId}`)
+      .get(`http://localhost:5000/api/student/getStudentById/${studentId}`)
       .catch((err) => console.log(err));
     const data = await res.data;
+    //console.log("Data from API:" + data[0].Fname);
     return data;
   };
 
   useEffect(() => {
     sendReq().then((data) => {
-      console.log(data);
-      setSingleUser(data.user[0]);
+      //console.log(data);
+      setSingleUser(data[0]);
     });
   }, []);
   console.log(singleUser);
@@ -157,16 +152,19 @@ export default function Profile() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
-                  <ProfileInputField
-                    title={"First Name"}
-                    placeholder={"Ex: Nikunj"}
-                    value={singleUser.first_name}
-                  />
+                  {singleUser && (
+                    <ProfileInputField
+                      title={"First Name"}
+                      placeholder={"Ex: Nikunj"}
+                      vale={singleUser.Fname}
+                    />
+                  )}
+
                   <div style={{ marginLeft: 10 }}>
                     <ProfileInputField
                       title={"Last Name"}
                       placeholder={"Ex: Patel"}
-                      value={singleUser.last_name}
+                      vale={singleUser.Lname}
                     />
                   </div>
                 </div>
@@ -175,7 +173,7 @@ export default function Profile() {
                   <ProfileInputField
                     title={"Email"}
                     placeholder={"Ex: ndpatel.tech@gmail.com"}
-                    value={singleUser.email}
+                    vale={singleUser.Email}
                   />
                 </div>
 
@@ -183,13 +181,13 @@ export default function Profile() {
                   <ProfileInputField
                     title={"Gender"}
                     placeholder={"Ex: Male"}
-                    value={singleUser.gender}
+                    vale={singleUser.Gender}
                   />
                   <div style={{ marginLeft: 10 }}>
                     <ProfileInputField
                       title={"DOB"}
                       placeholder={"Ex: 31/10/2000"}
-                      value={singleUser.dob}
+                      vale={singleUser.DoB}
                     />
                   </div>
                 </div>
@@ -198,7 +196,7 @@ export default function Profile() {
                   <ProfileInputField
                     title={"College"}
                     placeholder={"Ex: Birla Vishwakarma Mahavidhyalaya"}
-                    value={singleUser.university}
+                    vale={singleUser.university}
                   />
                 </div>
 
@@ -206,13 +204,13 @@ export default function Profile() {
                   <ProfileInputField
                     title={"Department"}
                     placeholder={"Ex: Computer"}
-                    value={singleUser.university_id}
+                    vale={singleUser.university_id}
                   />
                   <div style={{ marginLeft: 10 }}>
                     <ProfileInputField
                       title={"Current Year"}
                       placeholder={"Ex: 2022"}
-                      value={"2022"}
+                      vale={"2022"}
                     />
                   </div>
                 </div>

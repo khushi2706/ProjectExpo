@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./ProfileInputField.css";
 export default function ProfileInputField(props) {
-  const [val, setVal] = useState(props.value);
+  const [val, setVal] = useState(props.vale);
+  //setVal(Val);
+  console.log(val);
   return (
     <>
       <div

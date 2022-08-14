@@ -128,9 +128,10 @@ const getStudentById = async (req, res, next) => {
   const studentId = req.params.id;
 
   let student;
-  console.log("StudentId:" + studentId);
+  //console.log("StudentId:" + studentId);
   try {
-    student = await User.find({ _id: studentId });
+    student = await Student.find({ _id: studentId });
+    //console.log(student);
   } catch (e) {
     console.log("Exception: " + e);
     return res.status(400).json({
@@ -144,7 +145,7 @@ const getStudentById = async (req, res, next) => {
   if (!student) return res.status(500).json({ message: "Not found" });
 
   console.log(student);
-  return res.status(200).json({ student });
+  return res.status(200).json(student);
 };
 module.exports = {
   getAllStudent,
