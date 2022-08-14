@@ -4,6 +4,7 @@ const University = require("../model/University");
 const User = require("../model/User");
 
 const getAllUniversities = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     let universities;
     try {
         universities = await University.find();
@@ -28,9 +29,8 @@ const getAllUniversities = async (req, res, next) => {
     return res.status(200).json({ success: true , universities });
 }
 
-
 const addNewUniversity = async (req, res, next) => {
-   
+    res.set('Access-Control-Allow-Origin', '*');
     const {
         Email,
         Pass,
@@ -102,8 +102,8 @@ const addNewUniversity = async (req, res, next) => {
   
 }
 
-
 const getUniversityById = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { id } = req.params;
     let university;
     try {
@@ -129,8 +129,8 @@ const getUniversityById = async (req, res, next) => {
     return res.status(200).json({ university });
 }
 
-
 const getUniversityByUserId = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { UserId } = req.params;
     let university;
     try {

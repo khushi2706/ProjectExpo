@@ -7,7 +7,7 @@ import SideBarOption from "../Profile/SideBarOption";
 import axios from "axios"
 import "./UniProfile.css"
 import { NavLink } from "react-router-dom";
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 
 function UniProfile() {
 
@@ -20,7 +20,7 @@ const [user, setUser] = useState();
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
+    .get('http://localhost:5000/api/college/collegeId/62f6135b8c07d28ed759794e')
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -177,7 +177,7 @@ useEffect(() => {
       <div className="popup-container" id="pop_Container">
             <div className="popup-box">
               <form 
-              action='http://localhost:3000/collegeprofile'
+              action='http://localhost:5000/collegeprofile'
               id='uploadForm' 
               method='post' 
               encType="multipart/form-data">

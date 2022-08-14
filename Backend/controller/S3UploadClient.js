@@ -22,7 +22,10 @@ const upload = multer({
     key: (req, file, cb) => {
       cb(null, 'University/' + file.originalname)
     }
-  })
+  }
+  
+  )
+  
 })
 
 module.exports = {
