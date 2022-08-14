@@ -1,13 +1,15 @@
 import React from "react";
 import "./Header.css";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-light navbar-style">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Logo
-        </a>
+      <NavLink className="navbar-brand" to="/">
+      Logo
+      </NavLink>
+       
         <button
           className="navbar-toggler"
           type="button"
@@ -21,35 +23,38 @@ export default function Header() {
         </button>
         <div className="collapse navbar-collapse d-flex  menu" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-center ">
+            
+           
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
+            <NavLink className="nav-link active" to="/project">
+            Project
+      </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/blog">
-                Blog
-              </a>
+            <NavLink className="nav-link " to="/UploadProject/Stage1">
+            Upload Project
+      </NavLink>
+              
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/project">
-                Project
-              </a>
+            <NavLink className="nav-link" to="/blog">
+            Blog
+      </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/roadmap">
-                Roadmap
-              </a>
+            <NavLink className="nav-link" to="/roadmap">
+            Roadmap
+      </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/mentor">
-                Find Mentor
-              </a>
+            <NavLink className="nav-link" to="/menter">
+           Menter
+      </NavLink>
             </li>
             <li className="nav-item">
-              <a href="/university" className="nav-link">
-                University
-              </a>
+            <NavLink className="nav-link" to="/university">
+            University
+      </NavLink>
             </li>
           
           </ul>

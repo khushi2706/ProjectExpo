@@ -6,6 +6,7 @@ import SideBarOption from "./SideBarOption";
 import axios from "axios";
 
 export default function Profile() {
+
   const [singleUser, setSingleUser] = useState({
     address: "dd",
     dob: "dd",
@@ -28,10 +29,12 @@ export default function Profile() {
 
     const res = await axios
       .get(`http://localhost:5000/api/user/getUserById/${userId}`)
+
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
   };
+
   
   useEffect(() => {
     sendReq().then((data) => {
@@ -310,6 +313,7 @@ export default function Profile() {
        </div>
      </div>
      }
+
     </>
   );
 }

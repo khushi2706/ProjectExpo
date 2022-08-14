@@ -8,6 +8,7 @@ const {
   authController,
   getAllUser,
   getUserById
+
 } = require("../controller/AuthController");
 const { registerLimiter, loginLimiter } = require("../utils/rateLimiter");
 
