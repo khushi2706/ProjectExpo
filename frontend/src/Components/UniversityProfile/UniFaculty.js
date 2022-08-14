@@ -8,7 +8,7 @@ import SideBarOption from "../Profile/SideBarOption";
 import axios from "axios";
 import "./UniProfile.css";
 import { NavLink } from "react-router-dom";
-import SubjectCard from "./SubjectCard";
+import Accordion from "react-bootstrap/Accordion";
 import FacultyCard from "./FacultyCard";
 
 function UniFaculty() {
@@ -211,8 +211,22 @@ function UniFaculty() {
                 <div className="row">
                   {sub.map((data, index) => (
                     <>
-                      <h4 className="my-10 py-10">{data.DepartName}</h4>
-                      <FacultyCard key={index} subid={data._id} />
+                    <div className="com">
+              <Accordion defaultActiveKey={["0"]} alwaysOpen flush>
+                <Accordion.Item eventKey={index}>
+                  <Accordion.Header>
+                  {data.DepartName}
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    <div class="panel-body">
+                    <FacultyCard key={index} subid={data._id} />
+                    </div>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+              </div>
+                      
+                     
                     </>
                   ))}
                  

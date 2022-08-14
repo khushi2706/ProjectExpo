@@ -9,6 +9,7 @@ import "./UniProfile.css";
 import { NavLink } from "react-router-dom";
 import SubCard from "./SubCard";
 
+import PCard  from "./PCard";
 function FacultyCard(props) {
   const sendRequest = async () => {
     const res = await axios
@@ -39,13 +40,17 @@ function FacultyCard(props) {
               {sub2.map((data, index) => (
                 <div className="col-md-4">
                   <>
-                    <SubCard
-                      title={data.Fname}
-                      obj={data.PubEmail}
+                  <PCard  title={data.Fname}
+                  img={data.ProfileImg}
+                  date={"13/07/2002"}
+                  
+                  email={data.PubEmail}
                       ccode={data.Gender}
-                      SubCardType="Apply Now"
-                      key={index}
-                    />
+                  key={index}
+
+
+            />
+                   
                   </>
                 </div>
               ))}

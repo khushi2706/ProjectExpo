@@ -57,3 +57,16 @@ background: rgba(217, 217, 217, 0.3);
     border: none;
     outline: none;
 }
+
+.accordion-flush, .accordion-item, .accordion-button{
+    font-size: 19px;
+    border-radius: 0;
+    font-family: 'Poppins';
+    color: black;
+    font-weight: 600;
+}
+.accordion-button:not(.collapsed) {
+    /* color: var(--bs-accordion-active-color); */
+   background-color: #d1d4fd;
+    box-shadow: inset 0 calc(var(--bs-accordion-border-width) * -1) 0 var(--bs-accordion-border-color);
+}

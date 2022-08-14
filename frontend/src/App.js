@@ -24,7 +24,7 @@ import UniFaculty from "./Components/UniversityProfile/UniFaculty";
 import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
-import "./Components/GeneralCSS/main.css"
+
 
 function App() {
   return (
