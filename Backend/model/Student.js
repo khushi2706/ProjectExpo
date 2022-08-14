@@ -1,38 +1,42 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var studentSchema = new Schema({
-Fname: {
-        type: String,
-        required: true
-    },
-LName: {
+  Fname: {
     type: String,
-    required: true
-},
-AboutMe:{
+    required: true,
+  },
+  LName: {
     type: String,
-    required: true
-},
-DoB: {
+    required: true,
+  },
+  AboutMe: {
     type: String,
-    required: true
-},
-Gender: {
+    required: true,
+  },
+  DoB: {
     type: String,
-    required: true
-},
-DepartmentId: { 
+    required: true,
+  },
+  Gender: {
+    type: String,
+    required: true,
+  },
+  DepartmentId: {
     type: mongoose.Types.ObjectId,
-    ref:"Department",
-    required: true
-},
-UserId:{
+    ref: "Department",
+    required: true,
+  },
+  UserId: {
     type: mongoose.Types.ObjectId,
-    ref:"User",
-    required: true
-}
-})
+    ref: "User",
+    required: true,
+  },
+  //   CollegeId: {
+  //     type: mongoose.Types.ObjectId,
+  //     ref: "College",
+  //     required: true,
+  //   },
+});
 
 module.exports = mongoose.model("student", studentSchema);
-
