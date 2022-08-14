@@ -173,7 +173,7 @@ useEffect(() => {
       <img className="profilepic" style={{width:"907px" , height:"343px",margin:"10px",padding:"5px"}} src="https://tse3.mm.bing.net/th?id=OIP.MnwaoGEMyJ4apfF-tH-KVAHaES&pid=Api&P=0" alt="college photo"/>
       <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/">
       <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"/>
-         </NavLink>
+      </NavLink>
       
       </div>
 
