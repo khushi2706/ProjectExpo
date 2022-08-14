@@ -8,7 +8,6 @@ router.get("/collegeId/:id",  getCollegeById);
 router.get("/userId/:UserId",  getCollegeByUserId);
 router.post("/addNew",  addNewCollege);
 router.put("/changeProfile" , changeCollgeProfile);
-
 module.exports = router;
 
 

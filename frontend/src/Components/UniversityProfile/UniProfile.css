@@ -1,0 +1,27 @@
+.profilepic{
+  
+    width: 907px;
+    height: 343px;
+   
+}
+
+.profilepicedit{
+    position: absolute;
+width: 40px;
+height: 40px;
+left: 1249px;
+    top: 391px;
+filter: invert(100%);
+background: rgba(217, 217, 217, 0.3);
+}
+
+.w-700{
+    width: 700px;
+}
+
+.inputchange{
+    flex-grow: 1;
+    padding-right: 243px;
+    /* margin-right: 50px; */
+    padding-left: 36px;
+}

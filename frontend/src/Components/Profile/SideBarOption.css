@@ -12,7 +12,7 @@
           borderRadius: 10,
           marginTop: 20, */
 
-.option-container:hover {
+.option-container:hover,.option-container:active {
     display: flex;
     background: #d1c9c9;
     justify-content: center;
