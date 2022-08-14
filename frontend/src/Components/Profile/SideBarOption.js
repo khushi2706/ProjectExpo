@@ -3,7 +3,7 @@ import "./SideBarOption.css";
 export default function SideBarOption(props) {
   return (
     <>
-      <div className="option-container">
+      <div className="option-container active">
         <div>
           <i
             className="material-icons"

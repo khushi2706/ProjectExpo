@@ -12,6 +12,10 @@ import ProjectView from "./Components/Project/ProjectView";
 import RoadmapView from "./Components/Roadmap/RoadmapView";
 import Profile from "./Components/Profile/Profile";
 import Blog from "./Components/Blog/Blog";
+import UniProfile from "./Components/UniversityProfile/UniProfile";
+import UniSubject from "./Components/UniversityProfile/UniSubject";
+import UniDept from "./Components/UniversityProfile/UniDept";
+import EditImg from "./Components/UniversityProfile/EditImg";
 function App() {
   return (
     <>
@@ -29,7 +33,12 @@ function App() {
             <Route index path="/profile" element={<Profile />} />
             <Route index path="/blog" element={<Blog/>}/>
             <Route index path="/mentor" element={<Mentor/>}/>
+            <Route index path="/collegeprofile" element={<UniProfile/>}/>
             <Route index path="/viewmentor/:id" element={<MentorView/>}/>
+            <Route index path="/collegesubjects" element={<UniSubject/>}/>
+            <Route index path="/collegefaculty" element={<Mentor/>}/>
+            <Route index path="/collegedepartment" element={<UniDept/>}/>
+            <Route index path="/editimg" element={<EditImg/>}/>
           </Routes>
         </BrowserRouter>
       </div>
