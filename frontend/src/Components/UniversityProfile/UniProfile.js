@@ -7,10 +7,15 @@ import SideBarOption from "../Profile/SideBarOption";
 import axios from "axios"
 import "./UniProfile.css"
 import { NavLink } from "react-router-dom";
-
+import Popup from 'reactjs-popup';
 
 function UniProfile() {
-  
+
+const Handle_toggle=()=>{
+    const img=document.getElementById('pop_Container')
+    console.log(img);
+}
+
 const [user, setUser] = useState();
 
 const sendRequest = async () => {
@@ -168,11 +173,25 @@ useEffect(() => {
           }}
         ></div>
       </div>
-
+      
+      <div className="popup-container" id="pop_Container">
+            <div className="popup-box">
+              <form 
+              action='http://localhost:3000/universityprofile'
+              id='uploadForm'
+                
+              method='post' 
+              encType="multipart/form-data">
+              <input type="file" id="uploadfile"/> 
+              <button type="submit" value="Submit">Upload</button>
+              </form>
+            </div>
+      </div>
+        
       <div>
       <img className="profilepic" style={{width:"907px" , height:"343px",margin:"10px",padding:"5px"}} src="https://tse3.mm.bing.net/th?id=OIP.MnwaoGEMyJ4apfF-tH-KVAHaES&pid=Api&P=0" alt="college photo"/>
       <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/">
-      <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"/>
+      <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"  onclilck={Handle_toggle}/>
       </NavLink>
       
       </div>
