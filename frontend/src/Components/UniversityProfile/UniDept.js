@@ -19,7 +19,7 @@ function UniDept() {
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/department/getByCollgeId/62f774557a6fe95024e17b2b')
+    .get('http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9')
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -32,7 +32,7 @@ const [uni, setUni] = useState();
 
 const sendRequest2 = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f774557a6fe95024e17b2b')
+    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -123,19 +123,19 @@ useEffect(() => {
 
       {/* options */}
       <div style={{position:"sticky",top:"130px",padding:"10px"}}>
-      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universityprofile">
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegeprofile">
       <SideBarOption icon="person"  title="Profile" />
       </NavLink>
       
-      <NavLink className="" style={{textDecoration:"none" ,color:"black" }} to="/universitydepartment">
+      <NavLink className="" style={{textDecoration:"none" ,color:"black" }} to="/collegedepartment">
       <SideBarOption icon="book" title="Department" />
       </NavLink>
 
-      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universityfaculty">
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegefaculty">
       <SideBarOption icon="groups" title="Faculty" />
       </NavLink>
 
-      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/unversitysubjects">
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegesubjects">
       <SideBarOption icon="groups" title="Subjects" />
       </NavLink>
      

@@ -33,11 +33,11 @@ function App() {
             <Route index path="/profile" element={<Profile />} />
             <Route index path="/blog" element={<Blog/>}/>
             <Route index path="/mentor" element={<Mentor/>}/>
-            <Route index path="/universityprofile" element={<UniProfile/>}/>
+            <Route index path="/collegeprofile" element={<UniProfile/>}/>
             <Route index path="/viewmentor/:id" element={<MentorView/>}/>
-            <Route index path="/unversitysubjects" element={<UniSubject/>}/>
-            <Route index path="/universityfaculty" element={<Mentor/>}/>
-            <Route index path="/universitydepartment" element={<UniDept/>}/>
+            <Route index path="/collegesubjects" element={<UniSubject/>}/>
+            <Route index path="/collegefaculty" element={<Mentor/>}/>
+            <Route index path="/collegedepartment" element={<UniDept/>}/>
             <Route index path="/editimg" element={<EditImg/>}/>
           </Routes>
         </BrowserRouter>

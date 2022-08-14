@@ -15,7 +15,7 @@ const [user, setUser] = useState();
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f774557a6fe95024e17b2b')
+    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -93,19 +93,19 @@ useEffect(() => {
 
          {/* options */}
          <div style={{position:"sticky",top:"130px",padding:"10px"}}>
-         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universityprofile">
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegeprofile">
          <SideBarOption icon="person"  title="Profile" />
          </NavLink>
          
-         <NavLink className="" style={{textDecoration:"none" ,color:"black" }} to="/universitydepartment">
+         <NavLink className="" style={{textDecoration:"none" ,color:"black" }} to="/collegedepartment">
          <SideBarOption icon="book" title="Department" />
          </NavLink>
 
-         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universityfaculty">
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegefaculty">
          <SideBarOption icon="groups" title="Faculty" />
          </NavLink>
 
-         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/universitysubjects">
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegesubjects">
          <SideBarOption icon="groups" title="Subjects" />
          </NavLink>
         
@@ -171,7 +171,7 @@ useEffect(() => {
 
       <div>
       <img className="profilepic" style={{width:"907px" , height:"343px",margin:"10px",padding:"5px"}} src="https://tse3.mm.bing.net/th?id=OIP.MnwaoGEMyJ4apfF-tH-KVAHaES&pid=Api&P=0" alt="college photo"/>
-      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/editimg">
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/">
       <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"/>
          </NavLink>
       
@@ -239,7 +239,7 @@ useEffect(() => {
           <ProfileInputField
             title={"University"}
             placeholder={"Ex: Gujarat Technology University"}
-            vale={"Gujarat Technology University"}
+            vale={user.UniName}
           />
         </div>
 
@@ -247,7 +247,7 @@ useEffect(() => {
         <ProfileInputField
           title={"Website"}
           placeholder={"Ex: https://scholarhome.vercel.app"}
-          vale={"https://scholarhome.vercel.app"}
+          vale={user.CollegeWebsite}
         />
       </div>
 
