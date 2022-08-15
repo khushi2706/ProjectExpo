@@ -75,7 +75,17 @@ export default function CollegeSelect() {
                 marginTop: 25,
               }}
             >
-              <CustomizeDropDown list={[colleges]} />
+      <div className="sign-in-input-field-container">
+        <select >
+        {  colleges.map((college,index)=>{ return(
+        <>
+        <option value={college._id}>{college.CName}</option>
+        </>)
+       })}
+           
+        </select>
+      </div>
+             
               <div style={{ textAlign: "center" }}>
                 <button
                   onClick={handleClick}
