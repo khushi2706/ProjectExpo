@@ -11,16 +11,17 @@ export default function Signup(props) {
   const [departs,setDeparts] = useState([]); 
   const [colleges, setColleges] = useState([]);
   const [ formValue , setformValue ] = useState({
-   // Email : "",
-    // Pass: "",
-    // Fname: "",
-    // LName: "",
-    // AboutMe: "",
-    // DoB: "",
-    // Gender:"",
-    // DepartmentId:"",
+   Email : "",
+    Pass: "",
+    Fname: "",
+    LName: "",
+    AboutMe: "",
+    DoB: "",
+    Gender:"",
+    DepartmentId:"",
   })
 
+  
   const sendReq = async () => {
     const res = await axios
       .get(`http://localhost:5000/api/college`)
@@ -30,27 +31,24 @@ export default function Signup(props) {
   };
 
   const handleChange = (e) => {
+    
     setformValue((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
   const sendRequest = async () => {
-    // const res = await axios
-    //   .post("http://localhost:5000/api/blogs/add", {
-    //     title: inputs.title,
-    //     desc: inputs.description,
-    //     img: inputs.imageURL,
-    //     user: localStorage.getItem("userId"),
-    //   })
-    //   .catch((err) => console.log(err));
-    // const data = await res.data;
-    // return data;
+    
    console.log(formValue); 
+    const res = await axios
+    .post("http://localhost:5000/api/student/add",formValue)
+    .catch((err)=>console.log(err));
+    console.log(res);
+    const data = await res.data;
+    return data;
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("khushliiii"+formValue);
     sendRequest()
       .then((data) => console.log(data))
       .then(() => console.log("done"));
@@ -66,13 +64,15 @@ const getDeprtId = async(e) =>{
     setDeparts( await data.departments);
   }
 
+  const setDprtId = async(e)=>{
+    formValue.DepartmentId = e.target.value;
+  }
 useEffect(() => {
       sendReq().then((data) => {
         setColleges(data.colleges);
       });
   }, []);
  
-  console.log(colleges);
   return(
    <>
     <div
@@ -100,19 +100,22 @@ useEffect(() => {
           }}>
         <div className="box" style={{width: "100%",display: "block"}}>
           <label htmlFor="">Email</label>
-          <input type="email" value={formValue.Email} style={{width: "100%",}} />
+          <input type="email" 
+          name="Email"
+          onChange={handleChange}
+          value={formValue.Email} style={{width: "100%",}} />
           <label htmlFor="">Password</label>
-          <input type="password" value={formValue.Pass} id=""  style={{width: "100%"}}/>
+          <input type="password"  onChange={handleChange} name="Pass" value={formValue.Pass} id=""  style={{width: "100%"}}/>
           <label htmlFor="" >First Name</label>
-          <input type="text" value={formValue.Fname}  style={{width: "100%"}}/>
+          <input type="text"  onChange={handleChange} value={formValue.Fname} name="Fname"  style={{width: "100%"}}/>
           <label htmlFor="" >Last Name</label>
-          <input type="text" value={formValue.LName}  style={{width: "100%"}}/>
+          <input type="text"  onChange={handleChange} value={formValue.LName} name="LName"  style={{width: "100%"}}/>
           <label htmlFor="">About Me</label>
-          <input type="text" value={formValue.AboutMe}  style={{width: "100%"}}/>
+          <input type="text"   onChange={handleChange} value={formValue.AboutMe} name="AboutMe"  style={{width: "100%"}}/>
           <label htmlFor="">Date of Birth</label>
-          <input type="date" name="" value={formValue.DoB} id=""  style={{width: "100%"}}/>
+          <input type="date"   onChange={handleChange} value={formValue.DoB} name="DoB" id=""  style={{width: "100%"}}/>
           <label htmlFor="">Gender</label>
-          <input type="text" value={formValue.Gender} style={{width: "100%"}}/>
+          <input type="text"  onChange={handleChange} value={formValue.Gender} name="Gender" style={{width: "100%"}}/>
           
         </div>
         <div className="box" style={{width: "100%",display: "block"}}>
@@ -127,7 +130,7 @@ useEffect(() => {
               })
             }
           </select>
-          <select name="" class="form-control" id="" style={{margin: "10px 0"}}>
+          <select name="DepartmentId" onChange={setDprtId} class="form-control" id="" style={{margin: "10px 0"}}>
             {
               departs && 
               departs.map((dp,idx)=>{
