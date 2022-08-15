@@ -7,207 +7,112 @@ import CustomizeDropDown from "./CustomizeDropDown";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup(props) {
-  let history = useNavigate();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [gender, setGender] = useState("Male");
-  const [date, setDate] = useState();
 
-  const [email, setEmail] = useState();
-  const [pass, setPassword] = useState();
-  const [confPass, setConfPass] = useState();
+  const [departs,setDeparts] = useState([]); 
+  const [colleges, setColleges] = useState([]);
+  const [ formValue , setformValue ] = useState({
+    Email : "",
+    Pass: "",
+    Fname: "",
+    LName: "",
+    AboutMe: "",
+    DoB: "",
+    Gender:"",
+    DepartmentId:"",
+  })
 
   const sendReq = async () => {
-    // res.set("Access-Control-Allow-Origin", "*");
-    const user = JSON.stringify({
-      Email: email,
-      Password: pass,
-      UserType: "Student",
-    });
+    const res = await axios
+      .get(`http://localhost:5000/api/college`)
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
 
-    console.log(user);
-
-    // var config = {
-    //   method: "post",
-    //   url: "http://localhost:5000/api/user/register",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: user,
-    // };
-
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
+  const handleChange = (e) => {
+    setformValue((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const sendRequest = async () => {
+    // const res = await axios
+    //   .post("http://localhost:5000/api/blogs/add", {
+    //     title: inputs.title,
+    //     desc: inputs.description,
+    //     img: inputs.imageURL,
+    //     user: localStorage.getItem("userId"),
     //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    //   .catch((err) => console.log(err));
+    // const data = await res.data;
+    // return data;
+   console.log(formValue); 
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValue);
+    sendRequest()
+      .then((data) => console.log(data))
+      .then(() => console.log("done"));
+  };
 
-    axios
-      .post("http://localhost:5000/api/user/register/", user)
-      .then(console.log("We are getting executed"))
-      .then((res) => console.log("Res.Data: " + res.data))
-      .catch((err) => {
-        console.log("Error:" + err);
+const getDeprtId = async(e) =>{
+    const res = await axios
+    .get(`http://localhost:5000/api/department/getByCollgeId/${e.target.value}`)
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    setDeparts( await data.departments);
+  }
+
+useEffect(() => {
+      sendReq().then((data) => {
+        setColleges(data.colleges);
       });
+  }, []);
+ 
+  console.log(colleges);
+  return(
+   <>
+   <h1>form</h1>
 
-    //console.log("Data from API:" + data[0].Fname);
-  };
-
-  const handleFirstNameChange = (event) => {
-    const value = event.target.value;
-    setFirstName(value);
-  };
-
-  const handleLastNameChange = (event) => {
-    const value = event.target.value;
-    setLastName(value);
-  };
-
-  const handleGenderChange = (event) => {
-    const value = event.target.value;
-    setGender(value);
-  };
-
-  const handleDateChange = (event) => {
-    const value = event.target.value;
-    setDate(value);
-  };
-
-  const handleGenderSelect = (event) => {
-    const value = event.target.value;
-    setGender(value);
-  };
-
-  const handleClick = () => {
-    console.log("onClick: gender: " + gender);
-    console.log("onClick: FirstName: " + firstName);
-    console.log("onClick: LastName: " + lastName);
-    console.log("onClick: date: " + date);
-    //sendReq();
-    if (
-      firstName == "" ||
-      lastName == "" ||
-      date == "" ||
-      gender == "" ||
-      firstName == undefined ||
-      lastName == undefined ||
-      date == undefined ||
-      gender == undefined
-    ) {
-    } else {
-      history("Signup2", {
-        state: {
-          firstName: firstName,
-          lastName: lastName,
-          dob: date,
-          gender: gender,
-        },
-      });
-    }
-  };
-  return (
-    <>
-      <div
-        style={{
-          fontSize: 36,
-          fontWeight: "bold",
-          fontFamily: '"Poppins"',
-          textAlign: "center",
-          marginTop: 38,
-        }}
-      >
-        Sign Up
-      </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div
-          style={{
-            background: "#F6F7FB",
-            borderRadius: 10,
-            paddingLeft: 68,
-            paddingRight: 68,
-            paddingTop: 61,
-            paddingBottom: 61,
-            width: "fit-content",
-            marginTop: 25,
-          }}
-        >
-          <InputField
-            // user={user}
-            handleChange={handleFirstNameChange}
-            type="text"
-            placeholder="First Name"
-          />
-
-          <InputField
-            // user={user}
-            handleChange={handleLastNameChange}
-            type="text"
-            placeholder="Last Name"
-          />
-
-          <CustomizeDropDown
-            handleChange={handleGenderSelect}
-            list={["Male", "Female", "Others"]}
-          />
-
-          <InputField
-            // user={user}
-            handleChange={handleDateChange}
-            type="date"
-            placeholder="Date of Birth"
-          />
-
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: 25,
-              fontFamily: "poppins",
-              fontWeight: 800,
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <div>Already have an account ?</div>
-            <div
-              style={{ color: "#2C5EFF", fontWeight: "bolder", marginLeft: 5 }}
-            >
-              Login in
-            </div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <button
-              onClick={handleClick}
-              className="sign-in-button"
-              style={{ width: "80%", height: "6vh", marginTop: 17 }}
-            >
-              Sign In
-            </button>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <button
-              className="sign-in-with-google-button"
-              style={{ height: "6vh" }}
-            >
-              <div style={{ display: "flex" }}>
-                <div style={{ margin: "auto" }}>
-                  <img src={google_logo} alt="" width="70%" height="70%" />
-                </div>
-                <div
-                  style={{
-                    fontFamily: "poppins",
-                    fontWeight: "bold",
-                    margin: "auto",
-                  }}
-                >
-                  Sign in with Google
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+    <form onSubmit={handleSubmit}>
+    <label htmlFor="">Email</label>
+    <input type="email" value={formValue.Email} />
+    <label htmlFor="">Password</label>
+    <input type="password" value={formValue.Pass} id="" />
+    <label htmlFor="" >First Name</label>
+    <input type="text" value={formValue.Fname} />
+    <label htmlFor="" >Last Name</label>
+    <input type="text" value={formValue.LName} />
+    <label htmlFor="">About Me</label>
+    <input type="text" value={formValue.AboutMe} />
+    <label htmlFor="">Date of Birth</label>
+    <input type="date" name="" value={formValue.DoB} id="" />
+    <label htmlFor="">Gender</label>
+    <input type="text" value={formValue.Gender}/>
+    <label htmlFor="">College</label>
+    <select name="" id="" onChange={getDeprtId}>
+      {
+        colleges && 
+        colleges.map((clg,idx)=>{
+          return(
+      <option value={clg._id}>{clg.CName}</option>
+          )
+        })
+      }
+    </select>
+    <select name="" class="form-control" id="">
+      {
+        departs && 
+        departs.map((dp,idx)=>{
+          return(
+      <option value={dp._id}>{dp.DepartName}</option>
+          )
+        })
+      }
+    </select>
+    </form>
+   </> 
+  )
 }
