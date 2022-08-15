@@ -131,3 +131,5 @@ const getAllStudentByDepartId = async (req, res, next) => {
   
     return res.status(200).json({ success: true, students });
 };
+
+module.exports = { getAllStudent , addNewStudent , getAllStudentByDepartId};

@@ -6,6 +6,7 @@ const {
   logoutUser,
   authChecker,
   authController,
+  addNewUser,
   getAllUser,
   getUserById
 

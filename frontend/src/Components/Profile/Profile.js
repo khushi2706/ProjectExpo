@@ -27,7 +27,7 @@ export default function Profile() {
 
   const sendReq = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/user/getUserById/${userId}`)
+      .get(`http://localhost:5000/api/user/getUserById/${studentId}`)
 
       .catch((err) => console.log(err));
     const data = await res.data;
