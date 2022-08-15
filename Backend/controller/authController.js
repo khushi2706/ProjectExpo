@@ -27,34 +27,36 @@ const getAllUser = async (req, res, next) => {
 };
 
 const addNewUser = async (req, res, next) => {
-  let user;
   const { Email, Password, UserType } = req.body;
-
+  console.log("API->Email: " + Email);
   try {
     let existingUser = await User.findOne({ Email: Email });
+    console.log("we are inside the try block");
     if (existingUser)
       return res.status(400).json({
         success: false,
         message: "User Already exists",
       });
     else {
+      console.log("We are about to create a new user");
       const user = new User({
         Email,
         Password,
         UserType,
-        UserId,
+        // UserId,
       });
     }
   } catch (error) {
     return res.status(400).json({
       success: false,
       response: {
-        message: e,
+        message: error.message,
       },
     });
   }
+  console.log("Wea are outside the try block");
 };
 
 const loginUser = async (req, res, next) => {};
 
-module.exports = { getAllUser };
+module.exports = { getAllUser, addNewUser };

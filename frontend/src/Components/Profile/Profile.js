@@ -8,7 +8,7 @@ import axios from "axios";
 export default function Profile() {
   const [singleUser, setSingleUser] = useState();
 
-  const studentId = "62f779d74af7b7b96e43a2f7";
+  const studentId = "62f8bfc2b273758939de55e7";
 
   const sendReq = async () => {
     const res = await axios

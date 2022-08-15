@@ -1,24 +1,92 @@
-import './Signup.css';
-import InputField from '../Common/InputField'
-import google_logo from '../../Assets/Images/google.svg'
+import "./Signup.css";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import InputField from "../Common/InputField";
+import google_logo from "../../Assets/Images/google.svg";
 
 export default function Signup(props) {
+  const [email, setEmail] = useState();
+  const [pass, setPassword] = useState();
+  const [confPass, setConfPass] = useState();
+
+  const sendReq = async () => {
+    // res.set("Access-Control-Allow-Origin", "*");
+    const user = JSON.stringify({
+      Email: email,
+      Password: pass,
+      UserType: "Student",
+    });
+
+    console.log(user);
+
+    // var config = {
+    //   method: "post",
+    //   url: "http://localhost:5000/api/user/register",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   data: user,
+    // };
+
+    // axios(config)
+    //   .then(function (response) {
+    //     console.log(JSON.stringify(response.data));
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
+    axios
+      .post("http://localhost:5000/api/user/register/", user)
+      .then(console.log("We are getting executed"))
+      .then((res) => console.log("Res.Data: " + res.data))
+      .catch((err) => {
+        console.log("Error:" + err);
+      });
+
+    //console.log("Data from API:" + data[0].Fname);
+  };
+
+  const handleEmailChange = (event) => {
+    const value = event.target.value;
+    //console.log(value);
+    setEmail(value);
+  };
+
+  const handlePassChange = (event) => {
+    const value = event.target.value;
+    //console.log(value);
+    setPassword(value);
+  };
+
+  const handleConfirPass = (event) => {
+    const value = event.target.value;
+    //console.log(value);
+    setConfPass(value);
+  };
+
+  const handleClick = () => {
+    console.log("onClick: " + email);
+    console.log("onClick: " + pass);
+    console.log("onClick: " + confPass);
+    sendReq();
+  };
   return (
     <>
-    <div
+      <div
         style={{
-        fontSize: 36,
-        fontWeight: "bold",
-        fontFamily: '"Poppins"',
-        textAlign: "center",
-        marginTop: 38
+          fontSize: 36,
+          fontWeight: "bold",
+          fontFamily: '"Poppins"',
+          textAlign: "center",
+          marginTop: 38,
         }}
-    >
+      >
         Sign Up
-    </div>
-    <div style={{ display: "flex", justifyContent: "center" }}>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div
-        style={{
+          style={{
             background: "#F6F7FB",
             borderRadius: 10,
             paddingLeft: 68,
@@ -26,12 +94,12 @@ export default function Signup(props) {
             paddingTop: 61,
             paddingBottom: 61,
             width: "fit-content",
-            marginTop: 25
-        }}
+            marginTop: 25,
+          }}
         >
-        <div className="sign-in-input-field-container">
+          <div className="sign-in-input-field-container">
             <select
-            style={{
+              style={{
                 fontSize: 18,
                 fontFamily: "poppins",
                 outline: "none",
@@ -39,68 +107,83 @@ export default function Signup(props) {
                 marginLeft: 20,
                 marginRight: 20,
                 marginTop: 10,
-                marginBottom: 10
-            }}
+                marginBottom: 10,
+              }}
             >
-            <option>Student</option>
-            <option>Faculty</option>
-            <option>College Administrator</option>
-            <option>University Administrator</option>
+              <option>Student</option>
+              <option>Faculty</option>
+              <option>College Administrator</option>
+              <option>University Administrator</option>
             </select>
-        </div>
+          </div>
+          <InputField
+            // user={user}
+            handleChange={handleEmailChange}
+            type="email"
+            placeholder="Email"
+          />
+          <InputField
+            // user={user}
+            handleChange={handlePassChange}
+            type="password"
+            placeholder="Password"
+          />
+          <InputField
+            // user={user}
+            handleChange={handleConfirPass}
+            type="password"
+            placeholder="Confirm Password"
+          />
 
-        <InputField type="email" placeholder="Email" />
-        <InputField type="text" placeholder="Username" />
-        <InputField type="password" placeholder="Password" />
-        <InputField type="password" placeholder="Confirm Password" />
-
-        <div
+          <div
             style={{
-            textAlign: "center",
-            marginTop: 25,
-            fontFamily: "poppins",
-            fontWeight: 800,
-            display: "flex",
-            flexDirection: "row"
+              textAlign: "center",
+              marginTop: 25,
+              fontFamily: "poppins",
+              fontWeight: 800,
+              display: "flex",
+              flexDirection: "row",
             }}
-        >
+          >
             <div>Already have an account ?</div>
-            <div style={{ color: "#2C5EFF", fontWeight: "bolder", marginLeft: 5 }}>
-            Login in
+            <div
+              style={{ color: "#2C5EFF", fontWeight: "bolder", marginLeft: 5 }}
+            >
+              Login in
             </div>
-        </div>
-        <div style={{ textAlign: "center" }}>
+          </div>
+          <div style={{ textAlign: "center" }}>
             <button
-            className="sign-in-button"
-            style={{ width: "80%", height: "6vh", marginTop: 17 }}
+              onClick={handleClick}
+              className="sign-in-button"
+              style={{ width: "80%", height: "6vh", marginTop: 17 }}
             >
-            Sign In
+              Sign In
             </button>
-        </div>
-        <div style={{ textAlign: "center" }}>
+          </div>
+          <div style={{ textAlign: "center" }}>
             <button
-            className="sign-in-with-google-button"
-            style={{ height: "6vh" }}
+              className="sign-in-with-google-button"
+              style={{ height: "6vh" }}
             >
-            <div style={{ display: "flex" }}>
+              <div style={{ display: "flex" }}>
                 <div style={{ margin: "auto" }}>
-                <img src={google_logo} alt="" width="70%" height="70%" />
+                  <img src={google_logo} alt="" width="70%" height="70%" />
                 </div>
                 <div
-                style={{
+                  style={{
                     fontFamily: "poppins",
                     fontWeight: "bold",
-                    margin: "auto"
-                }}
+                    margin: "auto",
+                  }}
                 >
-                Sign in with Google
+                  Sign in with Google
                 </div>
-            </div>
+              </div>
             </button>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </>
-
   );
 }

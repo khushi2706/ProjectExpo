@@ -7,11 +7,13 @@ const {
   authChecker,
   authController,
   getAllUser,
+  addNewUser,
   getUserById,
 } = require("../controller/AuthController");
 const { registerLimiter, loginLimiter } = require("../utils/rateLimiter");
 
 userRouter.get("/", getAllUser);
+userRouter.post("/register", addNewUser);
 
 // Registers a new User
 //userRouter.post("/register", registerLimiter, registerUser);
