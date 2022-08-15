@@ -19,7 +19,7 @@ def convertTostr(a):
 
 df['Tags'] = df["Tags"].apply(convertTostr)
 
-df["Combined_features"] = df["Pname"]+" " + \
+df["Combined_features"] = df["PName"]+" " + \
     df["Desc"]+" "+df["Tags"]+" "+df["PType"]
 
 df['index'] = index
@@ -34,7 +34,7 @@ Project_user_likes = [
 
 
 def get_index_from_title(title):
-    return df[df.Pname == title]["index"].values[0]
+    return df[df.PName == title]["index"].values[0]
 
 
 Project_index = []
@@ -51,7 +51,7 @@ sorted_similar_project = sorted(
 
 
 def get_title_from_index(index):
-    return df[df.index == index]['Pname'].values[0]
+    return df[df.index == index]['PName'].values[0]
 
 
 def get_id_from_index(index):
