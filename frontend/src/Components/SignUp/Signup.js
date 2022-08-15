@@ -131,6 +131,7 @@ useEffect(() => {
             }
           </select>
           <select name="DepartmentId" onChange={setDprtId} class="form-control" id="" style={{margin: "10px 0"}}>
+          <option value=" " unselectable="true">------select department ------</option>
             {
               departs && 
               departs.map((dp,idx)=>{
