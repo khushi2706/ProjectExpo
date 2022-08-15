@@ -45,7 +45,9 @@ export default function CollegeSelect() {
     return data;
   };
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    // this will handle on click event
+  };
   console.log(colleges);
   return (
     <>
@@ -75,17 +77,18 @@ export default function CollegeSelect() {
                 marginTop: 25,
               }}
             >
-      <div className="sign-in-input-field-container">
-        <select >
-        {  colleges.map((college,index)=>{ return(
-        <>
-        <option value={college._id}>{college.CName}</option>
-        </>)
-       })}
-           
-        </select>
-      </div>
-             
+              <div className="sign-in-input-field-container">
+                <select>
+                  {colleges.map((college, index) => {
+                    return (
+                      <>
+                        <option value={college._id}>{college.CName}</option>
+                      </>
+                    );
+                  })}
+                </select>
+              </div>
+
               <div style={{ textAlign: "center" }}>
                 <button
                   onClick={handleClick}

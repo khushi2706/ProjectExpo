@@ -6,8 +6,8 @@ export default function CustomizeDropDown(props) {
     <>
       <div className="sign-in-input-field-container">
         <select onChange={props.handleChange}>
-          {props.list.map((item, index) => (
-            <option value={item[index]._id}>{item[index].CName}</option>
+          {props.list.map((item) => (
+            <option value={item}>{item}</option>
           ))}
         </select>
       </div>
