@@ -6,6 +6,7 @@ import "./PopUpFrom/styles.css";
 import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./pop.css"
 
 class Pop extends React.Component {
  
@@ -131,10 +132,18 @@ class Pop extends React.Component {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             
-            
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          Faculty Name
+        </div>
             <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalInputName"
               title={"Faculty Name"}
               onChange={(e) => this.handleChange(e)}
@@ -142,10 +151,18 @@ class Pop extends React.Component {
               value={this.state.modalInputName}
             />
           </div>
-
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          Email
+        </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalEmail"
               title={"Email:"}
               onChange={(e) => this.handleChange(e)}
@@ -176,10 +193,18 @@ class Pop extends React.Component {
         </div>
         }
 
-
+        <div
+        style={{
+          color: "#808080",
+          fontFamily: "poppins",
+          fontWeight: "600",
+        }}
+      >
+        Post of Faculty
+      </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalPost"
               title={"Post of Faculty"}
               onChange={(e) => this.handleChange(e)}
@@ -187,10 +212,18 @@ class Pop extends React.Component {
               value={this.state.modalPost}
             />
           </div>
-
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+         Image Link
+        </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalImgLink"
               title={"Faculty Photo Link"}
               onChange={(e) => this.handleChange(e)}

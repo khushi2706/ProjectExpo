@@ -6,6 +6,7 @@ import "./PopUpFrom/styles.css";
 import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./pop.css"
 
 class Pop extends React.Component {
  
@@ -96,8 +97,8 @@ class Pop extends React.Component {
             
             <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
-            name="modalInputName"
+            className="form-control input-field"
+            name="modalInputName "
               title={"Department Name"}
               onChange={(e) => this.handleChange(e)}
               placeholder={"Ex: Birla Vishwakarma Mahavidyalaya"}

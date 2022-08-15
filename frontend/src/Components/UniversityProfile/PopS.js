@@ -7,6 +7,7 @@ import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "./pop.css"
 class Pop extends React.Component {
  
   constructor(props) {
@@ -103,7 +104,7 @@ class Pop extends React.Component {
           .then(() => { 
             this.state.redirect && <navigate to='/collegesubject' replace={true}/>
          });
-         this.modalClose();
+          this.modalClose();
       };
    
     const { dept } = this.state;
@@ -132,10 +133,18 @@ class Pop extends React.Component {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             
-            
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+         Subject Name
+        </div>
             <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalInputName"
               title={"Subject Name"}
               onChange={(e) => this.handleChange(e)}
@@ -143,10 +152,18 @@ class Pop extends React.Component {
               value={this.state.modalInputName}
             />
           </div>
-
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+        Objective
+        </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalObj"
               title={"Objective:"}
               onChange={(e) => this.handleChange(e)}
@@ -177,21 +194,37 @@ class Pop extends React.Component {
         </div>
         }
 
-
+        <div
+        style={{
+          color: "#808080",
+          fontFamily: "poppins",
+          fontWeight: "600",
+        }}
+      >
+        Credit
+      </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="modalCredit"
               title={"Credit"}
-              onChange={(e) => this.handleChange(e)}
+            onChange={(e) => this.handleChange(e)}
               placeholder={"Ex: 4"}
               value={this.state.modalCredit}
             />
           </div>
-
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          Year
+        </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="year"
               title={"Applicable to which year?"}
               onChange={(e) => this.handleChange(e)}
@@ -199,10 +232,18 @@ class Pop extends React.Component {
               value={this.state.year}
             />
           </div>
-
+          <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          Course Code
+        </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
-            className="form-control"
+            className="form-control input-field"
             name="ccode"
               title={"Course Code"}
               onChange={(e) => this.handleChange(e)}
