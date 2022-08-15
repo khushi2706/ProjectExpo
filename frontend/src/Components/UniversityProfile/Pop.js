@@ -48,9 +48,11 @@ class Pop extends React.Component {
 
   render() {
     const sendRequest = async () => {
+      console.log(this.state.modalInputName);
       const res = await axios
         .post("http://localhost:5000/api/department/add", {
-          DepartName: this.state.modalInputName,
+          DepartName: "computer",
+          CollegeId : "62f6135b8c07d28ed759794e"
         })
         .catch((err) => console.log(err));
       const data = await res.data;

@@ -20,7 +20,7 @@ const [user, setUser] = useState();
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
+    .get('http://localhost:5000/api/college/collegeId/62f6135b8c07d28ed759794e')
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
