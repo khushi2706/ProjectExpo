@@ -1,7 +1,7 @@
 const express = require("express");
 require("./config/db");
-
-
+const cookieParser = require("cookie-parser")
+const cors = require('cors');
 //import all rounter
 const roadmapRoute = require("./routes/roadmap-routes");
 const projectRoute = require("./routes/projectRoute");
@@ -17,10 +17,10 @@ const universityRoute = require("./routes/universityRoute");
 //create the app
 const app = express();
 
-
+app.use(cors());
 app.set("view engine","ejs");
 app.use(express.json());
-
+app.use(cookieParser())
 
 app.get('/',(req,res)=>{
     res.send({key:"hello bvmites!"})

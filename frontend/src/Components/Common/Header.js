@@ -48,7 +48,7 @@ export default function Header() {
             </li>
             <li className="nav-item">
             <NavLink className="nav-link" to="/menter">
-           Menter
+           Mentor
       </NavLink>
             </li>
             <li className="nav-item">
