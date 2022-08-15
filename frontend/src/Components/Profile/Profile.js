@@ -6,20 +6,21 @@ import SideBarOption from "./SideBarOption";
 import axios from "axios";
 
 export default function Profile() {
+
   const [singleUser, setSingleUser] = useState({
-    address: "",
-    dob: "",
-    email: "",
-    first_name: "",
-    gender: "",
-    last_name: "",
-    password: "",
-    profile_pic: "",
-    university: "",
-    university_id: "",
-    user_id: "",
-    user_type: "",
-    _id: "",
+    address: "dd",
+    dob: "dd",
+    email: "dd",
+    first_name: "dd",
+    gender: "dd",
+    last_name: "ddd",
+    password: "ddd",
+    profile_pic: "ddd",
+    university: "fff",
+    university_id: "dddd",
+    user_id: "dddd",
+    user_type: "dddd",
+    _id: "ddd",
   });
 
   const userId = "62ee3ed48b77963213ff078e";
@@ -28,10 +29,12 @@ export default function Profile() {
 
     const res = await axios
       .get(`http://localhost:5000/api/user/getUserById/${userId}`)
+
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
   };
+
   
   useEffect(() => {
     sendReq().then((data) => {
@@ -310,6 +313,7 @@ export default function Profile() {
        </div>
      </div>
      }
+
     </>
   );
 }
