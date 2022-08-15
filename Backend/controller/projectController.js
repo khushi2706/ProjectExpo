@@ -8,6 +8,7 @@ const getAllProjects = async(req,res,next)=>{
 
     try {
         projects = await Project.find();
+       // console.log(projects);
     } catch (error) {
         console.log(error);
     }

@@ -6,13 +6,29 @@ import SideBarOption from "./SideBarOption";
 import axios from "axios";
 
 export default function Profile() {
-  const [singleUser, setSingleUser] = useState();
+
+  const [singleUser, setSingleUser] = useState({
+    address: "dd",
+    dob: "dd",
+    email: "dd",
+    first_name: "dd",
+    gender: "dd",
+    last_name: "ddd",
+    password: "ddd",
+    profile_pic: "ddd",
+    university: "fff",
+    university_id: "dddd",
+    user_id: "dddd",
+    user_type: "dddd",
+    _id: "ddd",
+  });
 
   const studentId = "62f8bfc2b273758939de55e7";
 
   const sendReq = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/student/getStudentById/${studentId}`)
+      .get(`http://localhost:5000/api/user/getUserById/${userId}`)
+
       .catch((err) => console.log(err));
     const data = await res.data;
     //console.log("Data from API:" + data[0].Fname);

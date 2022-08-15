@@ -1,0 +1,99 @@
+.stag{
+    text-decoration: underline;
+}
+.stag:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+.sbody {
+    height: 65%;
+     display: flex;
+     flex-direction: column;
+    justify-content: space-between;
+}
+.buttforsc{
+    margin-bottom: 3px;
+}
+.eligi h5,
+.desc h5{
+    font-size: 1.25rem !important;
+    font-weight: 500 !important;
+}
+.eligi h6,
+.desc h6{
+    font-weight: 500 !important;
+
+}
+.cardmain{
+    width: 329px !important;
+}
+.cardmain img{ 
+        object-fit: revert !important; 
+        height: 33% !important;
+}
+.bodypart .eligi ul{
+    /* display: flex;
+    justify-content: center;  */
+}
+    
+.okk{
+    box-shadow: 3px 3px 13px #403c3c;
+    background-color: #f6f9f2 !important;
+    border: none !important;
+}
+@media (max-width:1115px) {
+    .oww div{
+        width: 94%;
+        margin: 5px;
+    }
+    .oww{
+        display: flex;
+        justify-content: center;
+    }
+}
+.buttforsc{
+    display: flex;
+    justify-content: space-around;
+    /* position: absolute;
+    bottom: 1%; */
+    padding: 9px;
+    width: 100%;
+}
+.buttforsc button{
+    background-color: #1e90ff;
+    /* width: 45%; */
+    
+    border-radius: 5px;
+    font-size: 18px;
+    display: inline-block;
+    line-height: normal!important;
+	cursor: pointer;
+    color: white !important;
+    padding: 10px 31px!important;
+    font-weight: 600;
+    height: auto!important;
+}
+/* button:hover,button:focus{text-decoration:none;background:transparent;border-color:#252b33!important;color:#252b33;transition:all ease-in .2s} */
+
+.bodypart div h5{
+    /* text-decoration: underline; */
+    color: rgb(232 65 51) !important;
+}
+
+.bodypart div{
+    padding: 3px !important;
+}
+ 
+.dedy{
+    padding-top: 15px;
+    margin-top: 9px;
+}
+
+@media (max-width:510px) {
+    .bodypart div{
+        max-width: 410px !important;
+    }
+    
+}
+
+ 
