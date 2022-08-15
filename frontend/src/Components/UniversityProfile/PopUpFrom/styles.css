@@ -1,0 +1,16 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .modal {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .modal-container {
+    position: absolute;
+    width: 30%;
+    background: #d3ddfb;
+    left: 36%;
+    top: 30%;
+    padding: 20px;
+  }
+  
