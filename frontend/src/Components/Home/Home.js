@@ -2,25 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Header from '../Common/Header'
 import Search from '../Home/Search/Search'
-// import ProjectDiv from './Project/ProjectDiv'
-
-// let myjson;
-// const spawn = require("child_process").spawn;
-
-// const pythoneProcess = spawn('python', ["Recommendation.py"]);
-
-// pythoneProcess.stdout.on('data', (data) => {
-//   const str = data.toString();
-
-//   myjson = JSON.parse(str);
-//   // console.log(myjson);
-// });
 
 
 export default function Home() {
 
   const projectArray = []
-  const idArray = myjson
+  const idArray = []
   const [projects, setProjects] = useState();
   const sendReq = async (myId) => {
     const res = await axios
