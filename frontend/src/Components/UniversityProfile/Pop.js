@@ -20,48 +20,23 @@ class Pop extends React.Component {
     };
   }
 
-  handleChange(e) {
-    const target = e.target;
-    const name = target.name;
-    const value = target.value;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-  
-  handleSubmit(e) {
-    this.setState({ name: this.state.modalInputName });
-    this.modalClose();
-  }
-
-  modalOpen() {
-    this.setState({ modal: true });
-  }
-
-  modalClose() {
-    this.setState({
-      modalInputName: "",
-      modal: false,
-    });
-  }
-
   render() {
+    
     const sendRequest = async () => {
       console.log(this.state.modalInputName);
       const res = await axios
         .post("http://localhost:5000/api/department/add", {
-          DepartName: "computer",
-          CollegeId : "62f6135b8c07d28ed759794e"
+          DepartName:this.state.modalInputName,
+          CollegeId : "62f8724e92cfa9015a3befc9"
         })
         .catch((err) => console.log(err));
       const data = await res.data;
       return data;
     };
     const handleSubmit = (e) => {
-      
-      e.preventDefault();
-      console.log(this.state.modalInputName);
+      const {modalInputName} = this.state;
+      e.preventDefault(modalInputName);
+      console.log();
       sendRequest()
         .then((data) => console.log(data))
         .then(() => { 
@@ -117,7 +92,7 @@ class Pop extends React.Component {
             >
               <Button
               title={"Submit"}
-                onClick={(e) => this.handleSubmit(e)}
+              
               />
             </div>
           </div>
