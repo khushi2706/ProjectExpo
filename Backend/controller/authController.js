@@ -67,7 +67,7 @@ const addNewUser = async (req,res,next) =>{
 const loginUser = async (req,res,next) =>{
   const { Email, Password } = req.body;
   let existingUser;
-  
+  console.log(req.cookies);
   try{
     existingUser = await User.findOne({Email})
    }catch(e){
@@ -84,6 +84,10 @@ const loginUser = async (req,res,next) =>{
    }
    const authToken = jwt.sign(existingUser.toJSON(),JWT_SECRET);
 
+   res.cookie("authToken" , authToken , {
+    expire: new Date(Date.now() + 25892000000),
+    httpOnly:true
+   })
    return res.status(200).json({userType: existingUser.UserType , authToken});
     
   
