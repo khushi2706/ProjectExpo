@@ -22,6 +22,7 @@ class Pop extends React.Component {
       modalImgLink : "",
       redirect:false,
       dept:[],
+      deptid:""
     };
   }
 
@@ -75,13 +76,34 @@ class Pop extends React.Component {
    
     
     const sendRequest = async () => {
-
-    };
-
-    const handleSubmit = (e) => {
-      
-     
-    };
+        const res = await axios
+          .post("http://localhost:5000/api/professor/add", {
+            DepartName: this.state.modalInputName,
+            Email : this.state.modalEmail,
+            Pass : "Ankit",
+            Fname: this.state.modalInputName,
+            LName: "Vegad",
+            Degree: ["BTECH in Computer", "Phd ib Business"],
+            DoB : "11/02/2002" ,
+            Gender: this.state.modalPost,
+            DepartmentId: this.state.deptid,
+            ProfileImg:this.state.modalImgLink,
+            PubEmail:this.state.modalEmail
+          })
+          .catch((err) => console.log(err));
+        const data = await res.data;
+        return data;
+      };
+      const handleSubmit = (e) => {
+        
+        e.preventDefault();
+        console.log(this.state.modalInputName);
+        sendRequest()
+          .then((data) => console.log(data))
+          .then(() => { 
+            this.state.redirect && <navigate to='/collegefaculty' replace={true}/>
+         });
+      };
     const { dept } = this.state;
     return (
        
@@ -141,11 +163,11 @@ class Pop extends React.Component {
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
-          <select>
+          <select onChange={(e) => this.handleChange(e)} name="deptid">
             {dept.map((college, index) => {
               return (
                 <>
-                  <option value={college._id}>{college.DepartName}</option>
+                  <option value={college._id} >{college.DepartName}</option>
                 </>
               );
             })}

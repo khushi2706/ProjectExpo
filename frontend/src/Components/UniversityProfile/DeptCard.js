@@ -23,16 +23,16 @@ export default function DeptCard(props) {
                 
                 
                
-                <div className='btn'>
-                <button className="button text-success btn-ed button-primary">
-                  Edit 
-                </button>
-                
-                <button className="button text-danger btn-ed button-primary">
-                  Delete 
-                </button>
-                
-              </div>
+               <div className='btn'>
+      <button className="button text-success btn-ed button-primary">
+        Edit 
+      </button>
+      
+      <button className="button text-danger btn-ed button-primary">
+        Delete 
+      </button>
+      
+    </div>
             </div>
         </>
     )

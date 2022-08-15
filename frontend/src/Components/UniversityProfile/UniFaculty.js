@@ -216,7 +216,7 @@ function UniFaculty() {
               <Accordion defaultActiveKey={["0"]} alwaysOpen flush>
                 <Accordion.Item eventKey={index}>
                   <Accordion.Header>
-                  {data._id}
+                  {data.DepartName}
                   </Accordion.Header>
                   <Accordion.Body>
                     <div class="panel-body">

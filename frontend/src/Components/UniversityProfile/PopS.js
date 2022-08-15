@@ -22,7 +22,8 @@ class Pop extends React.Component {
       year : "",
       redirect:false,
       dept:[],
-      ccode:""
+      ccode:"",
+      deptid:""
     };
   }
 
@@ -76,13 +77,32 @@ class Pop extends React.Component {
    
     
     const sendRequest = async () => {
-
-    };
-
-    const handleSubmit = (e) => {
-      
-     
-    };
+        const res = await axios
+          .post("http://localhost:5000/api/subject/add", {
+            SubName :this.state.modalInputName,
+            SubInfo : this.state.modalObj,
+              DepartmentId : this.state.deptid,
+              Year: this.state.year,
+              Eligibility: "Must clear all the subject of last sem",
+              Objective:this.state.modalObj,
+              Credit:this.state.modalCredit,
+              CourseCode:this.state.ccode,
+          })
+          .catch((err) => console.log(err));
+        const data = await res.data;
+        return data;
+      };
+      const handleSubmit = (e) => {
+        
+        e.preventDefault();
+        console.log(this.state.modalInputName);
+        sendRequest()
+          .then((data) => console.log(data))
+          .then(() => { 
+            this.state.redirect && <navigate to='/collegesubject' replace={true}/>
+         });
+      };
+   
     const { dept } = this.state;
     return (
        
@@ -142,7 +162,7 @@ class Pop extends React.Component {
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
-          <select>
+          <select onChange={(e) => this.handleChange(e)} name="deptid">
             {dept.map((college, index) => {
               return (
                 <>
