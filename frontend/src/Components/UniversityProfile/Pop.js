@@ -20,8 +20,33 @@ class Pop extends React.Component {
     };
   }
 
+  handleChange(e) {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+  
+  handleSubmit2(e) {
+    this.setState({ name: this.state.modalInputName });
+    this.modalClose();
+  }
+
+  modalOpen() {
+    this.setState({ modal: true });
+  }
+
+  modalClose() {
+    this.setState({
+      modalInputName: "",
+      modal: false,
+    });
+  }
+
   render() {
-    
     const sendRequest = async () => {
       console.log(this.state.modalInputName);
       const res = await axios
@@ -34,14 +59,15 @@ class Pop extends React.Component {
       return data;
     };
     const handleSubmit = (e) => {
-      const {modalInputName} = this.state;
-      e.preventDefault(modalInputName);
-      console.log();
+     
+      e.preventDefault();
+      console.log(this.state.modalInputName);
       sendRequest()
         .then((data) => console.log(data))
         .then(() => { 
           this.state.redirect && <navigate to='/collegedepartments' replace={true}/>
        });
+       this.modalClose();
     };
     return (
       <div className="App">
@@ -69,7 +95,7 @@ class Pop extends React.Component {
             <label>Enter Department Name:</label>
             
             <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalInputName"
               title={"Department Name"}
@@ -92,7 +118,7 @@ class Pop extends React.Component {
             >
               <Button
               title={"Submit"}
-              
+                // onClick={(e) => this.handleSubmit2(e)}
               />
             </div>
           </div>

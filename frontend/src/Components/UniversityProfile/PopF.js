@@ -103,6 +103,7 @@ class Pop extends React.Component {
           .then(() => { 
             this.state.redirect && <navigate to='/collegefaculty' replace={true}/>
          });
+         this.modalClose();
       };
     const { dept } = this.state;
     return (
@@ -132,7 +133,7 @@ class Pop extends React.Component {
             
             
             <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalInputName"
               title={"Faculty Name"}
@@ -143,7 +144,7 @@ class Pop extends React.Component {
           </div>
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalEmail"
               title={"Email:"}
@@ -177,7 +178,7 @@ class Pop extends React.Component {
 
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalPost"
               title={"Post of Faculty"}
@@ -188,7 +189,7 @@ class Pop extends React.Component {
           </div>
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalImgLink"
               title={"Faculty Photo Link"}
@@ -211,7 +212,7 @@ class Pop extends React.Component {
             >
               <Button
               title={"Submit"}
-                onClick={(e) => this.handleSubmit(e)}
+                // onClick={(e) => this.handleSubmit(e)}
               />
             </div>
           </div>

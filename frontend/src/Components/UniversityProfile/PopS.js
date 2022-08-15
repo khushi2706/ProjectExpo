@@ -57,7 +57,7 @@ class Pop extends React.Component {
     });
   }
   
-  handleSubmit(e) {
+  handleSubmit2(e) {
     this.setState({ name: this.state.modalInputName });
     this.modalClose();
   }
@@ -103,6 +103,7 @@ class Pop extends React.Component {
           .then(() => { 
             this.state.redirect && <navigate to='/collegesubject' replace={true}/>
          });
+         this.modalClose();
       };
    
     const { dept } = this.state;
@@ -133,7 +134,7 @@ class Pop extends React.Component {
             
             
             <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalInputName"
               title={"Subject Name"}
@@ -144,7 +145,7 @@ class Pop extends React.Component {
           </div>
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalObj"
               title={"Objective:"}
@@ -178,7 +179,7 @@ class Pop extends React.Component {
 
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="modalCredit"
               title={"Credit"}
@@ -189,7 +190,7 @@ class Pop extends React.Component {
           </div>
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="year"
               title={"Applicable to which year?"}
@@ -200,7 +201,7 @@ class Pop extends React.Component {
           </div>
 
           <div style={{ width: "-webkit-fill-available" }}>
-            <ProfileInputField
+            <input
             className="form-control"
             name="ccode"
               title={"Course Code"}
@@ -223,7 +224,7 @@ class Pop extends React.Component {
             >
               <Button
               title={"Submit"}
-                onClick={(e) => this.handleSubmit(e)}
+                // onClick={(e) => this.handleSubmit(e)}
               />
             </div>
           </div>
