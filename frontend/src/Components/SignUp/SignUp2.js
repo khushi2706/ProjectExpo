@@ -1,112 +1,71 @@
 import "./Signup.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InputField from "../Common/InputField";
 import google_logo from "../../Assets/Images/google.svg";
 import CustomizeDropDown from "./CustomizeDropDown";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export default function Signup(props) {
-  let history = useNavigate();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [gender, setGender] = useState("Male");
-  const [date, setDate] = useState();
+let firstName = "";
+let lastName = "";
+let gender = "";
+let dob = "";
+
+export default function SignUp2() {
+  //   const logProps = () => {
+  //     console.log("FirstName: " + this.props);
+  //   };
+
+  const location = useLocation();
+  const histroy = useNavigate();
+
+  useEffect(() => {
+    firstName = location.state.firstName;
+    lastName = location.state.lastName;
+    gender = location.state.gender;
+    dob = location.state.dob;
+  }, [location]);
 
   const [email, setEmail] = useState();
   const [pass, setPassword] = useState();
   const [confPass, setConfPass] = useState();
 
-  const sendReq = async () => {
-    // res.set("Access-Control-Allow-Origin", "*");
-    const user = JSON.stringify({
-      Email: email,
-      Password: pass,
-      UserType: "Student",
-    });
-
-    console.log(user);
-
-    // var config = {
-    //   method: "post",
-    //   url: "http://localhost:5000/api/user/register",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: user,
-    // };
-
-    // axios(config)
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    axios
-      .post("http://localhost:5000/api/user/register/", user)
-      .then(console.log("We are getting executed"))
-      .then((res) => console.log("Res.Data: " + res.data))
-      .catch((err) => {
-        console.log("Error:" + err);
-      });
-
-    //console.log("Data from API:" + data[0].Fname);
+  const handleEmailChange = (event) => {
+    const value = event.target.value;
+    //console.log(value);
+    setEmail(value);
   };
 
-  const handleFirstNameChange = (event) => {
+  const handlePassChange = (event) => {
     const value = event.target.value;
-    setFirstName(value);
+    //console.log(value);
+    setPassword(value);
   };
 
-  const handleLastNameChange = (event) => {
+  const handleConfirPass = (event) => {
     const value = event.target.value;
-    setLastName(value);
-  };
-
-  const handleGenderChange = (event) => {
-    const value = event.target.value;
-    setGender(value);
-  };
-
-  const handleDateChange = (event) => {
-    const value = event.target.value;
-    setDate(value);
-  };
-
-  const handleGenderSelect = (event) => {
-    const value = event.target.value;
-    setGender(value);
+    console.log(value);
+    setConfPass(value);
   };
 
   const handleClick = () => {
-    console.log("onClick: gender: " + gender);
-    console.log("onClick: FirstName: " + firstName);
-    console.log("onClick: LastName: " + lastName);
-    console.log("onClick: date: " + date);
-    //sendReq();
-    if (
-      firstName == "" ||
-      lastName == "" ||
-      date == "" ||
-      gender == "" ||
-      firstName == undefined ||
-      lastName == undefined ||
-      date == undefined ||
-      gender == undefined
-    ) {
-    } else {
-      history("Signup2", {
-        state: {
-          firstName: firstName,
-          lastName: lastName,
-          dob: date,
-          gender: gender,
-        },
-      });
-    }
+    console.log("onClick: Email: " + email);
+    console.log("onClick: Pass: " + pass);
+    console.log("onClick: confPass: " + confPass);
+    // sendReq();
+    histroy("CollegeSelect", {
+      state: {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        gender: gender,
+        dob: dob,
+        password: pass,
+      },
+    });
   };
+
   return (
     <>
       <div
@@ -135,28 +94,21 @@ export default function Signup(props) {
         >
           <InputField
             // user={user}
-            handleChange={handleFirstNameChange}
-            type="text"
-            placeholder="First Name"
+            handleChange={handleEmailChange}
+            type="email"
+            placeholder="Email"
           />
-
           <InputField
             // user={user}
-            handleChange={handleLastNameChange}
-            type="text"
-            placeholder="Last Name"
+            handleChange={handlePassChange}
+            type="password"
+            placeholder="Password"
           />
-
-          <CustomizeDropDown
-            handleChange={handleGenderSelect}
-            list={["Male", "Female", "Others"]}
-          />
-
           <InputField
             // user={user}
-            handleChange={handleDateChange}
-            type="date"
-            placeholder="Date of Birth"
+            handleChange={handleConfirPass}
+            type="password"
+            placeholder="Confirm Password"
           />
 
           <div

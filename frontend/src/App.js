@@ -12,6 +12,8 @@ import ProjectView from "./Components/Project/ProjectView";
 import RoadmapView from "./Components/Roadmap/RoadmapView";
 import Profile from "./Components/Profile/Profile";
 import Blog from "./Components/Blog/Blog";
+import SignUp2 from "./Components/SignUp/SignUp2";
+import CollegeSelect from "./Components/SignUp/CollegeSelect";
 function App() {
   return (
     <>
@@ -27,9 +29,15 @@ function App() {
             <Route index path="viewRoadmap/:id" element={<RoadmapView />} />
             <Route index path="/viewProject/:id" element={<ProjectView />} />
             <Route index path="/profile" element={<Profile />} />
-            <Route index path="/blog" element={<Blog/>}/>
-            <Route index path="/mentor" element={<Mentor/>}/>
-            <Route index path="/viewmentor/:id" element={<MentorView/>}/>
+            <Route index path="/blog" element={<Blog />} />
+            <Route index path="/mentor" element={<Mentor />} />
+            <Route index path="/viewmentor/:id" element={<MentorView />} />
+            <Route index path="/signup/signup2" element={<SignUp2 />} />
+            <Route
+              index
+              path="/signup/signup2/collegeSelect"
+              element={<CollegeSelect />}
+            />
           </Routes>
         </BrowserRouter>
       </div>
