@@ -99,11 +99,11 @@ function PCard(props) {
 
            </div>
             <div className='btn'>
-            <button className="button btn-ed button-primary">
+            <button className="button text-success btn-ed button-primary">
               Edit 
             </button>
             
-            <button className="button btn-ed button-primary">
+            <button className="button text-danger btn-ed button-primary">
               Delete 
             </button></div>
             

@@ -23,22 +23,16 @@ export default function DeptCard(props) {
                 
                 
                
-                <div style={{background: '#D5E3FE',
-                                borderRadius: 20,
-                                color: '#2C5EFF',
-                                fontWeight: 600,
-                                marginTop: 15,
-                                width: 'fit-content',
-                                paddingLeft: 10,
-                              margin:"auto",
-                                paddingRight: 10,
-                                padding:'11px',
-                                cursor:'pointer',
-                                marginTop:"21px"
-                                }}>
-                        {props.SubCardType}
-                    </div>
-
+                <div className='btn'>
+                <button className="button text-success btn-ed button-primary">
+                  Edit 
+                </button>
+                
+                <button className="button text-danger btn-ed button-primary">
+                  Delete 
+                </button>
+                
+              </div>
             </div>
         </>
     )

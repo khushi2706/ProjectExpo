@@ -10,6 +10,7 @@ import "./UniProfile.css";
 import { NavLink } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import FacultyCard from "./FacultyCard";
+import PopF from "./PopF";
 
 function UniFaculty() {
   const handleClick = () => {};
@@ -235,18 +236,7 @@ function UniFaculty() {
             </div>
             <div className="" style={{ paddingBottom: "30px" }}></div>
 
-            <div
-              style={{
-                marginTop: 20,
-                justifyContent: "end",
-
-                display: "flex",
-                marginBottom: "50px",
-                marginRight: "20px",
-              }}
-            >
-              <Button title={"+ Add Subject"} onClick={handleClick} />
-            </div>
+            <PopF/>
           </div>
         </div>
       )}
