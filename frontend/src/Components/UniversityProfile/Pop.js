@@ -94,17 +94,17 @@ class Pop extends React.Component {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Enter Department Name:</label>
-            
             <div style={{ width: "-webkit-fill-available" }}>
             <input
             className="form-control input-field"
-            name="modalInputName "
-              title={"Department Name"}
+            name="modalInputName"
+          
               onChange={(e) => this.handleChange(e)}
-              placeholder={"Ex: Birla Vishwakarma Mahavidyalaya"}
+              placeholder={"Ex: mihasan@bvmengineering.ac.in"}
               value={this.state.modalInputName}
             />
           </div>
+            
           </div>
           <div className="form-group">
             <div
