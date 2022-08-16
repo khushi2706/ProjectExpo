@@ -1,9 +1,9 @@
 const Project = require("../model/Project");
 const User = require("../model/User");
 
-const getAllProjects = async(req,res,next)=>{
+const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
-    
+
     let projects;
 
     try {
@@ -13,8 +13,7 @@ const getAllProjects = async(req,res,next)=>{
         console.log(error);
     }
 
-    if(!projects)
-    {
+    if (!projects) {
         return res.status(404).json({
             success: false,
             response: {
@@ -26,22 +25,23 @@ const getAllProjects = async(req,res,next)=>{
     return res.status(200).json({ projects })
 }
 
-const getProjectById = async(req,res,next) => {
+const getProjectById = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
+
     const ProId = req.params.id;
     res.set('Access-Control-Allow-Origin', '*');
     let project;
-    try{
+    try {
         project = await Project.findById(ProId);
     }
-    catch(e)
-    {
+    catch (e) {
         return console.log(e);
     }
 
-    if(!project)
-    return res.status(500).json({ message: "not Found" })
+    if (!project)
+        return res.status(500).json({ message: "not Found" })
 
-    return res.status(200).json({project});
+    return res.status(200).json({ project });
 }
 const getProjectByUserId = async(req,res,next) => {
     const UserId = req.params;
