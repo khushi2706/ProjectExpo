@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 
 function UniProfile() {
 
+  const CollegeId = "62f6135b8c07d28ed759794e";
 const Handle_toggle=()=>{
     const img=document.getElementById('pop_Container')
     console.log(img);
@@ -182,6 +183,7 @@ useEffect(() => {
               method='post' 
               encType="multipart/form-data">
               <input type="file" name="inputFile" id="uploadfile"/> 
+              <input type="text"  name = "CollegeId" value={CollegeId} hidden />
               <button type="submit" value="Submit">Upload</button>
               </form>
             </div>
