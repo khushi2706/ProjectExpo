@@ -132,6 +132,52 @@ const getAllStudentByDepartId = async (req, res, next) => {
   return res.status(200).json({ success: true, students });
 };
 
+
+
+
+const changeStudentDetails = async(req,res)=> {
+  res.set('Access-Control-Allow-Origin', '*');
+  const {
+       StudentId,
+       Fname,
+       LName,
+       AboutMe,
+       DoB,
+       Gender
+       } = req.body;
+       
+  
+  try {
+
+      const filter = { _id: StudentId };
+      const update = { 
+        Fname,
+        LName,
+        AboutMe,
+        DoB,
+        Gender };
+
+     await Student.findByIdAndUpdate(StudentId,
+          update);
+     
+  } catch (error) {
+      return res.status(400).json({
+          success : false,
+          response : {
+              error
+          }
+      })
+  }
+  return res.status(200).json({
+      success: true,
+      response: {
+          code: "Student_Update_success",
+          message: "",
+          data: {},
+      },
+  });
+}
+
 const getStudentById = async (req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
 
@@ -163,4 +209,5 @@ module.exports = {
   addNewStudent,
   getAllStudentByDepartId,
   getStudentById,
+  changeStudentDetails
 };
