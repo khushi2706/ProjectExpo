@@ -25,7 +25,7 @@ export default function MyProjects() {
 
   return (
     <>
-      <div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
         {projects &&
           projects.map((project, index) => (
             <Link

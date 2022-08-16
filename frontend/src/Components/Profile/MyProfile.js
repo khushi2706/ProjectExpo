@@ -7,17 +7,14 @@ export default function MyProfile() {
   const history = useNavigate();
 
   const [myProfile, setMyProfile] = useState(true);
-  const [myProject, setMyProject] = useState(false);
 
   const handleMyProfileClick = () => {
     setMyProfile(true);
-    setMyProject(false);
     console.log("My Profile clicked");
   };
 
   const handleMyProjectClick = () => {
     setMyProfile(false);
-    setMyProject(true);
     console.log("My Project clicked");
   };
 

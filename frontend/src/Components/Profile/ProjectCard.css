@@ -18,6 +18,7 @@
     font-family: 'poppins';
     font-weight: bold;
     text-decoration: none!important;
+    color: black;
 }
 .project-row1-card {
     display: flex;
