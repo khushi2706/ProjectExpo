@@ -18,10 +18,12 @@ import UniProfile from "./Components/UniversityProfile/UniProfile";
 import UniSubject from "./Components/UniversityProfile/UniSubject";
 import UniDept from "./Components/UniversityProfile/UniDept";
 import EditImg from "./Components/UniversityProfile/EditImg";
+
+import UniFaculty from "./Components/UniversityProfile/UniFaculty";
+
 import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
-import "./Components/GeneralCSS/main.css"
 
 
 function App() {
@@ -45,7 +47,7 @@ function App() {
             <Route index path="/collegeprofile" element={<UniProfile/>}/>
             <Route index path="/viewmentor/:id" element={<MentorView/>}/>
             <Route index path="/collegesubjects" element={<UniSubject/>}/>
-            <Route index path="/collegefaculty" element={<Mentor/>}/>
+            <Route index path="/collegefaculty" element={<UniFaculty/>}/>
             <Route index path="/collegedepartment" element={<UniDept/>}/>
             <Route index path="/editimg" element={<EditImg/>}/>
             <Route index path="/UploadProject/Stage1" element={<Project_1/>} />
