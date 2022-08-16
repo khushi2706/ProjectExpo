@@ -3,10 +3,6 @@ import { ReactDOM } from "react";
 import ProgressBar from "./ProgressBar";
 import { NavLink } from "react-router-dom";
 import Header from "../Common/Header";
- 
-import Uploady from "@rpldy/uploady";
-import UploadDropZone from "@rpldy/upload-drop-zone";
-
 
 var sty = {
   backgroundColor: "#57bcff",
@@ -41,14 +37,15 @@ export default function Project_2() {
           <div style={im}>
             <img src="https://cdn3.iconfinder.com/data/icons/transfers/100/239296-cloud_upload-512.png" style={{ width: "100%", height: "100%" }}></img>
           </div>
-          <Uploady destination={{ url: "my-server.com/upload" }}>
-        <UploadDropZone 
-          onDragOverClassName="drag-over"
-          htmlDirContentParams={{ recursive: true }}
-        >
-            <span>Drag&Drop File(s) or Folder(s) Here</span>            
-        </UploadDropZone>
-    </Uploady>
+
+          <form 
+              action='http://localhost:5000/projectupload'
+              id='uploadForm'
+              method='post'
+              encType="multipart/form-data">
+              <input type="file" name="inputpath" id="uploadfile" webkitdirectory directory multiple/> 
+              <button type="submit" value="Submit">Upload</button>
+          </form>
           
         </div>
       </div>
