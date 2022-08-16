@@ -26,6 +26,30 @@ const getAllUser = async (req, res, next) => {
   return res.status(200).json({ success: true, users });
 };
 
+const getUserById = async (req, res, next) => {
+  let userId = req.param.id;
+  console.log(userId);
+  let user = "";
+  try {
+    user = await User.find({ _id: userId });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User does not exists",
+      });
+    }
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      response: {
+        message: error.message,
+      },
+    });
+  }
+
+  return res.status(200).json({ success: true, user });
+};
+
 const addNewUser = async (req, res, next) => {
   const { Email, Password, UserType } = req.body;
   console.log("API->Email: " + Email);
@@ -54,9 +78,8 @@ const addNewUser = async (req, res, next) => {
       },
     });
   }
-  console.log("Wea are outside the try block");
 };
 
 const loginUser = async (req, res, next) => {};
 
-module.exports = { getAllUser, addNewUser };
+module.exports = { getAllUser, addNewUser, getUserById };

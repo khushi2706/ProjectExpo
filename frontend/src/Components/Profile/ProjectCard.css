@@ -1,0 +1,35 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10px 20px;
+    margin-right: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    text-decoration: none!important;
+}
+
+.card-container:hover {
+    cursor: pointer;
+}
+
+.project-title {
+    font-size: 20px;
+    font-family: 'poppins';
+    font-weight: bold;
+    text-decoration: none!important;
+}
+.project-row1-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.description-container {
+    margin-top: 10px;
+    color: #787777;
+    font-family: 'poppins';
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none!important;
+}

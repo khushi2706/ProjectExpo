@@ -7,19 +7,9 @@ import CustomizeDropDown from "./CustomizeDropDown";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup(props) {
-
-  const [departs,setDeparts] = useState([]); 
+  const [departs, setDeparts] = useState([]);
   const [colleges, setColleges] = useState([]);
-  const [ formValue , setformValue ] = useState({
-    Email : "",
-    Pass: "",
-    Fname: "",
-    LName: "",
-    AboutMe: "",
-    DoB: "",
-    Gender:"",
-    DepartmentId:"",
-  })
+  const [formValue, setformValue] = useState({});
 
   const sendReq = async () => {
     const res = await axios
@@ -46,7 +36,7 @@ export default function Signup(props) {
     //   .catch((err) => console.log(err));
     // const data = await res.data;
     // return data;
-   console.log(formValue); 
+    console.log(formValue);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,63 +46,68 @@ export default function Signup(props) {
       .then(() => console.log("done"));
   };
 
-const getDeprtId = async(e) =>{
+  const getDeprtId = async (e) => {
     const res = await axios
-    .get(`http://localhost:5000/api/department/getByCollgeId/${e.target.value}`)
-    .catch((err) => console.log(err));
+      .get(
+        `http://localhost:5000/api/department/getByCollgeId/${e.target.value}`
+      )
+      .catch((err) => console.log(err));
     const data = await res.data;
     console.log(data);
-    setDeparts( await data.departments);
-  }
+    setDeparts(await data.departments);
+  };
 
-useEffect(() => {
-      sendReq().then((data) => {
-        setColleges(data.colleges);
-      });
+  useEffect(() => {
+    sendReq().then((data) => {
+      setColleges(data.colleges);
+    });
   }, []);
- 
-  console.log(colleges);
-  return(
-   <>
-   <h1>form</h1>
 
-    <form onSubmit={handleSubmit}>
-    <label htmlFor="">Email</label>
-    <input type="email" value={formValue.Email} />
-    <label htmlFor="">Password</label>
-    <input type="password" value={formValue.Pass} id="" />
-    <label htmlFor="" >First Name</label>
-    <input type="text" value={formValue.Fname} />
-    <label htmlFor="" >Last Name</label>
-    <input type="text" value={formValue.LName} />
-    <label htmlFor="">About Me</label>
-    <input type="text" value={formValue.AboutMe} />
-    <label htmlFor="">Date of Birth</label>
-    <input type="date" name="" value={formValue.DoB} id="" />
-    <label htmlFor="">Gender</label>
-    <input type="text" value={formValue.Gender}/>
-    <label htmlFor="">College</label>
-    <select name="" id="" onChange={getDeprtId}>
-      {
-        colleges && 
-        colleges.map((clg,idx)=>{
-          return(
-      <option value={clg._id}>{clg.CName}</option>
-          )
-        })
-      }
-    </select>
-    <select name="" class="form-control" id="">
-      {
-        departs && 
-        departs.map((dp,idx)=>{
-          return(
-      <option value={dp._id}>{dp.DepartName}</option>
-          )
-        })
-      }
-    </select>
-    </form>
-   </> 
-  )
+  console.log(colleges);
+  return (
+    <>
+      <div
+        style={{
+          fontSize: 36,
+          fontWeight: "bold",
+          fontFamily: '"Poppins"',
+          textAlign: "center",
+          marginTop: 38,
+        }}
+      >
+        Sign Up
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            background: "#F6F7FB",
+            borderRadius: 10,
+            paddingLeft: 68,
+            paddingRight: 68,
+            paddingTop: 61,
+            paddingBottom: 61,
+            width: "fit-content",
+            marginTop: 25,
+          }}
+        >
+          <InputField
+            // user={user}
+            // handleChange={handleFirstNameChange}
+            type="text"
+            placeholder="First Name"
+          />
+
+          <InputField
+            // user={user}
+            // handleChange={handleLastNameChange}
+            type="text"
+            placeholder="Last Name"
+          />
+
+          <CustomizeDropDown />
+        </div>
+      </div>
+    </>
+  );
 }

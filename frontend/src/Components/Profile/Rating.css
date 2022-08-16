@@ -1,0 +1,10 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rating-text-container {
+    margin-top:4px;
+    font-family: 'poppins';
+    text-decoration: none !important;
+}

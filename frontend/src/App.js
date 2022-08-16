@@ -14,6 +14,7 @@ import Profile from "./Components/Profile/Profile";
 import Blog from "./Components/Blog/Blog";
 import SignUp2 from "./Components/SignUp/SignUp2";
 import CollegeSelect from "./Components/SignUp/CollegeSelect";
+import MyProfile from "./Components/Profile/MyProfile";
 function App() {
   return (
     <>
@@ -28,7 +29,7 @@ function App() {
             <Route index path="/project" element={<ProjectMain />} />
             <Route index path="viewRoadmap/:id" element={<RoadmapView />} />
             <Route index path="/viewProject/:id" element={<ProjectView />} />
-            <Route index path="/profile" element={<Profile />} />
+            <Route index path="/MyProfile" element={<MyProfile />} />
             <Route index path="/blog" element={<Blog />} />
             <Route index path="/mentor" element={<Mentor />} />
             <Route index path="/viewmentor/:id" element={<MentorView />} />
