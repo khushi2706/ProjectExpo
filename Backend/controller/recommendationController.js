@@ -1,14 +1,17 @@
+const { log } = require("console");
+
 const spawn = require("child_process").spawn;
 
-var absolutePath = __dirname ;
-console.log(absolutePath.replaceAll('\\','/',));
-absolutePath = absolutePath.replaceAll('\\','/') + `/Recommendation.py`;
 
-
-const pythoneProcess = spawn('python', [absolutePath]);
 
 const getRecommenedProject =  async (req, res, next) =>{
 
+    var absolutePath = __dirname ;
+console.log(absolutePath.replaceAll('\\','/',));
+absolutePath = absolutePath.replaceAll('\\','/') + `/Recommendation.py`;
+
+const pythoneProcess = spawn('python', [absolutePath]);
+    console.log("finfing");
     await pythoneProcess.stdout.on('data', (data) => {
         str = data.toString();
         console.log(str);
