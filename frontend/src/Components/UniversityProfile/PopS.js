@@ -182,7 +182,7 @@ class Pop extends React.Component {
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
-          <select onChange={(e) => this.handleChange(e)} name="deptid">
+          <select  className="select" onChange={(e) => this.handleChange(e)} name="deptid">
             {dept.map((college, index) => {
               return (
                 <>
