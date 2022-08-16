@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 import "./CSS/ProjectDiv.css";
 
 export default function ProjectDiv(props) {
-  console.log(props);
   const project = props.project
-  console.log(project);
-  const tags = project.Tags
- 
+  const tags = project.languagesTag
+  // console.log(typeof (tags));
   return (
     <div className="main-div mt-3">
       <div className="col row">
         <div className="col-8">
           <Link to={{ pathname: `/viewProject/${project._id}` }}>
 
-            <p className="title"> {project.PName}</p>
+            <p className="title"> {project.Pname}</p>
 
           </Link>
 

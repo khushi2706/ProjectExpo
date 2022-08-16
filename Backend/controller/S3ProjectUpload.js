@@ -10,22 +10,21 @@ const s3 = new aws.S3({
   region: "ap-south-1"
 })
 
-const upload = multer({
+const uploadProject = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "projectexpo-profilephotos",
+    bucket: "projectexpo-projects",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     metadata: (req, file, cb) => {
-      
       cb(null, { fieldName: file.fieldname })
     },
     key: (req, file, cb) => {
-      cb(null, 'University/' + file.originalname)
+      cb(null, file.originalname)
     },  
   })
 })
 
 module.exports = {
-  upload
+  uploadProject
 }

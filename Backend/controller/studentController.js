@@ -132,4 +132,74 @@ const getAllStudentByDepartId = async (req, res, next) => {
     return res.status(200).json({ success: true, students });
 };
 
-module.exports = { getAllStudent , addNewStudent , getAllStudentByDepartId};
+const changeStudentDetails = async(req,res)=> {
+  res.set('Access-Control-Allow-Origin', '*');
+  const {
+       StudentId,
+       Fname,
+       LName,
+       AboutMe,
+       DoB,
+       Gender
+       } = req.body;
+       
+  
+  try {
+
+      const filter = { _id: StudentId };
+      const update = { 
+        Fname,
+        LName,
+        AboutMe,
+        DoB,
+        Gender };
+
+     await Student.findByIdAndUpdate(StudentId,
+          update);
+     
+  } catch (error) {
+      return res.status(400).json({
+          success : false,
+          response : {
+              error
+          }
+      })
+  }
+  return res.status(200).json({
+      success: true,
+      response: {
+          code: "Student_Update_success",
+          message: "",
+          data: {},
+      },
+  });
+}
+
+const getStudentById = async(req,res)=>{
+  res.set('Access-Control-Allow-Origin', '*');
+  const {id} = req.params;
+  let students;
+  try {
+    students = await Student.findById(id);
+  } catch (e) {
+    return res.status(400).json({
+      success: false,
+      response: {
+        message: e,
+      },
+    });
+  }
+
+  if (!students) {
+    return res.status(404).json({
+      success: false,
+      response: {
+        message: "students not found",
+      },
+    });
+  }
+
+  return res.status(200).json({ success: true, students });
+}
+
+module.exports = { getAllStudent , addNewStudent  , getAllStudentByDepartId  , getStudentById , changeStudentDetails};

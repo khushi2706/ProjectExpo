@@ -1,0 +1,27 @@
+.input-field {
+    border-width: 1px;
+    border-color: #93ADFF;
+    border-radius: 5px;
+    background-color: #F9FBFF;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    font-size: 17px;
+    font-family: 'poppins'
+}
+
+.input-field:focus {
+    font-family: 'poppins';
+    border-width: 1px;
+    border-color: #93ADFF;
+    border-radius: 5px;
+    background-color: #F9FBFF;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    font-size: 17px;
+}

@@ -9,6 +9,7 @@ import axios from "axios"
 import "./UniProfile.css"
 import { NavLink } from "react-router-dom";
 import DeptCard from './DeptCard';
+import Pop from "./Pop";
 
 function UniDept() {
     const handleClick = ()=>{
@@ -218,19 +219,8 @@ useEffect(() => {
    
  </div>
 <div className='' style={{paddingBottom:"30px"}}></div>
-  
-<div
-style={{
-  marginTop: 20,
-  justifyContent: "end",
-
-  display:"flex",
-  marginBottom:"50px",
-  marginRight:"20px"
-}}
->
-<Button title={"+ Add Department"} onClick={handleClick}/>
-</div> 
+  <Pop/>
+ 
 </div>
 
 

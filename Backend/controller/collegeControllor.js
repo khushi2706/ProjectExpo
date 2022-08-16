@@ -243,7 +243,7 @@ const changeCollgeProfile = async(req,res,next) =>{
          collegeId,
          CollegeNewImg
          } = req.body;
-
+         
          console.log(collegeId , CollegeNewImg);
     
     try {

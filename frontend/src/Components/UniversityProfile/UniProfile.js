@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 
 function UniProfile() {
 
+  const CollegeId = "62f6135b8c07d28ed759794e";
 const Handle_toggle=()=>{
     const img=document.getElementById('pop_Container')
     console.log(img);
@@ -20,7 +21,7 @@ const [user, setUser] = useState();
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f6135b8c07d28ed759794e')
+    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -178,10 +179,11 @@ useEffect(() => {
             <div className="popup-box">
               <form 
               action='http://localhost:5000/collegeprofile'
-              id='uploadForm' 
+              id='uploadForm'
               method='post' 
               encType="multipart/form-data">
               <input type="file" name="inputFile" id="uploadfile"/> 
+              <input type="text"  name = "CollegeId" value={CollegeId} hidden />
               <button type="submit" value="Submit">Upload</button>
               </form>
             </div>
