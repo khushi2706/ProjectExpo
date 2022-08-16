@@ -4,6 +4,7 @@ const University = require("../model/University");
 const User = require("../model/User");
 
 const getAllUniversities = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     let universities;
     try {
         universities = await University.find();
@@ -28,20 +29,16 @@ const getAllUniversities = async (req, res, next) => {
     return res.status(200).json({ success: true , universities });
 }
 
-
 const addNewUniversity = async (req, res, next) => {
-   
+    res.set('Access-Control-Allow-Origin', '*');
     const {
         Email,
         Pass,
-        CName,
-        UniversityInfo,
-        UniversityEmail,
-        Ctype,
+        UName,
+        UType,
         Address,
         District,
         State,
-        UniversityImg
          } = req.body;
 
     const UserType = "University-admin";
@@ -72,18 +69,16 @@ const addNewUniversity = async (req, res, next) => {
         session.startTransaction();
         user  = await newUser.save();
         const UserId = user._id;
-        const University = new University({
-            CName,
-            UniversityInfo,
-            UniversityEmail,
-            Ctype,
+        console.log("making uni");
+        const university = new University({
+            UName,
+            UType,
             Address,
             District,
             State,
             UserId,
-            UniversityImg
         });    
-        await University.save();
+        await university.save();
       
         session.commitTransaction();
        
@@ -107,8 +102,8 @@ const addNewUniversity = async (req, res, next) => {
   
 }
 
-
 const getUniversityById = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { id } = req.params;
     let university;
     try {
@@ -134,8 +129,8 @@ const getUniversityById = async (req, res, next) => {
     return res.status(200).json({ university });
 }
 
-
 const getUniversityByUserId = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const { UserId } = req.params;
     let university;
     try {

@@ -1,30 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Common/Button";
 import ProfileInputField from "./ProfileInputField";
-import ProfileInputFieldExtended from "./ProfileInputFieldExtended";
-import SideBarOption from "./SideBarOption";
 import axios from "axios";
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState();
-  const [email, setEmail] = useState();
 
   const studentId = "62f8bfc2b273758939de55e7";
 
   const sendReq = async () => {
     const res = await axios
       .get(`http://localhost:5000/api/student/getStudentById/${studentId}`)
+
       .catch((err) => console.log(err));
     const data = await res.data;
     //console.log("Data from API:" + data[0].Fname);
-    return data;
-  };
-
-  const sendEmailReq = async () => {
-    const res = await axios
-      .get(`http://localhost:5000/api/user/getUserById/${studentId}`)
-      .catch((err) => console.log(err));
-    const data = await res.data;
     return data;
   };
 
@@ -32,10 +22,6 @@ export default function Profile() {
     sendReq().then((data) => {
       console.log(data);
       setSingleUser(data);
-    });
-    sendEmailReq().then((data) => {
-      console.log(data);
-      //setEmail(data);
     });
   }, []);
   console.log(singleUser);

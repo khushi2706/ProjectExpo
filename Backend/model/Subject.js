@@ -19,6 +19,22 @@ var subjectSchema = new Schema({
         type: Number,
         required: true
     },
+    Eligibility: {
+        type: String,
+        required: true
+    },
+    Objective: {
+        type: String,
+        required: true
+    },
+    Credit: {
+        type: Number,
+        required: true
+    },
+    CourseCode: {
+        type: String,
+        required: true
+    },
 
 })
 

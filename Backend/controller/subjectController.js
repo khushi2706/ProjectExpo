@@ -32,7 +32,12 @@ const addNewSubject = async (req, res, next) => {
   const {  SubName,
     SubInfo,
     DepartmentId,
-    Year
+    Year,
+    Eligibility,
+Objective,
+Credit,
+CourseCode
+
      } = req.body;
 
   try {
@@ -49,7 +54,11 @@ const addNewSubject = async (req, res, next) => {
         SubName,
         SubInfo,
         DepartmentId,
-        Year
+        Year,
+        Eligibility,
+        Objective,
+        Credit,
+        CourseCode
     });
 
     await newSubject.save();
@@ -75,7 +84,7 @@ const getAllSubByDepartId = async (req, res, next) => {
     console.log(departId);
     let subjects;
     try {
-      subjects = await Subject.find({ DepartId : departId });
+      subjects = await Subject.find({ DepartmentId : departId });
     } catch (e) {
       return res.status(400).json({
         success: false,

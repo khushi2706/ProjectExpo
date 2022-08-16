@@ -6,9 +6,10 @@ const {
   logoutUser,
   authChecker,
   authController,
-  getAllUser,
   addNewUser,
-  getUserById,
+  getAllUser,
+  getUserById
+
 } = require("../controller/AuthController");
 const { registerLimiter, loginLimiter } = require("../utils/rateLimiter");
 
@@ -21,7 +22,7 @@ userRouter.post("/register", addNewUser);
 
 // Logs In a User, creates session in mongo store
 // and returns a cookie containing sessionID, also called "session-id"
-//userRouter.post("/login", loginLimiter, loginUser);
+userRouter.post("/login", loginLimiter, loginUser);
 
 // Log out user by deleting session from store
 // and deleting cookie on client side

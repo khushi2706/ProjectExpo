@@ -26,35 +26,37 @@ export default function Signup(props) {
     }));
   };
   const sendRequest = async () => {
-    // const res = await axios
-    //   .post("http://localhost:5000/api/blogs/add", {
-    //     title: inputs.title,
-    //     desc: inputs.description,
-    //     img: inputs.imageURL,
-    //     user: localStorage.getItem("userId"),
-    //   })
-    //   .catch((err) => console.log(err));
-    // const data = await res.data;
-    // return data;
     console.log(formValue);
+    const res = await axios
+      .post("http://localhost:5000/api/student/add", formValue)
+      .catch((err) => console.log(err));
+    console.log(res);
+    const data = await res.data;
+    return data;
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValue);
     sendRequest()
       .then((data) => console.log(data))
       .then(() => console.log("done"));
   };
 
   const getDeprtId = async (e) => {
+    console.log("depart id: " + e.target.value);
+
     const res = await axios
       .get(
         `http://localhost:5000/api/department/getByCollgeId/${e.target.value}`
       )
       .catch((err) => console.log(err));
     const data = await res.data;
-    console.log(data);
     setDeparts(await data.departments);
+  };
+
+  // console.log("data.depatments"+JSON.parse(res["data"]));
+
+  const setDprtId = async (e) => {
+    formValue.DepartmentId = e.target.value;
   };
 
   useEffect(() => {
@@ -63,7 +65,6 @@ export default function Signup(props) {
     });
   }, []);
 
-  console.log(colleges);
   return (
     <>
       <div
@@ -79,7 +80,8 @@ export default function Signup(props) {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div
+        <form
+          onSubmit={handleSubmit}
           style={{
             background: "#F6F7FB",
             borderRadius: 10,
@@ -87,26 +89,153 @@ export default function Signup(props) {
             paddingRight: 68,
             paddingTop: 61,
             paddingBottom: 61,
-            width: "fit-content",
+
+            width: "40%",
             marginTop: 25,
           }}
         >
-          <InputField
-            // user={user}
-            // handleChange={handleFirstNameChange}
-            type="text"
-            placeholder="First Name"
-          />
-
-          <InputField
-            // user={user}
-            // handleChange={handleLastNameChange}
-            type="text"
-            placeholder="Last Name"
-          />
-
-          <CustomizeDropDown />
-        </div>
+          <div className="box" style={{ width: "100%", display: "block" }}>
+            <label htmlFor="">Email</label>
+            <input
+              type="email"
+              name="Email"
+              onChange={handleChange}
+              value={formValue.Email}
+              style={{ width: "100%" }}
+            />
+            <label htmlFor="">Password</label>
+            <input
+              type="password"
+              onChange={handleChange}
+              name="Pass"
+              value={formValue.Pass}
+              id=""
+              style={{ width: "100%" }}
+            />
+            <label htmlFor="">First Name</label>
+            <input
+              type="text"
+              onChange={handleChange}
+              value={formValue.Fname}
+              name="Fname"
+              style={{ width: "100%" }}
+            />
+            <label htmlFor="">Last Name</label>
+            <input
+              type="text"
+              onChange={handleChange}
+              value={formValue.LName}
+              name="LName"
+              style={{ width: "100%" }}
+            />
+            <label htmlFor="">About Me</label>
+            <input
+              type="text"
+              onChange={handleChange}
+              value={formValue.AboutMe}
+              name="AboutMe"
+              style={{ width: "100%" }}
+            />
+            <label htmlFor="">Date of Birth</label>
+            <input
+              type="date"
+              onChange={handleChange}
+              value={formValue.DoB}
+              name="DoB"
+              id=""
+              style={{ width: "100%" }}
+            />
+            <label htmlFor="">Gender</label>
+            <input
+              type="text"
+              onChange={handleChange}
+              value={formValue.Gender}
+              name="Gender"
+              style={{ width: "100%" }}
+            />
+          </div>
+          <div className="box" style={{ width: "100%", display: "block" }}>
+            <select
+              name=""
+              id="form"
+              class="form-control"
+              onClick={getDeprtId}
+              style={{ margin: "10px 0" }}
+            >
+              <option value=" ">------select college ------</option>
+              {colleges &&
+                colleges.map((clg, idx) => {
+                  return <option value={clg._id}>{clg.CName}</option>;
+                })}
+            </select>
+            <select
+              name="DepartmentId"
+              onChange={setDprtId}
+              class="form-control"
+              id=""
+              style={{ margin: "10px 0" }}
+            >
+              <option value=" " unselectable="true">
+                ------select department ------
+              </option>
+              {departs &&
+                departs.map((dp, idx) => {
+                  return <option value={dp._id}>{dp.DepartName}</option>;
+                })}
+            </select>
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: 25,
+              fontFamily: "poppins",
+              fontWeight: 800,
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>Already have an account ?</div>
+            <div
+              style={{
+                color: "#2C5EFF",
+                fontWeight: "bolder",
+                marginLeft: 5,
+              }}
+            >
+              Login in
+            </div>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <button
+              onClick={handleSubmit}
+              className="sign-in-button"
+              style={{ width: "80%", height: "6vh", marginTop: 17 }}
+            >
+              Sign In
+            </button>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <button
+              className="sign-in-with-google-button"
+              style={{ height: "6vh" }}
+            >
+              <div style={{ display: "flex" }}>
+                <div style={{ margin: "auto" }}>
+                  <img src={google_logo} alt="" width="70%" height="70%" />
+                </div>
+                <div
+                  style={{
+                    fontFamily: "poppins",
+                    fontWeight: "bold",
+                    margin: "auto",
+                  }}
+                >
+                  Sign in with Google
+                </div>
+              </div>
+            </button>
+          </div>
+        </form>
       </div>
     </>
   );

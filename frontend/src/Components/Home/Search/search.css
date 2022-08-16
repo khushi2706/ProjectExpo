@@ -45,3 +45,29 @@
 .search-bar-button:hover {
     cursor: pointer;
 }
+
+.tagofsearch{
+    text-decoration: none;
+    background-color: aquamarine;
+    color: black;
+    border-radius: 20%;
+    width: auto;
+    display: inline-block;
+    left: 20px;
+    margin: 20px 68px;
+    height: 50px;
+    font-weight: 600;
+    padding: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.cancelitem{
+    cursor: pointer;
+}
+
+
+.tagofsearch:hover{
+    text-decoration: none;
+}
