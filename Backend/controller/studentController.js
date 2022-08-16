@@ -1,4 +1,4 @@
- const Student = require("../model/Student");
+const Student = require("../model/Student");
 const Department = require("../model/Department");
 const User = require("../model/User");
 const bcrypt = require("bcryptjs");
@@ -31,7 +31,7 @@ const getAllStudent = async (req, res, next) => {
 };
 
 const addNewStudent = async (req, res, next) => {
-  const { 
+  const {
     Email,
     Pass,
     Fname,
@@ -40,8 +40,8 @@ const addNewStudent = async (req, res, next) => {
     DoB,
     Gender,
     DepartmentId,
-    ProfileImg
-    } = req.body;
+    ProfileImg,
+  } = req.body;
 
   const UserType = "Student";
   let user;
@@ -77,14 +77,14 @@ const addNewStudent = async (req, res, next) => {
     user = await newUser.save();
     const UserId = user._id;
     const newStudent = new Student({
-        Fname,
-        LName,
-        AboutMe,
-        DoB,
-        Gender,
-        DepartmentId,
-        UserId,
-        ProfileImg
+      Fname,
+      LName,
+      AboutMe,
+      DoB,
+      Gender,
+      DepartmentId,
+      UserId,
+      ProfileImg,
     });
     await newStudent.save();
     session.commitTransaction();
@@ -106,81 +106,11 @@ const addNewStudent = async (req, res, next) => {
 };
 
 const getAllStudentByDepartId = async (req, res, next) => {
-  res.set('Access-Control-Allow-Origin', '*');
-    const {departId} = req.params;
-    let students;
-    try {
-      students = await Student.find({ DepartmentId : departId });
-    } catch (e) {
-      return res.status(400).json({
-        success: false,
-        response: {
-          message: e,
-        },
-      });
-    }
-  
-    if (!students) {
-      return res.status(404).json({
-        success: false,
-        response: {
-          message: "students not found",
-        },
-      });
-    }
-  
-    return res.status(200).json({ success: true, students });
-};
-
-const changeStudentDetails = async(req,res)=> {
-  res.set('Access-Control-Allow-Origin', '*');
-  const {
-       StudentId,
-       Fname,
-       LName,
-       AboutMe,
-       DoB,
-       Gender
-       } = req.body;
-       
-  
-  try {
-
-      const filter = { _id: StudentId };
-      const update = { 
-        Fname,
-        LName,
-        AboutMe,
-        DoB,
-        Gender };
-
-     await Student.findByIdAndUpdate(StudentId,
-          update);
-     
-  } catch (error) {
-      return res.status(400).json({
-          success : false,
-          response : {
-              error
-          }
-      })
-  }
-  return res.status(200).json({
-      success: true,
-      response: {
-          code: "Student_Update_success",
-          message: "",
-          data: {},
-      },
-  });
-}
-
-const getStudentById = async(req,res)=>{
-  res.set('Access-Control-Allow-Origin', '*');
-  const {id} = req.params;
+  res.set("Access-Control-Allow-Origin", "*");
+  const { departId } = req.params;
   let students;
   try {
-    students = await Student.findById(id);
+    students = await Student.find({ DepartmentId: departId });
   } catch (e) {
     return res.status(400).json({
       success: false,
@@ -200,6 +130,37 @@ const getStudentById = async(req,res)=>{
   }
 
   return res.status(200).json({ success: true, students });
-}
+};
 
-module.exports = { getAllStudent , addNewStudent  , getAllStudentByDepartId  , getStudentById , changeStudentDetails};
+const getStudentById = async (req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  const studentId = req.params.id;
+
+  let student;
+  console.log("StudentId:" + studentId);
+  try {
+    student = await Student.findById(studentId);
+    //console.log(student);
+  } catch (e) {
+    console.log("Exception: " + e);
+    return res.status(400).json({
+      success: false,
+      response: {
+        message: e,
+      },
+    });
+  }
+
+  if (!student) return res.status(500).json({ message: "Not found" });
+
+  console.log(student);
+  return res.status(200).json(student);
+};
+
+module.exports = {
+  getAllStudent,
+  addNewStudent,
+  getAllStudentByDepartId,
+  getStudentById,
+};
