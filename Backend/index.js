@@ -19,7 +19,7 @@ const recomRoute = require("./routes/recRoute");
 //create the app
 const app = express();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.set("view engine","ejs");
 app.use(express.json());
 app.use(cookieParser())
