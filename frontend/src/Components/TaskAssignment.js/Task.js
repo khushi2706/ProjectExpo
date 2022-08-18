@@ -46,7 +46,11 @@ const clgid = "62f8724e92cfa9015a3befc9";
           console.log(dept);
         });
       
-        
+        sendReq2().then((data) => {
+            setsub(data.subjects)
+          
+          console.log(sub);
+        });
        
       }, [])
       
@@ -56,11 +60,6 @@ const handlechanges = ( e)=>{
     const value = target.value;
 
     setd(value);
-    sendReq2().then((data) => {
-        setsub(data.subjects)
-      
-      console.log(sub);
-    });
     console.log(d);
 }
  
@@ -128,7 +127,7 @@ const handlechanges2 = ( e)=>{
     
 { dept && 
     <div className="sign-in-input-field-container">
-    <select className="select" onChange={handlechanges} name="deptid">
+    <select className="select"  name="deptid">
       {dept.map((college, index) => {
         return (
           <>
@@ -143,7 +142,7 @@ const handlechanges2 = ( e)=>{
   
   { sub && 
     <div className="sign-in-input-field-container">
-    <select className="select" onChange={handlechanges2} name="subid">
+    <select className="select" onChange={handlechanges} name="subid">
       {sub.map((college, index) => {
         return (
           <>

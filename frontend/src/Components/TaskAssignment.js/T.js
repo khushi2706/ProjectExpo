@@ -11,49 +11,49 @@ var inp = {
 };
 
 function T() {
-  const [departs, setDeparts] = useState([]);
-  const [colleges, setColleges] = useState([]);
-  const [formValue, setformValue] = useState({});
-
-  const handleChange = (e) => {
-    setformValue((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const getDeprtId = async (e) => {
-    // console.log("depart id: " + e.target.value);
-
-    const res = await axios
-      .get(
-        `http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9`
-      )
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    console.log(data)
-    setDeparts(await data.departments);
-    console.log(departs);
-  };
-
-  const getDeprtId2 = async (e) => {
-    // console.log("depart id: " + e.target.value);
-
-    const res = await axios
-      .get(
-        `http://localhost:5000/api/subject/getByDepartId/${e.target.value}`
-      )
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    console.log(data)
-    setColleges(await data.subjects);
-    console.log(colleges);
-  };
-
-  const setDprtId = async (e) => {
-    formValue.DepartmentId = e.target.value;
-  };
-
+    const [departs, setDeparts] = useState([]);
+    const [colleges, setColleges] = useState([]);
+    const [formValue, setformValue] = useState({});
+  
+    const sendReq = async () => {
+      const res = await axios
+        .get(`http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9`)
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      return data;
+    };
+  
+    const handleChange = (e) => {
+      setformValue((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
+    };
+  
+    const getDeprtId = async (e) => {
+      console.log("depart id: " + e.target.value);
+  
+      const res = await axios
+        .get(
+          `hhttp://localhost:5000/api/subject/getByDepartId/${e.target.value}`
+        )
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      setDeparts(await data.subjects);
+    };
+  
+    // console.log("data.depatments"+JSON.parse(res["data"]));
+  
+    const setDprtId = async (e) => {
+      formValue.DepartmentId = e.target.value;
+    };
+  
+    useEffect(() => {
+      sendReq().then((data) => {
+        setColleges(data.departments);
+      });
+    }, []);
+  
   const clgid = "62f8724e92cfa9015a3befc9";
   // const sendReq = async () => {
   //     const res = await axios
@@ -152,35 +152,36 @@ function T() {
             value={formValue.Fname}
             name="Fname"
           />
-
-          {departs && (
-            <div className="sign-in-input-field-container">
-              <select className="select" onChange={getDeprtId} name="deptid">
-                {departs.map((college, index) => {
-                  return (
-                    <>
-                      <option value={college._id}>{college._id}</option>
-                    </>
-                  );
-                })}
-              </select>
-            </div>
-          )}
-          {colleges && (
-            <div className="sign-in-input-field-container">
-              <select className="select" onChange={getDeprtId2} name="subid">
-                {colleges.map((college, index) => {
-                  return (
-                    <>
-                      <option value={college._id}>{college.SubName}</option>
-                    </>
-                  );
-                })}
-              </select>
-            </div>
-          )}
+          <select
+          name=""
+          id="form"
+          class="form-control"
+          onClick={getDeprtId}
+          style={{ margin: "10px 0" }}
+          onChange={setDprtId}
+        >
+          <option value=" ">------select department ------</option>
+          {colleges &&
+            colleges.map((clg, idx) => {
+              return <option value={clg._id}>{clg.DepartName}</option>;
+            })}
+        </select>
+        <select
+          name="DepartmentId"
           
-          <div style={{ textAlign: "center" }}>
+          class="form-control"
+          id=""
+          style={{ margin: "10px 0" }}
+        >
+          <option value=" " unselectable="true">
+            ------select subject ------
+          </option>
+          {departs &&
+            departs.map((dp, idx) => {
+              return <option value={dp._id}>{dp.SubName}</option>;
+            })}
+        </select>
+        <div style={{ textAlign: "center" }}>
             <button
               className="sign-in-button"
               style={{ width: "80%", height: "7vh", marginTop: 17 }}
@@ -188,8 +189,11 @@ function T() {
               Generate Link For Submission
             </button>
           </div>
+            </div>
+       
+          
+          
         </div>
-      </div>
     </>
   );
 }
