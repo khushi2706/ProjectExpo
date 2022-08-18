@@ -3,6 +3,7 @@ import { ReactDOM } from "react";
 import { NavLink } from "react-router-dom";
 import google_logo from "../../Assets/Images/google.svg";
 import axios from "axios";
+import Cookies from 'universal-cookie'
 
 var inp = {
   marginTop: "1rem",
@@ -12,9 +13,8 @@ var inp = {
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-
+  const cookies = new Cookies();
   const sendReq = async () => {
-
     const res = await axios
       .post(`http://localhost:5000/api/user/login`,
       {
@@ -29,8 +29,13 @@ export default function Login(props) {
   const loginUser = (event)=>{
     event.preventDefault()
     console.log(email,pass);
-    sendReq().then((data)=>{
-console.log(data);
+      sendReq().then((data)=>{
+        const cookies = new Cookies();
+
+        cookies.set('authToken', data.authToken , { path: '/' });
+        cookies.set('userId' , data.userId,   { path: '/' });
+        cookies.set('userType', data.userType, {path:'/'});
+        console.log(data);
     })
   }
   return (

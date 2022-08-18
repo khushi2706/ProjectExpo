@@ -2,7 +2,10 @@ import React from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 
+
 export default function Header() {
+
+ 
   return (
     <nav className="navbar navbar-expand-lg bg-light navbar-style">
       <div className="container-fluid">
@@ -57,6 +60,11 @@ export default function Header() {
       </NavLink>
             </li>
           
+            <NavLink 
+              className="nav-link" to="/Logout"
+			        >
+             Logout
+			       </NavLink>
           </ul>
         </div>
         <div className="profile w-5 h-5">

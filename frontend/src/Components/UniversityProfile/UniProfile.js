@@ -7,10 +7,16 @@ import SideBarOption from "../Profile/SideBarOption";
 import axios from "axios"
 import "./UniProfile.css"
 import { NavLink } from "react-router-dom";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
+
 // import Popup from 'reactjs-popup';
 
 function UniProfile() {
-
+  
+ const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ console.log(UserType);
   const CollegeId = "62f6135b8c07d28ed759794e";
 const Handle_toggle=()=>{
     const img=document.getElementById('pop_Container')
@@ -21,7 +27,7 @@ const [user, setUser] = useState();
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
+    .get(`http://localhost:5000/api/college/collegeId/${CollegeId}`)
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -29,16 +35,18 @@ const sendRequest = async () => {
   return data;
 };
 useEffect(() => {
-  sendRequest().then((data) => setUser(data.college));
-  console.log("-----------+");
-  console.log(user);
-
-  console.log("--------------+");
- 
+  sendRequest().then((data) => setUser(data.college)); 
 }, []);
 
+
   return (
+    
    <>
+{
+  UserType != 'College-admin'
+  &&
+  <Navigate to="/login" replace={true} />
+}
    {user && 
    <div
        style={{
@@ -115,6 +123,9 @@ useEffect(() => {
          <SideBarOption icon="groups" title="Subjects" />
          </NavLink>
         
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
         
         
          </div>
@@ -291,7 +302,7 @@ useEffect(() => {
 
 
      </div>
-        }
+    }
    </>
   )
 }

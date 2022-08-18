@@ -65,17 +65,14 @@ const addNewUser = async (req,res,next) =>{
 }
 
 const loginUser = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
   const { Email, Password } = req.body;
   let existingUser;
   try{
     existingUser = await User.findOne({Email})
    }catch(e){
-    console.log(err);
+    return res.status(404).json({message : "User is not found",e})
    }
-   if(!existingUser){
-       return res.status(404).json({message : "User is not found"})
-   }
-
    const isPasswordCorrect = bcrypt.compareSync(Password,existingUser.Password);
 
    if(!isPasswordCorrect){
@@ -83,12 +80,8 @@ const loginUser = async (req,res,next) =>{
    }
   const authToken = jwt.sign(existingUser.toJSON(),JWT_SECRET);
 
-   res.cookie(`authToken` , authToken , {
-    expire: new Date(Date.now() + 25892000000),
-    httpOnly:true
-   })
    
-   return res.status(200).json({userType: existingUser.UserType , authToken});
+   return res.status(200).json({userType: existingUser.UserType , authToken , userId : existingUser._id});
     
   
 }

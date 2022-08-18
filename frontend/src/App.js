@@ -25,6 +25,7 @@ import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
 
+import Logout from "./Components/logout/Logout";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route index path="/UploadProject/Stage2" element={<Project_2/>} />
             <Route index path="/UploadProject/Stage3" element={<Project_3/>} />
 
+            <Route index path="/Logout" element={<Logout/>}/>
           </Routes>
         </BrowserRouter>
       </div>
