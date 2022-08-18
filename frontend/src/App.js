@@ -24,8 +24,9 @@ import UniFaculty from "./Components/UniversityProfile/UniFaculty";
 import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
-import Task from "./Components/TaskAssignment.js/Task";
 import T from "./Components/TaskAssignment.js/T";
+import Quizmain from "./Components/quiz/Quizmain";
+
 
 
 function App() {
@@ -55,6 +56,8 @@ function App() {
             <Route index path="/UploadProject/Stage1" element={<Project_1/>} />
             <Route index path="/UploadProject/Stage2" element={<Project_2/>} />
             <Route index path="/UploadProject/Stage3" element={<Project_3/>} />
+            <Route index path="/quiz" element={<Quizmain/>}/>
+            
 
           </Routes>
         </BrowserRouter>
