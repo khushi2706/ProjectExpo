@@ -44,9 +44,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/',(req,res)=>{
-    res.send({key:"hello bvmites!"})
-})
+app.get("/", (req, res) => {
+  res.send({ key: "hello bvmites!" });
+});
 
 app.use('/api/project', projectRoute);
 app.use('/api/roadmap' , roadmapRoute);

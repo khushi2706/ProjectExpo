@@ -6,14 +6,14 @@ const {
   logoutUser,
   authChecker,
   authController,
+  addNewUser,
   getAllUser,
-  getUserById
-
 } = require("../controller/AuthController");
 const { registerLimiter, loginLimiter } = require("../utils/rateLimiter");
 
-
-userRouter.get("/" , getAllUser );
+userRouter.get("/", getAllUser);
+// userRouter.get("/getUserById/:id", getUserById);
+userRouter.post("/register", addNewUser);
 
 // Registers a new User
 //userRouter.post("/register", registerLimiter, registerUser);
