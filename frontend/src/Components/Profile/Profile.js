@@ -6,7 +6,7 @@ import axios from "axios";
 export default function Profile() {
   const [singleUser, setSingleUser] = useState();
 
-  const studentId = "62f8bfc2b273758939de55e7";
+  const studentId = "62f779d74af7b7b96e43a2f7";
 
   const sendReq = async () => {
     const res = await axios
@@ -24,6 +24,26 @@ export default function Profile() {
       setSingleUser(data);
     });
   }, []);
+
+  const changeDetails = async()=>{
+    console.log("chnging");
+    console.log(singleUser.LName);
+    const res = await axios.put(
+      `http://localhost:5000/api/student/changeDetails`,
+      {
+        "StudentId": "62f779d74af7b7b96e43a2f7",
+       "Fname": singleUser.Fname,
+        "LName": singleUser.LName,
+        "AboutMe" :singleUser.AboutMe,
+        "DoB": singleUser.DoB,
+        "Gender": singleUser.Gender
+      }
+    )
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    //console.log("Data from API:" + data[0].Fname);
+    console.log(data);
+  }
   console.log(singleUser);
   return (
     <>
@@ -73,11 +93,19 @@ export default function Profile() {
                   <ProfileInputField
                     title={"Last Name"}
                     placeholder={"Ex: Patel"}
-                    vale={singleUser.Lname}
+                    vale={singleUser.LName}
                   />
                 </div>
               </div>
 
+              <div style={{ display: "flex", flexDirection: "row" }}>
+              
+                  <ProfileInputField
+                    title={"About Me"}
+                    placeholder={"I AM student"}
+                    vale={singleUser.AboutMe}
+                  />
+              </div>
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <ProfileInputField
                   title={"Gender"}
@@ -99,7 +127,11 @@ export default function Profile() {
                   justifyContent: "end",
                 }}
               >
-                <Button title={"Apply Changes"} />
+                  <button
+      className="search-bar-button"
+      style={{ width: "fit-content", height: 50 }}
+      onClick={changeDetails} 
+    >Submit</button>
               </div>
             </div>
 
