@@ -24,6 +24,7 @@ import UniFaculty from "./Components/UniversityProfile/UniFaculty";
 import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
+import Task from "./Components/TaskAssignment.js/Task";
 
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
             <Route index path="/collegesubjects" element={<UniSubject/>}/>
             <Route index path="/collegefaculty" element={<UniFaculty/>}/>
             <Route index path="/collegedepartment" element={<UniDept/>}/>
-            <Route index path="/editimg" element={<EditImg/>}/>
+            <Route index path="/linkoftask" element={<Task/>}/>
             <Route index path="/UploadProject/Stage1" element={<Project_1/>} />
             <Route index path="/UploadProject/Stage2" element={<Project_2/>} />
             <Route index path="/UploadProject/Stage3" element={<Project_3/>} />
