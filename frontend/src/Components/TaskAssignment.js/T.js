@@ -30,12 +30,13 @@ function T() {
       }));
     };
   
+    const [showw,setshoww] = useState("false")
     const getDeprtId = async (e) => {
       console.log("depart id: " + e.target.value);
   
       const res = await axios
         .get(
-          `hhttp://localhost:5000/api/subject/getByDepartId/${e.target.value}`
+          `http://localhost:5000/api/subject/getByDepartId/${formValue.DepartmentId}`
         )
         .catch((err) => console.log(err));
       const data = await res.data;
@@ -48,64 +49,29 @@ function T() {
       formValue.DepartmentId = e.target.value;
     };
   
+
+    const setSubId = async (e) => {
+        formValue.SubId = e.target.value;
+        console.log( formValue.SubId)
+      };
+var link = "http://localhost:3000/UploadProject/Stage1/"
+      const generatelink = ()=>{
+        var add = formValue.SubId;
+        link+=add;
+        console.log(link);
+        setshoww("true");
+      }
+
+      const copylink = () =>{
+        navigator.clipboard.writeText(link+formValue.SubId)
+      }
     useEffect(() => {
       sendReq().then((data) => {
         setColleges(data.departments);
       });
     }, []);
-  
+   var hreff = `mailto:dvala453@gmail.com?subject=${formValue.Fname}&body=link for submission :---- ${link+formValue.SubId}`
   const clgid = "62f8724e92cfa9015a3befc9";
-  // const sendReq = async () => {
-  //     const res = await axios
-  //       .get(`http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9`)
-  //       .catch((err) => console.log(err));
-  //     const data = await res.data;
-  //     //console.log("Data from API:" + data[0].Fname);
-  //     return data;
-  //   };
-
-  //   const sendReq2 = async () => {
-  //     console.log("----");
-  //     console.log(d);
-  //     const res = await axios
-  //       .get(`http://localhost:5000/api/subject/getByDepartId/${d}`)
-  //       .catch((err) => console.log(err));
-  //     const data = await res.data;
-  //     //console.log("Data from API:" + data[0].Fname);
-  //     return data;
-  //   };
-
-  //   useEffect(() => {
-  //     sendReq().then((data) => {
-  //         setdept(data.departments)
-
-  //       console.log(dept);
-  //     });
-
-  //   }, [])
-
-  // const handlechanges = ( e)=>{
-  //     const target = e.target;
-  //     const name = target.name;
-  //     const value = target.value;
-
-  //     setd(value);
-  //     sendReq2().then((data) => {
-  //         setsub(data.subjects)
-
-  //       console.log(sub);
-  //     });
-  //     console.log(d);
-  // }
-
-  // const handlechanges2 = ( e)=>{
-  //     const target = e.target;
-  //     const name = target.name;
-  //     const value = target.value;
-
-  //     sets(value);
-  //     console.log(s);
-  // }
   return (
     <>
       <div
@@ -144,7 +110,7 @@ function T() {
 
           <input
             className="form-control  sign-in-input-field-container"
-            placeholder="Email"
+            placeholder="Title of Assignment"
             aria-label="Search"
             style={inp}
             type="text"
@@ -168,7 +134,7 @@ function T() {
         </select>
         <select
           name="DepartmentId"
-          
+          onChange={setSubId}
           class="form-control"
           id=""
           style={{ margin: "10px 0" }}
@@ -184,11 +150,26 @@ function T() {
         <div style={{ textAlign: "center" }}>
             <button
               className="sign-in-button"
-              style={{ width: "80%", height: "7vh", marginTop: 17 }}
+              style={{ width: "80%", height: "8vh", marginTop: 17 }}
+              onClick={generatelink}
             >
               Generate Link For Submission
             </button>
           </div>
+{
+    showw=="true" && <div className='btn'>
+    <button className="button  btn-ed button-primary" onClick={copylink}>
+      Copy Link
+    </button>
+    
+    
+    <a style={{textDecoration:"none"}} className="button btn-ed button-primary" href={hreff}> Share Now </a>
+
+    
+  </div>
+}
+          
+          
             </div>
        
           
