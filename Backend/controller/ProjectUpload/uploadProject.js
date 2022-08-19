@@ -15,7 +15,6 @@ const UploadProject = async (req, res, next) =>
 console.log(folderPath);
 //make object
 const obj = {
-    
     key: "this is link",
     key2: "seccond link"
 }
@@ -28,7 +27,7 @@ axios.put("http://localhost:5000/api/Project/updateProjectLink",{
   return res.status(200).json({
     success: true,
     response: {
-        code: "Project_link_updated",
+        code: "Project_uploaded_updated",
     },
 });
 }
