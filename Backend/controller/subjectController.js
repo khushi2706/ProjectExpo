@@ -36,8 +36,8 @@ const addNewSubject = async (req, res, next) => {
     Eligibility,
 Objective,
 Credit,
-CourseCode
-
+CourseCode,
+ProfessorId
      } = req.body;
 
   try {
@@ -58,7 +58,8 @@ CourseCode
         Eligibility,
         Objective,
         Credit,
-        CourseCode
+        CourseCode,
+        ProfessorId
     });
 
     await newSubject.save();
@@ -105,4 +106,32 @@ const getAllSubByDepartId = async (req, res, next) => {
   
     return res.status(200).json({ success: true, subjects });
 };
-module.exports = { getAllSubject , addNewSubject , getAllSubByDepartId};
+
+const getAllSubByProfId = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+    const {profId} = req.params;
+  
+    let subjects;
+    try {
+      subjects = await Subject.find({  ProfessorId : profId });
+    } catch (e) {
+      return res.status(400).json({
+        success: false,
+        response: {
+          message: e,
+        },
+      });
+    }
+  
+    if (!subjects) {
+      return res.status(404).json({
+        success: false,
+        response: {
+          message: "subjects not found",
+        },
+      });
+    }
+  
+    return res.status(200).json({ success: true, subjects });
+};
+module.exports = { getAllSubject , addNewSubject , getAllSubByDepartId , getAllSubByProfId};
