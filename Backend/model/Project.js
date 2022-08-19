@@ -1,5 +1,5 @@
 //create a model where all the data of projects is stored with reference to user and college
-const { bool } = require('@hapi/joi');
+const { bool, object } = require('@hapi/joi');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ProjectSchema = new Schema(
@@ -11,11 +11,6 @@ var ProjectSchema = new Schema(
     Desc :  {
         type: String,
         required: true,
-    },
-    Link:
-    {
-        type: String,
-        required : true,
     },
     Tags:[{
         type: String
@@ -53,6 +48,10 @@ var ProjectSchema = new Schema(
     Date:{
         type : Date, 
         default: Date.now  
+    },
+    ProjectLink:{
+        type: Object,
+        default: null
     }
 })
 

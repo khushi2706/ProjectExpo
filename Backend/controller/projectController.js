@@ -65,7 +65,6 @@ const addNewProject = async (req, res, next) => {
     const {  
         PName,
         Desc,
-        Link,
         Tags,
         PType,
         isPrivete,
@@ -85,7 +84,6 @@ const addNewProject = async (req, res, next) => {
       const newProject = new Project({
         PName,
         Desc,
-        Link,
         Tags,
         PType,
         isPrivete,
@@ -106,6 +104,21 @@ const addNewProject = async (req, res, next) => {
       response: {
         code: "Project_added_success",
       },
+    });
+};
+
+const AddProjectLink = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const {
+        ProjectLink,
+        ProjectId
+    } = req.body;
+    
+    return res.status(200).json({
+        success: true,
+        response: {
+            code: "Project_added_success",
+        },
     });
 };
   
