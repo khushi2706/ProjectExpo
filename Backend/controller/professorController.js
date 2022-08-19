@@ -139,4 +139,74 @@ const getAllProfByDepartId = async (req, res, next) => {
   
     return res.status(200).json({ success: true, professors });
 };
-module.exports = { getAllProfessor , addNewProfessor , getAllProfByDepartId};
+
+const changeProfessorDetails = async(req,res)=> {
+  res.set('Access-Control-Allow-Origin', '*');
+  const {
+       ProfessorId,
+       Fname,
+       LName,
+       Degree,
+       DoB,
+       Gender
+       } = req.body;
+       
+       console.log("===============");
+  console.log(req.body);
+  try {
+
+      const filter = { _id: ProfessorId };
+      const update = { 
+        Fname,
+       LName,
+       Degree,
+       DoB,
+       Gender };
+
+     await Professor.findByIdAndUpdate(ProfessorId,
+          update);
+      
+  } catch (error) {
+      return res.status(400).json({
+          success : false,
+          response : {
+              error
+          }
+      })
+  }
+  return res.status(200).json({
+      success: true,
+      response: {
+          code: "Professor_Update_success",
+          message: "",
+          data: {},
+      },
+  });
+}
+
+const getProfessorById = async (req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  const ProfessorId = req.params.id;
+
+  let professor;
+  console.log("ProfessorId:" + ProfessorId);
+  try {
+    professor = await Professor.findById(ProfessorId);
+    //console.log(Professor);
+  } catch (e) {
+    console.log("Exception: " + e);
+    return res.status(400).json({
+      success: false,
+      response: {
+        message: e,
+      },
+    });
+  }
+
+  if (!professor) return res.status(500).json({ message: "Not found" });
+
+  console.log(professor);
+  return res.status(200).json(professor);
+};
+module.exports = { getAllProfessor , addNewProfessor , getAllProfByDepartId , changeProfessorDetails, getProfessorById};

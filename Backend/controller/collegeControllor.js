@@ -117,10 +117,13 @@ const addNewCollege = async (req, res, next) => {
 
 const getCollegeById = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
+
     const { id } = req.params;
+    console.log(id);
     let college;
     try {
         college = await College.findById(id);
+        console.log(college);
     } catch (e) {
         return res.status(400).json({
             success : false,

@@ -1,0 +1,15 @@
+.sign-in-input-field-container {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+select {
+    font-size: 18px;
+    font-family: 'poppins';
+    outline: none;
+    border: none;
+    margin: 10px 20px;
+    width: -webkit-fill-available;        
+}

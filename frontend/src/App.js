@@ -14,6 +14,10 @@ import RoadmapView from "./Components/Roadmap/RoadmapView";
 import Profile from "./Components/Profile/Profile";
 
 import Blog from "./Components/Blog/Blog";
+import SignUp2 from "./Components/SignUp/SignUp2";
+import CollegeSelect from "./Components/SignUp/CollegeSelect";
+
+import MyProfile from "./Components/Profile/MyProfile";
 import UniProfile from "./Components/UniversityProfile/UniProfile";
 import UniSubject from "./Components/UniversityProfile/UniSubject";
 import UniDept from "./Components/UniversityProfile/UniDept";
@@ -28,6 +32,8 @@ import T from "./Components/TaskAssignment.js/T";
 import Quizmain from "./Components/quiz/Quizmain";
 
 
+import Logout from "./Components/logout/Logout";
+import "./Components/GeneralCSS/main.css";
 
 function App() {
   return (
@@ -43,7 +49,16 @@ function App() {
             <Route index path="/project" element={<ProjectMain />} />
             <Route index path="viewRoadmap/:id" element={<RoadmapView />} />
             <Route index path="/viewProject/:id" element={<ProjectView />} />
-            <Route index path="/profile" element={<Profile />} />
+            <Route index path="/MyProfile" element={<MyProfile />} />
+            <Route index path="/blog" element={<Blog />} />
+            <Route index path="/mentor" element={<Mentor />} />
+            <Route index path="/viewmentor/:id" element={<MentorView />} />
+            <Route index path="/signup/signup2" element={<SignUp2 />} />
+            <Route
+              index
+              path="/signup/signup2/collegeSelect"
+              element={<CollegeSelect />}
+            />
 
             <Route index path="/blog" element={<Blog/>}/>
             <Route index path="/mentor" element={<Mentor/>}/>
@@ -59,6 +74,7 @@ function App() {
             <Route index path="/quiz" element={<Quizmain/>}/>
             
 
+            <Route index path="/Logout" element={<Logout/>}/>
           </Routes>
         </BrowserRouter>
       </div>

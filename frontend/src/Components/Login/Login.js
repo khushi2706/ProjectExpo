@@ -2,38 +2,42 @@ import React, { useState } from "react";
 import { ReactDOM } from "react";
 import { NavLink } from "react-router-dom";
 import google_logo from "../../Assets/Images/google.svg";
+import axios from "axios";
+import Cookies from 'universal-cookie'
 
-var search = {
-  // backgroundColor:'#cce6ff',
-  height: "100%",
-  width: "100.8%",
-  overflow: "hidden",
-};
-
-var wrapper = {
-  backgroundColor: "#F6F7FB",
-  height: "30rem",
-  width: "600px",
-  // overflow:'hidden',
-};
 var inp = {
   marginTop: "1rem",
   padding: "0.5rem",
 };
-var inp1 = {
-  marginTop: "1rem",
-  padding: "0.5rem",
-};
 
-var but = {
-  backgroundColor: "#ffffff",
-};
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [cat, setCat] = useState("");
-  console.log(email);
+  const cookies = new Cookies();
+  const sendReq = async () => {
+    const res = await axios
+      .post(`http://localhost:5000/api/user/login`,
+      {
+        Email : email,
+        Password : pass
+    })
+      .catch((err) => console.log(err));
+      const data = await res.data;
+    return data;
+  };
 
+  const loginUser = (event)=>{
+    event.preventDefault()
+    console.log(email,pass);
+      sendReq().then((data)=>{
+        const cookies = new Cookies();
+
+        cookies.set('authToken', data.authToken , { path: '/' });
+        cookies.set('userId' , data.userId,   { path: '/' });
+        cookies.set('userType', data.userType, {path:'/'});
+        console.log(data);
+    })
+  }
   return (
     <>
       {/* <div className="row justify-content-center align-items-center  " style={search}> */}
@@ -62,7 +66,7 @@ export default function Login(props) {
           }}
         >
           <div className="w-100 text-center">
-            <form className="form-inline">
+            <form className="form-inline" onSubmit={loginUser}>
               <div className="col m-auto">
                 <input
                   className="form-control  sign-in-input-field-container"
@@ -83,19 +87,7 @@ export default function Login(props) {
                   onChange={(e) => setPass(e.target.value)}
                   value={pass}
                 />
-                <div className="sign-in-input-field-container">
-                  <select
-                    className=" select "
-                    aria-label=".form-select-sm example"
-                    onChange={(e) => setCat(e.target.value)}
-                  value={cat}
-                  >
-                    <option defaultValue="0" >Student</option>
-                    <option value="1">Administrator</option>
-                    <option value="2">University Administrator</option>
-                    <option value="3">College Administrator</option>
-                  </select>
-                </div>
+               
                 <div
                   style={{
                     textAlign: "center",
@@ -125,6 +117,7 @@ export default function Login(props) {
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <button
+                  type="submit"
                     className="sign-in-button"
                     style={{ width: "80%", height: "6vh", marginTop: 17 }}
                   >
