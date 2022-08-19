@@ -107,19 +107,36 @@ const addNewProject = async (req, res, next) => {
     });
 };
 
-const AddProjectLink = async (req, res, next) => {
+
+const UpdateProjectLink = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
     const {
-        ProjectLink,
-        ProjectId
+      ProjectId,
     } = req.body;
+
+    const UpdatedProjectLink = req.body.UpdatedProjectLink;
+    console.log(UpdateProjectLink);
+    try {
+      const update = {  ProjectLink : UpdatedProjectLink };
+
+     await Project.findByIdAndUpdate(ProjectId,
+          update);
+     
+  } catch (error) {
+      return res.status(400).json({
+          success : false,
+          response : {
+              error
+          }
+      })
+  }
     
     return res.status(200).json({
         success: true,
         response: {
-            code: "Project_added_success",
+            code: "Project_link_updated",
         },
     });
 };
   
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject }
+module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject ,UpdateProjectLink}

@@ -50,7 +50,7 @@ var ProjectSchema = new Schema(
         default: Date.now  
     },
     ProjectLink:{
-        type: Object,
+        type: [Object], blackbox: true ,
         default: null
     }
 })
