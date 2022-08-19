@@ -13,16 +13,29 @@ import { Navigate } from "react-router-dom";
 // import Popup from 'reactjs-popup';
 
 function UniProfile() {
+
   
  const cookies = new Cookies();
  const UserType = cookies.get('userType');
  console.log(UserType);
   const CollegeId = "62f8724e92cfa9015a3befc9";
+
+const [showw,setshoww] = useState("false");
+
+
 const Handle_toggle=()=>{
     const img=document.getElementById('pop_Container')
     console.log(img);
 }
 
+const handleeditclick = () => {
+  setshoww("true");
+  console.log(showw);
+}
+
+const handlesubmit = (e) =>{
+  setshoww("false")
+}
 const [user, setUser] = useState();
 
 const sendRequest = async () => {
@@ -185,26 +198,30 @@ useEffect(() => {
           }}
         ></div>
       </div>
+      {showw == "true" && (
+        <div className="popup-container" id="pop_Container">
+        <div className="popup-box">
+          <form 
+          
+          action='http://localhost:5000/collegeprofile'
+          id='uploadForm'
+          method='post' 
+          encType="multipart/form-data">
+          <input type="file" name="inputFile" id="uploadfile"/> 
+          <input type="text"  name = "CollegeId" value={CollegeId} hidden />
+          <button type="submit" value="Submit" >Upload</button>
+          <button type="submit" value="Close" onClick={handlesubmit}>Close</button>
+          </form>
+        </div>
+  </div>
+      )}
       
-      <div className="popup-container" id="pop_Container">
-            <div className="popup-box">
-              <form 
-              action='http://localhost:5000/collegeprofile'
-              id='uploadForm'
-              method='post' 
-              encType="multipart/form-data">
-              <input type="file" name="inputFile" id="uploadfile"/> 
-              <input type="text"  name = "CollegeId" value={CollegeId} hidden />
-              <button type="submit" value="Submit">Upload</button>
-              </form>
-            </div>
-      </div>
         
       <div>
       <img className="profilepic" style={{width:"907px" , height:"343px",margin:"10px",padding:"5px"}} src="https://tse3.mm.bing.net/th?id=OIP.MnwaoGEMyJ4apfF-tH-KVAHaES&pid=Api&P=0" alt="college photo"/>
-      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/">
+     <div className="" onClick={handleeditclick}>
       <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"  onclilck={Handle_toggle}/>
-      </NavLink>
+      </div>
       
       </div>
 
