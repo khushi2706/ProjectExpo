@@ -4,6 +4,50 @@ import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import "./FacultyProfile.css";
 export default function FacultyProfile() {
+  const [myProfessor, setMyProfessor] = useState();
+  const [myFacultyFirstName, setMyFacultyFirstName] = useState();
+  const [myFacultyLastName, setMyFacultyLastName] = useState();
+  const [myFacultyGender, setMyFacultyGender] = useState();
+  const [myFacultyDob, setMyFacultyDob] = useState();
+  const [myFacultyEmail, setMyFacultyEmail] = useState();
+  const [myFacultyDegree, setMyFacultyDegree] = useState();
+
+  const handleClickEvent = () => {
+    console.log("First Name: " + myFacultyFirstName);
+    console.log("Last Name: " + myFacultyLastName);
+    console.log("Gender: " + myFacultyGender);
+    console.log("Dob : " + myFacultyDob);
+    console.log("Email: " + myFacultyEmail);
+    console.log("Degree: " + myFacultyDegree);
+  };
+
+  const professorId = "62ff4ff502288569b439bc1f";
+
+  const sendReq = async () => {
+    const res = await axios
+      .get(`http://localhost:5000/api/professor/getById/${professorId}`)
+
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    //console.log("Data from API:" + data[0].Fname);
+    return data;
+  };
+
+  useEffect(() => {
+    sendReq().then((data) => {
+      console.log(data);
+      setMyProfessor(data);
+    });
+  }, []);
+
+  const handlechange = (e) => {
+    setMyProfessor((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  //   console.log(myProfessor);
+
   return (
     <>
       <div>
@@ -43,14 +87,16 @@ export default function FacultyProfile() {
               <div className="input-field-main-container">
                 <div className="input-field-label-container">First Name</div>
                 <div>
-                  <input
-                    className="input-field"
-                    type="text"
-                    placeholder="Ex. Nikunj"
-                    // value={val}
-                    // onChange={(e) => setVal(e.target.value)}
-                    name="val"
-                  />
+                  {myProfessor && (
+                    <input
+                      className="input-field"
+                      type="text"
+                      placeholder="Ex. Nikunj"
+                      value={myProfessor.Fname}
+                      onChange={handlechange}
+                      name="val"
+                    />
+                  )}
                 </div>
               </div>
               {/* )} */}
@@ -64,7 +110,7 @@ export default function FacultyProfile() {
                       type="text"
                       placeholder="Ex. Patel"
                       // value={val}
-                      // onChange={(e) => setVal(e.target.value)}
+                      onChange={(e) => setMyFacultyLastName(e.target.value)}
                       name="val"
                     />
                   </div>
@@ -81,7 +127,7 @@ export default function FacultyProfile() {
                     type="text"
                     placeholder="Ex. Male"
                     // value={val}
-                    // onChange={(e) => setVal(e.target.value)}
+                    onChange={(e) => setMyFacultyGender(e.target.value)}
                     name="val"
                   />
                 </div>
@@ -97,7 +143,7 @@ export default function FacultyProfile() {
                       type="text"
                       placeholder="Ex. 31/10/2000"
                       // value={val}
-                      // onChange={(e) => setVal(e.target.value)}
+                      onChange={(e) => setMyFacultyDob(e.target.value)}
                       name="val"
                     />
                   </div>
@@ -114,7 +160,7 @@ export default function FacultyProfile() {
                     type="text"
                     placeholder="Ex. ndpatel.tech@gmail.com"
                     // value={val}
-                    // onChange={(e) => setVal(e.target.value)}
+                    onChange={(e) => setMyFacultyEmail(e.target.value)}
                     name="val"
                   />
                 </div>
@@ -130,7 +176,7 @@ export default function FacultyProfile() {
                     type="text"
                     placeholder="Ex. B.tech in Computer Engineering"
                     // value={val}
-                    // onChange={(e) => setVal(e.target.value)}
+                    onChange={(e) => setMyFacultyDegree(e.target.value)}
                     name="val"
                   />
                 </div>
@@ -143,7 +189,7 @@ export default function FacultyProfile() {
                 justifyContent: "end",
               }}
             >
-              <Button title={"Apply Changes"} />
+              <Button title={"Apply Changes"} onclick={handleClickEvent} />
             </div>
           </div>
 
