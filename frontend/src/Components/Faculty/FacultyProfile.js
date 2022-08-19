@@ -13,7 +13,7 @@ export default function FacultyProfile() {
       .then(() => {});
   };
 
-  const professorId = "62ff4ff502288569b439bc1f";
+  const professorId = "62f775efd08e60cc79eeb6ab";
 
   const sendReq = async () => {
     const res = await axios
