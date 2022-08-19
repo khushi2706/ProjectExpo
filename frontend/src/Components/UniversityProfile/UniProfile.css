@@ -14,7 +14,12 @@ left: 1249px;
 filter: invert(100%);
 background: rgba(217, 217, 217, 0.3);
 }
-
+.editing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .w-700{
     width: 700px;
 }

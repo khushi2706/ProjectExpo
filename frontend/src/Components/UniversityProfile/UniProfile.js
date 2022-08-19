@@ -17,7 +17,7 @@ function UniProfile() {
  const cookies = new Cookies();
  const UserType = cookies.get('userType');
  console.log(UserType);
-  const CollegeId = "62f6135b8c07d28ed759794e";
+  const CollegeId = "62f8724e92cfa9015a3befc9";
 const Handle_toggle=()=>{
     const img=document.getElementById('pop_Container')
     console.log(img);
@@ -106,7 +106,7 @@ useEffect(() => {
          <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
 
          {/* options */}
-         <div style={{position:"sticky",top:"130px",padding:"10px"}}>
+         <div className="editing" style={{position:"sticky",top:"130px",padding:"10px"}}>
          <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegeprofile">
          <SideBarOption icon="person"  title="Profile" />
          </NavLink>
