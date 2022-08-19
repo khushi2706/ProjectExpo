@@ -1,4 +1,5 @@
 const Project = require("../../model/Project");
+const uploadProject = require("../../controller/ProjectUpload/uploadProject");
 
 const axios = require('axios')
 
@@ -10,8 +11,9 @@ const UploadProject = async (req, res, next) =>
     projectId,
     folderPath
   } = req.body
-
 // do the aws stuff
+  // 
+
 console.log(folderPath);
 //make object
 const obj = {
