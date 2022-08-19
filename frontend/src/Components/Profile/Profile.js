@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Common/Button";
-import ProfileInputField from "./ProfileInputField";
 import axios from "axios";
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState();
 
-  const studentId = "62f779d74af7b7b96e43a2f7";
+  const studentId = "62f8ec07171b0a7c68f63d2a";
 
   const sendReq = async () => {
     const res = await axios
@@ -31,7 +30,7 @@ export default function Profile() {
     const res = await axios.put(
       `http://localhost:5000/api/student/changeDetails`,
       {
-        "StudentId": "62f779d74af7b7b96e43a2f7",
+        "StudentId": "62f8ec07171b0a7c68f63d2a",
        "Fname": singleUser.Fname,
         "LName": singleUser.LName,
         "AboutMe" :singleUser.AboutMe,
@@ -44,6 +43,12 @@ export default function Profile() {
     //console.log("Data from API:" + data[0].Fname);
     console.log(data);
   }
+  const handlechange = (e) => {
+    setSingleUser((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
   console.log(singleUser);
   return (
     <>
@@ -81,43 +86,153 @@ export default function Profile() {
           <div style={{ display: "flex", flexDirection: "row" }}>
             <div>
               <div style={{ display: "flex", flexDirection: "row" }}>
-                {singleUser && (
-                  <ProfileInputField
-                    title={"First Name"}
-                    placeholder={"Ex: Nikunj"}
-                    vale={singleUser.Fname}
-                  />
-                )}
-
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          First Name
+        </div>
+        <div>  {singleUser && (
+          <input
+            title={"First Name"}
+            placeholder={"Ex: Nikunj"}
+            value={singleUser.Fname}
+            className="input-field"
+            onChange={handlechange}
+           name="Fname"
+          />
+        )}</div>
+        </div>
+              
+        <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+         Last Name
+        </div>
                 <div style={{ marginLeft: 10 }}>
-                  <ProfileInputField
+                  <input
                     title={"Last Name"}
                     placeholder={"Ex: Patel"}
-                    vale={singleUser.LName}
+                    value={singleUser.LName}
+                    className="input-field"
+                    onChange={handlechange}
+                   name="LName"
                   />
+                </div>
                 </div>
               </div>
 
               <div style={{ display: "flex", flexDirection: "row" }}>
-              
-                  <ProfileInputField
-                    title={"About Me"}
-                    placeholder={"I AM student"}
-                    vale={singleUser.AboutMe}
-                  />
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          About Me
+        </div>
+                 <div>
+                 <input
+                 title={"About Me"}
+                 placeholder={"I AM student"}
+                 value={singleUser.AboutMe}
+                 className="input-field"
+                 onChange={handlechange}
+                name="AboutMe"
+               /></div>
+               </div>
               </div>
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <ProfileInputField
-                  title={"Gender"}
-                  placeholder={"Ex: Male"}
-                  vale={singleUser.Gender}
-                />
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          Gender
+        </div>
+                <div><input
+                title={"Gender"}
+                placeholder={"Ex: Male"}
+                value={singleUser.Gender}
+                className="input-field"
+                  onChange={handlechange}
+                 name="Gender"
+              /></div>
+              </div>
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          DOB
+        </div>
                 <div style={{ marginLeft: 10 }}>
-                  <ProfileInputField
+                  <input
                     title={"DOB"}
                     placeholder={"Ex: 31/10/2000"}
-                    vale={singleUser.DoB}
+                    value={singleUser.DoB}
+                    className="input-field"
+                    onChange={handlechange}
+                   name="DoB"
                   />
+                </div>
                 </div>
               </div>
 

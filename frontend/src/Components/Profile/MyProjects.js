@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function MyProjects() {
-  const userId = "62f779d74af7b7b96e43a2f4";
+  const userId = "62f8ec07171b0a7c68f63d2a";
   const [projects, setProjects] = useState();
   const sendReq = async () => {
     const res = await axios
