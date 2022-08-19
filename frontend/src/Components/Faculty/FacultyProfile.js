@@ -106,14 +106,16 @@ export default function FacultyProfile() {
                 <div className="input-field-main-container">
                   <div className="input-field-label-container">Last Name</div>
                   <div>
-                    <input
-                      className="input-field"
-                      type="text"
-                      placeholder="Ex. Patel"
-                      //   value={myProfessor.LName}
-                      //   onChange={handlechange}
-                      name="LName"
-                    />
+                    {myProfessor && (
+                      <input
+                        className="input-field"
+                        type="text"
+                        placeholder="Ex. Patel"
+                        value={myProfessor.LName}
+                        onChange={handlechange}
+                        name="LName"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -123,14 +125,17 @@ export default function FacultyProfile() {
               <div className="input-field-main-container">
                 <div className="input-field-label-container">Gender</div>
                 <div>
-                  <input
-                    className="input-field"
-                    type="text"
-                    placeholder="Ex. Male"
-                    // value={val}
-                    onChange={handlechange}
-                    name="val"
-                  />
+                  {" "}
+                  {myProfessor && (
+                    <input
+                      className="input-field"
+                      type="text"
+                      placeholder="Ex. Male"
+                      value={myProfessor.Gender}
+                      onChange={handlechange}
+                      name="Gender"
+                    />
+                  )}
                 </div>
               </div>
               <div style={{ marginLeft: 10 }}>
@@ -139,14 +144,17 @@ export default function FacultyProfile() {
                     Date of Birth
                   </div>
                   <div>
-                    <input
-                      className="input-field"
-                      type="text"
-                      placeholder="Ex. 31/10/2000"
-                      // value={val}
-                      onChange={(e) => setMyFacultyDob(e.target.value)}
-                      name="val"
-                    />
+                    {" "}
+                    {myProfessor && (
+                      <input
+                        className="input-field"
+                        type="text"
+                        placeholder="Ex. 31/10/2000"
+                        value={myProfessor.DoB}
+                        onChange={handlechange}
+                        name="DoB"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -156,14 +164,17 @@ export default function FacultyProfile() {
               <div className="input-field-main-container">
                 <div className="input-field-label-container">Public Email</div>
                 <div>
-                  <input
-                    className="input-field"
-                    type="text"
-                    placeholder="Ex. ndpatel.tech@gmail.com"
-                    // value={val}
-                    onChange={(e) => setMyFacultyEmail(e.target.value)}
-                    name="val"
-                  />
+                  {" "}
+                  {myProfessor && (
+                    <input
+                      className="input-field"
+                      type="text"
+                      placeholder="Ex. ndpatel.tech@gmail.com"
+                      value={myProfessor.PubEmail}
+                      onChange={handlechange}
+                      name="PubEmail"
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -172,14 +183,17 @@ export default function FacultyProfile() {
               <div className="input-field-main-container">
                 <div className="input-field-label-container">Degree</div>
                 <div>
-                  <input
-                    className="input-field"
-                    type="text"
-                    placeholder="Ex. B.tech in Computer Engineering"
-                    // value={val}
-                    onChange={(e) => setMyFacultyDegree(e.target.value)}
-                    name="val"
-                  />
+                  {" "}
+                  {myProfessor && (
+                    <input
+                      className="input-field"
+                      type="text"
+                      placeholder="Ex. B.tech in Computer Engineering"
+                      value={myProfessor.Degree}
+                      onChange={handlechange}
+                      name="val"
+                    />
+                  )}
                 </div>
               </div>
             </div>
