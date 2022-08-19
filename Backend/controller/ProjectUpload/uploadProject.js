@@ -5,15 +5,23 @@ const axios = require('axios')
 
 const UploadProject = async (req, res, next) =>
 {
-// do the aws stuff
 
+  const {
+    projectId,
+    folderPath
+  } = req.body
+
+// do the aws stuff
+console.log(folderPath);
 //make object
 const obj = {
-    key: "this is link"
+    
+    key: "this is link",
+    key2: "seccond link"
 }
 
 axios.put("http://localhost:5000/api/Project/updateProjectLink",{
-    ProjectId : "62f9d780f752d70e0e2a2e5d",
+    ProjectId : projectId,
     UpdatedProjectLink: JSON.parse(JSON.stringify(obj))
   })
 
