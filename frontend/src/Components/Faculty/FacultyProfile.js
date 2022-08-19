@@ -5,22 +5,12 @@ import axios from "axios";
 import "./FacultyProfile.css";
 export default function FacultyProfile() {
   const [myProfessor, setMyProfessor] = useState();
-  const [myFacultyFirstName, setMyFacultyFirstName] = useState();
-  const [myFacultyLastName, setMyFacultyLastName] = useState();
-  const [myFacultyGender, setMyFacultyGender] = useState();
-  const [myFacultyDob, setMyFacultyDob] = useState();
-  const [myFacultyEmail, setMyFacultyEmail] = useState();
-  const [myFacultyDegree, setMyFacultyDegree] = useState();
 
   const handleClickEvent = () => {
-    // console.log("First Name: " + myFacultyFirstName);
-    // console.log("Last Name: " + myFacultyLastName);
-    // console.log("Gender: " + myFacultyGender);
-    // console.log("Dob : " + myFacultyDob);
-    // console.log("Email: " + myFacultyEmail);
-    // console.log("Degree: " + myFacultyDegree);
-
     console.log(myProfessor);
+    sendRequest()
+      .then((data) => console.log(data))
+      .then(() => {});
   };
 
   const professorId = "62ff4ff502288569b439bc1f";
@@ -41,6 +31,26 @@ export default function FacultyProfile() {
       setMyProfessor(data);
     });
   }, []);
+
+  const sendRequest = async () => {
+    // let degree = String(myProfessor.Degree);
+    // const tem = degree.split(",");
+    // console.log("Degree: " + tem[0]);
+    const res = await axios
+      .put("http://localhost:5000/api/professor/changeDetails", {
+        Fname: myProfessor.Fname,
+        LName: myProfessor.LName,
+        Degree: myProfessor.Degree,
+        DoB: myProfessor.DoB,
+        Gender: myProfessor.Gender,
+        ProfessorId: professorId,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
+
   const handlechange = (e) => {
     setMyProfessor((prevState) => ({
       ...prevState,
