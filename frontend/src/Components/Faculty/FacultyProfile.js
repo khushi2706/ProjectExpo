@@ -13,12 +13,14 @@ export default function FacultyProfile() {
   const [myFacultyDegree, setMyFacultyDegree] = useState();
 
   const handleClickEvent = () => {
-    console.log("First Name: " + myFacultyFirstName);
-    console.log("Last Name: " + myFacultyLastName);
-    console.log("Gender: " + myFacultyGender);
-    console.log("Dob : " + myFacultyDob);
-    console.log("Email: " + myFacultyEmail);
-    console.log("Degree: " + myFacultyDegree);
+    // console.log("First Name: " + myFacultyFirstName);
+    // console.log("Last Name: " + myFacultyLastName);
+    // console.log("Gender: " + myFacultyGender);
+    // console.log("Dob : " + myFacultyDob);
+    // console.log("Email: " + myFacultyEmail);
+    // console.log("Degree: " + myFacultyDegree);
+
+    console.log(myProfessor);
   };
 
   const professorId = "62ff4ff502288569b439bc1f";
@@ -39,7 +41,6 @@ export default function FacultyProfile() {
       setMyProfessor(data);
     });
   }, []);
-
   const handlechange = (e) => {
     setMyProfessor((prevState) => ({
       ...prevState,
@@ -94,7 +95,7 @@ export default function FacultyProfile() {
                       placeholder="Ex. Nikunj"
                       value={myProfessor.Fname}
                       onChange={handlechange}
-                      name="val"
+                      name="Fname"
                     />
                   )}
                 </div>
@@ -109,9 +110,9 @@ export default function FacultyProfile() {
                       className="input-field"
                       type="text"
                       placeholder="Ex. Patel"
-                      // value={val}
-                      onChange={(e) => setMyFacultyLastName(e.target.value)}
-                      name="val"
+                      //   value={myProfessor.LName}
+                      //   onChange={handlechange}
+                      name="LName"
                     />
                   </div>
                 </div>
@@ -127,7 +128,7 @@ export default function FacultyProfile() {
                     type="text"
                     placeholder="Ex. Male"
                     // value={val}
-                    onChange={(e) => setMyFacultyGender(e.target.value)}
+                    onChange={handlechange}
                     name="val"
                   />
                 </div>
