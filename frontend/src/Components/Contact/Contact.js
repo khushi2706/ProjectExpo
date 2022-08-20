@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Common/Header";
+import Footer from "../footer/Footer";
 
 import "./Contact.css";
 
@@ -36,13 +37,15 @@ const Contact = () => {
   return (
     <div>
     <Header/>
-      <div className="title text-center ll" style={{textAlign:"center"}}>Send As A Message</div>
+        <div className=" cddd" style={{textAlign:"center"}}>Send As A Message</div>
       <div className="mb-4 d-flex justify-content-evenly flex-wrap">
         <div className="left my-4">
           <form action="">
             <div className="inputt my-3">
               <label htmlFor="" className="ll form-label">
+              <h5 className="ll">
                 Email Id:
+                </h5>
               </label>
               <input
                 type="email"
@@ -53,7 +56,9 @@ const Contact = () => {
             </div>
             <div className="inputt my-3">
               <label htmlFor="" className="ll form-label">
+              <h5 className="ll">
                 Message:
+                </h5>
               </label>
               <input
                 type="text"
@@ -66,7 +71,7 @@ const Contact = () => {
             <input
               type="submit"
               value="Send"
-              className=" cc submit rounded-pill btn btn-primary mt-2"
+              className=" cc search-bar-button "
             />
           </form>
         </div>
@@ -77,16 +82,16 @@ const Contact = () => {
 
       <div className="d-flex flex-row justify-content-around flex-wrap">
         <h5 className="my-1 mb-4">
-          {contactIcon()} <span className="fw-bold">Contact No:</span> +91
+          {contactIcon()} <h5 className="fw-bold">Contact No:</h5> +91
          2587413697
         </h5>
         <h5 className="my-1 mb-4">
-          {emailIconSVG()} <span className="fw-bold">Email:</span>{" "}
+          {emailIconSVG()} <h5 className="fw-bold">Email:</h5>{" "}
           projectexpo@gmail.com
         </h5>
       </div>
 
-     
+     <Footer/>
     </div>
   );
 };

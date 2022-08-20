@@ -1,8 +1,15 @@
-.title {
+.tittle {
     margin: 2%;
     color: #1e90ff !important;
     font-size: 1.7em;
     font-weight: bold;
+    text-decoration: underline;
+}
+
+.cddd{
+    color: #1e90ff !important;
+    font-size: 1.7em;
+    font-weight: 700;
     text-decoration: underline;
 }
 
@@ -31,4 +38,6 @@
 
 .cc{
     text-align: center;
+    height: 44px;
+    width: 150px;
 }
