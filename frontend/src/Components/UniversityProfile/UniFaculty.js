@@ -11,15 +11,21 @@ import { NavLink } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import FacultyCard from "./FacultyCard";
 import PopF from "./PopF";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
 
 function UniFaculty() {
   const handleClick = () => {};
   const [user, setUser] = useState();
+  const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ 
+ const CollegeId = cookies.get('uTypeId')
 
   const sendRequest = async () => {
     const res = await axios
       .get(
-        "http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9"
+        `http://localhost:5000/api/college/collegeId/${CollegeId}`
       )
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -33,7 +39,7 @@ function UniFaculty() {
   const sendRequest2 = async () => {
     const res = await axios
       .get(
-        "http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9"
+        `http://localhost:5000/api/department/getByCollgeId/${CollegeId}`
       )
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -55,6 +61,11 @@ function UniFaculty() {
 
   return (
     <>
+    {
+  UserType != 'College-admin'
+  &&
+  <Navigate to="/login" replace={true} />
+}
       {sub && (
         <div
           style={{

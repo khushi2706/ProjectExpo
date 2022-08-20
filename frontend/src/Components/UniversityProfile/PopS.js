@@ -7,7 +7,13 @@ import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import Cookies from 'universal-cookie'
+
 import "./pop.css"
+const cookies = new Cookies();
+
+const CollegeId = cookies.get('uTypeId')
+
 class Pop extends React.Component {
  
   constructor(props) {
@@ -33,7 +39,7 @@ class Pop extends React.Component {
   componentDidMount() {
     const sendReq = async () => {
         const res = await axios
-          .get(`http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9`)
+          .get(`http://localhost:5000/api/department/getByCollgeId/${CollegeId}`)
           .catch((err) => console.log(err));
         const data = await res.data;
         //console.log("Data from API:" + data[0].Fname);

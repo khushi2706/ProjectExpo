@@ -17,8 +17,8 @@ function UniProfile() {
   
  const cookies = new Cookies();
  const UserType = cookies.get('userType');
- console.log(UserType);
-  const CollegeId = "62f8724e92cfa9015a3befc9";
+ 
+ const CollegeId = cookies.get('uTypeId')
 
 const [showw,setshoww] = useState("false");
 
