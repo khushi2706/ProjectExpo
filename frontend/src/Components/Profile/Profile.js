@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Common/Button";
 import axios from "axios";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState();
 
-  const studentId = "62f8ec07171b0a7c68f63d2a";
+  const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ 
+ const studentId = cookies.get('uTypeId')
+  
 
   const sendReq = async () => {
     const res = await axios
@@ -30,7 +36,7 @@ export default function Profile() {
     const res = await axios.put(
       `http://localhost:5000/api/student/changeDetails`,
       {
-        "StudentId": "62f8ec07171b0a7c68f63d2a",
+        "StudentId": studentId,
        "Fname": singleUser.Fname,
         "LName": singleUser.LName,
         "AboutMe" :singleUser.AboutMe,
@@ -41,6 +47,7 @@ export default function Profile() {
     .catch((err) => console.log(err));
     const data = await res.data;
     //console.log("Data from API:" + data[0].Fname);
+    window.location.href = "http://localhost:3000/myProfile"
     console.log(data);
   }
   const handlechange = (e) => {
@@ -52,6 +59,11 @@ export default function Profile() {
   console.log(singleUser);
   return (
     <>
+    {
+  UserType != 'Student'
+  &&
+  <Navigate to="/login" replace={true} />
+}
       {singleUser && (
         <div>
           <div

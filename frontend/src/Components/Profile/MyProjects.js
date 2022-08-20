@@ -2,10 +2,17 @@ import React, { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
 
 export default function MyProjects() {
-  const userId = "62f8ec07171b0a7c68f63d2a";
   const [projects, setProjects] = useState();
+  
+  const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ 
+ const userId = cookies.get('userId')
+  console.log(userId);
   const sendReq = async () => {
     const res = await axios
       .get(`http://localhost:5000/api/Project/UserId/${userId}`)
@@ -25,6 +32,11 @@ export default function MyProjects() {
 
   return (
     <>
+    {
+  UserType != 'Student'
+  &&
+  <Navigate to="/login" replace={true} />
+}
       <div style={{ display: "flex", flexDirection: "column" }}>
         {projects &&
           projects.map((project, index) => (

@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const User = require("../model/User"); // User model
 const College = require("../model/College");
+const Student = require("../model/Student");
 const Professor = require("../model/Professor");
 const Joi = require('@hapi/joi');
 const { registerSchema, loginSchema } = require('../utils/userValidation');
