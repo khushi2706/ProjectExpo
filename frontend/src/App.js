@@ -28,12 +28,15 @@ import UniFaculty from "./Components/UniversityProfile/UniFaculty";
 import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
-import T from "./Components/TaskAssignment.js/T";
+
 import Quizmain from "./Components/quiz/Quizmain";
 
 
 import Logout from "./Components/logout/Logout";
 import "./Components/GeneralCSS/main.css";
+import T from "./Components/TaskAssignment/T";
+import AboutUs from "./Components/About/About";
+import Contact from "./Components/Contact/Contact";
 
 function App() {
   return (
@@ -72,6 +75,8 @@ function App() {
             <Route index path="/UploadProject/Stage2" element={<Project_2/>} />
             <Route index path="/UploadProject/Stage3" element={<Project_3/>} />
             <Route index path="/quiz" element={<Quizmain/>}/>
+            <Route index path="/aboutus" element={<AboutUs/>}/>
+            <Route index path="/contact" element={<Contact/>}/>
             
 
             <Route index path="/Logout" element={<Logout/>}/>
