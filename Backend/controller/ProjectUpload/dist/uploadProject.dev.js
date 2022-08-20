@@ -43,14 +43,6 @@ var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink
           // })
 
         case 12:
-          return _context.abrupt("return", res.status(200).json({
-            success: true,
-            response: {
-              code: "Project_link_updated"
-            }
-          }));
-
-        case 13:
         case "end":
           return _context.stop();
       }
@@ -59,7 +51,7 @@ var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink
 };
 
 exports.uploadProject = function _callee(req, res, next) {
-  var _req$body, projectId, folderPath, allpaths, obj;
+  var _req$body, projectId, folderPath, allpaths;
 
   return regeneratorRuntime.async(function _callee$(_context2) {
     while (1) {
@@ -67,21 +59,27 @@ exports.uploadProject = function _callee(req, res, next) {
         case 0:
           _req$body = req.body, projectId = _req$body.projectId, folderPath = _req$body.folderPath; //do aws stuff here
 
-          allpaths = folderUpload({
+          _context2.next = 3;
+          return regeneratorRuntime.awrap(folderUpload({
             s3BucketName: "projectexpo-projects",
             // Absolute path
             localFolder: folderPath,
             accessKeyId: "AKIAS6G5ANL5655DKEHC",
             secretAccessKey: "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",
-            folder_name: "aws"
-          }).then(function () {
-            console.log("Completed!");
-          })["catch"](function (err) {
-            console.log(err);
-          });
-          console.log("file paths: ", allpaths); // console.log(folderPath);
+            folder_name: "palgarism"
+          }));
 
-          obj = {}; // UpdateProjectLink(projectId, filepaths);
+        case 3:
+          allpaths = _context2.sent;
+          // .then(() => {
+          //   console.log(`Completed!`);
+          // }).catch(err => {
+          //   console.log(err);
+          // });
+          // console.log("file paths: ", allpaths);
+          UpdateProjectLink(projectId, allpaths); // console.log(folderPath);
+          //const obj = {  }
+          // UpdateProjectLink(projectId, filepaths);
           // axios.put("http://localhost:5000/api/Project/updateProjectLink",{
           //     ProjectId : projectId,
           //     UpdatedProjectLink: JSON.parse(JSON.stringify(obj))
@@ -94,7 +92,7 @@ exports.uploadProject = function _callee(req, res, next) {
             }
           }));
 
-        case 5:
+        case 6:
         case "end":
           return _context2.stop();
       }

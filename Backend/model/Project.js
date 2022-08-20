@@ -49,10 +49,7 @@ var ProjectSchema = new Schema(
         type : Date, 
         default: Date.now  
     },
-    ProjectLink:{
-        type: [Object], blackbox: true ,
-        default: null
-    }
+    ProjectLink:[{type: String}]
 })
 
 module.exports = mongoose.model("Project", ProjectSchema);

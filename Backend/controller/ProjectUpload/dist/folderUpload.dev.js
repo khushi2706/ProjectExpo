@@ -21,10 +21,10 @@ var mime = require("mime");
 var config = {
   s3BucketName: "projectexpo-projects",
   // Absolute path
-  localFolder: "C:\\Users\\Lenovo\\Desktop\\SIH'2022\\aws",
+  localFolder: "C:\\Users\\Lenovo\\Desktop\\SIH'2022\\plag finalplag final",
   accessKeyId: "AKIAS6G5ANL5655DKEHC",
   secretAccessKey: "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",
-  folder_name: "aws"
+  folder_name: "plagarism"
 }; // {
 //     "accessKeyId": "AKIAS6G5ANL5655DKEHC",
 //     "secretAccessKey": "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",

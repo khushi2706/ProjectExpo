@@ -30,12 +30,12 @@ const UpdateProjectLink = async (ProjectId, UpdatedProjectLink) => {
     // })
 }
   
-  return res.status(200).json({
-      success: true,
-      response: {
-          code: "Project_link_updated",
-      },
-  });
+  // return res.status(200).json({
+  //     success: true,
+  //     response: {
+  //         code: "Project_link_updated",
+  //     },
+  // });
 };
 
 exports.uploadProject = async (req, res, next) =>
@@ -47,23 +47,25 @@ exports.uploadProject = async (req, res, next) =>
   } = req.body
 
 //do aws stuff here
-  const allpaths =  folderUpload({s3BucketName: "projectexpo-projects",
+  const allpaths = await folderUpload({s3BucketName: "projectexpo-projects",
   // Absolute path
   localFolder: folderPath,
   accessKeyId: "AKIAS6G5ANL5655DKEHC",
   secretAccessKey: "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",
-  folder_name : "aws"}).then(() => {
-    console.log(`Completed!`);
-  }).catch(err => {
-    console.log(err);
-  });
+  folder_name : "palgarism"});
+  // .then(() => {
+  //   console.log(`Completed!`);
+  // }).catch(err => {
+  //   console.log(err);
+  // });
 
-  console.log("file paths: ", allpaths);
+  // console.log("file paths: ", allpaths);
+  UpdateProjectLink(projectId, allpaths);
 
 
 // console.log(folderPath);
 
-const obj = {  }
+//const obj = {  }
 
 
 // UpdateProjectLink(projectId, filepaths);
