@@ -73,8 +73,7 @@ function UniSubject() {
             display: "flex",
             textAlign: "center",
             justifyContent: "left",
-            paddingTop: "20px",
-            paddingLeft: "20px",
+            
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -163,6 +162,10 @@ function UniSubject() {
               >
                 <SideBarOption icon="groups" title="Subjects" />
               </NavLink>
+
+              <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
             </div>
           </div>
 

@@ -84,8 +84,7 @@ useEffect(() => {
       display: "flex",
       textAlign: "center",
       justifyContent: "left",
-      paddingTop: "20px",
-      paddingLeft: "20px",
+      
     }}
   >
   <div style={{ display:"flex", flexDirection: "column" }}>
@@ -151,6 +150,10 @@ useEffect(() => {
       <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegesubjects">
       <SideBarOption icon="groups" title="Subjects" />
       </NavLink>
+
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
      
      
      

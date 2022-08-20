@@ -32,7 +32,11 @@ class Pop extends React.Component {
       ccode:"",
       deptid:"",
       prof:[],
-      profid:''
+      profid:'',
+      p:{},
+      fac:[],
+      d:'',
+      depart:[]
     };
   }
 
@@ -46,31 +50,22 @@ class Pop extends React.Component {
         return data;
       };
 
-      const sendReq2 = async () => {
-        const res = await axios
-          .get(`http://localhost:5000/api/professor`)
-          .catch((err) => console.log(err));
-        const data = await res.data;
-        //console.log("Data from API:" + data[0].Fname);
-        return data;
-      };
+   
 
+    
     sendReq().then((data) => {
         this.setState({ dept: data.departments });
       
       console.log(this.state.dept);
     });
-    sendReq2().then((data) => {
-      this.setState({ prof: data.professors });
-    
-    console.log(this.state.prof);
-  });
+   
   }
 
  
 
 
   handleChange(e) {
+   
     const target = e.target;
     const name = target.name;
     const value = target.value;
@@ -97,14 +92,50 @@ class Pop extends React.Component {
   }
 
   render() {
-   
+    const setDprtId = async (e) => {
+      const target = e.target;
+    const name = target.name;
+    const value = target.value;
+
+    this.setState({
+      [name]: value,
+    });
     
-    const sendRequest = async () => {
+      // this.state.formValue = e.target.value;
+    };
+  
+
+    const setSubId = async (e) => {
+
+     this.state.profid = e.target.value;
+     console.log("0d0d0d");
+      console.log( this.state.profid)
+    };
+
+    // const setSubId = async (e) => {
+    //   this.state.formValue.SubId = e.target.value;
+    //     console.log( this.state.formValue.SubId)
+    //   };
+
+      const getDeprtId = async (e) => {
+        console.log("depart id: " + e.target.value);
+    
         const res = await axios
-          .post("http://localhost:5000/api/subject/add", {
+          .get(
+            `http://localhost:5000/api/professor/getByDepartId/${this.state.d}`
+          )
+          .catch((err) => console.log(err));
+        const data = await res.data;
+        this.setState(await { depart : data.professors});
+        console.log(depart);
+      };
+
+    const sendRequest = async () => {
+      alert("anjjs");    
+        const res = await axios.post("http://localhost:5000/api/subject/add", {
             SubName :this.state.modalInputName,
             SubInfo : this.state.modalObj,
-              DepartmentId : this.state.deptid,
+              DepartmentId : this.state.d,
               Year: this.state.year,
               Eligibility: "Must clear all the subject of last sem",
               Objective:this.state.modalObj,
@@ -113,12 +144,15 @@ class Pop extends React.Component {
               ProfessorId:this.state.profid
           })
           .catch((err) => console.log(err));
-        const data = await res.data;
+
+        const data = await res.data;  
         console.log(data);
 
         return data;
       };
-
+      function refreshPage() {
+        window.location.reload(false);
+      }
 
       const handleSubmit = (e) => {
         
@@ -130,10 +164,12 @@ class Pop extends React.Component {
             this.state.redirect && <navigate to='/collegesubject' replace={true}/>
          });
           this.modalClose();
+          refreshPage();
       };
    
     const { dept } = this.state;
     const {prof} = this.state;
+    const {depart} = this.state;
     return (
        
       <div className="App">
@@ -208,7 +244,7 @@ class Pop extends React.Component {
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
-          <select  className="select" onChange={(e) => this.handleChange(e)} name="deptid">
+          <select  className="select" onClick={getDeprtId} onChange={setDprtId} name="d">
             {dept.map((college, index) => {
               return (
                 <>
@@ -229,10 +265,10 @@ class Pop extends React.Component {
       >
         Select Subject Faculty
       </div>
-      { prof && 
+      { depart && 
         <div className="sign-in-input-field-container">
-        <select  className="select" onChange={(e) => this.handleChange(e)} name="profid">
-          {prof.map((college, index) => {
+        <select  className="select" onChange={setSubId} name="profid">
+          {depart.map((college, index) => {
             return (
               <>
                 <option value={college._id}>{college.Fname}</option>
@@ -312,10 +348,10 @@ class Pop extends React.Component {
                 marginRight: "20px",
               }}
             >
-              <Button
-              title={"Submit"}
-                // onClick={(e) => this.handleSubmit(e)}
-              />
+            <Button
+            title={"Submit"}
+              // onClick={(e) => this.handleSubmit(e)}
+            />
             </div>
           </div>
           </form>
