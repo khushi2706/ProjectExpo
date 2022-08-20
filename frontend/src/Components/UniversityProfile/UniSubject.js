@@ -120,7 +120,7 @@ function UniSubject() {
             <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
 
             {/* options */}
-            <div style={{ position: "sticky", top: "130px", padding: "10px" }}>
+            <div className="editing" style={{ position: "sticky", top: "130px", padding: "10px" }}>
               <NavLink
                 className=""
                 style={{ textDecoration: "none", color: "black" }}

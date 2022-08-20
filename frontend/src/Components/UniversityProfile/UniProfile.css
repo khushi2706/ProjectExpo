@@ -14,7 +14,12 @@ left: 1249px;
 filter: invert(100%);
 background: rgba(217, 217, 217, 0.3);
 }
-
+.editing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .w-700{
     width: 700px;
 }
@@ -32,13 +37,13 @@ background: rgba(217, 217, 217, 0.3);
     height: 100%;
     justify-content:center;
     align-items:center;
-    display: grid;
+    display: flex;
     position: absolute;
 }
 .popup-container .popup-box{
-    width: 300px;
-    height: 150px;
-    display: grid;
+    width: 385px;
+    height: 180px;
+    display: flex;
     justify-content: center;
     border-radius: 5px;
     position: relative;
@@ -46,16 +51,18 @@ background: rgba(217, 217, 217, 0.3);
 }
 
 .popup-container .popup-box input{
-    margin-left: 50px;
+    margin-left: 90px;
     margin-top: 25px;
 }
 
 .popup-container .popup-box button{
-    width: 50%;
+    margin-top: 10px;
+    width: 41%;
     height: 36px;
     margin-left: 70px;
     border: none;
     outline: none;
+    border-radius: 7px;
 }
 
 .accordion-flush, .accordion-item, .accordion-button{
