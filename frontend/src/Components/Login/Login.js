@@ -35,6 +35,7 @@ export default function Login(props) {
         cookies.set('authToken', data.authToken , { path: '/' });
         cookies.set('userId' , data.userId,   { path: '/' });
         cookies.set('userType', data.userType, {path:'/'});
+        cookies.set('uTypeId', data.uTypeId, {path:'/'});
         console.log(data);
     })
   }
