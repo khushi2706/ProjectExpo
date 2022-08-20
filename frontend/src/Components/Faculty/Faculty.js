@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SideBarOption from "../Profile/SideBarOption";
 import { useNavigate } from "react-router-dom";
 import FacultyProfile from "./FacultyProfile";
-import FacultyProject from "./FacultyProject";
+import FacultySubject from "./FacultySubject";
 export default function Faculty() {
   const [facutlyProfile, setFacultyProfile] = useState(true);
 
@@ -11,7 +11,7 @@ export default function Faculty() {
     console.log("My Profile clicked");
   };
 
-  const handleMyProjectClick = () => {
+  const handleSubjectClick = () => {
     setFacultyProfile(false);
     console.log("My Project clicked");
   };
@@ -80,8 +80,8 @@ export default function Faculty() {
           />
           <SideBarOption
             icon="book"
-            title="My Project"
-            onClick={handleMyProjectClick}
+            title="Subject"
+            onClick={handleSubjectClick}
           />
           <SideBarOption icon="groups" title="My Class" />
         </div>
@@ -109,7 +109,7 @@ export default function Faculty() {
             width: "-webkit-fill-available",
           }}
         >
-          {facutlyProfile ? <FacultyProfile /> : <FacultyProject />}
+          {facutlyProfile ? <FacultyProfile /> : <FacultySubject />}
           {/* <MyProjects /> */}
           {/* <Profile /> */}
         </div>

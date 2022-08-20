@@ -30,6 +30,7 @@ import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
 import "./Components/GeneralCSS/main.css";
 import Faculty from "./Components/Faculty/Faculty";
+import MyProjects from "./Components/Profile/MyProjects";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
             <Route index path="/UploadProject/Stage2" element={<Project_2 />} />
             <Route index path="/UploadProject/Stage3" element={<Project_3 />} />
             <Route index path="/Faculty" element={<Faculty />} />
+            <Route index path="/MyProject" element={<MyProjects />} />
           </Routes>
         </BrowserRouter>
       </div>
