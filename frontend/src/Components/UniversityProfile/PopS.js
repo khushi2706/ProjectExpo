@@ -7,7 +7,13 @@ import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import Cookies from 'universal-cookie'
+
 import "./pop.css"
+const cookies = new Cookies();
+
+const CollegeId = cookies.get('uTypeId')
+
 class Pop extends React.Component {
  
   constructor(props) {
@@ -24,14 +30,25 @@ class Pop extends React.Component {
       redirect:false,
       dept:[],
       ccode:"",
-      deptid:""
+      deptid:"",
+      prof:[],
+      profid:''
     };
   }
 
   componentDidMount() {
     const sendReq = async () => {
         const res = await axios
-          .get(`http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9`)
+          .get(`http://localhost:5000/api/department/getByCollgeId/${CollegeId}`)
+          .catch((err) => console.log(err));
+        const data = await res.data;
+        //console.log("Data from API:" + data[0].Fname);
+        return data;
+      };
+
+      const sendReq2 = async () => {
+        const res = await axios
+          .get(`http://localhost:5000/api/professor`)
           .catch((err) => console.log(err));
         const data = await res.data;
         //console.log("Data from API:" + data[0].Fname);
@@ -43,6 +60,11 @@ class Pop extends React.Component {
       
       console.log(this.state.dept);
     });
+    sendReq2().then((data) => {
+      this.setState({ prof: data.professors });
+    
+    console.log(this.state.prof);
+  });
   }
 
  
@@ -88,6 +110,7 @@ class Pop extends React.Component {
               Objective:this.state.modalObj,
               Credit:this.state.modalCredit,
               CourseCode:this.state.ccode,
+              ProfessorId:this.state.profid
           })
           .catch((err) => console.log(err));
         const data = await res.data;
@@ -95,6 +118,8 @@ class Pop extends React.Component {
 
         return data;
       };
+
+
       const handleSubmit = (e) => {
         
         e.preventDefault();
@@ -108,6 +133,7 @@ class Pop extends React.Component {
       };
    
     const { dept } = this.state;
+    const {prof} = this.state;
     return (
        
       <div className="App">
@@ -182,7 +208,7 @@ class Pop extends React.Component {
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
-          <select onChange={(e) => this.handleChange(e)} name="deptid">
+          <select  className="select" onChange={(e) => this.handleChange(e)} name="deptid">
             {dept.map((college, index) => {
               return (
                 <>
@@ -193,6 +219,29 @@ class Pop extends React.Component {
           </select>
         </div>
         }
+
+        <div
+        style={{
+          color: "#808080",
+          fontFamily: "poppins",
+          fontWeight: "600",
+        }}
+      >
+        Select Subject Faculty
+      </div>
+      { prof && 
+        <div className="sign-in-input-field-container">
+        <select  className="select" onChange={(e) => this.handleChange(e)} name="profid">
+          {prof.map((college, index) => {
+            return (
+              <>
+                <option value={college._id}>{college.Fname}</option>
+              </>
+            );
+          })}
+        </select>
+      </div>
+      }
 
         <div
         style={{

@@ -35,7 +35,11 @@ var subjectSchema = new Schema({
         type: String,
         required: true
     },
-
+    ProfessorId: { 
+        type: mongoose.Types.ObjectId,
+        ref:"Professor",
+        default:null
+    },
 })
 
 module.exports =  mongoose.model("Subject" , subjectSchema);

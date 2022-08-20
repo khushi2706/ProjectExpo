@@ -7,21 +7,40 @@ import SideBarOption from "../Profile/SideBarOption";
 import axios from "axios"
 import "./UniProfile.css"
 import { NavLink } from "react-router-dom";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
+
 // import Popup from 'reactjs-popup';
 
 function UniProfile() {
 
-  const CollegeId = "62f6135b8c07d28ed759794e";
+  
+ const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ 
+ const CollegeId = cookies.get('uTypeId')
+
+const [showw,setshoww] = useState("false");
+
+
 const Handle_toggle=()=>{
     const img=document.getElementById('pop_Container')
     console.log(img);
 }
 
+const handleeditclick = () => {
+  setshoww("true");
+  console.log(showw);
+}
+
+const handlesubmit = (e) =>{
+  setshoww("false")
+}
 const [user, setUser] = useState();
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
+    .get(`http://localhost:5000/api/college/collegeId/${CollegeId}`)
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -29,16 +48,18 @@ const sendRequest = async () => {
   return data;
 };
 useEffect(() => {
-  sendRequest().then((data) => setUser(data.college));
-  console.log("-----------+");
-  console.log(user);
-
-  console.log("--------------+");
- 
+  sendRequest().then((data) => setUser(data.college)); 
 }, []);
 
+
   return (
+    
    <>
+{
+  UserType != 'College-admin'
+  &&
+  <Navigate to="/login" replace={true} />
+}
    {user && 
    <div
        style={{
@@ -98,7 +119,7 @@ useEffect(() => {
          <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
 
          {/* options */}
-         <div style={{position:"sticky",top:"130px",padding:"10px"}}>
+         <div className="editing" style={{position:"sticky",top:"130px",padding:"10px"}}>
          <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegeprofile">
          <SideBarOption icon="person"  title="Profile" />
          </NavLink>
@@ -115,6 +136,9 @@ useEffect(() => {
          <SideBarOption icon="groups" title="Subjects" />
          </NavLink>
         
+         <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
         
         
          </div>
@@ -174,26 +198,30 @@ useEffect(() => {
           }}
         ></div>
       </div>
+      {showw == "true" && (
+        <div className="popup-container" id="pop_Container">
+        <div className="popup-box">
+          <form 
+          
+          action='http://localhost:5000/collegeprofile'
+          id='uploadForm'
+          method='post' 
+          encType="multipart/form-data">
+          <input type="file" name="inputFile" id="uploadfile"/> 
+          <input type="text"  name = "CollegeId" value={CollegeId} hidden />
+          <button type="submit" value="Submit" >Upload</button>
+          <button type="submit" value="Close" onClick={handlesubmit}>Close</button>
+          </form>
+        </div>
+  </div>
+      )}
       
-      <div className="popup-container" id="pop_Container">
-            <div className="popup-box">
-              <form 
-              action='http://localhost:5000/collegeprofile'
-              id='uploadForm'
-              method='post' 
-              encType="multipart/form-data">
-              <input type="file" name="inputFile" id="uploadfile"/> 
-              <input type="text"  name = "CollegeId" value={CollegeId} hidden />
-              <button type="submit" value="Submit">Upload</button>
-              </form>
-            </div>
-      </div>
         
       <div>
       <img className="profilepic" style={{width:"907px" , height:"343px",margin:"10px",padding:"5px"}} src="https://tse3.mm.bing.net/th?id=OIP.MnwaoGEMyJ4apfF-tH-KVAHaES&pid=Api&P=0" alt="college photo"/>
-      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/">
+     <div className="" onClick={handleeditclick}>
       <img className="profilepicedit" style={{opacity:"70%",cursor:"pointer"}} src="img/edit.png"  onclilck={Handle_toggle}/>
-      </NavLink>
+      </div>
       
       </div>
 
@@ -291,7 +319,7 @@ useEffect(() => {
 
 
      </div>
-        }
+    }
    </>
   )
 }

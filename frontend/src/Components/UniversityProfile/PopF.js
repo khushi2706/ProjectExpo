@@ -8,6 +8,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./pop.css"
 
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
+
+const cookies = new Cookies();
+const UserType = cookies.get('userType');
+
+const CollegeId = cookies.get('uTypeId')
+
 class Pop extends React.Component {
  
   constructor(props) {
@@ -30,7 +38,7 @@ class Pop extends React.Component {
   componentDidMount() {
     const sendReq = async () => {
         const res = await axios
-          .get(`http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9`)
+          .get(`http://localhost:5000/api/department/getByCollgeId/${CollegeId}`)
           .catch((err) => console.log(err));
         const data = await res.data;
         //console.log("Data from API:" + data[0].Fname);
@@ -181,7 +189,7 @@ class Pop extends React.Component {
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
-          <select onChange={(e) => this.handleChange(e)} name="deptid">
+          <select className="select" onChange={(e) => this.handleChange(e)} name="deptid">
             {dept.map((college, index) => {
               return (
                 <>

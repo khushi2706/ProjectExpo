@@ -1,9 +1,11 @@
 const bcrypt = require("bcryptjs");
 const User = require("../model/User"); // User model
-const Joi = require("@hapi/joi");
-const { registerSchema, loginSchema } = require("../utils/userValidation");
+const College = require("../model/College");
+const Professor = require("../model/Professor");
+const Joi = require('@hapi/joi');
+const { registerSchema, loginSchema } = require('../utils/userValidation');
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "thisIs@$ecretKey";
+const JWT_SECRET = "thisIs@$ecretKey"
 
 const getAllUser = async (req, res, next) => {
   let users;
@@ -52,6 +54,39 @@ const getUserById = async (req, res, next) => {
   return res.status(200).json({ success: true, user });
 };
 
+const loginUser = async (req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
+  const { Email, Password } = req.body;
+  let existingUser;
+  try{
+    existingUser = await User.findOne({Email})
+   }catch(e){
+    return res.status(404).json({message : "User is not found",e})
+   }
+   const isPasswordCorrect = bcrypt.compareSync(Password,existingUser.Password);
+
+   if(!isPasswordCorrect){
+       return res.status(400).json({message: "Incorrect Password!"});
+   }
+  const authToken = jwt.sign(existingUser.toJSON(),JWT_SECRET);
+
+  const uId = existingUser._id;
+ 
+  let UserTypedId
+  if(existingUser.UserType == 'College-admin')
+  UserTypedId =  await College.find( { UserId : uId.toString() } , {_id:1});
+  else if(existingUser.UserType == 'Student')
+  UserTypedId = await Student.find( { UserId : uId.toString() } , {_id:1});
+  else
+  UserTypedId = await Professor.find( { UserId : uId.toString() } , {_id:1});
+   
+  return res.status(200).json(
+    {userType: existingUser.UserType , 
+      authToken , 
+      userId : existingUser._id , 
+      uTypeId : UserTypedId[0]._id} );
+    
+}
 const addNewUser = async (req, res, next) => {
   const { Email, Password, UserType } = req.body;
   console.log("API->Email: " + Email);
@@ -82,31 +117,6 @@ const addNewUser = async (req, res, next) => {
   }
 };
 
-const loginUser = async (req, res, next) => {
-  const { Email, Password } = req.body;
-  let existingUser;
-  console.log(req.cookies);
-  try {
-    existingUser = await User.findOne({ Email });
-  } catch (e) {
-    console.log(err);
-  }
-  if (!existingUser) {
-    return res.status(404).json({ message: "User is not found" });
-  }
 
-  const isPasswordCorrect = bcrypt.compareSync(Password, existingUser.Password);
-
-  if (!isPasswordCorrect) {
-    return res.status(400).json({ message: "Incorrect Password!" });
-  }
-  const authToken = jwt.sign(existingUser.toJSON(), JWT_SECRET);
-
-  res.cookie("authToken", authToken, {
-    expire: new Date(Date.now() + 25892000000),
-    httpOnly: true,
-  });
-  return res.status(200).json({ userType: existingUser.UserType, authToken });
-};
 
 module.exports = { getAllUser, loginUser, addNewUser };

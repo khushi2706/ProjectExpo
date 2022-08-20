@@ -69,7 +69,8 @@ const addNewProject = async (req, res, next) => {
         Tags,
         PType,
         isPrivete,
-        UserId
+        UserId,
+        SubjectId
        } = req.body;
   
     try {
@@ -89,7 +90,8 @@ const addNewProject = async (req, res, next) => {
         Tags,
         PType,
         isPrivete,
-        UserId
+        UserId,
+        SubjectId
       });
   
       await newProject.save();
@@ -108,5 +110,25 @@ const addNewProject = async (req, res, next) => {
       },
     });
 };
+
+const getProjectBySubjectID = async(req,res,next) => {
+  const SubjectId = req.params;
+  res.set('Access-Control-Allow-Origin', '*');
+  console.log(SubjectId);
+
+  let project;
+  try{
+      project = await Project.find(SubjectId);
+  }
+  catch(e)
+  {
+      return console.log(e);
+  }
+
+  if(!project)
+  return res.status(500).json({ message: "not Found" })
+
+  return res.status(200).json({project});
+}
   
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject }
+module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject , getProjectBySubjectID }

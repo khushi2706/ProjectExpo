@@ -5,6 +5,7 @@
     "@mui/material": "^5.10.0",
     "cors": "^2.8.5",
     "material-icons-react": "^1.0.4",
-    "react-bootstrap": "^2.5.0"
+    "react-bootstrap": "^2.5.0",
+    "styled-components": "^4.1.3"
   }
 }

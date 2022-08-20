@@ -8,8 +8,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./pop.css"
 
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
+
+const cookies = new Cookies();
+const UserType = cookies.get('userType');
+
+const CollegeId = cookies.get('uTypeId');
+
 class Pop extends React.Component {
- 
+
   constructor(props) {
     super(props);
 
@@ -53,7 +61,7 @@ class Pop extends React.Component {
       const res = await axios
         .post("http://localhost:5000/api/department/add", {
           DepartName:this.state.modalInputName,
-          CollegeId : "62f8724e92cfa9015a3befc9"
+          CollegeId : CollegeId
         })
         .catch((err) => console.log(err));
       const data = await res.data;
@@ -94,17 +102,17 @@ class Pop extends React.Component {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Enter Department Name:</label>
-            
             <div style={{ width: "-webkit-fill-available" }}>
             <input
             className="form-control input-field"
-            name="modalInputName "
-              title={"Department Name"}
+            name="modalInputName"
+          
               onChange={(e) => this.handleChange(e)}
-              placeholder={"Ex: Birla Vishwakarma Mahavidyalaya"}
+              placeholder={"Ex: mihasan@bvmengineering.ac.in"}
               value={this.state.modalInputName}
             />
           </div>
+            
           </div>
           <div className="form-group">
             <div

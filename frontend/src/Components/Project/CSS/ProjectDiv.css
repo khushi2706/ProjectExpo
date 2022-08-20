@@ -1,15 +1,20 @@
 .main-div
 {
     padding: 20px;
-    width: 90%;
+    margin: 20px;
     border-radius: 20px;
     text-align: left;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: 3px 3px 13px #403c3c;
+    /* background-color: #f6f9f2!important; */
+    border: none!important;
+    background-color: rgb(187 199 255 / 30%);
 }
 .title
 {
     font-weight: 600;
     font-size: 1.3pc;
+    font-size: 1.5pc;
+    color: black;
 }
 .tag{
     font-weight: 600;
@@ -21,13 +26,33 @@
 }
 
 .lan-Tag{
+    padding-bottom: 4px !important;
+    margin-left: 4px !important;
     color: rgba(44, 94, 255, 1);
     background-color: rgba(213, 227, 254, 1);
 }
 
+.ccc{
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+
+
+.ccc1{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-left: -36px;
+}
+
+
 .clg-Tag{
     background-color:  rgba(255, 245, 220, 1);
-    color: rgba(222, 186, 129, 1);;
+    color: rgba(222, 186, 129, 1);
+    margin-left: 4px !important;
+    margin-top: 2px !important; 
 }
 
 .auth-Tag{

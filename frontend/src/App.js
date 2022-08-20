@@ -28,6 +28,11 @@ import UniFaculty from "./Components/UniversityProfile/UniFaculty";
 import Project_1 from "./Components/ProjectUpload/Project_1";
 import Project_2 from "./Components/ProjectUpload/Project_2";
 import Project_3 from "./Components/ProjectUpload/Project_3";
+import T from "./Components/TaskAssignment.js/T";
+import Quizmain from "./Components/quiz/Quizmain";
+
+
+import Logout from "./Components/logout/Logout";
 import "./Components/GeneralCSS/main.css";
 
 function App() {
@@ -62,11 +67,14 @@ function App() {
             <Route index path="/collegesubjects" element={<UniSubject/>}/>
             <Route index path="/collegefaculty" element={<UniFaculty/>}/>
             <Route index path="/collegedepartment" element={<UniDept/>}/>
-            <Route index path="/editimg" element={<EditImg/>}/>
+            <Route index path="/linkoftask" element={<T/>}/>
             <Route index path="/UploadProject/Stage1" element={<Project_1/>} />
             <Route index path="/UploadProject/Stage2" element={<Project_2/>} />
             <Route index path="/UploadProject/Stage3" element={<Project_3/>} />
+            <Route index path="/quiz" element={<Quizmain/>}/>
+            
 
+            <Route index path="/Logout" element={<Logout/>}/>
           </Routes>
         </BrowserRouter>
       </div>
