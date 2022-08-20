@@ -67,6 +67,10 @@ class Pop extends React.Component {
       const data = await res.data;
       return data;
     };
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
     const handleSubmit = (e) => {
      
       e.preventDefault();
@@ -77,6 +81,7 @@ class Pop extends React.Component {
           this.state.redirect && <navigate to='/collegedepartments' replace={true}/>
        });
        this.modalClose();
+       refreshPage();
     };
     return (
       <div className="App">

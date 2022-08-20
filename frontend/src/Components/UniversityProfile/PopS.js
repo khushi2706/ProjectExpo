@@ -131,11 +131,11 @@ class Pop extends React.Component {
       };
 
     const sendRequest = async () => {
-        const res = await axios
-          .post("http://localhost:5000/api/subject/add", {
+      alert("anjjs");    
+        const res = await axios.post("http://localhost:5000/api/subject/add", {
             SubName :this.state.modalInputName,
             SubInfo : this.state.modalObj,
-              DepartmentId : this.state.deptid,
+              DepartmentId : this.state.d,
               Year: this.state.year,
               Eligibility: "Must clear all the subject of last sem",
               Objective:this.state.modalObj,
@@ -144,12 +144,15 @@ class Pop extends React.Component {
               ProfessorId:this.state.profid
           })
           .catch((err) => console.log(err));
-        const data = await res.data;
+
+        const data = await res.data;  
         console.log(data);
 
         return data;
       };
-
+      function refreshPage() {
+        window.location.reload(false);
+      }
 
       const handleSubmit = (e) => {
         
@@ -161,6 +164,7 @@ class Pop extends React.Component {
             this.state.redirect && <navigate to='/collegesubject' replace={true}/>
          });
           this.modalClose();
+          refreshPage();
       };
    
     const { dept } = this.state;

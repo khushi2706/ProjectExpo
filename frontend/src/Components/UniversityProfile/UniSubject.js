@@ -73,8 +73,7 @@ function UniSubject() {
             display: "flex",
             textAlign: "center",
             justifyContent: "left",
-            paddingTop: "20px",
-            paddingLeft: "20px",
+            
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
