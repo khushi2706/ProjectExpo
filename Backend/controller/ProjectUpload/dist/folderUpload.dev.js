@@ -21,24 +21,24 @@ var mime = require("mime");
 var config = {
   s3BucketName: "projectexpo-projects",
   // Absolute path
-  folderPath: "C:\\Users\\Lenovo\\Desktop\\SIH'2022\\aws",
+  localFolder: "C:\\Users\\Lenovo\\Desktop\\SIH'2022\\aws",
   accessKeyId: "AKIAS6G5ANL5655DKEHC",
   secretAccessKey: "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",
   folder_name: "aws"
 }; // {
 //     "accessKeyId": "AKIAS6G5ANL5655DKEHC",
-//     "secretAccessKey": "NmCBDtYzZDKcjH+FRu1kHf0qs8oP5eaQSnIuN3b",
+//     "secretAccessKey": "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",
 //     "region": "ap-south-1",
 //     "bucket": "projectexpo-projects"
 // }
 
-var start = function start(_ref) {
-  var accessKeyId, secretAccessKeyId, s3BucketName, folderPath, folder_name, s3, filesPaths, i, statistics, filePath, fileContent, relativeToBaseFilePath, relativeToBaseFilePathForS3, mimeType;
-  return regeneratorRuntime.async(function start$(_context) {
+exports.folderUpload = function _callee(_ref) {
+  var accessKeyId, secretAccessKeyId, s3BucketName, localFolder, folder_name, s3, filesPaths, allPaths, i, statistics, filePath, fileContent, relativeToBaseFilePath, relativeToBaseFilePathForS3;
+  return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          accessKeyId = _ref.accessKeyId, secretAccessKeyId = _ref.secretAccessKeyId, s3BucketName = _ref.s3BucketName, folderPath = _ref.folderPath, folder_name = _ref.folder_name;
+          accessKeyId = _ref.accessKeyId, secretAccessKeyId = _ref.secretAccessKeyId, s3BucketName = _ref.s3BucketName, localFolder = _ref.localFolder, folder_name = _ref.folder_name;
           AWS.config.setPromisesDependency(Promise);
           s3 = new AWS.S3({
             signatureVersion: 'v4',
@@ -46,28 +46,31 @@ var start = function start(_ref) {
             secretAccessKey: "NmCBDtYzZDZKcjH+FRu1kHf0qs8oP5eaQSnIuN3b"
           });
           _context.next = 5;
-          return regeneratorRuntime.awrap(walkSync(folderPath));
+          return regeneratorRuntime.awrap(walkSync(localFolder));
 
         case 5:
           filesPaths = _context.sent;
+          allPaths = [];
           i = 0;
 
-        case 7:
+        case 8:
           if (!(i < filesPaths.length)) {
-            _context.next = 25;
+            _context.next = 26;
             break;
           }
 
           statistics = "(".concat(i + 1, "/").concat(filesPaths.length, ", ").concat(Math.round((i + 1) / filesPaths.length * 100), "%)");
           filePath = filesPaths[i];
-          console.log("filepath: " + filePath);
-          fileContent = fs.readFileSync(filePath); //If the slash is like this "/" s3 will create a new folder, otherwise will not work properly.
+          console.log("filepath: " + filePath); //
+
+          fileContent = fs.readFileSync(filePath); //read file
+          // If the slash is like this "/" s3 will create a new folder, otherwise will not work properly.
 
           relativeToBaseFilePath = folder_name + '/' + path.normalize(path.relative(localFolder, filePath));
           console.log("rebs: " + relativeToBaseFilePath);
           relativeToBaseFilePathForS3 = relativeToBaseFilePath.split(path.sep).join('/');
-          console.log("https://projectexpo-projects.s3.ap-south-1.amazonaws.com/" + relativeToBaseFilePathForS3);
-          mimeType = mime.getType(filePath);
+          console.log("https://projectexpo-projects.s3.ap-south-1.amazonaws.com/" + relativeToBaseFilePathForS3); // const mimeType = mime.getType(filePath);
+
           console.log("Uploading", statistics, relativeToBaseFilePathForS3);
           console.log("Path : " + relativeToBaseFilePathForS3);
           _context.next = 21;
@@ -75,29 +78,33 @@ var start = function start(_ref) {
             ACL: "public-read",
             Bucket: s3BucketName,
             Key: relativeToBaseFilePathForS3,
-            Body: fileContent,
-            ContentType: mimeType
+            Body: fileContent //ContentType: mimeType,
+
           }).promise());
 
         case 21:
           console.log("Uploaded ", statistics, relativeToBaseFilePathForS3);
+          allPaths.push(relativeToBaseFilePathForS3);
 
-        case 22:
+        case 23:
           i++;
-          _context.next = 7;
+          _context.next = 8;
           break;
 
-        case 25:
+        case 26:
+          console.log("allpaths: ", allPaths);
+          return _context.abrupt("return", allPaths);
+
+        case 28:
         case "end":
           return _context.stop();
       }
     }
   });
-};
+}; // folderUpload(config).then(() => {
+//   console.log(`Completed!`);
+// });
 
-start(config).then(function () {
-  console.log("Completed!");
-});
 
 function walkSync(dir) {
   var files, output, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, file, pathToFile, isDirectory;
@@ -203,4 +210,4 @@ function walkSync(dir) {
       }
     }
   }, null, null, [[5, 32, 36, 44], [37,, 39, 43]]);
-}
+} // module.exports = { folderUpload };

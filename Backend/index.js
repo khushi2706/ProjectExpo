@@ -59,7 +59,7 @@ app.use('/api/professor', ProfessorRoute);
 app.use('/api/student',StudentRoute);
 app.use('/api/university',universityRoute);
 app.use('/collegeprofile',uploadRoute);
-app.use('/api/projectupload',uploadProjectRoute);
+app.use('/api/projectupload',uploadProjectRoute);  //upload project route
 app.use('/api/recommendedProject',recomRoute);
 //define port
 

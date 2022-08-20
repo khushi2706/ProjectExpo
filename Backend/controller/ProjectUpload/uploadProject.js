@@ -1,12 +1,44 @@
 const Project = require("../../model/Project");
 //const uploadProject = require("../../controller/ProjectUpload/uploadProject");
-//const folderupload = require("../../controller/ProjectUpload/folderupload");
+const {folderUpload} = require("../../controller/ProjectUpload/folderUpload");
 
 const axios = require('axios')
 
 
+const UpdateProjectLink = async (ProjectId, UpdatedProjectLink) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  // const {
+  //   ProjectId,
+  // } = req.body;
 
-const UploadProject = async (req, res, next) =>
+  // const UpdatedProjectLink = req.body.UpdatedProjectLink;
+  console.log(UpdateProjectLink);
+  try {
+    const update = {  ProjectLink : UpdatedProjectLink };
+
+   await Project.findByIdAndUpdate(ProjectId,
+        update);
+      console.log("Done.....");
+   
+} catch (error) {
+  console.log("error: ", error);
+    // return res.status(400).json({
+    //     success : false,
+    //     response : {
+    //         error
+    //     }
+    // })
+}
+  
+  return res.status(200).json({
+      success: true,
+      response: {
+          code: "Project_link_updated",
+      },
+  });
+};
+
+exports.uploadProject = async (req, res, next) =>
 {
 
   var {
@@ -15,22 +47,31 @@ const UploadProject = async (req, res, next) =>
   } = req.body
 
 //do aws stuff here
+  const allpaths =  folderUpload({s3BucketName: "projectexpo-projects",
+  // Absolute path
+  localFolder: folderPath,
+  accessKeyId: "AKIAS6G5ANL5655DKEHC",
+  secretAccessKey: "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",
+  folder_name : "aws"}).then(() => {
+    console.log(`Completed!`);
+  }).catch(err => {
+    console.log(err);
+  });
+
+  console.log("file paths: ", allpaths);
 
 
-console.log(folderPath);
+// console.log(folderPath);
 
-const obj = { 
-  key:"new",
-  key2: "new"
-}
+const obj = {  }
 
 
+// UpdateProjectLink(projectId, filepaths);
 
-
-axios.put("http://localhost:5000/api/Project/updateProjectLink",{
-    ProjectId : projectId,
-    UpdatedProjectLink: JSON.parse(JSON.stringify(obj))
-  })
+// axios.put("http://localhost:5000/api/Project/updateProjectLink",{
+//     ProjectId : projectId,
+//     UpdatedProjectLink: JSON.parse(JSON.stringify(obj))
+//   })
 
   return res.status(200).json({
     success: true,
@@ -40,4 +81,4 @@ axios.put("http://localhost:5000/api/Project/updateProjectLink",{
 });
 }
 
-module.exports = { UploadProject }
+// module.exports = { uploadProject }
