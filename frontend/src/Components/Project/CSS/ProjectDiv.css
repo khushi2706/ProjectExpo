@@ -59,3 +59,84 @@
     background-color: rgba(189, 241, 212, 0.973);
     color: rgba(82, 182, 125, 1);
 }
+
+.rectangle{
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(44, 94, 255, 1);
+    box-sizing: border-box;
+    width: 130px;
+    height: 46px;
+    color: black;
+    font-size: 19px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  }
+.ccdd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.texxt{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+}
+
+.leftt{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+.texxt span{
+    margin: 12px;
+    font-size: 21px;
+    font-weight: 500;
+
+}
+
+.rightt{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 20px;
+
+}
+
+.rightt div{
+    margin: 5px;
+}
+
+.boxx{
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+}
+
+.boxleft{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.boxright{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cvv{
+    margin: 7px;
+}
+

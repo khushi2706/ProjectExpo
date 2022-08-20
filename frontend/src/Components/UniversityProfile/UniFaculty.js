@@ -162,6 +162,10 @@ function UniFaculty() {
               >
                 <SideBarOption icon="groups" title="Subjects" />
               </NavLink>
+
+              <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
             </div>
           </div>
 
