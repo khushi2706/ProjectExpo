@@ -53,6 +53,12 @@ var ProjectSchema = new Schema(
     Date:{
         type : Date, 
         default: Date.now  
+    },
+    PlagId:{
+        type: String,
+    },
+    PlagLink:{
+        type:String
     }
 })
 
