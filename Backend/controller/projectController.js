@@ -70,7 +70,10 @@ const addNewProject = async (req, res, next) => {
         PType,
         isPrivete,
         UserId,
-        SubjectId
+        SubjectId,
+        PlagId,
+        PlagLink,
+        Rating
        } = req.body;
   
     try {
@@ -91,7 +94,10 @@ const addNewProject = async (req, res, next) => {
         PType,
         isPrivete,
         UserId,
-        SubjectId
+        SubjectId,
+        PlagId,
+        PlagLink,
+        Rating
       });
   
       await newProject.save();
@@ -130,5 +136,19 @@ const getProjectBySubjectID = async(req,res,next) => {
 
   return res.status(200).json({project});
 }
+
+const getProjectPlga = async(req,res,next)=>{
+  const ProjectId = req.params.ProjectId;
+  res.set('Access-Control-Allow-Origin', '*');
   
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject , getProjectBySubjectID }
+  let project;
+  try {
+    project  = await Project.find({ _id : ProjectId.toString() }, 
+  { Rating :1 , PlagId : 1 , PlagLink : 1}  );
+  } catch (error) {
+    return res.status(400).json({error});
+  }
+
+  return res.status(200).json({project});
+}
+module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject , getProjectBySubjectID , getProjectPlga}
