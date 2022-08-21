@@ -3,6 +3,7 @@ import SideBarOption from "../Profile/SideBarOption";
 import { useNavigate } from "react-router-dom";
 import FacultyProfile from "./FacultyProfile";
 import FacultySubject from "./FacultySubject";
+
 export default function Faculty() {
   const [facutlyProfile, setFacultyProfile] = useState(true);
 
