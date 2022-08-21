@@ -4,8 +4,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie'
 import { Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function MyProjects() {
+  const location = useLocation();
+  //const { from } = location.state;
+  console.log(location.state.subject_id);
   const [projects, setProjects] = useState();
   
   const cookies = new Cookies();
@@ -14,6 +18,17 @@ export default function MyProjects() {
  const userId = cookies.get('userId')
   console.log(userId);
   const sendReq = async () => {
+    if (location.state.subject_id != undefined) {
+      const res = await axios
+        .get(
+          `http://localhost:5000/api/Project/Subject/${location.state.subject_id}`
+        )
+        .catch((err) => console.log(err));
+
+      const data = await res.data;
+      console.log("BySubject: " + data);
+      return data;
+    }
     const res = await axios
       .get(`http://localhost:5000/api/Project/UserId/${userId}`)
       .catch((err) => console.log(err));
