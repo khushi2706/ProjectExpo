@@ -137,6 +137,16 @@ const getProjectBySubjectID = async(req,res,next) => {
   return res.status(200).json({project});
 }
 
+const searchTheProject = async(req,res,next)=>{
+  console.log("-----");
+  console.log(req.params.key);
+  
+  res.set('Access-Control-Allow-Origin', '*');
+  let projects = await Project.find({ PName : new RegExp(req.params.key, 'i') })
+ return res.status(200).json({ projects });
+
+}
+
 const getProjectPlga = async(req,res,next)=>{
   const ProjectId = req.params.ProjectId;
   res.set('Access-Control-Allow-Origin', '*');
@@ -151,4 +161,4 @@ const getProjectPlga = async(req,res,next)=>{
 
   return res.status(200).json({project});
 }
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject , getProjectBySubjectID , getProjectPlga}
+module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject , getProjectBySubjectID , getProjectPlga , searchTheProject}

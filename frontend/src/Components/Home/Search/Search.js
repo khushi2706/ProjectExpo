@@ -50,15 +50,8 @@ export default function Search(props) {
 
                     {/*Search button*/}
                     <button className="search-bar-button" id='searchinput' onClick={searchfunc}>Search</button>
-
-                   
-                                   
-                </div>
-              
-              
-               
-               
-               
+                     
+                </div>   
             </div>
         </div>
 
