@@ -2,7 +2,7 @@ const Project = require("../../model/Project");
 //const uploadProject = require("../../controller/ProjectUpload/uploadProject");
 const {folderUpload} = require("../../controller/ProjectUpload/folderUpload");
 
-const axios = require('axios')
+//const axios = require('axios')
 
 
 const UpdateProjectLink = async (ProjectId, UpdatedProjectLink) => {
@@ -62,7 +62,8 @@ exports.uploadProject = async (req, res, next) =>
   // console.log("file paths: ", allpaths);
   UpdateProjectLink(projectId, allpaths);
 
-
+  //save all paths to database  
+  
 // console.log(folderPath);
 
 //const obj = {  }

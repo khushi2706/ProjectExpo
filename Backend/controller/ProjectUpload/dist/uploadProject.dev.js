@@ -4,9 +4,8 @@ var Project = require("../../model/Project"); //const uploadProject = require(".
 
 
 var _require = require("../../controller/ProjectUpload/folderUpload"),
-    folderUpload = _require.folderUpload;
+    folderUpload = _require.folderUpload; //const axios = require('axios')
 
-var axios = require('axios');
 
 var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink) {
   var update;
@@ -77,7 +76,8 @@ exports.uploadProject = function _callee(req, res, next) {
           //   console.log(err);
           // });
           // console.log("file paths: ", allpaths);
-          UpdateProjectLink(projectId, allpaths); // console.log(folderPath);
+          UpdateProjectLink(projectId, allpaths); //save all paths to database  
+          // console.log(folderPath);
           //const obj = {  }
           // UpdateProjectLink(projectId, filepaths);
           // axios.put("http://localhost:5000/api/Project/updateProjectLink",{

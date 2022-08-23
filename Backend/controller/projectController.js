@@ -138,5 +138,40 @@ const UpdateProjectLink = async (req, res, next) => {
         },
     });
 };
+
+//make api for project download
+const DownloadProject = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const {
+      ProjectId,
+    } = req.body;
+
+    const DownloadProjectLink = req.body.DownloadProjectLink;
+    console.log(DownloadProjectLink);
+    try {
+      const update = {  DownloadProjectLink : DownloadProjectLink };
+
+      await Project.findByIdAndUpdate(ProjectId,
+
+          update);
+
+    } catch (error) {
+
+        return res.status(400).json({
+            success : false,
+            response : {
+                error
+            }
+        })
+    }
+
+    return res.status(200).json({
+        success: true,
+        response: {
+            code: "Project_downloaded",
+        },
+    });
+}
+
   
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject ,UpdateProjectLink}
+module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject ,UpdateProjectLink, DownloadProject};

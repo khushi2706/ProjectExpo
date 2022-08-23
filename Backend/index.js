@@ -18,6 +18,7 @@ const universityRoute = require("./routes/universityRoute");
 const uploadRoute = require("./controller/uploadProfileController");
 const recomRoute = require("./routes/recRoute");
 const uploadProjectRoute = require("./routes/uploadProjectRoute");
+const downloadProjectRoute = require("./routes/downloadProjectRoute");
 //create the app
 const app = express();
 
@@ -61,6 +62,9 @@ app.use('/api/university',universityRoute);
 app.use('/collegeprofile',uploadRoute);
 app.use('/api/projectupload',uploadProjectRoute);  //upload project route
 app.use('/api/recommendedProject',recomRoute);
+app.use('/api/downloadProject',downloadProjectRoute);
+
+
 //define port
 
 app.listen(5000, () => console.log("app started at 5000..."));
