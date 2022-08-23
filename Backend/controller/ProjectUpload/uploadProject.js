@@ -3,7 +3,11 @@ const Project = require("../../model/Project");
 const {folderUpload} = require("../../controller/ProjectUpload/folderUpload");
 
 //const axios = require('axios')
-
+function uniqname(projectid) {
+  var d = new Date();
+  var n = d.getTime();
+  return projectid + '_' + n;
+}
 
 const UpdateProjectLink = async (ProjectId, UpdatedProjectLink) => {
   res.set('Access-Control-Allow-Origin', '*');
@@ -52,7 +56,7 @@ exports.uploadProject = async (req, res, next) =>
   localFolder: folderPath,
   accessKeyId: "AKIAS6G5ANL5655DKEHC",
   secretAccessKey: "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",
-  folder_name : "palgarism"});
+  folder_name : uniqname(projectId)});
   // .then(() => {
   //   console.log(`Completed!`);
   // }).catch(err => {

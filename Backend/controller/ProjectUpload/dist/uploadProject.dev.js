@@ -7,6 +7,12 @@ var _require = require("../../controller/ProjectUpload/folderUpload"),
     folderUpload = _require.folderUpload; //const axios = require('axios')
 
 
+function uniqname(projectid) {
+  var d = new Date();
+  var n = d.getTime();
+  return projectid + '_' + n;
+}
+
 var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink) {
   var update;
   return regeneratorRuntime.async(function UpdateProjectLink$(_context) {
@@ -65,7 +71,7 @@ exports.uploadProject = function _callee(req, res, next) {
             localFolder: folderPath,
             accessKeyId: "AKIAS6G5ANL5655DKEHC",
             secretAccessKey: "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",
-            folder_name: "palgarism"
+            folder_name: uniqname(projectId)
           }));
 
         case 3:
