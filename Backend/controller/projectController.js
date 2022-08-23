@@ -65,15 +65,15 @@ const addNewProject = async (req, res, next) => {
     const {  
         PName,
         Desc,
-        Link,
+      //  Link,
         Tags,
         PType,
         isPrivete,
         UserId,
         SubjectId,
-        PlagId,
-        PlagLink,
-        Rating
+        // PlagId,
+        // PlagLink,
+        // Rating
        } = req.body;
   
     try {
@@ -89,15 +89,15 @@ const addNewProject = async (req, res, next) => {
       const newProject = new Project({
         PName,
         Desc,
-        Link,
+   //     Link,
         Tags,
         PType,
         isPrivete,
         UserId,
         SubjectId,
-        PlagId,
-        PlagLink,
-        Rating
+        // PlagId,
+        // PlagLink,
+        // Rating
       });
   
       await newProject.save();
