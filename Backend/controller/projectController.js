@@ -161,4 +161,34 @@ const getProjectPlga = async(req,res,next)=>{
 
   return res.status(200).json({project});
 }
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject , getProjectBySubjectID , getProjectPlga , searchTheProject}
+
+const setPlaga = async(req,res,next)=>{
+  res.set('Access-Control-Allow-Origin', '*');
+  const { 
+    ProjectId,
+    PlagId,
+    PlagLink,
+    Rating,
+   } = req.body;
+   let projects;
+   console.log(ProjectId,
+    PlagId,
+    PlagLink,
+    Rating,);
+
+   const update = { PlagId : PlagId , PlagLink : PlagLink , Rating : Rating }
+   try {
+    await Project.findByIdAndUpdate(ProjectId,update);
+   } catch (error) {
+    console.log(error);
+   return res.status(400).json({error});
+   }
+
+   return res.status(200).json({
+    success:true,
+     })
+}
+module.exports = { getAllProjects , getProjectById , 
+  getProjectByUserId , addNewProject ,
+   getProjectBySubjectID , getProjectPlga ,
+   searchTheProject , setPlaga}
