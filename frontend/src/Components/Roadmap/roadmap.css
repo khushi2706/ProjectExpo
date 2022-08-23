@@ -1,3 +1,10 @@
 .mainDiv{
     text-align: left !important;
 }
+
+.card-container-main {
+    margin-left: 20px;
+    margin-top: 60px;
+    text-align: start;
+    font-family: 'poppins';
+}

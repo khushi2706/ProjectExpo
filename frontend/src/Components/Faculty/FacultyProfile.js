@@ -3,26 +3,26 @@ import Button from "../Common/Button";
 import ProfileInputField from "../Profile/ProfileInputField";
 import axios from "axios";
 import "./FacultyProfile.css";
-import Cookies from 'universal-cookie'
+import Cookies from "universal-cookie";
 import { Navigate } from "react-router-dom";
 
 export default function FacultyProfile() {
   const [myProfessor, setMyProfessor] = useState();
   const cookies = new Cookies();
- const UserType = cookies.get('userType');
- 
- const professorId = cookies.get('uTypeId')
+  const UserType = cookies.get("userType");
+
+  const professorId = cookies.get("uTypeId");
   const handleClickEvent = () => {
     console.log(myProfessor);
     sendRequest()
       .then((data) => console.log(data))
       .then(() => {});
-      
+
     window.location.reload(false);
   };
 
-
   const sendReq = async () => {
+    console.log("ProfessorId: " + professorId);
     const res = await axios
       .get(`http://localhost:5000/api/professor/getById/${professorId}`)
 
@@ -68,11 +68,7 @@ export default function FacultyProfile() {
 
   return (
     <>
-        {
-  UserType != 'Professor'
-  &&
-  <Navigate to="/login" replace={true} />
-}
+      {UserType != "Professor" && <Navigate to="/login" replace={true} />}
       <div>
         <div
           style={{

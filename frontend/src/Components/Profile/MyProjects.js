@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Cookies from 'universal-cookie'
+import Cookies from "universal-cookie";
 import { Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -11,14 +11,15 @@ export default function MyProjects() {
   //const { from } = location.state;
   console.log(location.state.subject_id);
   const [projects, setProjects] = useState();
-  
+
   const cookies = new Cookies();
- const UserType = cookies.get('userType');
- 
- const userId = cookies.get('userId')
+  const UserType = cookies.get("userType");
+
+  const userId = cookies.get("userId");
   console.log(userId);
   const sendReq = async () => {
     if (location.state.subject_id != undefined) {
+      console.log("We are going to show professor project");
       const res = await axios
         .get(
           `http://localhost:5000/api/Project/Subject/${location.state.subject_id}`
@@ -29,6 +30,7 @@ export default function MyProjects() {
       console.log("BySubject: " + data);
       return data;
     }
+    console.log("We are going to show student's project");
     const res = await axios
       .get(`http://localhost:5000/api/Project/UserId/${userId}`)
       .catch((err) => console.log(err));
@@ -47,11 +49,8 @@ export default function MyProjects() {
 
   return (
     <>
-    {
-  UserType != 'Student'
-  &&
-  <Navigate to="/login" replace={true} />
-}
+      {UserType != "Student" ||
+        (UserType != "Professor" && <Navigate to="/login" replace={true} />)}
       <div style={{ display: "flex", flexDirection: "column" }}>
         {projects &&
           projects.map((project, index) => (
