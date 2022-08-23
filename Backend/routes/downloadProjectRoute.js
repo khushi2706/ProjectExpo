@@ -1,8 +1,8 @@
 const express = require("express");
 const downloadProjectRoute = express.Router();
 
-const { DownloadProject } = require("../controller/projectController");
+const { DownloadProjectLink } = require("../controller/projectController");
 
-downloadProjectRoute.get("/", DownloadProject);
+downloadProjectRoute.get("/", DownloadProjectLink);
 
 module.exports = downloadProjectRoute;

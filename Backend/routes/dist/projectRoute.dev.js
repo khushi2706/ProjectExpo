@@ -10,12 +10,12 @@ var _require = require("../controller/projectController"),
     getProjectByUserId = _require.getProjectByUserId,
     addNewProject = _require.addNewProject,
     UpdateProjectLink = _require.UpdateProjectLink,
-    DownloadProject = _require.DownloadProject;
+    DownloadProjectLink = _require.DownloadProjectLink;
 
 projectRoute.get("/", getAllProjects);
 projectRoute.get("/:id", getProjectById);
 projectRoute.get("/UserId/:UserId", getProjectByUserId);
 projectRoute.post("/add", addNewProject);
 projectRoute.put("/updateProjectLink", UpdateProjectLink);
-projectRoute.get("/download/:id", DownloadProject);
+projectRoute.get("/download/:id", DownloadProjectLink);
 module.exports = projectRoute;

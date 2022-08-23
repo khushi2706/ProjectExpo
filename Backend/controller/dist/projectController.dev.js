@@ -258,9 +258,9 @@ var UpdateProjectLink = function UpdateProjectLink(req, res, next) {
 }; //make api for project download
 
 
-var DownloadProject = function DownloadProject(req, res, next) {
+var DownloadProjectLink = function DownloadProjectLink(req, res, next) {
   var ProjectId, DownloadProjectLink, update;
-  return regeneratorRuntime.async(function DownloadProject$(_context6) {
+  return regeneratorRuntime.async(function DownloadProjectLink$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
@@ -311,5 +311,5 @@ module.exports = {
   getProjectByUserId: getProjectByUserId,
   addNewProject: addNewProject,
   UpdateProjectLink: UpdateProjectLink,
-  DownloadProject: DownloadProject
+  DownloadProjectLink: DownloadProjectLink
 };

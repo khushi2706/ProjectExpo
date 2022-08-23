@@ -140,7 +140,7 @@ const UpdateProjectLink = async (req, res, next) => {
 };
 
 //make api for project download
-const DownloadProject = async (req, res, next) => {
+const DownloadProjectLink = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
     const {
       ProjectId,
@@ -174,4 +174,4 @@ const DownloadProject = async (req, res, next) => {
 }
 
   
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject ,UpdateProjectLink, DownloadProject};
+module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject ,UpdateProjectLink, DownloadProjectLink };

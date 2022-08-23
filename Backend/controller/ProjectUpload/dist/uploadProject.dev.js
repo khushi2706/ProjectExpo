@@ -7,10 +7,8 @@ var _require = require("../../controller/ProjectUpload/folderUpload"),
     folderUpload = _require.folderUpload; //const axios = require('axios')
 
 
-function uniqname(projectid) {
-  var d = new Date();
-  var n = d.getTime();
-  return projectid + '_' + n;
+function uniqname(pro_id) {
+  return pro_id;
 }
 
 var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink) {
@@ -94,7 +92,7 @@ exports.uploadProject = function _callee(req, res, next) {
           return _context2.abrupt("return", res.status(200).json({
             success: true,
             response: {
-              code: "Project_uploaded_updated"
+              code: "Project_uploaded"
             }
           }));
 

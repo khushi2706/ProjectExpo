@@ -3,10 +3,8 @@ const Project = require("../../model/Project");
 const {folderUpload} = require("../../controller/ProjectUpload/folderUpload");
 
 //const axios = require('axios')
-function uniqname(projectid) {
-  var d = new Date();
-  var n = d.getTime();
-  return projectid + '_' + n;
+function uniqname(pro_id) {
+  return pro_id;
 }
 
 const UpdateProjectLink = async (ProjectId, UpdatedProjectLink) => {
@@ -83,7 +81,7 @@ exports.uploadProject = async (req, res, next) =>
   return res.status(200).json({
     success: true,
     response: {
-        code: "Project_uploaded_updated",
+        code: "Project_uploaded",
     },
 });
 }

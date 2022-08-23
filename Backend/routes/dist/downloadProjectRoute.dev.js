@@ -5,7 +5,7 @@ var express = require("express");
 var downloadProjectRoute = express.Router();
 
 var _require = require("../controller/projectController"),
-    DownloadProject = _require.DownloadProject;
+    DownloadProjectLink = _require.DownloadProjectLink;
 
-downloadProjectRoute.get("/", DownloadProject);
+downloadProjectRoute.get("/", DownloadProjectLink);
 module.exports = downloadProjectRoute;
