@@ -35,7 +35,18 @@ export default function Login(props) {
         cookies.set('authToken', data.authToken , { path: '/' });
         cookies.set('userId' , data.userId,   { path: '/' });
         cookies.set('userType', data.userType, {path:'/'});
+        cookies.set('uTypeId', data.uTypeId, {path:'/'});
         console.log(data);
+
+         if(data.userType == "College-admin")
+         window.location.href = "/collegeprofile";
+         else if(data.userType == "Student")
+         window.location.href = "/myProfile"
+         else if(data.userType == "Professor")
+         window.location.href = "/faculty"
+         else
+         window.location.href = "/"
+
     })
   }
   return (

@@ -10,8 +10,15 @@ import "./UniProfile.css"
 import { NavLink } from "react-router-dom";
 import DeptCard from './DeptCard';
 import Pop from "./Pop";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
 
 function UniDept() {
+
+  const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ 
+ const CollegeId = cookies.get('uTypeId')
     const handleClick = ()=>{
         
     }
@@ -20,7 +27,7 @@ function UniDept() {
 
 const sendRequest = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9')
+    .get(`http://localhost:5000/api/department/getByCollgeId/${CollegeId}`)
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -33,7 +40,7 @@ const [uni, setUni] = useState();
 
 const sendRequest2 = async () => {
   const res = await axios
-    .get('http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9')
+    .get(`http://localhost:5000/api/college/collegeId/${CollegeId}`)
     .catch((err) => console.log(err));
   const data = await res.data;
   console.log(data);
@@ -66,14 +73,18 @@ useEffect(() => {
     //   ];
   return ( 
     <>
+    {
+  UserType != 'College-admin'
+  &&
+  <Navigate to="/login" replace={true} />
+}
     {user && 
     <div
     style={{
       display: "flex",
       textAlign: "center",
       justifyContent: "left",
-      paddingTop: "20px",
-      paddingLeft: "20px",
+      
     }}
   >
   <div style={{ display:"flex", flexDirection: "column" }}>
@@ -120,10 +131,10 @@ useEffect(() => {
         </div>
       </div>
       {/* horizontal line */}
-      <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
+      <div  style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
 
       {/* options */}
-      <div style={{position:"sticky",top:"130px",padding:"10px"}}>
+      <div className="editing" style={{position:"sticky",top:"130px",padding:"10px"}}>
       <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegeprofile">
       <SideBarOption icon="person"  title="Profile" />
       </NavLink>
@@ -139,6 +150,10 @@ useEffect(() => {
       <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/collegesubjects">
       <SideBarOption icon="groups" title="Subjects" />
       </NavLink>
+
+      <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
      
      
      

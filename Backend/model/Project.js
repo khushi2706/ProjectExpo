@@ -52,6 +52,12 @@ var ProjectSchema = new Schema(
     ProjectLink:[{type: String}],
     DownloadProjectLink:[{type: String}],
 
+    PlagId:{
+        type: String,
+    },
+    PlagLink:{
+        type:String
+    }
 })
 
 module.exports = mongoose.model("Project", ProjectSchema);

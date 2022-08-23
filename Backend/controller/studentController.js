@@ -146,7 +146,8 @@ const changeStudentDetails = async(req,res)=> {
        Gender
        } = req.body;
        
-  
+       console.log("===============");
+  console.log(req.body);
   try {
 
       const filter = { _id: StudentId };
@@ -159,7 +160,7 @@ const changeStudentDetails = async(req,res)=> {
 
      await Student.findByIdAndUpdate(StudentId,
           update);
-     
+      
   } catch (error) {
       return res.status(400).json({
           success : false,

@@ -1,5 +1,8 @@
 const bcrypt = require("bcryptjs");
 const User = require("../model/User"); // User model
+const College = require("../model/College");
+const Student = require("../model/Student");
+const Professor = require("../model/Professor");
 const Joi = require('@hapi/joi');
 const { registerSchema, loginSchema } = require('../utils/userValidation');
 const jwt = require("jsonwebtoken");
@@ -68,10 +71,22 @@ const loginUser = async (req,res,next) =>{
    }
   const authToken = jwt.sign(existingUser.toJSON(),JWT_SECRET);
 
+  const uId = existingUser._id;
+ 
+  let UserTypedId
+  if(existingUser.UserType == 'College-admin')
+  UserTypedId =  await College.find( { UserId : uId.toString() } , {_id:1});
+  else if(existingUser.UserType == 'Student')
+  UserTypedId = await Student.find( { UserId : uId.toString() } , {_id:1});
+  else
+  UserTypedId = await Professor.find( { UserId : uId.toString() } , {_id:1});
    
-   return res.status(200).json({userType: existingUser.UserType , authToken , userId : existingUser._id});
+  return res.status(200).json(
+    {userType: existingUser.UserType , 
+      authToken , 
+      userId : existingUser._id , 
+      uTypeId : UserTypedId[0]._id} );
     
-  
 }
 const addNewUser = async (req, res, next) => {
   const { Email, Password, UserType } = req.body;

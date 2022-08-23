@@ -11,15 +11,21 @@ import { NavLink } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import FacultyCard from "./FacultyCard";
 import PopF from "./PopF";
+import Cookies from 'universal-cookie'
+import { Navigate } from "react-router-dom";
 
 function UniFaculty() {
   const handleClick = () => {};
   const [user, setUser] = useState();
+  const cookies = new Cookies();
+ const UserType = cookies.get('userType');
+ 
+ const CollegeId = cookies.get('uTypeId')
 
   const sendRequest = async () => {
     const res = await axios
       .get(
-        "http://localhost:5000/api/college/collegeId/62f8724e92cfa9015a3befc9"
+        `http://localhost:5000/api/college/collegeId/${CollegeId}`
       )
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -33,7 +39,7 @@ function UniFaculty() {
   const sendRequest2 = async () => {
     const res = await axios
       .get(
-        "http://localhost:5000/api/department/getByCollgeId/62f8724e92cfa9015a3befc9"
+        `http://localhost:5000/api/department/getByCollgeId/${CollegeId}`
       )
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -55,14 +61,18 @@ function UniFaculty() {
 
   return (
     <>
+    {
+  UserType != 'College-admin'
+  &&
+  <Navigate to="/login" replace={true} />
+}
       {sub && (
         <div
           style={{
             display: "flex",
             textAlign: "center",
             justifyContent: "left",
-            paddingTop: "20px",
-            paddingLeft: "20px",
+          
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -119,7 +129,7 @@ function UniFaculty() {
             <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
 
             {/* options */}
-            <div style={{ position: "sticky", top: "130px", padding: "10px" }}>
+            <div className="editing" style={{ position: "sticky", top: "130px", padding: "10px" }}>
               <NavLink
                 className=""
                 style={{ textDecoration: "none", color: "black" }}
@@ -151,6 +161,10 @@ function UniFaculty() {
               >
                 <SideBarOption icon="groups" title="Subjects" />
               </NavLink>
+
+              <NavLink className="" style={{textDecoration:"none",color:"black" }} to="/Logout">
+         <SideBarOption icon="groups" title="Logout" />
+         </NavLink>
             </div>
           </div>
 

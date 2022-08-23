@@ -65,10 +65,15 @@ const addNewProject = async (req, res, next) => {
     const {  
         PName,
         Desc,
+      //  Link,
         Tags,
         PType,
         isPrivete,
-        UserId
+        UserId,
+        SubjectId,
+        // PlagId,
+        // PlagLink,
+        // Rating
        } = req.body;
   
     try {
@@ -84,10 +89,15 @@ const addNewProject = async (req, res, next) => {
       const newProject = new Project({
         PName,
         Desc,
+   //     Link,
         Tags,
         PType,
         isPrivete,
-        UserId
+        UserId,
+        SubjectId,
+        // PlagId,
+        // PlagLink,
+        // Rating
       });
   
       await newProject.save();
@@ -106,7 +116,6 @@ const addNewProject = async (req, res, next) => {
       },
     });
 };
-
 
 const UpdateProjectLink = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -174,4 +183,79 @@ const DownloadProjectLink = async (req, res, next) => {
 }
 
   
-module.exports = { getAllProjects , getProjectById , getProjectByUserId , addNewProject ,UpdateProjectLink, DownloadProjectLink };
+const getProjectBySubjectID = async(req,res,next) => {
+  const SubjectId = req.params;
+  res.set('Access-Control-Allow-Origin', '*');
+  console.log(SubjectId);
+
+  let project;
+  try{
+      project = await Project.find(SubjectId);
+  }
+  catch(e)
+  {
+      return console.log(e);
+  }
+
+  if(!project)
+  return res.status(500).json({ message: "not Found" })
+
+  return res.status(200).json({project});
+}
+
+const searchTheProject = async(req,res,next)=>{
+  console.log("-----");
+  console.log(req.params.key);
+  
+  res.set('Access-Control-Allow-Origin', '*');
+  let projects = await Project.find({ PName : new RegExp(req.params.key, 'i') })
+ return res.status(200).json({ projects });
+
+}
+
+const getProjectPlga = async(req,res,next)=>{
+  const ProjectId = req.params.ProjectId;
+  res.set('Access-Control-Allow-Origin', '*');
+  
+  let project;
+  try {
+    project  = await Project.find({ _id : ProjectId.toString() }, 
+  { Rating :1 , PlagId : 1 , PlagLink : 1}  );
+  } catch (error) {
+    return res.status(400).json({error});
+  }
+
+  return res.status(200).json({project});
+}
+
+const setPlaga = async(req,res,next)=>{
+  res.set('Access-Control-Allow-Origin', '*');
+  const { 
+    ProjectId,
+    PlagId,
+    PlagLink,
+    Rating,
+   } = req.body;
+   let projects;
+   console.log(ProjectId,
+    PlagId,
+    PlagLink,
+    Rating,);
+
+   const update = { PlagId : PlagId , PlagLink : PlagLink , Rating : Rating }
+   try {
+    await Project.findByIdAndUpdate(ProjectId,update);
+   } catch (error) {
+    console.log(error);
+   return res.status(400).json({error});
+   }
+
+   return res.status(200).json({
+    success:true,
+     })
+}
+module.exports = { getAllProjects , getProjectById , 
+  getProjectByUserId , addNewProject ,
+   getProjectBySubjectID , getProjectPlga ,
+   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink }
+
