@@ -31,11 +31,11 @@ import Project_3 from "./Components/ProjectUpload/Project_3";
 import T from "./Components/TaskAssignment.js/T";
 import Quizmain from "./Components/quiz/Quizmain";
 
-
 import Logout from "./Components/logout/Logout";
 import "./Components/GeneralCSS/main.css";
 import Faculty from "./Components/Faculty/Faculty";
 import MyProjects from "./Components/Profile/MyProjects";
+import FacultyProject from "./Components/Faculty/FacultyProject";
 
 function App() {
   return (
@@ -56,8 +56,12 @@ function App() {
             <Route index path="/mentor" element={<Mentor />} />
             <Route index path="/viewmentor/:id" element={<MentorView />} />
             <Route index path="/signup/signup2" element={<SignUp2 />} />
-            <Route index path="/signup/signup2/collegeSelect" element={<CollegeSelect />} />
-            <Route index path="/linkoftask" element={<T/>}/>            
+            <Route
+              index
+              path="/signup/signup2/collegeSelect"
+              element={<CollegeSelect />}
+            />
+            <Route index path="/linkoftask" element={<T />} />
             <Route index path="/blog" element={<Blog />} />
             <Route index path="/mentor" element={<Mentor />} />
             <Route index path="/collegeprofile" element={<UniProfile />} />
@@ -71,8 +75,9 @@ function App() {
             <Route index path="/UploadProject/Stage3" element={<Project_3 />} />
             <Route index path="/Faculty" element={<Faculty />} />
             <Route index path="/MyProject" element={<MyProjects />} />
-            <Route index path="/quiz" element={<Quizmain/>}/>
-            <Route index path="/Logout" element={<Logout/>}/>
+            <Route index path="/FacultyProject" element={<FacultyProject />} />
+            <Route index path="/quiz" element={<Quizmain />} />
+            <Route index path="/Logout" element={<Logout />} />
           </Routes>
         </BrowserRouter>
       </div>

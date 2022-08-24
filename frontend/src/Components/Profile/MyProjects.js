@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 import { Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-export default function MyProjects() {
+export default function MyProjects(props) {
   const location = useLocation();
   //const { from } = location.state;
   if (location.state != null) {
@@ -20,7 +20,7 @@ export default function MyProjects() {
   const userId = cookies.get("userId");
   console.log(userId);
   const sendReq = async () => {
-    if (location.state != null) {
+    if (props.subject_id != null) {
       console.log("We are going to show professor project");
       const res = await axios
         .get(
