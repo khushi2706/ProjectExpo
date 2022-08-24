@@ -9,7 +9,9 @@ import { useLocation } from "react-router-dom";
 export default function MyProjects() {
   const location = useLocation();
   //const { from } = location.state;
-  console.log(location.state.subject_id);
+  if (location.state != null) {
+    console.log(location.state.subject_id);
+  } else console.log("subject_id is undefined");
   const [projects, setProjects] = useState();
 
   const cookies = new Cookies();
@@ -18,7 +20,7 @@ export default function MyProjects() {
   const userId = cookies.get("userId");
   console.log(userId);
   const sendReq = async () => {
-    if (location.state.subject_id != undefined) {
+    if (location.state != null) {
       console.log("We are going to show professor project");
       const res = await axios
         .get(
@@ -49,8 +51,6 @@ export default function MyProjects() {
 
   return (
     <>
-      {UserType != "Student" ||
-        (UserType != "Professor" && <Navigate to="/login" replace={true} />)}
       <div style={{ display: "flex", flexDirection: "column" }}>
         {projects &&
           projects.map((project, index) => (

@@ -205,13 +205,8 @@ export default function Signup(props) {
             </select>
           </div>
 
-          <div
-            className="sign-in-input-field-container"
-            name="DepartmentId"
-            id="form"
-            onClick={getDeprtId}
-          >
-            <select onChange={props.handleChange}>
+          <div className="sign-in-input-field-container" id="form">
+            <select name="DepartmentId" onChange={setDprtId} id="">
               <option value=" ">Select Department </option>
               {departs &&
                 departs.map((dp, idx) => {
