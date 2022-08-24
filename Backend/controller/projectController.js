@@ -76,6 +76,15 @@ const addNewProject = async (req, res, next) => {
         // Rating
        } = req.body;
   
+     
+        console.log( PName,
+          Desc,
+        //  Link,
+          Tags,
+          PType,
+          isPrivete,
+          UserId,
+          SubjectId,);
     try {
       //Check if college is exist
       let UserExist = await User.findById(UserId);
@@ -90,11 +99,11 @@ const addNewProject = async (req, res, next) => {
         PName,
         Desc,
    //     Link,
-        Tags,
-        PType,
-        isPrivete,
-        UserId,
-        SubjectId,
+   Tags,
+   PType,
+   isPrivete,
+   UserId,
+   SubjectId,
         // PlagId,
         // PlagLink,
         // Rating

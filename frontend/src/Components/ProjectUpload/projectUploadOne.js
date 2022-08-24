@@ -198,22 +198,17 @@ export default function Project_1() {
 
           <div class="form-group row mt-3">
             <label for="inputPassword" class="col-sm-2 downn col-form-label">
-              <strong>Tags:</strong>
+              <strong>Project Upload</strong>
             </label>
             <div class="col-sm-10">
               <input
-                type="text"
+                type="file"
                 class="form-control form-input"
-                id="Tag"
-                name="Tags"
-                value={inputTag.Tags}
+                name="Files"
                 onChange={handleChange}
-                placeholder="Enter Applicable Tag Like.. Machine Learning - MERN Stack Application"
-                required
               />
             </div>
           </div>
-
           <div className="d-flex flex-row-reverse  mt-3 ">
             <div className="w-25">
             <button type="submit" style={{height:"41px"}} onClick={uploadProject} className=" search-bar-button  m-auto " >
