@@ -33,13 +33,13 @@ export default function Search(props) {
           {/*search bar*/}
           <div
             className="container-serach-box-search-bar"
-            style={{ width: "80%", marginTop: 20 }}
+            style={{ width: "80%" }}
           >
             <i
               className="material-icons"
               style={{
                 marginLeft: 10,
-                marginTop: 20,
+
                 fontSize: 28,
                 color: "#9B9B9B",
               }}
