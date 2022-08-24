@@ -1,5 +1,4 @@
 var axios = require('axios');
-var FormData = require('form-data');
 
 const [Id, setId] = useState();
 const sendReq = async () => {
