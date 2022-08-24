@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import SideBarOption from "../Profile/SideBarOption";
-import { useNavigate } from "react-router-dom";
 import FacultyProfile from "./FacultyProfile";
 import FacultySubject from "./FacultySubject";
+import { NavLink } from "react-router-dom";
 
 export default function Faculty() {
   const [facutlyProfile, setFacultyProfile] = useState(true);
+  //
 
   const handleMyProfileClick = () => {
     setFacultyProfile(true);
@@ -15,6 +16,11 @@ export default function Faculty() {
   const handleSubjectClick = () => {
     setFacultyProfile(false);
     console.log("My Project clicked");
+  };
+
+  const handleLogoutClick = () => {
+    console.log("we are loging out");
+    window.location = "/Logout";
   };
 
   return (
@@ -84,7 +90,12 @@ export default function Faculty() {
             title="Subject"
             onClick={handleSubjectClick}
           />
-          <SideBarOption icon="groups" title="My Class" />
+
+          <SideBarOption
+            icon="logout"
+            title="Logout"
+            onClick={handleLogoutClick}
+          />
         </div>
         {/* vertical line */}
         <div
