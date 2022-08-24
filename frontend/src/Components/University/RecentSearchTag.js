@@ -13,6 +13,7 @@ export default function RecentSearchTag(props) {
                             paddingBottom: 5,
                             borderRadius: 12, 
                             marginLeft: 10,
+                            
                             backgroundColor: '#f1f2f3'}}>
                     <div style={{textAlign: 'center',
                                 fontSize: 20,

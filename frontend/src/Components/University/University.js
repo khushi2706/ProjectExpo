@@ -24,6 +24,24 @@ export default function University() {
 
     console.log(user);
   }, []);
+  const [searchinput, searchinputUpdate] = useState("");
+  const filter2 = () => {
+    let temp = [...user];
+    console.log("===");
+    console.log(temp);
+    if (searchinput != "") {
+      temp = temp.filter((ele) => {
+        return ele.UName.toLowerCase().includes(searchinput.toLowerCase());
+      });
+    }
+    console.log("---r---");
+    console.log(temp);
+    setUser(temp);
+
+    // sessionStorage.setItem('searchinput', searchinput);
+    // setFlag("true");
+    alert("clicked");
+  };
   return (
     <>
       {user && (
@@ -33,7 +51,51 @@ export default function University() {
           </div>
 
           <div style={{ position: "sticky" }}>
-            <Search title="Search University" />
+          <div style={{ width: "100%" }}>
+          <div
+            style={{ paddingLeft: 40, paddingRight: 40, justifyContent: "left" }}
+          >
+            <div style={{ marginTop: 40 }} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              {/*search bar*/}
+              <div
+                className="container-serach-box-search-bar"
+                style={{ width: "80%" }}
+              >
+                <i
+                  className="material-icons"
+                  style={{ marginLeft: 10, fontSize: 28, color: "#9B9B9B" }}
+                >
+                  search
+                </i>
+                <div style={{ paddingLeft: 20 }} />
+                <input
+                  type="text"
+                  className="search-bar-input-box"
+                  placeholder="search by university name"
+                  value={searchinput}
+                  onChange={(e) => searchinputUpdate(e.target.value)}
+                />
+              </div>
+  
+              {/*Search button*/}
+              <button
+                className="search-bar-button"
+                id="searchinput"
+                onClick={filter2}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+  
           </div>
 
           <div

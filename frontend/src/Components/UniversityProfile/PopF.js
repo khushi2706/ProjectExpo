@@ -155,7 +155,7 @@ class Pop extends React.Component {
             fontWeight: "600",
           }}
         >
-          Faculty Name
+          Faculty Name<span style={{color:"red"}}>*</span>
         </div>
             <div style={{ width: "-webkit-fill-available" }}>
             <input
@@ -174,7 +174,7 @@ class Pop extends React.Component {
             fontWeight: "600",
           }}
         >
-          Email
+          Email<span style={{color:"red"}}>*</span>
         </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
@@ -193,7 +193,7 @@ class Pop extends React.Component {
             fontWeight: "600",
           }}
         >
-          Select Department
+          Select Department<span style={{color:"red"}}>*</span>
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
@@ -216,7 +216,7 @@ class Pop extends React.Component {
           fontWeight: "600",
         }}
       >
-        Post of Faculty
+        Post of Faculty<span style={{color:"red"}}>*</span>
       </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input

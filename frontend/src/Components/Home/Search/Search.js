@@ -8,7 +8,19 @@ export default function Search(props) {
     const cancelItem =()=>{
         setFlag("false");
     }
+
+    // const filter = () => {
+    //     let temp = [...sessionStorage];
+    
+    //     if (searchinput != "") {
+    //       temp = temp.filter((ele) => {
+    //         return ele.data().name.toLowerCase().includes(searchinput.toLowerCase());
+    //       });
+    //     }
+    // }
     const searchfunc = () => {
+
+        
         console.log(searchinput);
         if(searchinput == "") {
             alert("Please Insert Input");

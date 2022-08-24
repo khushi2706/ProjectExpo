@@ -101,6 +101,7 @@ export default function FacultyProfile() {
               width: "-webkit-fill-available",
             }}
           ></div>
+          
         </div>
 
         <div style={{ display: "flex", flexDirection: "row" }}>

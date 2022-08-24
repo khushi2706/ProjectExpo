@@ -115,10 +115,23 @@ if((list3.includes(inputt3))==false){
           <div className="tagListOption tagflex">
             <div>
               <img src={university} alt="" className="tagImage" />
-              <div className="tagName">University</div>
+              <div className="tagName">Type</div>
             </div>
             <div>
-              <input type="text" className="inputfilter inputfil" onChange={e =>setInputt1(e.target.value)} placeholder="Ex. BVM"/>
+            <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+            <div className="sign-in-input-field-container">
+            <select className="select" class="chg" onChange={e =>setInputt1(e.target.value)} name="typeid">
+                    <option value={0} >Software</option>
+                    <option value={1} >Hardware</option>
+            </select>
+          </div>
+            </div>
             </div>
           </div>
 
