@@ -4,6 +4,7 @@ import { ReactDOM } from "react";
 import Header from "../Common/Header";
 import ProgressBar from "./ProgressBar";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 var sty = {
   backgroundColor: "#57bcff",
@@ -15,26 +16,53 @@ var sty = {
 
 export default function Project_1() {
   var [tags, setTags] = useState("");
-  
+  var [ inputTag , setInputTag ] = useState({});
   const Tags = (event) => {
     var str = event.target.value;
     setTags(str);
   };
 
+  const handleChange = (e) =>{
+    console.log(e.target.name);
+    setInputTag((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  }
 
+  const sendReq = async() =>{
+    let Rtype = document.getElementsByName("Rtype");
+    console.log(inputTag.PName);
+    
+    Array.from(Rtype).forEach(element => {
+      if(element.checked)
+      inputTag.PType = element.value;
+    });
+    inputTag.UserId = "62f9142c5cf6d43a8bbcc544"
+    inputTag.isPrivete = true
+    inputTag.PType = "Software"
+    inputTag.SubjectId = "62f9142c5cf6d43a8bbcc544"
+    console.log(inputTag);
+    const res = await axios
+    .post(`http://localhost:5000/api/Project/add`,inputTag)
+    .catch((err)=> console.log(err));
+    const data = await res.data;
+    return data;
+  }
+  const uploadProject = (e)=>{
+    e.preventDefault();
+    sendReq()
+      .then((data) => console.log(data))
+      .then(() => console.log("done"));
+  }
 
   return (
     <>
       <Header />
-
-
      <div className="container mt-5">
      <ProgressBar wid="33%" num="1"/>
-     
-   
-
       <div className=" p-3 mt-4 ">
-        <form>
+        <form  onSubmit={uploadProject} >
           <div className="form-group row mt-4">
             <label
               for="name"
@@ -46,8 +74,10 @@ export default function Project_1() {
               <input
                 type="text"
                 className="form-control form-input"
-                id="name"
+                name="PName"
                 placeholder="Enter Your Project Name"
+                onChange={handleChange}
+                value={inputTag.PName}
                 required
               />
             </div>
@@ -58,7 +88,13 @@ export default function Project_1() {
               <strong>Description:</strong>
             </label>
             <div className="col-sm-10">
-              <textarea className="form-control f-textarea" id="desc" placeholder="Describe your project in min 25 words" rows="3"  required></textarea>
+              <textarea className="form-control f-textarea" id="desc" 
+              placeholder="Describe your project in min 25 words" 
+              rows="3"  
+              name="Desc"
+              onChange={handleChange}
+              value={inputTag.Desc}
+              required></textarea>
             </div>
           </div>
 
@@ -74,7 +110,7 @@ export default function Project_1() {
                 <input
                   className="form-check-input "
                   type="radio"
-                  name="type"
+                  name="Rtype"
                   id="software"
                   value="software"
                 />
@@ -86,7 +122,7 @@ export default function Project_1() {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="type"
+                  name="Rtype"
                   id="hardware"
                   value="hardware"
                 />
@@ -110,7 +146,6 @@ export default function Project_1() {
                   name="privacy"
                   id="public"
                   value="public"
-                 
                 />
                 <label className="form-check-label" for="public">
                   Public
@@ -149,24 +184,41 @@ export default function Project_1() {
             </label>
             <div class="col-sm-10">
               <input
-                onChange={Tags}
                 type="text"
                 class="form-control form-input"
                 id="Tag"
+                name="Tags"
+                value={inputTag.Tags}
+                onChange={handleChange}
                 placeholder="Enter Applicable Tag Like.. Machine Learning - MERN Stack Application"
                 required
               />
             </div>
-            <div className="w-100 text-center">{tags}</div>
+          </div>
+
+          <div class="form-group row mt-3">
+            <label for="inputPassword" class="col-sm-2 downn col-form-label">
+              <strong>Tags:</strong>
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control form-input"
+                id="Tag"
+                name="Tags"
+                value={inputTag.Tags}
+                onChange={handleChange}
+                placeholder="Enter Applicable Tag Like.. Machine Learning - MERN Stack Application"
+                required
+              />
+            </div>
           </div>
 
           <div className="d-flex flex-row-reverse  mt-3 ">
             <div className="w-25">
-            <NavLink className="" to="/UploadProject/Stage2">
-            <button type="submit" style={{height:"41px"}} className=" search-bar-button  m-auto " >
+            <button type="submit" style={{height:"41px"}} onClick={uploadProject} className=" search-bar-button  m-auto " >
             Next
-          </button>
-          </NavLink>
+          </button>        
               
             </div>
           </div>

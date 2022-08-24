@@ -1,5 +1,6 @@
 const Project = require("../model/Project");
 const User = require("../model/User");
+const axios = require('axios')
 
 const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -65,17 +66,23 @@ const addNewProject = async (req, res, next) => {
     const {  
         PName,
         Desc,
-      //  Link,
         Tags,
         PType,
         isPrivete,
         UserId,
         SubjectId,
-        // PlagId,
-        // PlagLink,
-        // Rating
+        ProjectLink
+        
        } = req.body;
   
+     
+        console.log( PName,
+          Desc,
+          Tags,
+          PType,
+          isPrivete,
+          UserId,
+          SubjectId,);
     try {
       //Check if college is exist
       let UserExist = await User.findById(UserId);
@@ -86,21 +93,40 @@ const addNewProject = async (req, res, next) => {
         });
       }
   
-      const newProject = new Project({
+      let newProject
+      if(SubjectId != null)
+    {  newProject = new Project({
         PName,
         Desc,
-   //     Link,
         Tags,
         PType,
         isPrivete,
         UserId,
         SubjectId,
-        // PlagId,
-        // PlagLink,
-        // Rating
-      });
+      });}
+      else
+      {
+        newProject = new Project({
+          PName,
+          Desc,
+          Tags,
+          PType,
+          isPrivete,
+          UserId
+        });
+      }
   
       await newProject.save();
+      
+
+    const res = await axios.post(`http://localhost:5000/api/projectupload`,
+    {
+      projectId: newProject._id,
+      folderPath: ProjectLink
+    })
+    .catch((err)=> console.log(err));
+
+
     } catch (error) {
       return res.status(400).json({
         success: false,
@@ -109,6 +135,7 @@ const addNewProject = async (req, res, next) => {
         },
       });
     }
+
     return res.status(200).json({
       success: true,
       response: {
@@ -117,6 +144,72 @@ const addNewProject = async (req, res, next) => {
     });
 };
 
+const UpdateProjectLink = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const {
+      ProjectId,
+    } = req.body;
+
+    const UpdatedProjectLink = req.body.UpdatedProjectLink;
+    console.log(UpdateProjectLink);
+    try {
+      const update = {  ProjectLink : UpdatedProjectLink };
+
+     await Project.findByIdAndUpdate(ProjectId,
+          update);
+     
+  } catch (error) {
+      return res.status(400).json({
+          success : false,
+          response : {
+              error
+          }
+      })
+  }
+    
+    return res.status(200).json({
+        success: true,
+        response: {
+            code: "Project_link_updated",
+        },
+    });
+};
+
+//make api for project download
+const DownloadProjectLink = async (req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    const {
+      ProjectId,
+    } = req.body;
+
+    const DownloadProjectLink = req.body.DownloadProjectLink;
+    console.log(DownloadProjectLink);
+    try {
+      const update = {  DownloadProjectLink : DownloadProjectLink };
+
+      await Project.findByIdAndUpdate(ProjectId,
+
+          update);
+
+    } catch (error) {
+
+        return res.status(400).json({
+            success : false,
+            response : {
+                error
+            }
+        })
+    }
+
+    return res.status(200).json({
+        success: true,
+        response: {
+            code: "Project_downloaded",
+        },
+    });
+}
+
+  
 const getProjectBySubjectID = async(req,res,next) => {
   const SubjectId = req.params;
   res.set('Access-Control-Allow-Origin', '*');
@@ -191,4 +284,5 @@ const setPlaga = async(req,res,next)=>{
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
-   searchTheProject , setPlaga}
+   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink }
+
