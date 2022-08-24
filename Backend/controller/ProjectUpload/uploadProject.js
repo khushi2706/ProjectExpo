@@ -8,7 +8,7 @@ function uniqname(pro_id) {
 }
 
 const UpdateProjectLink = async (ProjectId, UpdatedProjectLink) => {
-  res.set('Access-Control-Allow-Origin', '*');
+  
   // const {
   //   ProjectId,
   // } = req.body;
@@ -54,6 +54,7 @@ exports.uploadProject = async (req, res, next) =>
   localFolder: folderPath,
   accessKeyId: "AKIAS6G5ANL5655DKEHC",
   secretAccessKey: "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",
+  
   folder_name : uniqname(projectId)});
   // .then(() => {
   //   console.log(`Completed!`);
@@ -67,16 +68,6 @@ exports.uploadProject = async (req, res, next) =>
   //save all paths to database  
   
 // console.log(folderPath);
-
-//const obj = {  }
-
-
-// UpdateProjectLink(projectId, filepaths);
-
-// axios.put("http://localhost:5000/api/Project/updateProjectLink",{
-//     ProjectId : projectId,
-//     UpdatedProjectLink: JSON.parse(JSON.stringify(obj))
-//   })
 
   return res.status(200).json({
     success: true,

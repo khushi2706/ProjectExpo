@@ -1,5 +1,6 @@
 const Project = require("../model/Project");
 const User = require("../model/User");
+const axios = require('axios')
 
 const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -65,21 +66,18 @@ const addNewProject = async (req, res, next) => {
     const {  
         PName,
         Desc,
-      //  Link,
         Tags,
         PType,
         isPrivete,
         UserId,
         SubjectId,
-        // PlagId,
-        // PlagLink,
-        // Rating
+        ProjectLink
+        
        } = req.body;
   
      
         console.log( PName,
           Desc,
-        //  Link,
           Tags,
           PType,
           isPrivete,
@@ -95,21 +93,40 @@ const addNewProject = async (req, res, next) => {
         });
       }
   
-      const newProject = new Project({
+      let newProject
+      if(SubjectId != null)
+    {  newProject = new Project({
         PName,
         Desc,
-   //     Link,
-   Tags,
-   PType,
-   isPrivete,
-   UserId,
-   SubjectId,
-        // PlagId,
-        // PlagLink,
-        // Rating
-      });
+        Tags,
+        PType,
+        isPrivete,
+        UserId,
+        SubjectId,
+      });}
+      else
+      {
+        newProject = new Project({
+          PName,
+          Desc,
+          Tags,
+          PType,
+          isPrivete,
+          UserId
+        });
+      }
   
       await newProject.save();
+      
+
+    const res = await axios.post(`http://localhost:5000/api/projectupload`,
+    {
+      projectId: newProject._id,
+      folderPath: ProjectLink
+    })
+    .catch((err)=> console.log(err));
+
+
     } catch (error) {
       return res.status(400).json({
         success: false,
@@ -118,6 +135,7 @@ const addNewProject = async (req, res, next) => {
         },
       });
     }
+
     return res.status(200).json({
       success: true,
       response: {

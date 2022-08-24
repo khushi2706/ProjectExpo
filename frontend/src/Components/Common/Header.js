@@ -34,7 +34,7 @@ export default function Header() {
       </NavLink>
             </li>
             <li className="nav-item">
-            <NavLink className="nav-link " to="/UploadProject/Stage1">
+            <NavLink className="nav-link " to="/UploadProject">
             Upload Project
       </NavLink>
               

@@ -1,11 +1,5 @@
 var S3Zipper = require ('aws-s3-zipper');
 
-//make a function to download the project from s3 bucket as a projectId and uploaded folder date
-
-function uniqname(pro_id) {
-    return pro_id;
-  }
-
 var config ={
     accessKeyId: "AKIAS6G5ANL5655DKEHC",
     secretAccessKey: "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",
@@ -14,10 +8,12 @@ var config ={
 };
 var zipper = new S3Zipper(config);
 
+var downloadId = '6305cceb8f36f44506e8b60c';
+
 zipper.zipToFile ({
-    s3FolderName: uniqname(projectId),
-     startKey: '' // could keep null
-    , zipFileName: uniqname(projectId) + '.zip'
+    s3FolderName: downloadId
+    , startKey: '' // could keep null
+    , zipFileName: 'C:/Downloads/' + downloadId +'.zip'
     , recursive: true
 }
 ,function(err,result){
@@ -30,5 +26,4 @@ zipper.zipToFile ({
     }
 });
 
-
-module.exports = { zipper };
+module.exports =  zipper
