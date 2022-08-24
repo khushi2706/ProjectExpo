@@ -1,10 +1,7 @@
 import "./Signup.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import InputField from "../Common/InputField";
 import google_logo from "../../Assets/Images/google.svg";
-import CustomizeDropDown from "./CustomizeDropDown";
-import { useNavigate } from "react-router-dom";
 
 export default function Signup(props) {
   const [departs, setDeparts] = useState([]);
@@ -89,101 +86,140 @@ export default function Signup(props) {
             paddingRight: 68,
             paddingTop: 61,
             paddingBottom: 61,
-
             width: "40%",
             marginTop: 25,
           }}
         >
-          <div className="box" style={{ width: "100%", display: "block" }}>
-            <label htmlFor="">Email</label>
-            <input
-              type="email"
-              name="Email"
-              onChange={handleChange}
-              value={formValue.Email}
-              style={{ width: "100%" }}
-            />
-            <label htmlFor="">Password</label>
-            <input
-              type="password"
-              onChange={handleChange}
-              name="Pass"
-              value={formValue.Pass}
-              id=""
-              style={{ width: "100%" }}
-            />
-            <label htmlFor="">First Name</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              value={formValue.Fname}
-              name="Fname"
-              style={{ width: "100%" }}
-            />
-            <label htmlFor="">Last Name</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              value={formValue.LName}
-              name="LName"
-              style={{ width: "100%" }}
-            />
-            <label htmlFor="">About Me</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              value={formValue.AboutMe}
-              name="AboutMe"
-              style={{ width: "100%" }}
-            />
-            <label htmlFor="">Date of Birth</label>
-            <input
-              type="date"
-              onChange={handleChange}
-              value={formValue.DoB}
-              name="DoB"
-              id=""
-              style={{ width: "100%" }}
-            />
-            <label htmlFor="">Gender</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              value={formValue.Gender}
-              name="Gender"
-              style={{ width: "100%" }}
-            />
-          </div>
-          <div className="box" style={{ width: "100%", display: "block" }}>
-            <select
-              name=""
-              id="form"
-              class="form-control"
-              onClick={getDeprtId}
-              style={{ margin: "10px 0" }}
+          <div className="box" style={{ width: "100%" }}>
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
             >
-              <option value=" ">------select college ------</option>
+              <input
+                type="email"
+                className="sign-in-input-fields"
+                placeholder="Email"
+                name="Email"
+                value={formValue.Email}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
+            >
+              <input
+                type="password"
+                className="sign-in-input-fields"
+                placeholder="Password"
+                name="Pass"
+                value={formValue.Pass}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
+            >
+              <input
+                type="text"
+                className="sign-in-input-fields"
+                placeholder="First Name"
+                name="Fname"
+                value={formValue.Fname}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
+            >
+              <input
+                type="text"
+                className="sign-in-input-fields"
+                placeholder="Last Name"
+                name="LName"
+                value={formValue.LName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
+            >
+              <input
+                type="text"
+                className="sign-in-input-fields"
+                placeholder="About Me"
+                name="AboutMe"
+                value={formValue.AboutMe}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
+            >
+              <input
+                type="date"
+                className="sign-in-input-fields"
+                placeholder="Date of birth"
+                name="DoB"
+                value={formValue.DoB}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div
+              className="sign-in-input-field-container"
+              style={{ marginTop: 15 }}
+            >
+              <input
+                type="text"
+                className="sign-in-input-fields"
+                placeholder="Gender"
+                name="Gender"
+                value={formValue.Gender}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div
+            className="sign-in-input-field-container"
+            name=""
+            id="form"
+            onClick={getDeprtId}
+          >
+            <select onChange={props.handleChange}>
+              <option value=" ">Select college </option>
               {colleges &&
                 colleges.map((clg, idx) => {
                   return <option value={clg._id}>{clg.CName}</option>;
                 })}
             </select>
-            <select
-              name="DepartmentId"
-              onChange={setDprtId}
-              class="form-control"
-              id=""
-              style={{ margin: "10px 0" }}
-            >
-              <option value=" " unselectable="true">
-                ------select department ------
-              </option>
+          </div>
+
+          <div
+            className="sign-in-input-field-container"
+            name="DepartmentId"
+            id="form"
+            onClick={getDeprtId}
+          >
+            <select onChange={props.handleChange}>
+              <option value=" ">Select Department </option>
               {departs &&
                 departs.map((dp, idx) => {
                   return <option value={dp._id}>{dp.DepartName}</option>;
                 })}
             </select>
           </div>
+
           <div
             style={{
               textAlign: "center",
@@ -212,27 +248,6 @@ export default function Signup(props) {
               style={{ width: "80%", height: "6vh", marginTop: 17 }}
             >
               Sign In
-            </button>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <button
-              className="sign-in-with-google-button"
-              style={{ height: "6vh" }}
-            >
-              <div style={{ display: "flex" }}>
-                <div style={{ margin: "auto" }}>
-                  <img src={google_logo} alt="" width="70%" height="70%" />
-                </div>
-                <div
-                  style={{
-                    fontFamily: "poppins",
-                    fontWeight: "bold",
-                    margin: "auto",
-                  }}
-                >
-                  Sign in with Google
-                </div>
-              </div>
             </button>
           </div>
         </form>
