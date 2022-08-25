@@ -8,9 +8,15 @@ export default function Header() {
     <>
             <div>
               <div className="main-container-header">
+              <NavLink className="nav-link" to="/">
                 <div>
-                  <img src=""></img>
+                  <img src="img/homeimg.jpg"
+                  className="w-110 h-110 rounded-circle"
+
+                        style={{ width: 70, height: 70 ,marginTop:"13px"}}
+                        height="100px" ></img>
                 </div>
+                </NavLink>
                 <div>
                   <div className="tab-container-header">
                     <div className="tab-container">
@@ -60,6 +66,7 @@ export default function Header() {
                   }}
                 >
                   <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                  <NavLink className="nav-link" to="/login">
                     <div className="profile w-1 h-5">
                       <img
                         src="https://picsum.photos/200"
@@ -68,24 +75,13 @@ export default function Header() {
                         height="100px"
                       />
                     </div>
+                    </NavLink>
                   </div>
-                  <div>
-                    <i
-                      className="material-icons"
-                      style={{
-                        marginLeft: 10,
-
-                        fontSize: 28,
-                        color: "#9B9B9B",
-                      }}
-                    >
-                      arrow_drop_down
-                    </i>
-                  </div>
+                  
                 </div>
 
               </div>
-              <hr className="horizontal-line"></hr>
+              <hr className="horizontal-line" ></hr>
             </div>
           </>
 
