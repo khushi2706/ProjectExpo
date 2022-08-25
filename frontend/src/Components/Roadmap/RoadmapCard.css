@@ -1,0 +1,28 @@
+.main-container {
+    box-shadow: 0px 3px 21px 0px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.main-container:hover {
+    cursor: pointer;
+}
+
+.card-img-container {
+    /* width: 15vw; */
+    height: 15vh;
+}
+
+.card-title-container {
+    color: black;
+    font-weight: 500;
+    font-family: 'poppins';
+    font-size: 22px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.card-owner-container {
+    font-size: 18px;
+    color: #585353;
+}

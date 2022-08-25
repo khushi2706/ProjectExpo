@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import SideBarOption from "../Profile/SideBarOption";
-import FacultyProfile from "./FacultyProfile";
-import FacultySubject from "./FacultySubject";
-import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import MyProjects from "../Profile/MyProjects";
 
-export default function Faculty() {
-  const [facutlyProfile, setFacultyProfile] = useState(true);
-  //
+export default function FacultyProject() {
+  const location = useLocation();
+  const [myProfile, setMyProfile] = useState(true);
 
   const handleMyProfileClick = () => {
-    setFacultyProfile(true);
+    setMyProfile(true);
     console.log("My Profile clicked");
   };
 
-  const handleSubjectClick = () => {
-    setFacultyProfile(false);
+  const handleMyProjectClick = () => {
+    setMyProfile(false);
     console.log("My Project clicked");
   };
 
@@ -22,7 +21,6 @@ export default function Faculty() {
     console.log("we are loging out");
     window.location = "/Logout";
   };
-
   return (
     <>
       <div
@@ -85,11 +83,7 @@ export default function Faculty() {
             title="My Profile"
             onClick={handleMyProfileClick}
           />
-          <SideBarOption
-            icon="book"
-            title="Subject"
-            onClick={handleSubjectClick}
-          />
+          <SideBarOption icon="book" title="Subject" />
 
           <SideBarOption
             icon="logout"
@@ -121,20 +115,13 @@ export default function Faculty() {
             width: "-webkit-fill-available",
           }}
         >
-          {facutlyProfile ? <FacultyProfile /> : <FacultySubject />}
-          {/* <MyProjects /> */}
-          {/* <Profile /> */}
+          {location.state != null ? (
+            <MyProjects subject_id={location.state.subject_id} />
+          ) : (
+            <MyProjects />
+          )}
         </div>
       </div>
     </>
   );
 }
-
-/*
-First NAme
-Last name
-degree
-Dob
-gender
-
- */

@@ -31,7 +31,6 @@ import Project_3 from "./Components/ProjectUpload/Project_3";
 
 import Quizmain from "./Components/quiz/Quizmain";
 
-
 import Logout from "./Components/logout/Logout";
 import "./Components/GeneralCSS/main.css";
 import T from "./Components/TaskAssignment/T";
@@ -39,8 +38,12 @@ import AboutUs from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Faculty from "./Components/Faculty/Faculty";
 import MyProjects from "./Components/Profile/MyProjects";
+
 import UploadProjectSub from "./Components/ProjectUpload/UploadProjectSub";
 import ProjectUploadMain from "./Components/ProjectUpload/ProjectUploadMain"
+
+import FacultyProject from "./Components/Faculty/FacultyProject";
+
 
 function App() {
   return (
@@ -61,8 +64,12 @@ function App() {
             <Route index path="/mentor" element={<Mentor />} />
             <Route index path="/viewmentor/:id" element={<MentorView />} />
             <Route index path="/signup/signup2" element={<SignUp2 />} />
-            <Route index path="/signup/signup2/collegeSelect" element={<CollegeSelect />} />
-            <Route index path="/linkoftask" element={<T/>}/>            
+            <Route
+              index
+              path="/signup/signup2/collegeSelect"
+              element={<CollegeSelect />}
+            />
+            <Route index path="/linkoftask" element={<T />} />
             <Route index path="/blog" element={<Blog />} />
             <Route index path="/mentor" element={<Mentor />} />
             <Route index path="/collegeprofile" element={<UniProfile />} />
@@ -76,12 +83,18 @@ function App() {
             <Route index path="/UploadProject/Stage3" element={<Project_3 />} />
             <Route index path="/Faculty" element={<Faculty />} />
             <Route index path="/MyProject" element={<MyProjects />} />
+
             <Route index path="/quiz" element={<Quizmain/>}/>
             <Route index path="/aboutus" element={<AboutUs/>}/>
             <Route index path="/contact" element={<Contact/>}/>
             <Route index path="/Logout" element={<Logout/>}/>
             <Route index path="/uploadBySubId/:SubId" element={<UploadProjectSub/>}/>
             <Route index path="/UploadProject" element={<ProjectUploadMain/>}/>
+
+            <Route index path="/FacultyProject" element={<FacultyProject />} />
+            <Route index path="/quiz" element={<Quizmain />} />
+            <Route index path="/Logout" element={<Logout />} />
+
           </Routes>
         </BrowserRouter>
       </div>
