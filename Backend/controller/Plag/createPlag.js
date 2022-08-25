@@ -25,11 +25,28 @@ var config = {
 
 axios(config)
     .then(function (response) {
+        console.log();
         console.log(JSON.stringify(response.data.data.id));
+        getPlagDetails(response.data.data.id);
     })
     .catch(function (error) {
         console.log(error);
     });
+
 }
+
+const getPlagDetails = async(plagId) =>{
+    var config = {
+        method: 'post',
+        url: 'https://plagiarismsearch.com/api/v3/reports/create',
+        headers: {
+            'Authorization': 'Basic Z29uZGFsaXlhbmF5YW42M0BnbWFpbC5jb206anlqa2xlNTJmamp2NnU3YjFlM3A2ZS0xNDYxNTIzNTU=',
+            ...data.getHeaders()
+        },
+        data: data
+    }
+    axios()
+}
+
 
 module.exports = createReport;
