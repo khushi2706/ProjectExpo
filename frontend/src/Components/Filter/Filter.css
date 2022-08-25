@@ -13,6 +13,17 @@
     padding-bottom:20px; 
 }
 
+.chg{
+    text-align: center;
+    width: 144px;
+    height: 41px;
+    left: 557px;
+    top: 531px;
+    background: #F5F6F9;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
 .inputfilter{
     width: 144px;
     height: 41px;

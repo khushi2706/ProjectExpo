@@ -125,8 +125,8 @@
   list-style: none;
   display: inline-block;
   vertical-align: top;
-  width: 100%;
-  margin: 0 0 10px;
+  /* width: 100%; */
+  margin: 7px;
 }
 .footer ul li a {
   color: black;
@@ -143,7 +143,7 @@
   text-decoration: none;
 }
 .footer ul li a:hover {
-  color: #252b33;
+  /* color: #252b33; */
 }
 .footer .c {
   display: flex;
@@ -152,7 +152,8 @@
   padding-left: 15px;
 }
 .footer .row .footer-link {
-  width: 20%;
+  width: 25%;
+  text-align: left;
   padding: 0 14px;
 }
 .footer .home-social ul {
@@ -226,7 +227,7 @@
 
 a {
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
 .row,
@@ -257,7 +258,7 @@ a {
   margin-top: 25px;
 }
 
-.footer-icons li a i {
+.fa{
   display: inline;
   width: 35px;
   height: 35px;

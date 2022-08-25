@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 function Footer() {
   const [ql, setql] = useState({ "max-height": "0px" });
@@ -18,61 +22,7 @@ function Footer() {
   return (
     <>
       <footer className="footer nav-folderized">
-        <div className="container ">
-        <div className=" c a address-f footer-address-main">
-        <div className=" b footer-adress">
-          <i class="fa fa-map-marker"></i>
-
-          {/* <h5>India</h5> */}
-          <p>
-            01S09 A.M.Naik house of schol, V.V.Nagar <br />
-            Anand, Gujarat 380010
-          </p>
-        </div>
-        <div className="b footer-awards">
-          <h5>Contact Us</h5>
-          <div class="footer-center">
-            <div>
-              <i class="fa fa-phone"></i>
-              <p style={{ margin: "auto" }}>+91 6354434661</p>
-            </div>
-            <div>
-              <i class="fa fa-envelope"></i>
-              <p>
-                <a href="mailto:support@company.com">ProjectExpo@gmail.com</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="b footer-social home-social">
-          <h5>Follow us on</h5>
-
-          <ul class="footer-icons">
-            <li>
-              <a href="#">
-                <i class="fa fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-github"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+        
         <div className="col-md-12 col-sm-12">
           <hr />
         </div>
@@ -93,10 +43,10 @@ function Footer() {
                 Quick Login
               </h5>
               <ul style={width <= 987 ? ql : {}}>
-                <Link to="/">
+                <Link to="/login">
                   <li>
                     <a href="#" className="lear-more-l ">
-                      Student
+                      Student Login
                     </a>
                   </li>
                 </Link>
@@ -104,35 +54,29 @@ function Footer() {
                 <Link to="/login">
                   <li>
                     <a href="#" className="lear-more-l ">
-                      Faculty
+                      Faculty Login
                     </a>
                   </li>
                 </Link>
                 <br/>
-                <Link to="/tlogin">
+                <Link to="/login">
                   <li className="hiring-link blink-menu">
                     <a href="#" className="lear-more-l  blink-active">
-                     Admin
+                     Admin Login
                     </a>{" "}
                     <span className="hiring">We Are Hiring</span>
                   </li>
                 </Link>
                 <br/>
-                <Link to="/About-ProjectExpo">
+                <Link to="/login">
                   <li>
                     <a href="#" className="lear-more-l ">
-                      University
+                      college Login
                     </a>
                   </li>
                 </Link>
                 <br/>
-                <Link to="/contact">
-                  <li>
-                    <a href="#" className="lear-more-l ">
-                      College
-                    </a>
-                  </li>
-                </Link>
+               
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -150,84 +94,41 @@ function Footer() {
               Project
             </h5>
             <ul style={width <= 987 ? ns : {}}>
+            <Link to="/uploadproject/Stage1">
               <li>
                 <a href="#" className="lear-more-l ">
                   Upload Project
                 </a>
               </li>
+              </Link>
+              <br/>
+              <Link to="/project">
               <li>
                 <a href="#" className="lear-more-l ">
-                  Project View
+                  Project view
                 </a>
               </li>
+              </Link>
+              <br/>
+              <Link to="/linkoftask">
               <li>
                 <a href="#" className="lear-more-l ">
-                  Plagarithm
+                  Create an TaskAssignment
                 </a>
               </li>
+              </Link>
+              <br/>
+              <Link to="/aboutplag">
               <li>
                 <a href="#" className="lear-more-l ">
-                  Readme
+                  About Plagarism
                 </a>
               </li>
+              </Link>
+              <br/>
             </ul>
           </div>
-   <div className="footer-link ftr__list nav">
-              <h5
-                onClick={() => {
-                  if (width <= 987) {
-                    if (is["max-height"] == "0px") {
-                      setis({ "max-height": "100%" });
-                    } else {
-                      setis({ "max-height": "0px" });
-                    }
-                  }
-                }}
-              >
-              Profiles
-              </h5>
-              <ul style={width <= 987 ? is : {}}>
-                <Link to="/study-at-germany">
-                  <li>
-                    <a href="#" className="lear-more-l ">
-                      student Profile<br/>
-                    </a>
-                  </li>
-                </Link>
-                <br/>
-                <Link to="/study-at-us">
-                  <li>
-                    <a href="#" className="lear-more-l ">
-                      faculty profile<br/>
-                    </a>
-                  </li>
-                </Link>
-                <br/>
-                <Link to="/study-at-ukrain">
-                  <li>
-                    <a href="#" className="lear-more-l ">
-                     college profile<br/>
-                    </a>
-                  </li>
-                </Link>
-                <br/>
-                <Link to="/study-at-canada">
-                  <li>
-                    <a href="#" className="lear-more-l ">
-                      Admin Profile<br/>
-                    </a>
-                  </li>
-                </Link>
-                <br/>
-                <Link to="/study-at-rusia">
-                  <li>
-                    <a href="#" className="lear-more-l ">
-                    
-                    </a>
-                  </li>
-                </Link>
-              </ul>
-            </div>
+   
            
             <div className="footer-link ftr__list nav">
               <h5
@@ -241,34 +142,41 @@ function Footer() {
                   }
                 }}
               >
-                Research Fellowships
+                Feature
               </h5>
               <ul style={width <= 987 ? rs : {}}>
+              <Link to="/project">
                 <li>
                   <a href="#" className="lear-more-l ">
-                    PMRF Fellowship
+                    Got Recommendation
                   </a>
                 </li>
+                </Link>
+                <br/>
+                <Link to="/roadmap">
                 <li>
                   <a href="#" className="lear-more-l ">
-                    TARE Fellowship
+                    Find Roadmap
                   </a>
                 </li>
+                </Link>
+                <br/>
+                <Link to="/mentor">
                 <li>
                   <a href="#" className="lear-more-l ">
-                    JNFF Fellowship
+                   Find Mentor
                   </a>
                 </li>
+                </Link>
+                <br/>
+                <Link to="/blog">
                 <li>
                   <a href="#" className="lear-more-l ">
-                    Google Phd Fellowship
+                   Find Blog
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="lear-more-l ">
-                    ICMR Fellowship
-                  </a>
-                </li>
+               </Link>
+               <br/>
               </ul>
             </div>
             <div className="footer-link ftr__list nav">
@@ -283,61 +191,76 @@ function Footer() {
                   }
                 }}
               >
-                Gallery
+                Project Expo
               </h5>
               <ul style={width <= 987 ? ex : {}}>
+              <Link to="/aboutus">
                 <li>
                   <a href="#" className="lear-more-l ">
-                    About
+                    About Us
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="lear-more-l ">
-                    Team
-                  </a>
-                </li>
+                </Link>
+                <br/>
+                <Link to="/contact">
                 <li>
                   <a href="#" className="lear-more-l ">
                     Contact
                   </a>
                 </li>
+                </Link>
+                <br/>
+                <Link to="/team">
+                <li>
+                  <a href="#" className="lear-more-l ">
+                    Team
+                  </a>
+                </li>
+                </Link>
+                <br/>
+                <Link to="/faqprojectexpo">
                 <li>
                   <a href="#" className="lear-more-l ">
                     FAQ
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="lear-more-l ">
-                    Q&A
-                  </a>
-                </li>
+                </Link>
+                <br/>
+              
               </ul>
             </div>
           </div>
-          <div className="col-md-12 col-sm-12 col-xs-12 copy-right text-center">
-          <p>
-            <a
-              href="https://www.dmca.com/Protection/Status.aspx?ID=b77fb9ca-2075-44ae-9d84-a87cbe917c18&amp;refurl=#9"
-              title="DMCA.com Protection Status"
-              className="dmca-badge"
-            >
-              <img
-                src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-03.png?ID=b77fb9ca-2075-44ae-9d84-a87cbe917c18"
-                alt="DMCA.com Protection Status"
-                width="100"
-                height="20"
-              />
-            </a>
-            <span>
-              © 2022
-              <a href="#" target="_new">
-                ProjectExpo
+          <div className="foot" style={{marginTop:"13px"}}>
+          
+          <h5>Follow us on</h5>
+
+          <ul class="footer-icons" style={{display:"flex",justifyContent:"center"}}>
+            <li>
+              <a href="#" style={{ color:"white"}} className="fa">
+                <LinkedInIcon/>
               </a>
-              All rights reserved.
-            </span>
-          </p>
+            </li>
+            <li>
+              <a href="#" style={{ color:"white"}} className="fa">
+                <TwitterIcon/>
+              </a>
+            </li>
+            <li>
+              <a href="#"  style={{ color:"white"}} className="fa">
+                <FacebookIcon/>
+              </a>
+            </li>
+            <li>
+              <a href="#" style={{ color:"white"}} className="fa">
+              <InstagramIcon/>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
+   
+               
+         
     </footer>
 
 

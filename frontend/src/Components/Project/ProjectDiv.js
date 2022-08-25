@@ -38,11 +38,11 @@ export default function ProjectDiv(props) {
   <div className="row">
     <div className="col-12 d-flex align-items-baseline justify-content-left">
     <span className="title">Tag : </span>
-      <span className="tag lan-Tag">{project.Tags}</span>
+      
       {
-        // project.languagesTag.map((element, index) => {
-        //   return <span className="tag lan-Tag"> {element} </span>
-        // })
+        project.Tags.map((element, index) => {
+          return <span className="tag lan-Tag"> {element} </span>
+        })
       }
     </div>
     
