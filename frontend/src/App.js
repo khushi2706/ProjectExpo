@@ -41,10 +41,10 @@ import MyProjects from "./Components/Profile/MyProjects";
 import Require from "./Components/Project/Require";
 
 import UploadProjectSub from "./Components/ProjectUpload/UploadProjectSub";
-import ProjectUploadMain from "./Components/ProjectUpload/ProjectUploadMain"
+import ProjectUploadMain from "./Components/ProjectUpload/ProjectUploadMain";
 
 import FacultyProject from "./Components/Faculty/FacultyProject";
-
+import StudentProfile from "./Components/Profile/StudentProfile";
 
 function App() {
   return (
@@ -93,10 +93,29 @@ function App() {
             <Route index path="/uploadBySubId/:SubId" element={<UploadProjectSub/>}/>
             <Route index path="/UploadProject" element={<ProjectUploadMain/>}/>
 
+            <Route index path="/quiz" element={<Quizmain />} />
+            <Route index path="/aboutus" element={<AboutUs />} />
+            <Route index path="/contact" element={<Contact />} />
+            <Route index path="/Logout" element={<Logout />} />
+            <Route
+              index
+              path="/uploadBySubId/:SubId"
+              element={<UploadProjectSub />}
+            />
+            <Route
+              index
+              path="/UploadProject"
+              element={<ProjectUploadMain />}
+            />
+
             <Route index path="/FacultyProject" element={<FacultyProject />} />
             <Route index path="/quiz" element={<Quizmain />} />
             <Route index path="/Logout" element={<Logout />} />
-
+            <Route
+              index
+              path="/studentProfile/:id"
+              element={<StudentProfile />}
+            />
           </Routes>
         </BrowserRouter>
       </div>
