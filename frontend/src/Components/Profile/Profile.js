@@ -3,8 +3,13 @@ import Button from "../Common/Button";
 import axios from "axios";
 import Cookies from 'universal-cookie'
 import { Navigate } from "react-router-dom";
+import Beginner from "../../Assets/Images/beginner.jpg";
+import Intermediate from "../../Assets/Images/intermediate.jpg";
+import Master from "../../Assets/Images/master.jpg";
+import StarIcon from '@mui/icons-material/Star';
 
 export default function Profile() {
+  const rating = 500;
   const [singleUser, setSingleUser] = useState();
 
   const cookies = new Cookies();
@@ -23,10 +28,24 @@ export default function Profile() {
     return data;
   };
 
+  const sendReqForRating = async () => {
+    const id = data.UserId;
+    const res = await axios
+    .get(`http://localhost:5000/api/user/${id}`)
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
+
   useEffect(() => {
     sendReq().then((data) => {
       console.log(data);
       setSingleUser(data);
+    });
+    sendReqForRating().then((data) => {
+      console.log(data);
+      
     });
   }, []);
 
@@ -42,10 +61,6 @@ export default function Profile() {
         "AboutMe" :singleUser.AboutMe,
         "DoB": singleUser.DoB,
         "Gender": singleUser.Gender,
-      
-        
-
-
       }
     )
     .catch((err) => console.log(err));
@@ -465,6 +480,22 @@ export default function Profile() {
                   Edit Picture
                 </div>
               </button>
+              <div style={{fontFamily: 'poppins', fontWeight: 500, fontSize: 22}}>Level</div>
+              
+              <hr className="horizontal-line"></hr>
+              
+              <div style={{display: "flex", flexDirection: 'row'}}>
+                {rating > 200 ? <img style={{ boxShadow: "0px 0px 40px 10px rgba(199,199,199,1)", backgroundColor: '#2C5EFF', width: 70, borderRadius: '50%'}} src={Beginner}/> : rating > 700 ? <img src={Intermediate} style={{backgroundColor: '#2C5EFF', width: 70, borderRadius: '50%'}}/> : <img src={Master} style={{backgroundColor: '#2C5EFF', width: 70, borderRadius: '50%'}}/>}
+                <div style={{display: "flex", flexDirection: "column", marginTop: 'auto', marginBottom: 'auto'}}>
+                  <div style={{fontFamily: 'poppins', fontWeight: 500, marginTop: "auto", marginBottom: 'auto', marginLeft: 15, fontSize: 22}}>{rating > 200 ? "Beginner" : rating > 700 ? <img src={Intermediate} style={{backgroundColor: '#2C5EFF', width: 70, borderRadius: '50%'}}/> : <img src={Master} style={{backgroundColor: '#2C5EFF', width: 70, borderRadius: '50%'}}/>}</div>
+                  
+                  <div style={{ display: "flex", flexDirection: 'row', marginLeft: 13}}>
+                    <StarIcon />
+                    <div style={{fontFamily: 'poppins', marginLeft: 5, fontSize: 18,}}>350</div>
+                  </div>
+                </div>
+              </div>
+              <div style={{marginTop: 70}}></div>
             </div>
           </div>
         </div>
