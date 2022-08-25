@@ -39,7 +39,8 @@ console.log(id);
   }
   const likeProject = ()=>{
       sendReqLike().then((data)=>
-      console.log(data)
+      {console.log(data)
+      window.location.reload()}
       )
   }
 
@@ -75,7 +76,7 @@ console.log(id);
             onClick={likeProject}
           >
             <StarIcon />
-            Like
+            {user.Rating}
           </div>
 
           <div

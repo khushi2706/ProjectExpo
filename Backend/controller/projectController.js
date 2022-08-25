@@ -75,7 +75,7 @@ const addNewProject = async (req, res, next) => {
     ProjectLink
 
   } = req.body;
-
+  let ProjectId;
   console.log(ProjectLink);
   try {
     //Check if college is exist
@@ -112,6 +112,8 @@ const addNewProject = async (req, res, next) => {
 
     await newProject.save();
 
+     ProjectId = newProject._id;
+    console.log(ProjectId);
 
     const res = await axios.post(`http://localhost:5000/api/projectupload`,
       {
@@ -120,19 +122,17 @@ const addNewProject = async (req, res, next) => {
       })
       .catch((err) => console.log(err));
 
-
-
-  } catch (error) {
-    return res.status(400).json({
-      success: false,
-      response: {
-        error,
-      },
-    });
-  }
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        response: {
+          error,
+        },
+      });
+    }
 
   try {
-    const existUser = await User.findById(UserId);
+    const existUser = await User.findById(UserId,projec);
     const mails = existUser.FollowersMail;
 
     mails.forEach(mail => {
@@ -304,19 +304,27 @@ const setPlaga = async (req, res, next) => {
   })
 }
 
-const DoMail = (email) => {
+const DoMail = async (email, proId) => {
 
-  const sendmail = require('sendmail')({silent: true});
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    auth: {
+      user: 'ripperjohn535@gmail.com',
+      pass: 'zvcukexldxgwdsoe'
+    }
+  });
+  // Send the email
+  let info = await transporter.sendMail({
+    from: '"bhumitbedse40@gmail.com',
+    to: email, // Test email address
+    subject: "Project Uploaded!",
+    text: "Here's a text version of the email.",
+    html: "<h2>New Project Uploaded of following</h2>"
+  });
+  console.log("Message sent: %s", info.messageId); // Output message ID
+  console.log("View email: %s", nodemailer.getTestMessageUrl(info)); // URL to preview email
 
-sendmail({
-    from: '19cp012@bvmcollege.in',
-    to: email,
-    subject: 'test sendmail',
-    html: 'hello new Project',
-  }, function(err, reply) {
-    console.log(err && err.stack);
-    console.dir(reply);
-});
 
 }
 
@@ -331,11 +339,11 @@ const addRates = async (req, res, next) => {
   const CurrRating = ExistProject.Rating;
 
   ExistProject.Rating = CurrRating + RateTobeAdded;
-  
+
   await ExistProject.save();
 
   const userId = ExistProject.UserId;
-  const ExistingUser= await User.findById(userId);
+  const ExistingUser = await User.findById(userId);
   const currRate = ExistingUser.Rating;
   ExistingUser.Rating = currRate + RateTobeAdded;
   await ExistingUser.save();
@@ -348,6 +356,6 @@ module.exports = {
   getAllProjects, getProjectById,
   getProjectByUserId, addNewProject,
   getProjectBySubjectID, getProjectPlga,
-  searchTheProject, setPlaga, UpdateProjectLink, DownloadProjectLink, getPlagarism, 
+  searchTheProject, setPlaga, UpdateProjectLink, DownloadProjectLink, getPlagarism,
   addRates
 }
