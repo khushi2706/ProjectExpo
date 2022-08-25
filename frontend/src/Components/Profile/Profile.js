@@ -3,7 +3,7 @@ import Button from "../Common/Button";
 import axios from "axios";
 import Cookies from 'universal-cookie'
 import { Navigate } from "react-router-dom";
-
+import nikunj from "../../Assets/Images/bhumit_passport.png";
 export default function Profile() {
   const [singleUser, setSingleUser] = useState();
 
@@ -412,7 +412,7 @@ export default function Profile() {
                 style={{ marginTop: 20, marginBottom: "auto" }}
               >
                 <img
-                  src={singleUser.profile_pic}
+                  src={nikunj}
                   className="w-110 h-110 rounded-circle"
                   height="300px"
                 />

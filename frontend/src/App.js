@@ -43,7 +43,7 @@ import UploadProjectSub from "./Components/ProjectUpload/UploadProjectSub";
 import ProjectUploadMain from "./Components/ProjectUpload/ProjectUploadMain"
 
 import FacultyProject from "./Components/Faculty/FacultyProject";
-
+import RewardPage from "./Components/Reward/Reward_main";
 
 function App() {
   return (
@@ -95,6 +95,7 @@ function App() {
             <Route index path="/quiz" element={<Quizmain />} />
             <Route index path="/Logout" element={<Logout />} />
 
+            <Route index path="/Reward" element={<RewardPage/>}/>
           </Routes>
         </BrowserRouter>
       </div>
