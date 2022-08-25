@@ -140,3 +140,113 @@
     margin: 7px;
 }
 
+.flexforfilter{
+    display: flex;
+    justify-content: center;
+    margin-top: 54px;
+    padding:"10px";
+    flex-wrap: nowrap;
+}
+
+.a_fillter{
+    color: #000000;
+    width: 255px;
+    /* position: absolute; */
+    /* top: 25%; */
+    /* left: 10%; */
+    font-size: 28px;
+    font-weight: 500;
+    display: grid;
+    text-align: center;
+  }
+  .a_fillter .tags{
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* background: green; */
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .close:hover{
+    cursor: pointer;
+  }
+  .a_fillter .tags .tag{
+    width: auto;
+    background: #2C5EFF;
+    height: 23px;
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+    border-radius: 30px;
+    color: #ffff;
+    align-items: center;
+    padding: 0px 9px;
+    margin-left: 20px;
+  }
+  .a_fillter .tags .tag img{
+    padding-left: 6px;
+  }
+  .short_filter{
+    width: 54%;
+    
+   
+    background: #FDFDFD;
+  
+    border: 4px solid #F5F7F9;
+    border-radius: 30px;
+    display: grid;
+  }
+  .short_filter .title{
+    display: flex;
+    font-size: 21px;
+    line-height: 31px;
+    width: 100%;
+    height: 46px;
+    align-items: center;
+    padding: 36px;
+  }
+  .short_filter .title img{
+    width: 23px;
+  }
+  .short_filter .title p{
+    padding-left: 24px;
+  }
+  .short_filter .filter_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .short_filter .filter_container .filters{
+    width: 93%;
+    display: flex;
+  }
+  .short_filter .filter_container .filters .tag{
+    display: block;
+    align-items: center;
+  }
+  .short_filter .filter_container .filters .tag label{
+    display: flex;
+    width: 100%;
+    font-size: 18px;
+    height: 30px;
+    align-items: center;
+  }
+  .short_filter .filter_container .filters .tag label img{
+    width: 26px;
+    margin: 0 12px;
+  }
+  .short_filter .filter_container .filters .tag input{
+    background: #F5F6F9;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    height: 29px;
+    margin: 14px 0 41px;
+    width: 90%;
+    display: flex;
+    text-align: center;
+  }
+  .short_filter .filter_container .filters .tag input::placeholder{
+    padding-left: 8px;
+  }
+

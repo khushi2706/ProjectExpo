@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
 
 import ProjectDiv from "./ProjectDiv";
+import "./CSS/ProjectDiv.css"
 import Filterlist from "../../Assets/Images/Filter list.svg";
 import "../Filter/Filter.css";
 import TagImage from "../../Assets/Images/Tags.svg";
@@ -33,88 +34,10 @@ export default function ProjectMain() {
     });
   }, []);
 
-  const tag = [];
-  const lan = [];
-  const uni = [];
-  const time = [];
-  const [list, setList] = useState(tag);
-  const [list1, setList1] = useState(uni);
-
-  const [list2, setList2] = useState(time);
-
-  const [list3, setList3] = useState(lan);
-  const cancell = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq = [...list];
-    mq.splice(idd, 1);
-    setList(mq);
-  };
-
-  const cancell1 = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq1 = [...list1];
-    mq1.splice(idd, 1);
-    setList1(mq1);
-  };
-
-  const cancell2 = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq2 = [...list2];
-    mq2.splice(idd, 1);
-    setList2(mq2);
-  };
-
-  const cancell3 = (e) => {
-    const idd = e.currentTarget.id;
-    console.log(idd);
-    const mq3 = [...list3];
-    mq3.splice(idd, 1);
-    setList1(mq3);
-  };
-
-  const [inputt, setInputt] = useState("");
-  const [inputt1, setInputt1] = useState("");
-  const [inputt2, setInputt2] = useState("");
-  const [inputt3, setInputt3] = useState("");
-  const [f1, setf1] = useState("false");
-  const handleAdd = () => {
-    if (list.includes(inputt) == false) {
-      setList((prev) => [...prev, inputt]);
-      setf1("true");
-    }
-    if (list1.includes(inputt1) == false) {
-      setList1((prev) => [...prev, inputt1]);
-    }
-    if (list2.includes(inputt2) == false) {
-      setList2((prev) => [...prev, inputt2]);
-    }
-    if (list3.includes(inputt3) == false) {
-      setList3((prev) => [...prev, inputt3]);
-    }
-  };
-  // useEffect(() => {
-
-  // }) ;
+  
   const [category, setcategory] = useState("all");
   const [searchinput, searchinputUpdate] = useState("");
   const filter2 = () => {
-    if (list.includes(inputt) == false) {
-      setList((prev) => [...prev, inputt]);
-      setf1("true");
-    }
-    if (list1.includes(inputt1) == false) {
-      setList1((prev) => [...prev, inputt1]);
-    }
-    if (list2.includes(inputt2) == false) {
-      setList2((prev) => [...prev, inputt2]);
-    }
-    if (list3.includes(inputt3) == false) {
-      setList3((prev) => [...prev, inputt3]);
-    }
-
     let temp = [...projects];
 
     if (searchinput != "") {
@@ -122,53 +45,46 @@ export default function ProjectMain() {
         return ele.PName.toLowerCase().includes(searchinput.toLowerCase());
       });
     }
-console.log(inputt);
-    if (inputt != "") {
+   
+    if(tagList!="" && tag!=""){
+     
       temp = temp.filter((ele) => {
-       console.log(typeof(ele.Tags));
-        return ele.Tags[0].includes(inputt);
+        return ele.Tags.includes(tag);
       });
     }
-    // if (category != "all") {
-    //   console.log("--c---");
-    //   console.log(category);
-    //   temp = temp.filter((ele) => {
-    //     // console.log("+++");
-    //     // console.log(ele.PType.toLowerCase());
-    //     return ele.PType.toLowerCase() == category;
-    //   });
-    // }
+    
+    if(tagList!="" && lang!=""){
+      alert("hi")
+      temp = temp.filter((ele) => {
+        return ele.Tags.includes(lang);
+      });
+    }
+
+    if(tagList!="" && timeframe!=""){
+      alert("hi")
+      temp = temp.filter((ele) => {
+        console.log(ele.Date.getFullYear);
+        return ele.Date.getFullYear===(timeframe);
+      });
+    }
 
     console.log("---r---");
     console.log(temp);
     setProjects(temp);
-
-    // sessionStorage.setItem('searchinput', searchinput);
-    // setFlag("true");
-    alert("clicked");
   };
-  const fff = () => {
-    let t = [...projects];
-console.log("jdjd"+t)
-    if (inputt != "") {
-      t = t.filter((ele) => {
-        console.log(typeof(ele.Tags));
-        ele.map((e,i)=>{
-          return e.Tags.includes(inputt);
-        })
-       
-      });
+  
+  const [tag,setTag]=useState("");
+  const [lang,setLang]=useState("");
+  const [timeframe,setTimeFrame]=useState("");
+  const [university,setUniversity]=useState("");
+  const [tagList,setTaglist]=useState([]);
+  const setToTaglist=(e,k)=>{
+    if(e.keyCode==13){
+      setTaglist([...tagList,k])
+      e.target.value="";
     }
-    console.log("---r---");
-    console.log(t);
-    setProjects(t);
+  }
 
-    // sessionStorage.setItem('searchinput', searchinput);
-    // setFlag("true");
-    alert("clicked 2");
-  };
-
-  console.log(projects);
   return (
     <>
       <Header />
@@ -216,137 +132,65 @@ console.log("jdjd"+t)
           </div>
         </div>
       </div>
-      <div className="AppliedFilter">
-        <div className="applied"></div>
-        <div className="filter">
-          <div className="title">
-            <img src={Filterlist} alt="" className="titleImage" />
-            <div className="title_information">Short filters</div>
-          </div>
-
-          <div className="AlltagListOption alll">
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={TagImage} alt="" className="tagImage" />
-                <div className="tagName">Tag</div>
+      <div className="flexforfilter">
+      <div className="a_fillter">
+        <p>Applied Fillter</p>
+        <div className="tags">
+          {
+          tagList.map(ele=>{
+              return(
+              <div className="tag">
+                <p>{ele}</p>
+                {/* <img src={('img/close.png')} alt="cross" className='close' onClick={}/> */}
               </div>
-              <div>
-                <input
-                  type="text"
-                  className="inputfilter inputfil"
-                  onChange={(e) => setInputt(e.target.value)}
-                  placeholder="Ex. Web"
-                />
+              )
+            })
+             
+          }
+          
+      </div>
+      </div>
+      <div className="short_filter">
+        <div className="title">
+          <img src={("img/Vector.png")} alt="short icon" />
+          <p>Short Filters</p>
+        </div>
+        <div className="filter_container">
+            <div className="filters">
+              <div className="tag">
+                <label htmlFor="tag">
+                  <img src={("img/Tags.png")} alt="tag" />
+                  <p>Tag</p>
+                </label>
+                <input type="text" placeholder='Ex.Web' name="tag" id="tag" onKeyUp={(e)=>setToTaglist(e,tag)} onChange={(e)=>setTag(e.target.value)} />
               </div>
-            </div>
-
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={university} alt="" className="tagImage" />
-                <div className="tagName">Type</div>
+              <div className="tag">
+                <label htmlFor="language">
+                  <img src={("img/Code.png")} alt="Code" />
+                  <p>Language</p>
+                </label>
+                <input type="text" placeholder='Ex.Java' name="language" id="language" onKeyUp={(e)=>setToTaglist(e,lang)} onChange={(e)=>setLang(e.target.value)}/>
               </div>
-              <div>
-                <div
-                  style={{
-                    color: "#808080",
-                    fontFamily: "poppins",
-                    fontWeight: "600",
-                  }}
-                >
-                  <div className="sign-in-input-field-container">
-                    <select
-                      className="select chg"
-                      onChange={(e) => {
-                        setInputt1(e.target.value);
-                        setcategory(e.target.value.toLowerCase());
-                        console.log(category);
-                      }}
-                      name="typeid"
-                    >
-                      <option>Select</option>
-                      <option>Software</option>
-                      <option>Hardware</option>
-                    </select>
-                  </div>
-                </div>
+              <div className="tag">
+                <label htmlFor="timeframe">
+                  <img src={("img/time.png")} alt="tag" />
+                  <p>Time Frame</p>
+                </label>
+                <input type="text" placeholder='Ex.2002' name="timeframe" id="timeframe" onKeyUp={(e)=>setToTaglist(e,timeframe)} onChange={(e)=>setTimeFrame(e.target.value)}/>
               </div>
-            </div>
-
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={calender} className="tagImage" />
-                <div className="tagName">Time Frame</div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="inputfilter inputfil"
-                  onChange={(e) => setInputt2(e.target.value)}
-                  placeholder="Ex. 2020"
-                />
+              <div className="tag">
+                <label htmlFor="University">
+                  <img src={("img/University.png")} alt="University" />
+                  <p>University</p>
+                </label>
+                <input type="text" placeholder='Ex.BVM' name="University" id="University" onKeyUp={(e)=>setToTaglist(e,university)} onChange={(e)=>setUniversity(e.target.value)}/>
               </div>
             </div>
-
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={CodeImage} className="tagImage" />
-                <div className="tagName">Language</div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="inputfilter inputfil"
-                  onChange={(e) => setInputt3(e.target.value)}
-                  placeholder="Ex. JAVA"
-                />
-              </div>
-            </div>
-
-            <div className="tagflex applydiv">
-              <button
-                className="search-bar-button filterbtn"
-                onClick={() => {
-                  fff();
-                }}
-                id=" "
-              >
-                Apply
-              </button>
-            </div>
-
-            <div className="tagflex applydiv selectedtag">
-              {list.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-              {list1.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell1}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-              {list2.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell2}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-              {list3.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell3}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-            </div>
-          </div>
         </div>
       </div>
+      </div>
+      
+      
 
       <div className="d-flex row mt-5 justify-content-center w-100">
         {projects &&
