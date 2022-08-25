@@ -23,7 +23,7 @@ export default function Roadmap() {
   console.log(roadmaps);
   return (
     <div>
-      <Header />
+      <Header index="4" />
       <Search />
       <div
         className="card-container-main"

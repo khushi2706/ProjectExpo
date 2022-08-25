@@ -59,7 +59,7 @@ export default function ProjectUploadMain() {
   
     return ( 
       <>
-        <Header/>
+        <Header index="2"/>
        <div className="container mt-3">
         <div className=" p-3 mt-4 ">
           <form  onSubmit={uploadProject} >

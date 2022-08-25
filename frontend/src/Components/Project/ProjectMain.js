@@ -35,7 +35,7 @@ export default function ProjectMain() {
   console.log(projects);
   return (
     <>
-    <Header/>
+    <Header index="1"/>
     <Search/>
     <Filter/>
     <div className="d-flex row mt-5 justify-content-center w-100">

@@ -37,6 +37,11 @@
     color: #787777;
 }
 
+.tab-container .active{
+    cursor: pointer;
+    color: #000;
+    font-weight: 500;
+}
 .tab-container:hover {
     cursor: pointer;
     color: #000;

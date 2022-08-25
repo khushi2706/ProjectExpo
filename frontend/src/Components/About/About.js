@@ -8,7 +8,7 @@ import Footer from "../footer/Footer";
 function AboutUs() {
   return (
     <>
-    <Header/>
+    <Header index="0"/>
     <div style={{ backgroundImage: 'url("pattern-bg.jpg")' }}>
 
       <div className="parallax about-top-slide" id="parallax">

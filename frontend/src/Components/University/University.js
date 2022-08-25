@@ -7,7 +7,7 @@ export default function University() {
   return (
     <>
       <div style={{ position: "sticky" }}>
-        <Header />
+        <Header index="6" />
       </div>
 
       <div style={{ position: "sticky" }}>
