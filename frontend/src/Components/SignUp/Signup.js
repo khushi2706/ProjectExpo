@@ -1,7 +1,6 @@
 import "./Signup.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import google_logo from "../../Assets/Images/google.svg";
 
 export default function Signup(props) {
   const [departs, setDeparts] = useState([]);

@@ -1,0 +1,41 @@
+
+.languages-container {
+    font-family: 'poppins';
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.row-container-cus {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    text-align: left;
+    margin-top: 25px;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.sign-in-input-field-container {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.sign-in-input-fields {
+    margin-left: 20px; 
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: poppins;
+}
