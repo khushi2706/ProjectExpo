@@ -310,13 +310,13 @@ const DoMail = (email) =>{
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'projectexpo3@gmail.com',
-      pass: 'winnerteamB#'
+      user: 'ripperjohn535@gmail.com',
+      pass: 'Johnripper535'
     }
   });
   
   var mailOptions = {
-    from: 'projectexpo3@gmail.com',
+    from: 'ripperjohn535@gmail.com',
     to: email,
     subject: 'New Project',
     text: 'Your following is just Upload new Project! '
@@ -331,6 +331,7 @@ const DoMail = (email) =>{
   });
 
 }
+DoMail();
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
