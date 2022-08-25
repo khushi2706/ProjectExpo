@@ -11,7 +11,7 @@ export default function ProjectView(props) {
   const [user, setUser] = useState();
  const idd=props.id;
  const { id } = useParams();
-
+console.log(id);
   const sendRequest = async () => {
     const res = await axios
       .get(
@@ -23,6 +23,25 @@ export default function ProjectView(props) {
     console.log("-----");
     return data;
   };
+
+  const sendReqLike = async ()=>{
+    const res = await axios
+    .post(
+      `http://localhost:5000/api/Project/addNewRate`,
+      {
+        projectId: id,
+        RateTobeAdded : 1
+    }
+    ).catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  }
+  const likeProject = ()=>{
+      sendReqLike().then((data)=>
+      console.log(data)
+      )
+  }
 
   useEffect(() => {
     sendRequest().then((data) => setUser(data.project));
@@ -53,6 +72,7 @@ export default function ProjectView(props) {
           <div
             style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" }}
             className="rectangle"
+            onClick={likeProject}
           >
             <StarIcon />
             Like
