@@ -5,7 +5,8 @@ var data = new FormData();
 
 const createReport = async( fileU )=>{
     console.log("-------building report------------");
-      let fileUrl = "https://projectexpo-projects.s3.ap-south-1.amazonaws.com/"+fileU;
+    console.log(fileU);
+      let fileUrl = "https://projectexpo-projects.s3.ap-south-1.amazonaws.com/" + fileU;
       console.log(fileUrl);
  //   fileUrl = 'https://docs.google.com/document/d/1Ip1LDFtQkUJILIK3KWq3pZYovyMO78-dcU5z08VFv9Q/edit?usp=sharing';
     title = 'Demo';
