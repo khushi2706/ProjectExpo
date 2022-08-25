@@ -22,7 +22,7 @@ export default function Header(props) {
                 </NavLink>
               </div>
               <div className="tab-container">
-                <NavLink className={(index==2)? "nav-link active" : "nav-link" } to="/UploadProject/Stage1">
+                <NavLink className={(index==2)? "nav-link active" : "nav-link" } to="/UploadProject">
                   Upload Project
                 </NavLink>
               </div>
