@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 export default function ProjectUploadMain() {
     var [tags, setTags] = useState("");
     var [ inputTag , setInputTag ] = useState({});
+    let projId;
     const subId = useParams().SubId;
     const Tags = (event) => {
       var str = event.target.value;
@@ -53,10 +54,38 @@ export default function ProjectUploadMain() {
     const uploadProject = (e)=>{
       e.preventDefault();
       sendReq()
-        .then((data) => console.log(data))
-        .then(() => console.log("done"));
+        .then((data) => {
+        console.log(data)
+        projId = data.ProjectId 
+        console.log(projId);
+        
+
+        sendReqToSet();
+        })
+     
+       
     }
-  
+     
+    const sendReqToSet = async() => {
+      
+    const response = await axios.post(`http://localhost:5000/api/Project/getPlagarism`,
+    {
+        projectId : projId
+    }).catch((err) => console.log(err));
+    console.log("-----------here is avg");
+    console.log(response.data.avg);
+
+    const pRate = response.data.avg;
+    
+    const setPlagRes = await axios.put(`http://localhost:5000/api/Project/setPlga`,
+    {
+      projectId : projId,
+      PlagRate : pRate
+    }
+    ).catch((err)=>console.log(err));
+
+    } 
+
     return ( 
       <>
         <Header index="2"/>

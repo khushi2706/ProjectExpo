@@ -65,6 +65,9 @@ const getProjectByUserId = async(req,res,next) => {
 }
 const addNewProject = async (req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
+  
+  let newProject;
+  let PId;
     const {  
         PName,
         Desc,
@@ -76,9 +79,8 @@ const addNewProject = async (req, res, next) => {
         ProjectLink
         
        } = req.body;
-      
         console.log(ProjectLink);
-    try {
+     try {
       //Check if college is exist
       let UserExist = await User.findById(UserId);
   
@@ -88,7 +90,6 @@ const addNewProject = async (req, res, next) => {
         });
       }
   
-      let newProject
       if(SubjectId != null)
     {  newProject = new Project({
         PName,
@@ -110,9 +111,7 @@ const addNewProject = async (req, res, next) => {
           UserId
         });
       }
-  
       await newProject.save();
-      
 
     const res = await axios.post(`http://localhost:5000/api/projectupload`,
     {
@@ -128,7 +127,7 @@ const addNewProject = async (req, res, next) => {
         },
       });
     }
-
+    PId = newProject._id;
     // try {
     //   const existUser = await  User.findById(UserId);
     //   const mails = existUser.FollowersMail;
@@ -142,13 +141,12 @@ const addNewProject = async (req, res, next) => {
     //  }) 
     // }
 
-   
-
+    console.log(PId);
+  
     return res.status(200).json({
-      success: true,
-      response: {
-        code: "Project_added_success",
-      },
+     
+        ProjectId : PId
+      
     });
 };
 
@@ -314,6 +312,7 @@ const setPlaga = async(req,res,next)=>{
    return res.status(400).json({error});
    }
 
+
    return res.status(200).json({
     success:true,
      })
@@ -345,8 +344,34 @@ const DoMail = (email) =>{
   });
 
 }
+
+const addRates = async (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  const {
+    projectId,
+    RateTobeAdded
+  } = req.body;
+
+  const ExistProject = await Project.findById(projectId);
+  const CurrRating = ExistProject.Rating;
+
+  ExistProject.Rating = CurrRating + RateTobeAdded;
+
+  await ExistProject.save();
+
+  const userId = ExistProject.UserId;
+  const ExistingUser = await User.findById(userId);
+  const currRate = ExistingUser.Rating;
+  ExistingUser.Rating = currRate + RateTobeAdded;
+  await ExistingUser.save();
+
+  return res.status(200).json({
+    msg: "done"
+  })
+}
+
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
-   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink , getPlagarism }
+   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink , getPlagarism , addRates }
 
