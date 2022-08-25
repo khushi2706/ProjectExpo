@@ -44,10 +44,6 @@ export default function Profile() {
         "Gender": singleUser.Gender,
       
         
-        "DepartmentName":singleUser.DepartmentName,
-        "Skill":singleUser.Skill,
-        "CollegeName":singleUser.CollegeName,
-        "PassOutYear":singleUser.PassOutYear
 
 
       }
