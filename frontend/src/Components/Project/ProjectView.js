@@ -6,8 +6,16 @@ import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
 import TagImage from "../../Assets/Images/Tags.svg";
 import axios from "axios";
+import Tag from '../Common/Tag';
 
 export default function ProjectView(props) {
+  const technologyTagStyle = {
+    backgroundColor: '#D5E3FE',
+    color: "#2C5EFF",
+    fontSize: 15,
+    marginRight: 5,
+    marginTop: 10
+  }
   const [user, setUser] = useState();
  const idd=props.id;
  const { id } = useParams();
@@ -61,7 +69,7 @@ console.log(id);
       <Header />
       <div className="ccdd">
         <div className="leftt">
-      <span style={{textAlign:"left",fontSize:"26px", marginBottom:"15px",fontWeight:"600"}}>{user.PName}</span>
+      <span style={{textAlign:"left", marginLeft:"15px" ,fontSize:"26px", marginBottom:"15px",fontWeight:"600"}}>{user.PName}</span>
 
           <div className="texxt" style={{ color: "gray", textAlign: "left" }}>
             <span>Nikunj Patel</span>
@@ -73,7 +81,7 @@ console.log(id);
         </div>
         <div className="rightt">
           <div
-            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" }}
+            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" ,marginRight : "15px" }}
             className="rectangle"
             onClick={likeProject}
           >
@@ -94,20 +102,16 @@ console.log(id);
       <div className="boxright">
       <div className="m-10 d-flex justify-content-left " >
       <img src={TagImage} alt="" className="tagImage" />
-      <div className="tagName" style={{fontSize:"20px",fontWeight:"500",marginLeft:"7px"}}>Tag</div>
+      <div className="tagName" style={{fontSize:"20px",fontWeight:"500",marginLeft:"7px"}}>Technology</div>
     </div>
       <div className="tagflex applydiv selectedtag">
-      {user.Tags.map((college, index) => {
+      {user.Tags.map((tag, index) => {
         return (
           <>
-          <span className="tag lan-Tag">{college}</span>
+          <Tag title={tag} customeStyle={technologyTagStyle}/>
           </>
         );
       })}
-      <span className="tag lan-Tag">React</span>
-      <span className="tag lan-Tag">Web</span>
-      <span className="tag lan-Tag">2022</span>
-      <span className="tag lan-Tag">DTU</span>
    
       </div>
       </div>
