@@ -120,9 +120,6 @@ const addNewProject = async (req, res, next) => {
       folderPath: ProjectLink
     })
     .catch((err)=> console.log(err));
-
-   
-
     } catch (error) {
       return res.status(400).json({
         success: false,
@@ -132,16 +129,21 @@ const addNewProject = async (req, res, next) => {
       });
     }
 
-    try {
-      const existUser = await  User.findById(UserId);
-      const mails = existUser.FollowersMail;
+    // try {
+    //   const existUser = await  User.findById(UserId);
+    //   const mails = existUser.FollowersMail;
 
-      mails.forEach(mail=>{
-        DoMail(mail);
-      })
-    } catch (error) {
-      
-    }
+    //   mails.forEach(mail=>{
+    //     DoMail(mail);
+    //   })
+    // } catch (error) {
+    //  return res.status(400).json({
+    //   error
+    //  }) 
+    // }
+
+   
+
     return res.status(200).json({
       success: true,
       response: {
@@ -157,14 +159,27 @@ const getPlagarism = async(req,res,next) =>{
   const project =  await Project.findById(projectId);
   const links = project.ProjectLink
 
-  console.log(links);
-  links.forEach((link)=>{
-    createReport(link);
+  let totalPlga = 0;
+
+  let count = 1;
+  links.forEach(async(link)=>{
+    totalPlga += await createReport(link);
+    count = count+1;
   })
 
+  let avg = totalPlga/count;
+  console.log(totalPlga);
+
+  console.log("---------------");
+  console.log(projectId,avg);
+  
+ 
+
   return res.status(200).json({
-    msg : "done"
+    msg : "done",
+    avg
   })
+
 }
 
 const UpdateProjectLink = async (req, res, next) => {
@@ -280,19 +295,18 @@ const getProjectPlga = async(req,res,next)=>{
 
 const setPlaga = async(req,res,next)=>{
   res.set('Access-Control-Allow-Origin', '*');
+ 
   const { 
     ProjectId,
-    PlagId,
-    PlagLink,
-    Rating,
+    PlagRate
    } = req.body;
+   console.log("geting" + ProjectId,
+   PlagRate);
    let projects;
    console.log(ProjectId,
-    PlagId,
-    PlagLink,
-    Rating,);
+    PlagRate);
 
-   const update = { PlagId : PlagId , PlagLink : PlagLink , Rating : Rating }
+   const update = { PlagRate:PlagRate }
    try {
     await Project.findByIdAndUpdate(ProjectId,update);
    } catch (error) {
