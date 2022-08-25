@@ -10,12 +10,7 @@ export default function Header(props) {
         <div className="main-container-header">
           <NavLink className="nav-link" to="/">
             <div>
-              <img
-                src="img/homeimg.jpg"
-                className="w-110 h-110 rounded-circle"
-                style={{ width: 70, height: 70, marginTop: "13px" }}
-                height="100px"
-              ></img>
+             Logo
             </div>
           </NavLink>
           <div>
