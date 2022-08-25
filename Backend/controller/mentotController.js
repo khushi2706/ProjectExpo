@@ -76,4 +76,16 @@ const addNewMentor = async (req,res,next) => {
     
 }
 
+const applyForMentor = async(req,res,next) =>{
+    const{
+        UserId
+    } = req.body();
+
+    const existUser = await User.findById(UserId);
+
+    
+    
+
+}
+
 module.exports = { getAllMentor , addNewMentor, getMentorById }
