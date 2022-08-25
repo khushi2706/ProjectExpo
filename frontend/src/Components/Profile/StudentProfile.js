@@ -76,7 +76,7 @@ export default function StudentProfile() {
               {/* User name */}
               <div className="column-container">
                 <div className="name-title-container">Nikunj Patel</div>
-                <div className=" button-display">
+                <div className=" button-display" onClick={handleClickEvent}>
                   <i
                     className="material-icons circle"
                     style={{
@@ -85,11 +85,10 @@ export default function StudentProfile() {
                       color: "#fff",
                       fontSize: 23,
                     }}
-                    onClick={handleClickEvent}
                   >
                     {icon}
                   </i>
-                  <div className="button-title-container">Follow</div>
+                  <div className="button-title-container">{title}</div>
                 </div>
               </div>
             </div>
