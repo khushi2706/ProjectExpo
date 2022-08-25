@@ -13,3 +13,37 @@
     width:5%;
     height: 5%;
 }
+
+.main-container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'poppins';
+}
+
+.tab-container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.tab-container {
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #787777;
+}
+
+.tab-container:hover {
+    cursor: pointer;
+    color: #000;
+    font-weight: 500;
+}
+
+.horizontal-line {
+    color: #9B9B9B;
+    border-width: 2px;
+}
