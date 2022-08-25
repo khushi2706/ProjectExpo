@@ -331,7 +331,6 @@ const DoMail = (email) =>{
   });
 
 }
-DoMail();
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
