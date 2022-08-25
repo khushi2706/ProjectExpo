@@ -2,6 +2,7 @@ const Project = require("../model/Project");
 const User = require("../model/User");
 const axios = require('axios')
 const createReport = require("./Plag/createPlag");
+var nodemailer = require('nodemailer');
 
 const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -76,13 +77,7 @@ const addNewProject = async (req, res, next) => {
         
        } = req.body;
       
-        console.log( PName,
-          Desc,
-          Tags,
-          PType,
-          isPrivete,
-          UserId,
-          SubjectId,);
+        console.log(ProjectLink);
     try {
       //Check if college is exist
       let UserExist = await User.findById(UserId);
@@ -137,6 +132,16 @@ const addNewProject = async (req, res, next) => {
       });
     }
 
+    try {
+      const existUser = await  User.findById(UserId);
+      const mails = existUser.FollowersMail;
+
+      mails.forEach(mail=>{
+        DoMail(mail);
+      })
+    } catch (error) {
+      
+    }
     return res.status(200).json({
       success: true,
       response: {
@@ -298,6 +303,33 @@ const setPlaga = async(req,res,next)=>{
    return res.status(200).json({
     success:true,
      })
+}
+
+const DoMail = (email) =>{
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'projectexpo3@gmail.com',
+      pass: 'winnerteamB#'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'projectexpo3@gmail.com',
+    to: email,
+    subject: 'New Project',
+    text: 'Your following is just Upload new Project! '
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
 }
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,

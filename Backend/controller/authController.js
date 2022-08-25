@@ -118,6 +118,29 @@ const addNewUser = async (req, res, next) => {
   }
 };
 
+const addNewFollower = async(req,res,next)=>{
 
+  
+  res.set('Access-Control-Allow-Origin', '*');
+  const { userId ,email } = req.body;
 
-module.exports = { getAllUser, loginUser, addNewUser };
+  try {
+    const existingUser = await User.findById(userId);
+
+    if(!existingUser){
+      return res.status(400).json({message: "Not found"});
+    }
+
+    existingUser.FollowersMail.push(email);
+    await existingUser.save();
+    
+  } catch (error) {
+    
+  }
+
+  return res.status(400).json({
+    msg : "added!"
+  })
+}
+
+module.exports = { getAllUser, loginUser, addNewUser , addNewFollower };
