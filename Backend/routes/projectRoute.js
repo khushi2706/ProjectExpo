@@ -1,7 +1,9 @@
 const express = require("express");
 const projectRoute = express.Router();
 
-const { getAllProjects , getProjectById , getProjectByUserId ,addNewProject , getProjectBySubjectID , getProjectPlga , searchTheProject , setPlaga ,  UpdateProjectLink, DownloadProjectLink} = require("../controller/projectController");
+const { getAllProjects , getProjectById , getProjectByUserId ,addNewProject ,
+     getProjectBySubjectID , getProjectPlga , searchTheProject , setPlaga , 
+      UpdateProjectLink, DownloadProjectLink , getPlagarism} = require("../controller/projectController");
 
 
 projectRoute.get("/",getAllProjects);
@@ -14,5 +16,5 @@ projectRoute.get("/Subject/:SubjectId", getProjectBySubjectID );
 projectRoute.get("/getPlga/:ProjectId" , getProjectPlga)
 projectRoute.get("/serach/:key",searchTheProject);
 projectRoute.put("/setPlga" , setPlaga);
-
+projectRoute.post("/getPlagarism" , getPlagarism);
 module.exports = projectRoute;

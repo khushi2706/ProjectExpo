@@ -1,6 +1,7 @@
 const Project = require("../model/Project");
 const User = require("../model/User");
 const axios = require('axios')
+const createReport = require("./Plag/createPlag");
 
 const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -74,8 +75,7 @@ const addNewProject = async (req, res, next) => {
         ProjectLink
         
        } = req.body;
-  
-     
+      
         console.log( PName,
           Desc,
           Tags,
@@ -126,6 +126,7 @@ const addNewProject = async (req, res, next) => {
     })
     .catch((err)=> console.log(err));
 
+   
 
     } catch (error) {
       return res.status(400).json({
@@ -143,6 +144,23 @@ const addNewProject = async (req, res, next) => {
       },
     });
 };
+
+const getPlagarism = async(req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
+  const {projectId} = req.body;
+  console.log(projectId);
+  const project =  await Project.findById(projectId);
+  const links = project.ProjectLink
+
+  console.log(links);
+  links.forEach((link)=>{
+    createReport(link);
+  })
+
+  return res.status(200).json({
+    msg : "done"
+  })
+}
 
 const UpdateProjectLink = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -284,5 +302,5 @@ const setPlaga = async(req,res,next)=>{
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
-   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink }
+   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink , getPlagarism }
 
