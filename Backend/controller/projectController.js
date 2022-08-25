@@ -1,6 +1,8 @@
 const Project = require("../model/Project");
 const User = require("../model/User");
 const axios = require('axios')
+const createReport = require("./Plag/createPlag");
+var nodemailer = require('nodemailer');
 
 const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -74,15 +76,8 @@ const addNewProject = async (req, res, next) => {
         ProjectLink
         
        } = req.body;
-  
-     
-        console.log( PName,
-          Desc,
-          Tags,
-          PType,
-          isPrivete,
-          UserId,
-          SubjectId,);
+      
+        console.log(ProjectLink);
     try {
       //Check if college is exist
       let UserExist = await User.findById(UserId);
@@ -126,6 +121,7 @@ const addNewProject = async (req, res, next) => {
     })
     .catch((err)=> console.log(err));
 
+   
 
     } catch (error) {
       return res.status(400).json({
@@ -136,6 +132,16 @@ const addNewProject = async (req, res, next) => {
       });
     }
 
+    try {
+      const existUser = await  User.findById(UserId);
+      const mails = existUser.FollowersMail;
+
+      mails.forEach(mail=>{
+        DoMail(mail);
+      })
+    } catch (error) {
+      
+    }
     return res.status(200).json({
       success: true,
       response: {
@@ -143,6 +149,23 @@ const addNewProject = async (req, res, next) => {
       },
     });
 };
+
+const getPlagarism = async(req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
+  const {projectId} = req.body;
+  console.log(projectId);
+  const project =  await Project.findById(projectId);
+  const links = project.ProjectLink
+
+  console.log(links);
+  links.forEach((link)=>{
+    createReport(link);
+  })
+
+  return res.status(200).json({
+    msg : "done"
+  })
+}
 
 const UpdateProjectLink = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
@@ -281,8 +304,35 @@ const setPlaga = async(req,res,next)=>{
     success:true,
      })
 }
+
+const DoMail = (email) =>{
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'ripperjohn535@gmail.com',
+      pass: 'Johnripper535'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'ripperjohn535@gmail.com',
+    to: email,
+    subject: 'New Project',
+    text: 'Your following is just Upload new Project! '
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+}
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
-   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink }
+   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink , getPlagarism }
 

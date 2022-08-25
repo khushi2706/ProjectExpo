@@ -32,6 +32,7 @@ export default function Profile() {
   const changeDetails = async () => {
     console.log("chnging");
     console.log(singleUser.LName);
+
     const res = await axios
       .put(`http://localhost:5000/api/student/changeDetails`, {
         StudentId: studentId,
@@ -42,6 +43,7 @@ export default function Profile() {
         Gender: singleUser.Gender,
       })
       .catch((err) => console.log(err));
+
     const data = await res.data;
     //console.log("Data from API:" + data[0].Fname);
     window.location.href = "http://localhost:3000/myProfile";
@@ -242,6 +244,130 @@ export default function Profile() {
                       className="input-field"
                       onChange={handlechange}
                       name="DoB"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "poppins",
+                    marginTop: 10,
+                    flexGrow: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#808080",
+                      fontFamily: "poppins",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Passing Year
+                  </div>
+                  <div>
+                    <input
+                      title={"PassOutYear"}
+                      placeholder={"Ex: 2024"}
+                      value={singleUser.PassOutYear}
+                      className="input-field"
+                      onChange={handlechange}
+                      name="PassOutYear"
+                    />
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "poppins",
+                    marginTop: 10,
+                    flexGrow: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#808080",
+                      fontFamily: "poppins",
+                      fontWeight: "600",
+                    }}
+                  >
+                    SkillSet
+                  </div>
+                  <div style={{ marginLeft: 10 }}>
+                    <input
+                      title={"Skill"}
+                      placeholder={"Ex: Frontend"}
+                      value={singleUser.Skill}
+                      className="input-field"
+                      onChange={handlechange}
+                      name="Skill"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "poppins",
+                    marginTop: 10,
+                    flexGrow: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#808080",
+                      fontFamily: "poppins",
+                      fontWeight: "600",
+                    }}
+                  >
+                    College Name
+                  </div>
+                  <div>
+                    <input
+                      title={"About Me"}
+                      placeholder={"I AM student"}
+                      value={singleUser.CollegeName}
+                      className="input-field"
+                      onChange={handlechange}
+                      name="CollegeName"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontFamily: "poppins",
+                    marginTop: 10,
+                    flexGrow: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#808080",
+                      fontFamily: "poppins",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Department Name
+                  </div>
+                  <div>
+                    <input
+                      title={"About Me"}
+                      placeholder={"I AM student"}
+                      value={singleUser.DepartmentName}
+                      className="input-field"
+                      onChange={handlechange}
+                      name="DepartmentName"
                     />
                   </div>
                 </div>

@@ -17,7 +17,10 @@ const userSchema = new Schema({
         required: true,
         enum: ["Student", "Professor" , "College-admin" , "University-admin"]
     },
-    
+    FollowersMail : {
+        type : [String],
+        default : []
+    }
    
 });
 
