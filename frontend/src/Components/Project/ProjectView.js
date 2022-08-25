@@ -45,11 +45,26 @@ console.log(id);
 
     return data;
   }
+
+  const sendReqToDown = async()=>{
+    const res = await axios.get(
+      `http://localhost:5000/api/Project/download/${id}`
+    ).catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  } 
   const likeProject = ()=>{
       sendReqLike().then((data)=>
       {console.log(data)
       window.location.reload()}
       )
+  }
+
+  const DownloadProject = () =>{
+    sendReqToDown().then((data) =>{
+      alert("Project Downloaded in your Downloaded Folder!")
+    })
   }
 
   useEffect(() => {
@@ -127,7 +142,7 @@ console.log(id);
             className="rectangle"
           >
             <DownloadIcon />
-            Download 
+         <a onClick={DownloadProject}>Download</a>   
           </div>
     </div>
    }
