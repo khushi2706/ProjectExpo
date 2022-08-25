@@ -89,18 +89,20 @@ export default function ProjectUploadMain() {
     return ( 
       <>
         <Header index="2"/>
-       <div className="container mt-3">
-        <div className=" p-3 mt-4 ">
+       <div className="container " style={{fontFamily: 'poppins', marginTop: -30}}>
+        <div className=" p-3 ">
           <form  onSubmit={uploadProject} >
-            <div className="form-group row mt-4">
+            <div className="form-group row">
               <label
                 for="name"
+                style={{textAlign: 'left',}}
                 className="col-sm-2 col-form-label downn font-weight-bold"
               >
                 <strong>Name:</strong>
               </label>
               <div className="col-sm-10">
                 <input
+                style={{paddingLeft: 15, paddingRight: 15}}
                   type="text"
                   className="form-control form-input"
                   name="PName"
@@ -112,8 +114,8 @@ export default function ProjectUploadMain() {
               </div>
             </div>
   
-            <div className="form-group row mt-3">
-              <label for="desc" className="col-sm-2 downn col-form-label">
+            <div className="form-group row" style={{marginTop: -10}}>
+              <label style={{textAlign: 'left',}} for="desc" className="col-sm-2 downn col-form-label">
                 <strong>Description:</strong>
               </label>
               <div className="col-sm-10">
@@ -121,18 +123,20 @@ export default function ProjectUploadMain() {
                 placeholder="Describe your project in min 25 words" 
                 rows="3"  
                 name="Desc"
+                style={{paddingLeft: 15, paddingRight: 15}} 
                 onChange={handleChange}
                 value={inputTag.Desc}
                 required></textarea>
               </div>
             </div>
   
-            <div class="form-group row mt-3">
-              <label for="inputPassword" class="col-sm-2 downn col-form-label">
+            <div class="form-group row" style={{marginTop: -10}}>
+              <label style={{textAlign: 'left',}} for="inputPassword" class="col-sm-2 downn col-form-label">
                 <strong>Project Link</strong>
               </label>
               <div class="col-sm-10">
                 <input
+                style={{paddingLeft: 15, paddingRight: 15}} 
                   type="text"
                   class="form-control form-input"
                   id="ProjectLink"
@@ -144,13 +148,16 @@ export default function ProjectUploadMain() {
                 />
               </div>
             </div>
-            <div className="row mt-3">
-              <div className=" col-ms-10">
-                <div>
-                  <label for="type">
-                    <strong>Type:</strong>
-                  </label>
-                </div>
+
+            
+
+            <div style={{display: "flex",marginTop: -10, flexDirection: 'row', fontWeight: 600, marginLeft: 0}}>
+            <div style={{marginTop: 'auto', marginBottom: 'auto'}}>
+            Type:
+            </div>
+            <div className="row mt-3" style={{textAlign: 'left', }}>
+              <div className=" col-ms-10" style={{marginBottom: 18, marginLeft: 155}}>
+                
   
                 <div className="form-check form-check-inline mt-1">
                   <input
@@ -160,7 +167,7 @@ export default function ProjectUploadMain() {
                     id="software"
                     value="Software"
                   />
-                  <label className="form-check-label" for="inlineRadio1">
+                  <label style={{fontWeight: 500}} className="form-check-label" for="inlineRadio1">
                     Software
                   </label>
                 </div>
@@ -172,23 +179,24 @@ export default function ProjectUploadMain() {
                     id="hardware"
                     value="Hardware"
                   />
-                  <label className="form-check-label" for="inlineRadio2">
+                  <label style={{fontWeight: 500}} className="form-check-label" for="inlineRadio2">
                     Hardware
                   </label>
                 </div>
               </div>
             </div>
+            </div>
   
-            <div className="row mt-3">
+            <div className="row" style={{textAlign: 'left', marginTop: -10, marginLeft:8}}>
               <div className=" col-ms-10">
                  <input type="checkbox"  name="isPrivete"  id="isPrivete" />
-                  <label htmlFor="isPrivete"> Make it private</label>
+                  <label htmlFor="isPrivete" style={{marginLeft: 10}}> Make it private</label>
               </div>
             </div>
   
             <div className="justify-content align-center  mt-3 ">
-              <div className="w-25">
-              <button type="submit" style={{height:"41px"}} onClick={uploadProject} className=" search-bar-button  m-auto " >
+              <div className="w-25" style={{textAlign: 'left'}}>
+              <button type="submit" style={{height:"41px", boxShadow: "2px -1px 32px 0px rgba(44,94,255,0.36)"}} onClick={uploadProject} className=" search-bar-button  m-auto " >
               Upload
             </button>        
                 
