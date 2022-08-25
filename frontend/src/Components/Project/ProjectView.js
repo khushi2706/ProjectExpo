@@ -103,6 +103,13 @@ console.log(id);
             <StarIcon />
             {user.Rating}
           </div>
+          <div
+            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" ,marginRight : "15px" }}
+            className="rectangle"
+            onClick={likeProject}
+          >
+            Plgarism {user.PlagRate} %
+          </div>
 
         
         </div>
