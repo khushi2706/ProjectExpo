@@ -2,11 +2,14 @@ import "./Signup.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import google_logo from "../../Assets/Images/google.svg";
+import { NavLink } from "react-router-dom";
 
 export default function Signup(props) {
   const [departs, setDeparts] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [formValue, setformValue] = useState({});
+
+  let skillset = ['Frontend','Full Stack','Backend','DataBase','ML','Data Science','UI/UX','DevOps','OA','Testing']
 
   const sendReq = async () => {
     const res = await axios
@@ -24,6 +27,9 @@ export default function Signup(props) {
   };
   const sendRequest = async () => {
     console.log(formValue);
+    formValue.CollegeName = "Birla Vishwakarma Mahavidyalaya"
+    // formValue.CollegeId="62f636b7b4953acc377e8643"
+     formValue.DepartmentName="EL"
     const res = await axios
       .post("http://localhost:5000/api/student/add", formValue)
       .catch((err) => console.log(err));
@@ -40,7 +46,10 @@ export default function Signup(props) {
 
   const getDeprtId = async (e) => {
     console.log("depart id: " + e.target.value);
-
+    setformValue((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
     const res = await axios
       .get(
         `http://localhost:5000/api/department/getByCollgeId/${e.target.value}`
@@ -196,7 +205,7 @@ export default function Signup(props) {
             id="form"
             onClick={getDeprtId}
           >
-            <select onChange={props.handleChange}>
+            <select onChange={props.handleChange} name="CollegeId">
               <option value=" ">Select college </option>
               {colleges &&
                 colleges.map((clg, idx) => {
@@ -216,6 +225,45 @@ export default function Signup(props) {
           </div>
 
           <div
+          className="sign-in-input-field-container"
+          style={{ marginTop: 15 }}
+        >
+          <input
+            type="text"
+            className="sign-in-input-fields"
+            placeholder="Passing year"
+            name="PassOutYear"
+            value={formValue.PassOutYear}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div
+          className="sign-in-input-field-container"
+          style={{ marginTop: 15 }}
+        >
+          <input
+            type="text"
+            className="sign-in-input-fields"
+            placeholder="Enter Your Language Tag"
+            name="LanguageTag"
+            value={formValue.LanguageTag}
+            onChange={handleChange}
+          />
+        </div>
+       
+
+      <div className="sign-in-input-field-container" id="form">
+            <select name="Skill" onChange={handleChange} id="">
+              <option value=" ">Select Your SkillSet </option>
+              {
+                skillset.map((dp, idx) => {
+                  return <option value={dp}>{dp}</option>;
+                })}
+            </select>
+          </div>
+
+          <div
             style={{
               textAlign: "center",
               marginTop: 25,
@@ -226,6 +274,7 @@ export default function Signup(props) {
             }}
           >
             <div>Already have an account ?</div>
+            <NavLink className="nav-link" to="/login"> 
             <div
               style={{
                 color: "#2C5EFF",
@@ -235,6 +284,7 @@ export default function Signup(props) {
             >
               Login in
             </div>
+            </NavLink>
           </div>
           <div style={{ textAlign: "center" }}>
             <button

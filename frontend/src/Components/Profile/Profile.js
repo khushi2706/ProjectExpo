@@ -41,7 +41,15 @@ export default function Profile() {
         "LName": singleUser.LName,
         "AboutMe" :singleUser.AboutMe,
         "DoB": singleUser.DoB,
-        "Gender": singleUser.Gender
+        "Gender": singleUser.Gender,
+      
+        
+        "DepartmentName":singleUser.DepartmentName,
+        "Skill":singleUser.Skill,
+        "CollegeName":singleUser.CollegeName,
+        "PassOutYear":singleUser.PassOutYear
+
+
       }
     )
     .catch((err) => console.log(err));
@@ -246,6 +254,129 @@ export default function Profile() {
                   />
                 </div>
                 </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          Passing Year
+        </div>
+                <div><input
+                title={"PassOutYear"}
+                placeholder={"Ex: 2024"}
+                value={singleUser.PassOutYear}
+                className="input-field"
+                  onChange={handlechange}
+                 name="PassOutYear"
+              /></div>
+              </div>
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+          SkillSet
+        </div>
+                <div style={{ marginLeft: 10 }}>
+                  <input
+                    title={"Skill"}
+                    placeholder={"Ex: Frontend"}
+                    value={singleUser.Skill}
+                    className="input-field"
+                    onChange={handlechange}
+                   name="Skill"
+                  />
+                </div>
+                </div>
+              </div>
+
+              
+
+              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+         College Name
+        </div>
+                 <div>
+                 <input
+                 title={"About Me"}
+                 placeholder={"I AM student"}
+                 value={singleUser.CollegeName}
+                 className="input-field"
+                 onChange={handlechange}
+                name="CollegeName"
+               /></div>
+               </div>
+              </div>
+
+              
+              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "poppins",
+          marginTop: 10,
+          flexGrow:1
+        }}
+      >
+        <div
+          style={{
+            color: "#808080",
+            fontFamily: "poppins",
+            fontWeight: "600",
+          }}
+        >
+        Department Name
+        </div>
+                 <div>
+                 <input
+                 title={"About Me"}
+                 placeholder={"I AM student"}
+                 value={singleUser.DepartmentName}
+                 className="input-field"
+                 onChange={handlechange}
+                name="DepartmentName"
+               /></div>
+               </div>
               </div>
 
               <div
