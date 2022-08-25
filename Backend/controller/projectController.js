@@ -136,6 +136,8 @@ const addNewProject = async (req, res, next) => {
     const mails = existUser.FollowersMail;
 
     mails.forEach(mail => {
+      console.log("doing mail");
+      console.log(mail);
       DoMail(mail);
     })
   } catch (error) {
@@ -196,7 +198,6 @@ const UpdateProjectLink = async (req, res, next) => {
     },
   });
 };
-
 //make api for project download
 const DownloadProjectLink = async (req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
@@ -305,28 +306,17 @@ const setPlaga = async (req, res, next) => {
 
 const DoMail = (email) => {
 
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'ripperjohn535@gmail.com',
-      pass: 'Johnripper535'
-    }
-  });
+  const sendmail = require('sendmail')({silent: true});
 
-  var mailOptions = {
-    from: 'ripperjohn535@gmail.com',
+sendmail({
+    from: '19cp012@bvmcollege.in',
     to: email,
-    subject: 'New Project',
-    text: 'Your following is just Upload new Project! '
-  };
-
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
+    subject: 'test sendmail',
+    html: 'hello new Project',
+  }, function(err, reply) {
+    console.log(err && err.stack);
+    console.dir(reply);
+});
 
 }
 
@@ -341,7 +331,14 @@ const addRates = async (req, res, next) => {
   const CurrRating = ExistProject.Rating;
 
   ExistProject.Rating = CurrRating + RateTobeAdded;
+  
   await ExistProject.save();
+
+  const userId = ExistProject.UserId;
+  const ExistingUser= await User.findById(userId);
+  const currRate = ExistingUser.Rating;
+  ExistingUser.Rating = currRate + RateTobeAdded;
+  await ExistingUser.save();
 
   return res.status(200).json({
     msg: "done"
@@ -351,6 +348,6 @@ module.exports = {
   getAllProjects, getProjectById,
   getProjectByUserId, addNewProject,
   getProjectBySubjectID, getProjectPlga,
-  searchTheProject, setPlaga, UpdateProjectLink, DownloadProjectLink, getPlagarism, addRates
+  searchTheProject, setPlaga, UpdateProjectLink, DownloadProjectLink, getPlagarism, 
+  addRates
 }
-
