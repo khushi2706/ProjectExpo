@@ -3,9 +3,7 @@ const userRouter = express.Router();
 const {
   registerUser,
   loginUser,
-  logoutUser,
-  authChecker,
-  authController,
+  getUserById,
   addNewUser,
   getAllUser,
   addNewFollower
@@ -16,6 +14,7 @@ userRouter.get("/", getAllUser);
 // userRouter.get("/getUserById/:id", getUserById);
 userRouter.post("/register", addNewUser);
 
+userRouter.get("/:id", getUserById);
 // Registers a new User
 //userRouter.post("/register", registerLimiter, registerUser);
 
