@@ -145,7 +145,6 @@ console.log(inputt);
 
     // sessionStorage.setItem('searchinput', searchinput);
     // setFlag("true");
-    alert("clicked");
   };
   const fff = () => {
     let t = [...projects];
@@ -217,137 +216,7 @@ console.log("jdjd"+t)
           </div>
         </div>
       </div>
-      <div className="AppliedFilter">
-        <div className="applied"></div>
-        <div className="filter">
-          <div className="title">
-            <img src={Filterlist} alt="" className="titleImage" />
-            <div className="title_information">Short filters</div>
-          </div>
-
-          <div className="AlltagListOption alll">
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={TagImage} alt="" className="tagImage" />
-                <div className="tagName">Tag</div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="inputfilter inputfil"
-                  onChange={(e) => setInputt(e.target.value)}
-                  placeholder="Ex. Web"
-                />
-              </div>
-            </div>
-
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={university} alt="" className="tagImage" />
-                <div className="tagName">Type</div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    color: "#808080",
-                    fontFamily: "poppins",
-                    fontWeight: "600",
-                  }}
-                >
-                  <div className="sign-in-input-field-container">
-                    <select
-                      className="select chg"
-                      onChange={(e) => {
-                        setInputt1(e.target.value);
-                        setcategory(e.target.value.toLowerCase());
-                        console.log(category);
-                      }}
-                      name="typeid"
-                    >
-                      <option>Select</option>
-                      <option>Software</option>
-                      <option>Hardware</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={calender} className="tagImage" />
-                <div className="tagName">Time Frame</div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="inputfilter inputfil"
-                  onChange={(e) => setInputt2(e.target.value)}
-                  placeholder="Ex. 2020"
-                />
-              </div>
-            </div>
-
-            <div className="tagListOption tagflex">
-              <div>
-                <img src={CodeImage} className="tagImage" />
-                <div className="tagName">Language</div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="inputfilter inputfil"
-                  onChange={(e) => setInputt3(e.target.value)}
-                  placeholder="Ex. JAVA"
-                />
-              </div>
-            </div>
-
-            <div className="tagflex applydiv">
-              <button
-                className="search-bar-button filterbtn"
-                onClick={() => {
-                  fff();
-                }}
-                id=" "
-              >
-                Apply
-              </button>
-            </div>
-
-            <div className="tagflex applydiv selectedtag">
-              {list.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-              {list1.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell1}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-              {list2.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell2}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-              {list3.map((ele, index) => {
-                return (
-                  <span className="tag auth-Tag" id={index} onClick={cancell3}>
-                    {ele} <CancelIcon className="cancelitem" />
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
+     
 
       <div className="d-flex row mt-5 justify-content-center w-100">
         {projects &&

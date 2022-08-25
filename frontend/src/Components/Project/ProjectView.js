@@ -61,11 +61,13 @@ console.log(id);
       <Header />
       <div className="ccdd">
         <div className="leftt">
-          <div className="texxt" style={{ textAlign: "left" }}>
+      <span style={{textAlign:"left",fontSize:"26px", marginBottom:"15px",fontWeight:"600"}}>{user.PName}</span>
+
+          <div className="texxt" style={{ color: "gray", textAlign: "left" }}>
             <span>Nikunj Patel</span>
-            <span>Updated at {user.Date}..</span>
+            <span>Updated at {user.Date.substring(0,10) }</span>
           </div>
-          <div className="" style={{ textAlign: "left", marginLeft: "12px" }}>
+          <div className="" style={{ color: "gray" ,textAlign: "left", marginLeft: "12px" }}>
             Prof :- Mohsin Hasan
           </div>
         </div>
@@ -79,26 +81,13 @@ console.log(id);
             {user.Rating}
           </div>
 
-          <div
-            style={{
-              width: "220px",
-              border: "2px solid black",
-              marginLeft: "29px",
-              marginRight: "70px",
-              marginTop: "16px",
-            }}
-            className="rectangle"
-          >
-            <DownloadIcon />
-            Download 3.5MB
-          </div>
+        
         </div>
       </div>
       <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
 
       <div className="boxx">
       <div className="boxleft">
-      <span style={{textAlign:"left",fontSize:"26px", marginLeft: "30px",marginBottom:"15px",fontWeight:"600"}}>{user.PName}</span>
       <span style={{textAlign:"left",fontSize:"21px",marginLeft: "30px",fontWeight:"500"}}>{user.Desc}...</span>
       </div>
 
@@ -123,9 +112,21 @@ console.log(id);
       </div>
       </div>
       </div>
+      <div
+            style={{
+              width: "220px",
+              border: "2px solid black",
+              marginLeft: "29px",
+              marginRight: "70px",
+              marginTop: "16px",
+            }}
+            className="rectangle"
+          >
+            <DownloadIcon />
+            Download 
+          </div>
     </div>
    }
-   <iframe src="D:\ProjectExpo\Backend\index.js" frameborder="0"></iframe>
       
     </>
   );
