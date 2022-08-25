@@ -46,7 +46,7 @@ exports.projectDownload = async (req, res, next) =>
     const download = await zipper({
       s3FolderName: uniqname(projectId),
      startKey: '' // could keep null
-    , zipFileName: "C:/Downloads/" +uniqname(projectId) + '.zip'
+    , zipFileName: "C:\\Downloads\\" +uniqname(projectId) + '.zip'
     , recursive: true
     })
 
