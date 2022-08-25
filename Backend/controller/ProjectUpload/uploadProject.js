@@ -49,11 +49,11 @@ exports.uploadProject = async (req, res, next) =>
   } = req.body
 
 //do aws stuff here
-  const allpaths = await folderUpload({s3BucketName: "projectexpo-projects",
+  const allpaths = await folderUpload({s3BucketName: "projectexpo-project",
   // Absolute path
   localFolder: folderPath,
-  accessKeyId: "AKIAS6G5ANL5655DKEHC",
-  secretAccessKey: "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",
+  accessKeyId: "AKIA45TM7XBP3T4BIBHA",
+  secretAccessKey: "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",
   
   folder_name : uniqname(projectId)});
   // .then(() => {

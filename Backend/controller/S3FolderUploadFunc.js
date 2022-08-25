@@ -6,11 +6,11 @@ const path = require("path");
 const mime = require("mime");
 
 const config = {
-  s3BucketName: "projectexpo-projects",
+  s3BucketName: "projectexpo-project",
   // Absolute path
   localFolder: "C:\\Users\\Bhumit\\Desktop\\node-aws-s3-fileupload-master\\hello",
-  accessKeyId: "AKIAS6G5ANL5655DKEHC",
-  secretAccessKey: "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",
+  accessKeyId: "AKIA45TM7XBP3T4BIBHA",
+  secretAccessKey: "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",
 };
 
 // {
@@ -24,8 +24,8 @@ const start = async ({accessKeyId, secretAccessKeyId, s3BucketName, localFolder}
   AWS.config.setPromisesDependency(Promise);
   const s3 = new AWS.S3({
     signatureVersion: 'v4',
-    accessKeyId: "AKIAS6G5ANL5655DKEHC",
-    secretAccessKey: "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",
+    accessKeyId: "AKIA45TM7XBP3T4BIBHA",
+    secretAccessKey: "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",
   });
   const filesPaths = await walkSync(localFolder);
   for (let i = 0; i < filesPaths.length; i++) {

@@ -6,12 +6,12 @@ const path = require("path");
 const mime = require("mime");
 
 const config = {
-  s3BucketName: "projectexpo-projects",
+  s3BucketName: "projectexpo-project",
   // Absolute path
-  localFolder: "C:\\Users\\Lenovo\\Desktop\\SIH'2022\\plag final\plag final",
-  accessKeyId: "AKIAS6G5ANL5655DKEHC",
-  secretAccessKey: "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",
-  folder_name : "plagarism"
+  localFolder: "C:\\Users\\Lenovo\\Desktop\\SIH\\project\\files",
+  accessKeyId: "AKIA45TM7XBP3T4BIBHA",
+  secretAccessKey: "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",
+  folder_name : "files"
 };
 
 // {
@@ -25,8 +25,8 @@ exports.folderUpload = async ({accessKeyId, secretAccessKeyId, s3BucketName, loc
   AWS.config.setPromisesDependency(Promise);
   const s3 = new AWS.S3({
     signatureVersion: 'v4',
-    accessKeyId: "AKIAS6G5ANL5655DKEHC",
-    secretAccessKey: "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",
+    accessKeyId: "AKIA45TM7XBP3T4BIBHA",
+    secretAccessKey: "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",
   });
   const filesPaths = await walkSync(localFolder);
   const allPaths = [];
@@ -39,7 +39,7 @@ exports.folderUpload = async ({accessKeyId, secretAccessKeyId, s3BucketName, loc
     const relativeToBaseFilePath = folder_name+'/'+path.normalize(path.relative(localFolder, filePath));
     console.log("rebs: "+relativeToBaseFilePath);
     var relativeToBaseFilePathForS3 = relativeToBaseFilePath.split(path.sep).join('/');
-    console.log("https://projectexpo-projects.s3.ap-south-1.amazonaws.com/"+relativeToBaseFilePathForS3);
+    console.log("https://projectexpo-project.s3.ap-south-1.amazonaws.com/"+relativeToBaseFilePathForS3);
     // const mimeType = mime.getType(filePath);
     console.log(`Uploading`, statistics, relativeToBaseFilePathForS3);
     console.log("Path : "+relativeToBaseFilePathForS3);

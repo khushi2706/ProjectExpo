@@ -17,27 +17,26 @@ var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          res.set('Access-Control-Allow-Origin', '*'); // const {
+          // const {
           //   ProjectId,
           // } = req.body;
           // const UpdatedProjectLink = req.body.UpdatedProjectLink;
-
           console.log(UpdateProjectLink);
-          _context.prev = 2;
+          _context.prev = 1;
           update = {
             ProjectLink: UpdatedProjectLink
           };
-          _context.next = 6;
+          _context.next = 5;
           return regeneratorRuntime.awrap(Project.findByIdAndUpdate(ProjectId, update));
 
-        case 6:
+        case 5:
           console.log("Done.....");
-          _context.next = 12;
+          _context.next = 11;
           break;
 
-        case 9:
-          _context.prev = 9;
-          _context.t0 = _context["catch"](2);
+        case 8:
+          _context.prev = 8;
+          _context.t0 = _context["catch"](1);
           console.log("error: ", _context.t0); // return res.status(400).json({
           //     success : false,
           //     response : {
@@ -45,12 +44,12 @@ var UpdateProjectLink = function UpdateProjectLink(ProjectId, UpdatedProjectLink
           //     }
           // })
 
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[2, 9]]);
+  }, null, null, [[1, 8]]);
 };
 
 exports.uploadProject = function _callee(req, res, next) {
@@ -64,11 +63,11 @@ exports.uploadProject = function _callee(req, res, next) {
 
           _context2.next = 3;
           return regeneratorRuntime.awrap(folderUpload({
-            s3BucketName: "projectexpo-projects",
+            s3BucketName: "projectexpo-project",
             // Absolute path
             localFolder: folderPath,
-            accessKeyId: "AKIAS6G5ANL5655DKEHC",
-            secretAccessKey: "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",
+            accessKeyId: "AKIA45TM7XBP3T4BIBHA",
+            secretAccessKey: "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",
             folder_name: uniqname(projectId)
           }));
 
@@ -82,12 +81,6 @@ exports.uploadProject = function _callee(req, res, next) {
           // console.log("file paths: ", allpaths);
           UpdateProjectLink(projectId, allpaths); //save all paths to database  
           // console.log(folderPath);
-          //const obj = {  }
-          // UpdateProjectLink(projectId, filepaths);
-          // axios.put("http://localhost:5000/api/Project/updateProjectLink",{
-          //     ProjectId : projectId,
-          //     UpdatedProjectLink: JSON.parse(JSON.stringify(obj))
-          //   })
 
           return _context2.abrupt("return", res.status(200).json({
             success: true,
