@@ -40,54 +40,11 @@ export default function StudentProfile() {
 
   const studentId = cookies.get("uTypeId");
 
-  const sendReq = async () => {
-    const res = await axios
-      .get(`http://localhost:5000/api/student/getStudentById/${studentId}`)
-
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    //console.log("Data from API:" + data[0].Fname);
-    return data;
-  };
-
-  useEffect(() => {
-    sendReq().then((data) => {
-      console.log(data);
-      setSingleUser(data);
-    });
-  }, []);
-
-  const changeDetails = async () => {
-    console.log("chnging");
-    console.log(singleUser.LName);
-    const res = await axios
-      .put(`http://localhost:5000/api/student/changeDetails`, {
-        StudentId: studentId,
-        Fname: singleUser.Fname,
-        LName: singleUser.LName,
-        AboutMe: singleUser.AboutMe,
-        DoB: singleUser.DoB,
-        Gender: singleUser.Gender,
-      })
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    //console.log("Data from API:" + data[0].Fname);
-    window.location.href = "http://localhost:3000/myProfile";
-    console.log(data);
-  };
-  const handlechange = (e) => {
-    setSingleUser((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-  console.log(singleUser);
   return (
     <>
       <Header />
       <div style={{ marginLeft: 50, marginRight: 50 }}>
-        {UserType != "Student" && <Navigate to="/login" replace={true} />}
-        {singleUser && (
+        {
           <div>
             <div
               style={{
@@ -279,6 +236,10 @@ export default function StudentProfile() {
                 <div style={{ marginTop: 20 }}>
                   <Tags title="Project Master" customeStyle={userLevel} />
                 </div>
+
+                <div style={{ marginTop: 50 }}>
+                  <Button title="Follow" />
+                </div>
               </div>
             </div>
             {/* Project Section */}
@@ -300,7 +261,7 @@ export default function StudentProfile() {
                 </Link>
               ))}
           </div>
-        )}
+        }
       </div>
     </>
   );

@@ -102,11 +102,7 @@ function App() {
             <Route index path="/FacultyProject" element={<FacultyProject />} />
             <Route index path="/quiz" element={<Quizmain />} />
             <Route index path="/Logout" element={<Logout />} />
-            <Route
-              index
-              path="/studentProfile/:id"
-              element={<StudentProfile />}
-            />
+            <Route index path="/studentProfile" element={<StudentProfile />} />
           </Routes>
         </BrowserRouter>
       </div>
