@@ -40,7 +40,9 @@ export default function Signup(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     sendRequest()
-      .then((data) => console.log(data))
+      .then((data) => 
+     { console.log(data)
+       window.location="/login"})
       .then(() => console.log("done"));
   };
 
