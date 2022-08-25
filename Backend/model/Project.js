@@ -18,7 +18,7 @@ var ProjectSchema = new Schema(
         required : true,
     },
     Tags:[{
-        type: [String]
+        type: String
     }],
     Rating:{
         type:Number,

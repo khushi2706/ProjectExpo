@@ -39,6 +39,7 @@ import AboutUs from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Faculty from "./Components/Faculty/Faculty";
 import MyProjects from "./Components/Profile/MyProjects";
+import Require from "./Components/Project/Require";
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
             <Route index path="/quiz" element={<Quizmain/>}/>
             <Route index path="/aboutus" element={<AboutUs/>}/>
             <Route index path="/contact" element={<Contact/>}/>
+            <Route index path="/requirement" element={<Require/>}/>
             <Route index path="/Logout" element={<Logout/>}/>
           </Routes>
         </BrowserRouter>

@@ -10,6 +10,7 @@ export default function Signup(props) {
   const [departs, setDeparts] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [formValue, setformValue] = useState({});
+  let skillset = ['Frontend','Full Stack','Backend','DataBase','ML','Data Science','UI/UX','DevOps','OA','Testing']
 
   const sendReq = async () => {
     const res = await axios

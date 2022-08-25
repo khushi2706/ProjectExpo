@@ -1,0 +1,178 @@
+.rcard{
+    width: 100%;
+    height: 30px;
+}
+
+.allblogs{
+    background: aqua;
+}
+
+p a{
+    color: rgb(49, 222, 235);
+    text-decoration: underline;
+}
+.blogcont{
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.blogcont p{
+    margin: 12px;
+}
+.allblogs{
+    padding: 0px ;
+    padding-top: 12px;
+    padding-bottom: 29px;
+    height: 100%;
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}  
+.allblogs .blg{
+    display: flex;
+     flex-direction: row;
+    place-items: center;
+    background: black;
+    border-radius: 15px;
+    width: 70%;
+   height: 100%;
+}    
+.icons{
+    position: fixed;
+    top: 35%;
+    left: 1%;
+    display:  flex;
+    flex-direction: column;
+}
+.icons svg:hover{
+    cursor: pointer; 
+}
+
+.icons svg{
+    font-size: 37px;
+    margin-top: 13px;
+}
+.icons a:nth-child(1){
+    color: #e0089c;
+}
+.icons a:nth-child(1):hover{
+    color: #ff05b0f8;
+}
+.icons a:nth-child(2){
+    color: 	#205bcf;
+}
+.icons a:nth-child(2):hover{
+    color: 	#0156ff;
+}
+.icons a:nth-child(3){
+    color: #139ed4ea;
+}
+.icons a:nth-child(3):hover{
+    color: #09b8fd;
+}
+.icons a:nth-child(4){
+    color: #0471a3;
+}
+.icons a:nth-child(4):hover{
+    color: #00aeff;
+}
+.icons a:nth-child(5){
+    color:rgba(115, 23, 201, 0.863);
+}
+.icons a:nth-child(5):hover{  
+    color:rgb(136, 8, 255);  
+}
+.blg{
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    width: 92%;
+}
+.redd{
+    color: red;
+}
+.blogcont a h2{
+    margin-left: 13px; 
+} 
+
+.allblogs .blg:hover{   
+    border: 2px solid #40a9ff;
+    box-shadow: 1px 1px 21px -6px #40a9ff;
+    transition: 0.7s;
+    transform:scale(1.014);
+
+}
+.funnn{
+    border-radius: 14px;
+    margin-left: -26px;
+    margin-top: 56px;
+}
+.webtech{
+}
+.allblogs div .blogimg{
+    margin:24px;
+    background: url('https://github.com/jeet-1452001/udaan22-Images/blob/master/images/computer%20IT/Bugs%20Bunny.jpg?raw=true'); 
+    background-size: 100% 100%;
+   grid-area: img;
+min-width: 294px;
+min-height: 280px;
+border: 3px solid rgb(30, 238, 245);
+border-radius: 14px;
+}
+.blogcont{
+    padding:12px ;
+    color: black;
+}
+
+.blogcont 
+ .blogcont h1{
+  padding-left: 10px;
+ }
+  
+ @media (max-width:883px) {
+     .mainico{
+         background: #205bcf;
+     }
+    .allblogs .blg{
+        flex-wrap: wrap;
+        justify-content: center;
+    } 
+    .funnn{
+        margin: 0;
+    } 
+   .icons a{
+       float: right;
+   }
+    .icons{
+        flex-direction: row;
+        top: 92%;
+        width: 324px;
+         left: auto;
+        border-radius: 14px;
+        bottom: 0%;
+        background: #1b221c8c;
+        right: 10%;
+    }
+    .icons a svg{
+        font-size: 42px;
+        margin: 11px
+    }
+    .blogimg{
+        min-width: 0px !important;
+        width: 100%;
+    }
+    .blg{
+        width: 90% !important;
+    }
+ }
+
+ @media (max-width:397px) {
+    .icons{
+        left: 1%;
+    }
+ }
