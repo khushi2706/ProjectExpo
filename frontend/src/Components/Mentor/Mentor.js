@@ -27,7 +27,7 @@ export default function Mentor() {
     console.log(mentors);
   return (
     <>
-    <Header/>
+    <Header index="3"/>
     <Search/>
     <div className="d-flex row mt-5 justify-content-center w-100">
     {mentors &&
