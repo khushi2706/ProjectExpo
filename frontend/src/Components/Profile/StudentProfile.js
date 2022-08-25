@@ -1,267 +1,191 @@
 import React, { useEffect, useState } from "react";
-import Button from "../Common/Button";
+
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useParams } from "react-router-dom";
 import Header from "../Common/Header";
 import "./StudentProfile.css";
-import Tags from "../Common/Tag";
-import ProjectCard from "../Profile/ProjectCard";
-import InputView from "./InputView";
-export default function StudentProfile() {
-  const [projects, setProjects] = useState();
 
+import ProjectCard from "../Profile/ProjectCard";
+import Tag from "../Common/Tag";
+
+export default function StudentProfile() {
+  const { id } = useParams();
+  console.log("Student ID: " + id);
+  const [projects, setProjects] = useState();
+  const [title, setTitle] = useState("Follow");
+  const [icon, setIcon] = useState("person_add");
   const projectStyle = {
     backgroundColor: "#D5E3FE",
     color: "#2C5EFF",
     fontSize: 17,
-    fontWeight: "bold",
+    fontWeight: "500",
     marginRight: 10,
   };
-
-  const domainStyle = {
-    backgroundColor: "#D5F0E1",
-    color: "#52B67D",
-    fontSize: 17,
-    fontWeight: "bold",
-  };
-
-  const userLevel = {
-    backgroundColor: "#FFF5DC",
-    color: "#DEBA81",
-    fontSize: 17,
-    fontWeight: "bold",
-    borderRadius: 10,
-  };
-  const [singleUser, setSingleUser] = useState();
-
   const cookies = new Cookies();
   const UserType = cookies.get("userType");
 
   const studentId = cookies.get("uTypeId");
 
+  const sendReq = async () => {
+    const res = await axios
+      .get(`http://localhost:5000/api/Project/UserId/${id}`)
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
+
+  useEffect(() => {
+    sendReq().then((data) => {
+      setProjects(data.project);
+      console.log(projects);
+      console.log(data.project);
+    });
+  }, []);
+
+  const handleClickEvent = () => {
+    if (title == "Follow") {
+      setTitle("Unfollow");
+      setIcon("person_remove");
+    } else {
+      setTitle("Follow");
+      setIcon("person_add");
+    }
+  };
+
   return (
     <>
       <Header />
-      <div style={{ marginLeft: 50, marginRight: 50 }}>
-        {
+      <div className="parent">
+        <div
+          className="profile-background-card profile-main-container"
+          style={{ marginLeft: 10 }}
+        >
           <div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-              }}
-            >
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    background: "#F6F7FB",
-                    borderRadius: 10,
-                    paddingLeft: 68,
-                    paddingRight: 68,
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    width: "fit-content",
-                    marginTop: 25,
-                  }}
-                >
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <InputView title="First Name" value="Nikunj" />
-                    </div>
-
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <div style={{ marginLeft: 10 }}>
-                        <InputView title="Last Name" value="Patel" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <div>
-                        <InputView
-                          title="About me"
-                          value="Hello everyone, this is Nikunj Patel"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <div>
-                        <InputView title="Gender" value="Male" />
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <div style={{ marginLeft: 10 }}>
-                        <InputView title="Date of Birth" value="31/10/2000" />
-                      </div>
-                    </div>
-                  </div>
-                  <InputView
-                    title="College name"
-                    value="Birla Vishvakarma Mahavidhyalaya"
-                  />
-                  <div style={{ display: "flex", flexDirection: "row" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <div>
-                        <InputView title="Department" value="Computer" />
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        fontFamily: "poppins",
-                        marginTop: 10,
-                        flexGrow: 1,
-                      }}
-                    >
-                      <div style={{ marginLeft: 10 }}>
-                        <InputView title="Passing Year" value="2023" />
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: 20,
-                      justifyContent: "end",
-                    }}
-                  >
-                    {/* here we have to place the follow button */}
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: "poppins",
-                      fontSize: 22,
-                      fontWeight: "bold",
-                      marginTop: 10,
-                    }}
-                  ></div>
-                </div>
+            <div className="row-container-cust">
+              {/* User Photo */}
+              <div className="profile w-1 h-5">
+                <img
+                  src="https://picsum.photos/200"
+                  className="w-110 h-110 rounded-circle"
+                  style={{ width: 70, height: 70 }}
+                  height="100px"
+                />
               </div>
-
-              <div className="row-container-cus">
-                <div>
-                  <div className="languages-container">Skills</div>
-                </div>
-                <div style={{ marginTop: 20 }}>
-                  <div className="skills-container">
-                    <Tags title="Java" customeStyle={projectStyle} />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    border: "2px solid #F5F7F9",
-                    height: 1,
-                    marginTop: 15,
-                  }}
-                ></div>
-                <div className="languages-container" style={{ marginTop: 10 }}>
-                  Domain
-                </div>
-                <div style={{ marginTop: 20 }}>
-                  <Tags title="Machine Learning" customeStyle={domainStyle} />
-                </div>
-                <div
-                  style={{
-                    border: "2px solid #F5F7F9",
-                    height: 1,
-                    marginTop: 15,
-                  }}
-                ></div>
-                <div className="languages-container" style={{ marginTop: 10 }}>
-                  Level
-                </div>
-                <div style={{ marginTop: 20 }}>
-                  <Tags title="Project Master" customeStyle={userLevel} />
-                </div>
-
-                <div style={{ marginTop: 50 }}>
-                  <Button title="Follow" />
+              {/* User name */}
+              <div className="column-container">
+                <div className="name-title-container">Nikunj Patel</div>
+                <div className=" button-display">
+                  <i
+                    className="material-icons circle"
+                    style={{
+                      marginTop: 3,
+                      fontSize: 28,
+                      color: "#fff",
+                      fontSize: 23,
+                    }}
+                    onClick={handleClickEvent}
+                  >
+                    {icon}
+                  </i>
+                  <div className="button-title-container">Follow</div>
                 </div>
               </div>
             </div>
-            {/* Project Section */}
-            <div
-              style={{
-                border: "2px solid #F5F7F9",
-                height: 1,
-                marginTop: 15,
-              }}
-            ></div>
+            <div className="about-us-container">
+              Hello everyone, this is Nikunj Patel. I am an Android developer
+            </div>
+            <hr className="horizontal-line"></hr>
+            <div className="college-container" style={{ marginTop: 10 }}>
+              <i
+                className="material-icons"
+                style={{
+                  marginTop: 3,
+                  fontSize: 28,
+                  color: "#000",
+                }}
+              >
+                apartment
+              </i>
+              <div className="college-text-container">
+                Birla vishvakrama Mahavidhyala
+              </div>
+            </div>
 
-            {projects &&
-              projects.map((project, index) => (
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to={{ pathname: `/viewProject/${project._id}` }}
-                >
-                  <ProjectCard project={project} />
-                </Link>
-              ))}
+            <div className="college-container">
+              <i
+                className="material-icons"
+                style={{
+                  marginTop: 3,
+                  fontSize: 28,
+                  color: "#000",
+                }}
+              >
+                email
+              </i>
+              <div className="college-text-container">
+                ndpatel.tech@gmail.com
+              </div>
+            </div>
+
+            <div className="college-container">
+              <i
+                className="material-icons"
+                style={{
+                  marginTop: 3,
+                  fontSize: 28,
+                  color: "#000",
+                }}
+              >
+                business_center
+              </i>
+              <div className="college-text-container">Computer</div>
+            </div>
+
+            <div className="college-container">
+              <i
+                className="material-icons"
+                style={{
+                  marginTop: 3,
+                  fontSize: 28,
+                  color: "#000",
+                }}
+              >
+                school
+              </i>
+              <div className="college-text-container">2023</div>
+            </div>
+            <hr className="horizontal-line"></hr>
+            <div className="skills-container">Skills</div>
+            <div className="skills-inner-container">
+              <Tag title="Java" customeStyle={projectStyle} />
+            </div>
+            <hr className="horizontal-line"></hr>
+            <div className="skills-container">Domain</div>
+            <div className="skills-inner-container">
+              <Tag title="Machine Learning" customeStyle={projectStyle} />
+            </div>
           </div>
-        }
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: 20,
+            marginRight: 50,
+          }}
+        >
+          {projects &&
+            projects.map((project, index) => (
+              <Link
+                style={{ textDecoration: "none" }}
+                to={{ pathname: `/viewProject/${project._id}` }}
+              >
+                <ProjectCard project={project} />
+              </Link>
+            ))}
+        </div>
       </div>
     </>
   );
