@@ -42,7 +42,8 @@ const addNewStudent = async (req, res, next) => {
     DepartmentId,
     DepartmentName,
     LanguageTag,
-    Skill,
+    Skill,    
+    CollegeId,
     CollegeName,
     PassOutYear,
   } = req.body;
@@ -91,6 +92,7 @@ const addNewStudent = async (req, res, next) => {
       DepartmentName,
       LanguageTag,
       Skill,
+      CollegeId,
       CollegeName,
       PassOutYear,
     });

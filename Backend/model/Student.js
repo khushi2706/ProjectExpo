@@ -38,6 +38,10 @@ Skill:{
   type : String,
   default: "Others"
 },
+CollegeId:{  
+  type: mongoose.Types.ObjectId,
+  ref:"College",
+},
 CollegeName:{
   type : String,
   default: "Others"
