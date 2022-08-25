@@ -18,6 +18,11 @@ export default function MyProfile() {
     console.log("My Project clicked");
   };
 
+  const handleLogoutClick = () => {
+    console.log("we are loging out");
+    window.location = "/Logout";
+  };
+
   return (
     <>
       <div
@@ -85,7 +90,11 @@ export default function MyProfile() {
             title="My Project"
             onClick={handleMyProjectClick}
           />
-          <SideBarOption icon="groups" title="My Class" />
+          <SideBarOption
+            icon="logout"
+            title="Logout"
+            onClick={handleLogoutClick}
+          />
         </div>
         {/* vertical line */}
         <div

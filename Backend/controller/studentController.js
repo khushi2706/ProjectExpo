@@ -40,7 +40,12 @@ const addNewStudent = async (req, res, next) => {
     DoB,
     Gender,
     DepartmentId,
-    ProfileImg,
+    DepartmentName,
+    LanguageTag,
+    Skill,    
+    CollegeId,
+    CollegeName,
+    PassOutYear,
   } = req.body;
 
   const UserType = "Student";
@@ -84,7 +89,12 @@ const addNewStudent = async (req, res, next) => {
       Gender,
       DepartmentId,
       UserId,
-      ProfileImg,
+      DepartmentName,
+      LanguageTag,
+      Skill,
+      CollegeId,
+      CollegeName,
+      PassOutYear,
     });
     await newStudent.save();
     session.commitTransaction();

@@ -3,7 +3,7 @@ import DeptCard from "../UniversityProfile/DeptCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import Cookies from 'universal-cookie'
+import Cookies from "universal-cookie";
 import { Navigate } from "react-router-dom";
 
 export default function FacultuSubject() {
@@ -11,9 +11,9 @@ export default function FacultuSubject() {
 
   const [myProfessor, setMyProfessor] = useState();
   const cookies = new Cookies();
- const UserType = cookies.get('userType');
- 
- const professorId = cookies.get('uTypeId')
+  const UserType = cookies.get("userType");
+
+  const professorId = cookies.get("uTypeId");
   const sendReq = async () => {
     const res = await axios
       .get(`http://localhost:5000/api/subject/getByProfId/${professorId}`)
@@ -32,16 +32,13 @@ export default function FacultuSubject() {
   }, []);
   return (
     <>
-     {
-  UserType != 'Professor'
-  &&
-  <Navigate to="/login" replace={true} />}
+      {UserType != "Professor" && <Navigate to="/login" replace={true} />}
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {mySubjects &&
           mySubjects.map((subject, index) => (
             <Link
               style={{ textDecoration: "none" }}
-              to={{ pathname: `/MyProject` }}
+              to={{ pathname: `/FacultyProject` }}
               state={{ subject_id: subject._id }}
             >
               <DeptCard title={subject.SubName} info={subject.SubInfo} />
