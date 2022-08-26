@@ -64,7 +64,7 @@ export default function MentorView() {
                     <div style={{fontFamily: 'poppins', fontWeight: 500}}>Email </div>
                     <p style={{marginLeft: 20}} className="text-muted">{mentor.Email}</p>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-6 mb-3" style={{display:"flex",justifyContent:"left"}}>
                     <div style={{fontFamily: 'poppins', textAlign: 'center' , fontWeight: 500}}><p>Telegram</p></div>
                     <a href={mentor.TelegramId} className="text-muted">{mentor.TelegramId}</a>
                   </div>

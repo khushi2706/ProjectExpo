@@ -48,7 +48,9 @@ export default function RCard(props) {
           </div>
               <Link
                 style={{ textDecoration: "none" }}
+
                 to={{ pathname: `/StudentProfile/${props.id}` }}
+
               >
                 <div
                   style={{
