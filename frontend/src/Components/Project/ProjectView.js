@@ -78,7 +78,7 @@ console.log(id);
     <>
     {user && 
       <div>
-      <Header />
+      <Header index="1" />
       <div className="ccdd">
         <div className="leftt">
       <span style={{textAlign:"left", marginLeft:"15px" ,fontSize:"26px", marginBottom:"15px",fontWeight:"600"}}>{user.PName}</span>
