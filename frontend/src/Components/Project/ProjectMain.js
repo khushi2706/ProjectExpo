@@ -51,14 +51,14 @@ export default function ProjectMain() {
     }
 
     if (tagList != "" && lang != "") {
-      alert("hi");
+    
       temp = temp.filter((ele) => {
         return ele.Tags.includes(lang);
       });
     }
 
     if (tagList != "" && timeframe != "") {
-      alert("hi");
+     
       temp = temp.filter((ele) => {
         console.log(ele.Date.getFullYear);
         return ele.Date.getFullYear === timeframe;
@@ -136,7 +136,7 @@ export default function ProjectMain() {
       <div className="flexforfilter">
         <div className="a_fillter">
 
-          <p style={{fontFamily:"poppins"}}>Applied Fillter</p>
+          <p  className="tag" style={{fontSize:"25px"}}>Applied Fillter</p>
           <div className="tags">
             {tagList.map((ele) => {
               return (

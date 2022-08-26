@@ -13,7 +13,7 @@ export default function MyProfile() {
   const cookies = new Cookies();
   const UserId = cookies.get('userId')
   const studentId = cookies.get('uTypeId')
-
+  const [imgLink , setImgLink]= useState(); 
   const sendReq = async () => {
     const res = await axios
       .get(`http://localhost:5000/api/student/getStudentById/${studentId}`)
@@ -39,7 +39,7 @@ export default function MyProfile() {
     sendReq().then((data) => {
       console.log(data);
       setSingleUser(data);
-      
+      setImgLink(singleUser.ProfileImg);
       sendReqForEmail().then((data) => {
         console.log(data.user[0].Email);
         setEmail(data.user[0].Email);
@@ -68,6 +68,9 @@ export default function MyProfile() {
     window.location = "/Logout";
   };
 
+  const handleMyProjectUpload = () =>{
+    window.location = "/UploadProject"
+  }
   return (
     <>
       {singleUser &&(<div
@@ -84,7 +87,7 @@ export default function MyProfile() {
             <div style={{ marginTop: "auto", marginBottom: "auto" }}>
               <div className="profile w-5 h-5">
                 <img
-                  src="https://picsum.photos/200"
+                  src={imgLink}
                   className="w-110 h-110 rounded-circle"
                   height="100px"
                 />
@@ -135,6 +138,11 @@ export default function MyProfile() {
             icon="book"
             title="My Project"
             onClick={handleMyProjectClick}
+          />
+           <SideBarOption
+            icon="book"
+            title="Upload Project"
+            onClick={handleMyProjectUpload}
           />
           <SideBarOption
             icon="logout"

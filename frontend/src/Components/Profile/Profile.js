@@ -431,7 +431,7 @@ export default function Profile() {
                 style={{ marginTop: 20, marginBottom: "auto" }}
               >
                 <img
-                  src={singleUser.profile_pic}
+                  src={singleUser.ProfileImg}
                   className="w-110 h-110 rounded-circle"
                   height="300px"
                 />
