@@ -19,7 +19,7 @@ export default function Tag(props) {
           {props.title}
         </div>
         {isIcon ? (
-          <div style={{ marginTop: 10 }}>
+          <div style={{ marginTop: "10px" }}>
             <i
               className="material-icons"
               style={{ marginLeft: 10, fontSize: 28, color: "#9B9B9B" }}
