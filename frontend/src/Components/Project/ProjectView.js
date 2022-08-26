@@ -85,10 +85,10 @@ console.log(id);
 
           <div className="texxt" style={{ color: "gray", textAlign: "left" }}>
 
-          <Link style={{marginTop: 13}} to={{ pathname: `/StudentProfile/${user.UserId}` }}><span style={{color: 'black',}}>Nikunj Patel</span></Link>
+          <Link style={{marginTop: 13, marginTop: 'auto', marginBottom: 'auto'}} to={{ pathname: `/StudentProfile/${user.UserId}` }}><span style={{color: 'black',}}>Nikunj Patel</span></Link>
 
             
-            <span>Updated at {user.Date.substring(0,10) }</span>
+            <span style={{fontSize: 16, }}>Updated at {user.Date.substring(0,10) }</span>
           </div>
           <div className="" style={{ color: "gray" ,textAlign: "left", marginLeft: "12px" }}>
             Prof :- Mohsin Hasan
@@ -96,7 +96,7 @@ console.log(id);
         </div>
         <div className="rightt">
           <div
-            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" ,marginRight : "15px" }}
+            style={{ color: "rgba(44, 94, 255, 1)", paddingLeft: 15, paddingRight: 15 ,marginTop: "16px" ,marginRight : "15px" }}
             className="rectangle"
             onClick={likeProject}
           >
@@ -104,7 +104,7 @@ console.log(id);
             {user.Rating}
           </div>
           <div
-            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" ,marginRight : "15px" }}
+            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" ,marginRight : "15px", paddingLeft: 15, paddingRight: 15 }}
             className="rectangle"
             onClick={likeProject}
           >
@@ -121,12 +121,24 @@ console.log(id);
       <span style={{textAlign:"left",fontSize:"21px",marginLeft: "30px",fontWeight:"500"}}>{user.Desc}...</span>
       </div>
 
-      <div className="boxright">
+      <div
+          style={{
+            border: "2px solid #F5F7F9",
+            // height: "-webkit-fill-available",
+            // marginTop: "auto",
+            // marginBottom: "auto",
+            marginLeft: 20,
+          }}
+        >
+          {/* this is for line */}
+        </div>
+
+      <div className="boxright" style={{marginLeft: 10}}>
       <div className="m-10 d-flex justify-content-left " >
       <img src={TagImage} alt="" className="tagImage" />
       <div className="tagName" style={{fontSize:"20px",fontWeight:"500",marginLeft:"7px"}}>Technology</div>
     </div>
-      <div className="tagflex applydiv selectedtag">
+      <div className="tagflex applydiv selectedtag" style={{justifyContent: 'flex-start'}} >
       {user.Tags.map((tag, index) => {
         return (
           <>
