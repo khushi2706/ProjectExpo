@@ -89,6 +89,10 @@ export default function ProjectMain() {
     <>
       <Header />
       <div style={{ width: "100%" }}>
+      <div className="container-search-box-title"
+      style={ {fontWeight : "500"} }
+      >Find, learn and grow!</div>
+    
         <div
           style={{ paddingLeft: 40, paddingRight: 40, justifyContent: "left" }}
         >

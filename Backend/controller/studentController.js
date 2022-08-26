@@ -145,6 +145,7 @@ const getAllStudentByDepartId = async (req, res, next) => {
 const getAllStudentByUserId = async (req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
   const { userId } = req.params;
+  console.log(userId);
   let students;
   try {
     students = await Student.find({ UserId: userId });

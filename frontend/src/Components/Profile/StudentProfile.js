@@ -11,7 +11,6 @@ import Tag from "../Common/Tag";
 
 export default function StudentProfile() {
   const { id } = useParams();
-  console.log("Student ID: " + id);
   const [projects, setProjects] = useState();
   const [title, setTitle] = useState("Follow");
   const [icon, setIcon] = useState("person_add");
@@ -24,10 +23,6 @@ export default function StudentProfile() {
     fontWeight: "500",
     marginRight: 10,
   };
-  const cookies = new Cookies();
-  const UserType = cookies.get("userType");
-
-  const studentId = cookies.get("uTypeId");
 
   const sendReq = async () => {
     const res = await axios
@@ -40,15 +35,21 @@ export default function StudentProfile() {
 
   const sendReqForUserDetails = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/user/${student.UserId}`)
+      .get(`http://localhost:5000/api/user/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
-    console.log(data);
+    console.log(data.user);
     return data;
   };
 
   const sendReqForStudentDetails = async () => {
     // console.log(student.UserId);
+    const res = await axios
+    .get(`http://localhost:5000/api/student/getByUserId/${id}`)
+    .catch((err)=> console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data.students[0];
   };
 
   useEffect(() => {
@@ -59,9 +60,9 @@ export default function StudentProfile() {
     });
     sendReqForStudentDetails().then((data) => {
       setStudent(data);
-      sendReqForUserDetails().then((data) => {
-        setUser(data);
-      });
+    });
+    sendReqForUserDetails().then((data) => {
+      setUser(data);
     });
   }, []);
 
@@ -201,7 +202,7 @@ export default function StudentProfile() {
               marginRight: 50,
             }}
           >
-            <div style={{ marginRight: 100 }}>
+            <div >
               {projects &&
                 projects.map((project, index) => (
                   <Link
