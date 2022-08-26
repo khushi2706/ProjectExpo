@@ -286,6 +286,7 @@ export default function Profile() {
           Passing Year
         </div>
                 <div><input
+                disabled
                 title={"PassOutYear"}
                 placeholder={"Ex: 2024"}
                 value={singleUser.PassOutYear}
@@ -348,6 +349,7 @@ export default function Profile() {
         </div>
                  <div>
                  <input
+                 disabled
                  title={"About Me"}
                  placeholder={"I AM student"}
                  value={singleUser.CollegeName}
@@ -380,6 +382,7 @@ export default function Profile() {
         </div>
                  <div>
                  <input
+                 disabled
                  title={"About Me"}
                  placeholder={"I AM student"}
                  value={singleUser.DepartmentName}
