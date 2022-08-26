@@ -48,7 +48,7 @@ export default function RCard(props) {
           </div>
               <Link
                 style={{ textDecoration: "none" }}
-                to={{ pathname: `/viewProject/${props.id}` }}
+                to={{ pathname: `/StudentProfile/${props.id}` }}
               >
                 <div
                   style={{
