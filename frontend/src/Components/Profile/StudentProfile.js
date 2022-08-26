@@ -22,6 +22,7 @@ export default function StudentProfile() {
     fontWeight: "500",
     marginRight: 10,
   };
+  
   const cookies = new Cookies();
   const UserType = cookies.get("userType");
 
