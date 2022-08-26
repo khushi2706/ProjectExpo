@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./rcard.css";
+import bvm_logo from '../../Assets/Images/BVM_logo.png'
 
 export default function RCard(props) {
  
@@ -8,61 +9,84 @@ export default function RCard(props) {
     
   return (
     <div className="">
+    
     {student 
         && 
-    <div className="container">
+        <>
+        
+        <div style={{width: '17vw', 
+                        
+                        textAlign: 'center', 
+                        boxShadow: "0px 0px 8px 1px #B5B5B5",
+                        marginLeft: 20,
+                        marginTop: 30,
+                        padding: 15,
+                        borderRadius: 15,
+                        fontFamily: 'poppins',
+                        flexWrap: 'wrap'}}>
+                        <div style={{display:"flex",flexDirection:"column",justiftContent:"center"}}>
+                <img src={bvm_logo} style={{ alignItems:"center",margin:"auto"}} width="84vw" height="84vh"/>
+                <Link style={{textDecoration:"none"}} to={{ pathname: `/viewProject/${props.id}` }}>
+                <div style={{textAlign: 'center',
+                            fontSize: 16,
+                            fontWeight: 'bold',
+                            marginTop: 10,
+                        color:"black"}}>
+                            {student.Fname}{" "}{student.Lname}
+                </div>
+                </Link>
+                </div>
+                <div className="card-body">
+               
+  <div className="row">
+  <div className="col-12 d-flex align-items-baseline justify-content-left " style={{flexDirection:"column",marginTop:"12px",flexWrap:"wrap"}}>
+  <span className="title" style={{fontSize:"15px",marginLeft:"6px",margin:"6px"}}>SkillSet : </span>
+ <div className="techflex">
+ <span className="tag lan-Tag" style={{fontSize:"15px",marginLeft:"6px",margin:"6px",marginTop:"6px"}}> React </span>
+
+ <span className="tag lan-Tag" style={{fontSize:"15px",marginLeft:"6px",margin:"6px",marginTop:"6px"}}> Blockchain </span>
+ <span className="tag lan-Tag" style={{fontSize:"15px",marginLeft:"6px",margin:"6px",marginTop:"6px"}}> ML </span>
+ { student.LanguageTag &&
+     student.LanguageTag.map((element, index) => {
+       return <span className="tag lan-Tag" style={{fontSize:"15px",marginLeft:"6px",margin:"6px",marginTop:"6px"}}> {element} </span>
+     })
+   }</div>
+   
+  </div>
+  
+                
+  
+  
     <div className="row">
-    <div className="main-div mt-3 col-md-12 col-sm-6">
-    <div className=" row">
-    <div className="col-8 ccc">
-    <Link style={{textDecoration:"none"}} to={{ pathname: `/viewProject/${props.id}` }}>
-      <p className="title"> {student.Fname}{" "}{student.Lname}</p>
-       
-      </Link>
-      <span className="tag  clg-Tag" style={{paddingBottom:"4px"}}>Expert</span>
-    </div>
-    <div className="col-4 ccc1 mt-10" >
+    <div className="col-12 d-flex align-items-baseline justify-content-left " style={{flexDirection:"column",marginTop:"12px",flexWrap:"wrap"}}>
+    <span className="title" style={{fontSize:"15px"}}>Domain : </span>
+    <span className="tag lan-Tag" style={{fontSize:"15px",marginLeft:"6px",margin:"6px"}}> {student.Skill} </span>
+    
       
-      <span className="tag">200</span>
-      <span>
-        {" "}
-        <i className="fa-solid fa-thumbs-up"></i>
-      </span>
+     
     </div>
+    
+    
   </div>
   
   <div className="row">
-    <div className="col-12 d-flex align-items-baseline justify-content-left" style={{marginTop:"12px"}}>
-    <span className="title" style={{marginLeft:"6px",margin:"6px"}}>SkillSet : </span>
-    <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> React </span>
-    <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> Web </span>
-    <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> Blockchain </span>
-    <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> ML </span>
-    <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> PHP </span>
-    { student.LanguageTag &&
-        student.LanguageTag.map((element, index) => {
-          return <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> {element} </span>
-        })
-      }
-     
-    </div>
+  <div className="col-12 d-flex align-items-baseline flex-direction-column justify-content-left" style={{flexDirection:"column",marginTop:"12px",flexWrap:"wrap"}}>
+  <span className="title" style={{fontSize:"15px"}}>Passing Year : </span>
+  <span className="tag lan-Tag" style={{fontSize:"15px",marginLeft:"6px",margin:"6px"}}> {student.PassOutYear} </span>
+  
     
-    
+   
   </div>
-  <div className="row">
-    <div className="col-12 d-flex align-items-baseline justify-content-left" style={{marginTop:"12px"}}>
-    <span className="title">Domain : </span>
-    <span className="tag lan-Tag" style={{marginLeft:"6px",margin:"6px"}}> {student.Skill} </span>
-    
-      
-     
+  
+  
+</div>
+
+              </div>            
+            </div>
+
+
     </div>
-    
-    
-  </div>
-    </div>
-    </div>
-    </div>
+    </>
     }
     </div>
   );
