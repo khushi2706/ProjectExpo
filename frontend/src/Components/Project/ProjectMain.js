@@ -135,7 +135,8 @@ export default function ProjectMain() {
 
       <div className="flexforfilter">
         <div className="a_fillter">
-          <p class="title">Applied Fillter</p>
+
+          <p style={{fontFamily:"poppins"}}>Applied Fillter</p>
           <div className="tags">
             {tagList.map((ele) => {
               return (

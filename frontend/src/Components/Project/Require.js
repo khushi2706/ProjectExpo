@@ -180,7 +180,7 @@ export default function Require() {
       </div>
       <div className="flexforfilter">
         <div className="a_fillter">
-          <p>Applied Fillter</p>
+          <p style={{fontFamily:"poppins"}}>Applied Fillter</p>
           <div className="tags">
             {tagList.map((ele) => {
               return (

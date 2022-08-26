@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "../../Common/Button"; 
 
-const Modal = ({ handleClose, show, children }) => {
+const Modal = ({ handleClose, show, children,index }) => {
   const showHideClassName = show ? "modal d-block" : "modal d-none";
 
   return (
     <div className={showHideClassName}>
-      <div className="modal-container">
+      <div className={index==0 ? "modal-containers": "modal-container"}>
         {children}
         <a href="javascript:;" className="modal-close" onClick={handleClose}>
         <div

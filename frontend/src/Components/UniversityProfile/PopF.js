@@ -149,13 +149,9 @@ class Pop extends React.Component {
           <div className="form-group">
             
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
-          Faculty Name<span style={{color:"red"}}>*</span>
+          Faculty Name{" "}<span style={{color:"red"}}>*</span>
         </div>
             <div style={{ width: "-webkit-fill-available" }}>
             <input
@@ -168,13 +164,9 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
-          Email<span style={{color:"red"}}>*</span>
+          Email{" "}<span style={{color:"red"}}>*</span>
         </div>
           <div style={{ width: "-webkit-fill-available" }}>
             <input
@@ -187,13 +179,9 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
-          Select Department<span style={{color:"red"}}>*</span>
+          Select Department{" "}<span style={{color:"red"}}>*</span>
         </div>
           { dept && 
           <div className="sign-in-input-field-container">
@@ -210,14 +198,12 @@ class Pop extends React.Component {
         }
 
         <div
-        style={{
-          color: "#808080",
-          fontFamily: "poppins",
-          fontWeight: "600",
-        }}
+        className="facultypop"
+
       >
-        Post of Faculty<span style={{color:"red"}}>*</span>
+        Post of Faculty{" "}<span style={{color:"red"}}>*</span>
       </div>
+      
           <div style={{ width: "-webkit-fill-available" }}>
             <input
             className="form-control input-field"
@@ -229,11 +215,7 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
          Image Link
         </div>
@@ -255,7 +237,7 @@ class Pop extends React.Component {
                 justifyContent: "center",
 
                 display: "flex",
-                marginBottom: "50px",
+                
                 marginRight: "20px",
               }}
             >

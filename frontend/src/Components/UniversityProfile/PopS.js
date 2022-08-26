@@ -196,11 +196,7 @@ class Pop extends React.Component {
           <div className="form-group">
             
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
          Subject Name
         </div>
@@ -215,11 +211,7 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
         Objective
         </div>
@@ -234,11 +226,7 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
           Select Department
         </div>
@@ -257,11 +245,7 @@ class Pop extends React.Component {
         }
 
         <div
-        style={{
-          color: "#808080",
-          fontFamily: "poppins",
-          fontWeight: "600",
-        }}
+       class="facultypop"
       >
         Select Subject Faculty
       </div>
@@ -280,11 +264,7 @@ class Pop extends React.Component {
       }
 
         <div
-        style={{
-          color: "#808080",
-          fontFamily: "poppins",
-          fontWeight: "600",
-        }}
+       className="facultypop"
       >
         Credit
       </div>
@@ -299,11 +279,7 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
           Year
         </div>
@@ -318,11 +294,7 @@ class Pop extends React.Component {
             />
           </div>
           <div
-          style={{
-            color: "#808080",
-            fontFamily: "poppins",
-            fontWeight: "600",
-          }}
+          className="facultypop"
         >
           Course Code
         </div>
@@ -344,7 +316,7 @@ class Pop extends React.Component {
                 justifyContent: "center",
 
                 display: "flex",
-                marginBottom: "50px",
+              
                 marginRight: "20px",
               }}
             >

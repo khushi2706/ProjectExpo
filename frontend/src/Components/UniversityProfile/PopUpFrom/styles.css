@@ -8,11 +8,21 @@
   .modal-container {
     position: absolute;
     width: 30%;
-    background: #d3ddfb;
+    background: #e5e5f1;
     left: 36%;
     /* top: 30%; */
     padding: 20px;
   }
+
+  .modal-containers {
+    position: absolute;
+    width: 30%;
+    background: #e5e5f1;
+    left: 36%;
+    top: 25%;
+    padding: 20px;
+  }
+
 
   .sign-in-input-field-container {
     background: #FFFFFF;
