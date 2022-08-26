@@ -1,10 +1,11 @@
 import React from 'react'
-import tshirt from "../../Assets/Images/tshirt.jpg"
-import laptopSleev from "../../Assets/Images/laptopSleev.jpg"
-import keyChain from "../../Assets/Images/keyChain.jpg"
-import bag from "../../Assets/Images/bag.jpg"
-import book from "../../Assets/Images/book.jpg"
+import tshirt from "../../Assets/Images/tshirt.png"
+import laptopSleev from "../../Assets/Images/laptopSleev.png"
+import keyChain from "../../Assets/Images/keyChain.png"
+import bag from "../../Assets/Images/bag.png"
+import book from "../../Assets/Images/book.png"
 import Header from "../Common/Header"
+import "./reward.css"
 function Reward_main() {
     return (
         <>
