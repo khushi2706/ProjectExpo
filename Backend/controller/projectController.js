@@ -86,6 +86,7 @@ const addNewProject = async (req, res, next) => {
       //Check if college is exist
       let UserExist = await User.findById(UserId);
   
+      console.log(UserExist);
       if (!UserExist) {
         return res.status(400).json({
           message: "User Does not exist!",
@@ -114,7 +115,7 @@ const addNewProject = async (req, res, next) => {
         });
       }
       await newProject.save();
-
+     console.log("project save");
     const res = await axios.post(`http://localhost:5000/api/projectupload`,
     {
       projectId: newProject._id,
@@ -153,6 +154,7 @@ const addNewProject = async (req, res, next) => {
 };
 
 const getPlagarism = async(req,res,next) =>{
+  console.log("checking..");
   res.set('Access-Control-Allow-Origin', '*');
   const {projectId} = req.body;
   console.log(projectId);
@@ -162,7 +164,10 @@ const getPlagarism = async(req,res,next) =>{
   let totalPlga = 0;
 
   let count = 1;
+  console.log("looping......");
   links.forEach(async(link)=>{
+    console.log(link);
+    console.log( await createReport(link));
     totalPlga += await createReport(link);
     count = count+1;
   })

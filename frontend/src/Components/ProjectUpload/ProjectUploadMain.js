@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 export default function ProjectUploadMain() {
   const cookies = new Cookies();
  
- const UserId = cookies.get('uTypeId')
+ const UserId = cookies.get('userId')
     var [tags, setTags] = useState("");
     var [ inputTag , setInputTag ] = useState({});
     let projId;
@@ -63,9 +63,10 @@ export default function ProjectUploadMain() {
         console.log(data)
         projId = data.ProjectId 
         console.log(projId);
-        
-
-        sendReqToSet();
+        sendReqToSet().then(()=>{
+          alert("project Uploaded!");
+          window.location.reload();
+        });
         })
      
        
