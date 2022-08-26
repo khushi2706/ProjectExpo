@@ -9,8 +9,9 @@ import Cookies from 'universal-cookie'
 export default function MyProfile() {
   const history = useNavigate();
   const [singleUser, setSingleUser] = useState();
-  const [user, setUser] = useState();
+  const [email, setEmail] = useState();
   const cookies = new Cookies();
+  const UserId = cookies.get('userId')
   const studentId = cookies.get('uTypeId')
 
   const sendReq = async () => {
@@ -23,26 +24,33 @@ export default function MyProfile() {
     return data;
   };
 
-  const sendReqForEmail = async (userId) => {
+  const sendReqForEmail = async () => {
+    console.log("UserID: "+UserId);
     const res = await axios
-    .get(`http://localhost:5000/api/user/${userId}`)
-    .catch((err) => console.log("Error message for email request: "+err));
+    .get(`http://localhost:5000/api/user/${UserId}`)
+    .catch((err) => console.log(err));
     const data = await res.data;
+    console.log(data);
     return data;
+
   };
 
   useEffect(() => {
     sendReq().then((data) => {
       console.log(data);
       setSingleUser(data);
+      
+      sendReqForEmail().then((data) => {
+        console.log(data.user[0].Email);
+        setEmail(data.user[0].Email);
+        console.log("UserDetails: "+email);
+      });
+      
+      
     });
-    console.log("UserID: "+singleUser.UserId);
-    sendReqForEmail(singleUser.UserId).then((data) => {
-      console.log("Called method sendReqForEmail: "+data);
-      setUser(data);
-    });
+  
   }, []);
-
+  
   const [myProfile, setMyProfile] = useState(true);
 
   const handleMyProfileClick = () => {
@@ -107,9 +115,10 @@ export default function MyProfile() {
                   fontSize: 16,
                   color: "#9B9B9B",
                   fontWeight: "500",
+                  fontFamily: 'poppins'
                 }}
               >
-                ndpatel.tech@gmail.com
+                {email}
               </div>
             </div>
           </div>

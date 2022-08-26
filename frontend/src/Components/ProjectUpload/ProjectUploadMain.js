@@ -5,13 +5,14 @@ import Header from "../Common/Header";
 import ProgressBar from "./ProgressBar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Cookies from 'universal-cookie'
 import { useParams } from "react-router-dom";
-
+import Cookies from 'universal-cookie'
 export default function ProjectUploadMain() {
+
   const cookies = new Cookies();
  
  const UserId = cookies.get('userId')
+
     var [tags, setTags] = useState("");
     var [ inputTag , setInputTag ] = useState({});
     let projId;
@@ -21,7 +22,6 @@ export default function ProjectUploadMain() {
       setTags(str);
     };
   
-
     const handleChange = (e) =>{
       console.log(e.target.name);
       
@@ -41,7 +41,7 @@ export default function ProjectUploadMain() {
         inputTag.PType = element.value;
       });
       
-      inputTag.UserId = UserId
+      inputTag.UserId = "62f9142c5cf6d43a8bbcc544"
        
       const ele = document.getElementsByName("isPrivete");
       
@@ -94,10 +94,6 @@ export default function ProjectUploadMain() {
 
     return ( 
       <>
-      {
-        UserId && 
-        <div>
-          
         <Header index="2"/>
        <div className="container " style={{fontFamily: 'poppins', marginTop: -30}}>
         <div className=" p-3 ">
@@ -215,9 +211,6 @@ export default function ProjectUploadMain() {
           </form>
         </div>
        </div>
-     
-        </div>
-      }
       </>
     );
   }

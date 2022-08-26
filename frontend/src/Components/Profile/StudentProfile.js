@@ -175,15 +175,15 @@ export default function StudentProfile() {
             marginRight: 50,
           }}
         >
-          {projects &&
+          <div style={{marginRight: 100}}>{projects &&
             projects.map((project, index) => (
               <Link
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none",  }}
                 to={{ pathname: `/viewProject/${project._id}` }}
               >
                 <ProjectCard project={project} />
               </Link>
-            ))}
+            ))}</div>
         </div>
       </div>
     </>
