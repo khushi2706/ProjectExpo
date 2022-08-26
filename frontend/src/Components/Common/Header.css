@@ -13,7 +13,12 @@
     width:5%;
     height: 5%;
 }
-
+.homeimg{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
 .main-container-header {
     margin-bottom: -22PX;
     display: flex;

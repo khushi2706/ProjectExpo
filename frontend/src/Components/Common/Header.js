@@ -8,11 +8,18 @@ export default function Header(props) {
     <>
       <div>
         <div className="main-container-header">
-          <NavLink className="nav-link" to="/">
-            <div>
-             Logo
-            </div>
-          </NavLink>
+        <div style={{ }}>
+        <NavLink className="nav-link" to="/project">
+          <div className="">
+            <img
+              src="img/nv1.jpg"
+              className="homeimg"
+              style={{ width: 80, height: 80 }}
+             
+            />
+          </div>
+        </NavLink>
+      </div>
           <div>
             <div className="tab-container-header">
               <div className="tab-container">
