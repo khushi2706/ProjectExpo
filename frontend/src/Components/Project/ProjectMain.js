@@ -195,7 +195,7 @@ export default function ProjectMain() {
       <div className=" mt-5 justify-content-center" style={{marginLeft: 30}}>
         {projects &&
           projects.map((project, index) => (
-            <Link to={{ pathname: `/viewProject/${project._id}` }}><ProjectCard project={project} /></Link>
+            <Link to={{ pathname: `/viewProject/${project._id}` }} state={{project}}><ProjectCard project={project} /></Link>
             
           ))}
       </div>
