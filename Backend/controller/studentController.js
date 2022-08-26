@@ -142,6 +142,33 @@ const getAllStudentByDepartId = async (req, res, next) => {
   return res.status(200).json({ success: true, students });
 };
 
+const getAllStudentByUserId = async (req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  const { userId } = req.params;
+  let students;
+  try {
+    students = await Student.find({ UserId: userId });
+  } catch (e) {
+    return res.status(400).json({
+      success: false,
+      response: {
+        message: e,
+      },
+    });
+  }
+
+  if (!students) {
+    return res.status(404).json({
+      success: false,
+      response: {
+        message: "students not found",
+      },
+    });
+  }
+
+  return res.status(200).json({ success: true, students });
+};
+
 
 
 
@@ -220,5 +247,6 @@ module.exports = {
   addNewStudent,
   getAllStudentByDepartId,
   getStudentById,
-  changeStudentDetails
+  changeStudentDetails,
+  getAllStudentByUserId
 };

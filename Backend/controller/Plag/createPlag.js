@@ -28,7 +28,7 @@ const createReport = async (fileU) => {
   let dataScore;
   await axios(config)
     .then(function (response) {
-      console.log();
+      
       console.log(JSON.stringify(response.data.data.id));
        dataScore = getPlagDetails(response.data.data.id);
     })
@@ -40,6 +40,8 @@ const createReport = async (fileU) => {
 };
 
 const getPlagDetails = async (plagId) => {
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+  await delay(1000);
   var config = {
     method: "get",
     url: "https://plagiarismsearch.com/api/v3/reports/" + plagId,

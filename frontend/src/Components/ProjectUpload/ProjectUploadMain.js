@@ -6,8 +6,13 @@ import ProgressBar from "./ProgressBar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import Cookies from 'universal-cookie'
 export default function ProjectUploadMain() {
+
+  const cookies = new Cookies();
+ 
+ const UserId = cookies.get('userId')
+
     var [tags, setTags] = useState("");
     var [ inputTag , setInputTag ] = useState({});
     let projId;
@@ -58,9 +63,10 @@ export default function ProjectUploadMain() {
         console.log(data)
         projId = data.ProjectId 
         console.log(projId);
-        
-
-        sendReqToSet();
+        sendReqToSet().then(()=>{
+          alert("project Uploaded!");
+          window.location.reload();
+        });
         })
      
        

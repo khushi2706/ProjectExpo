@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
+
 import ProjectCard from '../Profile/ProjectCard';
 import "./CSS/ProjectDiv.css"
+
 import "../Filter/Filter.css";
 import { Link } from "react-router-dom";
 
@@ -31,7 +33,6 @@ export default function ProjectMain() {
     });
   }, []);
 
-  
   const [category, setcategory] = useState("all");
   const [searchinput, searchinputUpdate] = useState("");
   const filter2 = () => {
@@ -42,26 +43,25 @@ export default function ProjectMain() {
         return ele.PName.toLowerCase().includes(searchinput.toLowerCase());
       });
     }
-   
-    if(tagList!="" && tag!=""){
-     
+
+    if (tagList != "" && tag != "") {
       temp = temp.filter((ele) => {
         return ele.Tags.includes(tag);
       });
     }
-    
-    if(tagList!="" && lang!=""){
-      alert("hi")
+
+    if (tagList != "" && lang != "") {
+      alert("hi");
       temp = temp.filter((ele) => {
         return ele.Tags.includes(lang);
       });
     }
 
-    if(tagList!="" && timeframe!=""){
-      alert("hi")
+    if (tagList != "" && timeframe != "") {
+      alert("hi");
       temp = temp.filter((ele) => {
         console.log(ele.Date.getFullYear);
-        return ele.Date.getFullYear===(timeframe);
+        return ele.Date.getFullYear === timeframe;
       });
     }
 
@@ -69,23 +69,24 @@ export default function ProjectMain() {
     console.log(temp);
     setProjects(temp);
 
+    // sessionStorage.setItem('searchinput', searchinput);
+    // setFlag("true");
   };
-  
-  const [tag,setTag]=useState("");
-  const [lang,setLang]=useState("");
-  const [timeframe,setTimeFrame]=useState("");
-  const [university,setUniversity]=useState("");
-  const [tagList,setTaglist]=useState([]);
-  const setToTaglist=(e,k)=>{
-    if(e.keyCode==13){
-      setTaglist([...tagList,k])
-      e.target.value="";
+
+  const [tag, setTag] = useState("");
+  const [lang, setLang] = useState("");
+  const [timeframe, setTimeFrame] = useState("");
+  const [university, setUniversity] = useState("");
+  const [tagList, setTaglist] = useState([]);
+  const setToTaglist = (e, k) => {
+    if (e.keyCode == 13) {
+      setTaglist([...tagList, k]);
+      e.target.value = "";
     }
-  }
+  };
 
   return (
     <>
-
       <Header />
       <div style={{ width: "100%" }}>
         <div
@@ -133,64 +134,116 @@ export default function ProjectMain() {
       </div>
 
       <div className="flexforfilter">
-      <div className="a_fillter">
-        <p>Applied Fillter</p>
-        <div className="tags">
-          {
-          tagList.map(ele=>{
-              return(
-              <div className="tag">
-                <p>{ele}</p>
-                {/* <img src={('img/close.png')} alt="cross" className='close' onClick={}/> */}
-              </div>
-              )
-            })
-             
-          }
-          
-      </div>
-      </div>
-      <div className="short_filter">
-        <div className="title">
-          <img src={("img/Vector.png")} alt="short icon" />
-          <p>Short Filters</p>
+        <div className="a_fillter">
+          <p class="title">Applied Fillter</p>
+          <div className="tags">
+            {tagList.map((ele) => {
+              return (
+                <div className="tag">
+                  <p>{ele}</p>
+                  {/* <img src={('img/close.png')} alt="cross" className='close' onClick={}/> */}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="filter_container">
+        <div className="short_filter">
+          <div className="title">
+            <img src={"img/Vector.png"} alt="short icon" />
+            <p>Short Filters</p>
+          </div>
+          <div className="filter_container">
             <div className="filters">
               <div className="tag">
                 <label htmlFor="tag">
-                  <img src={("img/Tags.png")} alt="tag" />
+                  <img src={"img/Tags.png"} alt="tag" />
                   <p>Tag</p>
                 </label>
-                <input type="text" placeholder='Ex.Web' name="tag" id="tag" onKeyUp={(e)=>setToTaglist(e,tag)} onChange={(e)=>setTag(e.target.value)} />
+                <div
+                  className="sign-in-input-field-container"
+                  style={{ marginTop: 15 }}
+                >
+                  <input
+                    className="sign-in-input-fields"
+                    type="text"
+                  placeholder="Ex.Web"
+                  name="tag"
+                  id="tag"
+                  onKeyUp={(e) => setToTaglist(e, tag)}
+                  onChange={(e) => setTag(e.target.value)}
+                  />
+                </div>
+               
               </div>
               <div className="tag">
                 <label htmlFor="language">
-                  <img src={("img/Code.png")} alt="Code" />
+                  <img src={"img/Code.png"} alt="Code" />
                   <p>Language</p>
                 </label>
-                <input type="text" placeholder='Ex.Java' name="language" id="language" onKeyUp={(e)=>setToTaglist(e,lang)} onChange={(e)=>setLang(e.target.value)}/>
+                <div
+                className="sign-in-input-field-container"
+                style={{ marginTop: 15 }}
+              >
+                <input
+                  className="sign-in-input-fields"
+                  type="text"
+                  placeholder="Ex.Java"
+                  name="language"
+                  id="language"
+                  onKeyUp={(e) => setToTaglist(e, lang)}
+                  onChange={(e) => setLang(e.target.value)}
+                />
+              </div>
+             
+                
               </div>
               <div className="tag">
                 <label htmlFor="timeframe">
-                  <img src={("img/time.png")} alt="tag" />
+                  <img src={"img/time.png"} alt="tag" />
                   <p>Time Frame</p>
                 </label>
-                <input type="text" placeholder='Ex.2002' name="timeframe" id="timeframe" onKeyUp={(e)=>setToTaglist(e,timeframe)} onChange={(e)=>setTimeFrame(e.target.value)}/>
+                <div
+                className="sign-in-input-field-container"
+                style={{ marginTop: 15 }}
+              >
+                <input
+                  className="sign-in-input-fields"
+                  type="text"
+                  placeholder="Ex.2002"
+                  name="timeframe"
+                  id="timeframe"
+                  onKeyUp={(e) => setToTaglist(e, timeframe)}
+                  onChange={(e) => setTimeFrame(e.target.value)}
+                />
+              </div>
+          
               </div>
               <div className="tag">
                 <label htmlFor="University">
-                  <img src={("img/University.png")} alt="University" />
+                  <img src={"img/University.png"} alt="University" />
                   <p>University</p>
                 </label>
-                <input type="text" placeholder='Ex.BVM' name="University" id="University" onKeyUp={(e)=>setToTaglist(e,university)} onChange={(e)=>setUniversity(e.target.value)}/>
+                <div
+                className="sign-in-input-field-container"
+                style={{ marginTop: 15 }}
+              >
+                <input
+                  className="sign-in-input-fields"
+                  type="text"
+                  placeholder="Ex.BVM"
+                  name="University"
+                  id="University"
+                  onKeyUp={(e) => setToTaglist(e, university)}
+                  onChange={(e) => setUniversity(e.target.value)}
+                />
+              </div>
+             
+                
               </div>
             </div>
+          </div>
         </div>
       </div>
-      </div>
-      
-      
 
       <div className=" mt-5 justify-content-center" style={{marginLeft: 30}}>
         {projects &&

@@ -28,8 +28,8 @@ export default function Header(props) {
               </div>
               
               <div className="tab-container">
-                <NavLink className={(index==4)? "nav-link active" : "nav-link" } to="/roadmap">
-                  Roadmap
+                <NavLink className={(index==3)? "nav-link active" : "nav-link" } to="/requirement">
+                  Hiring
                 </NavLink>
               </div>
               <div className="tab-container">
@@ -48,7 +48,7 @@ export default function Header(props) {
                 </NavLink>
               </div>
               <div className="tab-container">
-                <NavLink className={(index==3)? "nav-link active" : "nav-link" } to="/contact">
+                <NavLink className={(index==4)? "nav-link active" : "nav-link" } to="/contact">
                   Contact
                 </NavLink>
               </div>
@@ -72,7 +72,9 @@ export default function Header(props) {
               <NavLink className="nav-link" to="/login">
                 <div className="profile w-1 h-5">
                   <img
-                    src="https://picsum.photos/200?random=2391"
+
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+
                     className="w-110 h-110 rounded-circle"
                     style={{ width: 70, height: 70 }}
                     height="100px"
