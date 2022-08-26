@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Button from "../Common/Button";
+import SideBarOption from "./SideBarOption";
+import { useNavigate } from "react-router-dom";
+import MyProjects from "./MyProjects";
+import Profile from "./Profile";
 import axios from "axios";
-import Cookies from "universal-cookie";
-import { Navigate } from "react-router-dom";
+import Cookies from 'universal-cookie'
 
-export default function Profile() {
+export default function MyProfile() {
+  const history = useNavigate();
   const [singleUser, setSingleUser] = useState();
-
+  const [user, setUser] = useState();
   const cookies = new Cookies();
-  const UserType = cookies.get("userType");
-
-  const studentId = cookies.get("uTypeId");
+  const studentId = cookies.get('uTypeId')
 
   const sendReq = async () => {
     const res = await axios
@@ -22,387 +23,145 @@ export default function Profile() {
     return data;
   };
 
+  const sendReqForEmail = async (userId) => {
+    const res = await axios
+    .get(`http://localhost:5000/api/user/${userId}`)
+    .catch((err) => console.log("Error message for email request: "+err));
+    const data = await res.data;
+    return data;
+  };
+
   useEffect(() => {
     sendReq().then((data) => {
       console.log(data);
       setSingleUser(data);
     });
+    console.log("UserID: "+singleUser.UserId);
+    sendReqForEmail(singleUser.UserId).then((data) => {
+      console.log("Called method sendReqForEmail: "+data);
+      setUser(data);
+    });
   }, []);
 
-  const changeDetails = async () => {
-    console.log("chnging");
-    console.log(singleUser.LName);
+  const [myProfile, setMyProfile] = useState(true);
 
-    const res = await axios
-      .put(`http://localhost:5000/api/student/changeDetails`, {
-        StudentId: studentId,
-        Fname: singleUser.Fname,
-        LName: singleUser.LName,
-        AboutMe: singleUser.AboutMe,
-        DoB: singleUser.DoB,
-        Gender: singleUser.Gender,
-      })
-      .catch((err) => console.log(err));
+  const handleMyProfileClick = () => {
+    setMyProfile(true);
+    console.log("My Profile clicked");
+  };
 
-    const data = await res.data;
-    //console.log("Data from API:" + data[0].Fname);
-    window.location.href = "http://localhost:3000/myProfile";
-    console.log(data);
+  const handleMyProjectClick = () => {
+    setMyProfile(false);
+    console.log("My Project clicked");
   };
-  const handlechange = (e) => {
-    setSingleUser((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
+
+  const handleLogoutClick = () => {
+    console.log("we are loging out");
+    window.location = "/Logout";
   };
-  console.log(singleUser);
+
   return (
     <>
-      {UserType != "Student" && <Navigate to="/login" replace={true} />}
-      {singleUser && (
-        <div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginTop: 20,
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "poppins",
-                fontWeight: "600",
-                fontSize: 26,
-                marginLeft: 30,
-              }}
-            >
-              My Profile
+      {singleUser &&(<div
+        style={{
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "left",
+          paddingTop: "20px",
+          paddingLeft: "20px",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+              <div className="profile w-5 h-5">
+                <img
+                  src="https://picsum.photos/200"
+                  className="w-110 h-110 rounded-circle"
+                  height="100px"
+                />
+              </div>
             </div>
             <div
               style={{
-                border: "2px solid #F5F7F9",
-                marginLeft: "auto",
-                marginRight: "auto",
-                height: 1,
-                marginTop: 5,
-                width: "-webkit-fill-available",
+                marginTop: "auto",
+                marginBottom: "auto",
               }}
-            ></div>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    First Name
-                  </div>
-                  <div>
-                    {" "}
-                    {singleUser && (
-                      <input
-                        title={"First Name"}
-                        placeholder={"Ex: Nikunj"}
-                        value={singleUser.Fname}
-                        className="input-field"
-                        onChange={handlechange}
-                        name="Fname"
-                      />
-                    )}
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Last Name
-                  </div>
-                  <div style={{ marginLeft: 10 }}>
-                    <input
-                      title={"Last Name"}
-                      placeholder={"Ex: Patel"}
-                      value={singleUser.LName}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="LName"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    About Me
-                  </div>
-                  <div>
-                    <input
-                      title={"About Me"}
-                      placeholder={"I AM student"}
-                      value={singleUser.AboutMe}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="AboutMe"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Gender
-                  </div>
-                  <div>
-                    <input
-                      title={"Gender"}
-                      placeholder={"Ex: Male"}
-                      value={singleUser.Gender}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="Gender"
-                    />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    DOB
-                  </div>
-                  <div style={{ marginLeft: 10 }}>
-                    <input
-                      title={"DOB"}
-                      placeholder={"Ex: 31/10/2000"}
-                      value={singleUser.DoB}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="DoB"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Passing Year
-                  </div>
-                  <div>
-                    <input
-                      title={"PassOutYear"}
-                      placeholder={"Ex: 2024"}
-                      value={singleUser.PassOutYear}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="PassOutYear"
-                    />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    SkillSet
-                  </div>
-                  <div style={{ marginLeft: 10 }}>
-                    <input
-                      title={"Skill"}
-                      placeholder={"Ex: Frontend"}
-                      value={singleUser.Skill}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="Skill"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    College Name
-                  </div>
-                  <div>
-                    <input
-                      title={"About Me"}
-                      placeholder={"I AM student"}
-                      value={singleUser.CollegeName}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="CollegeName"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "poppins",
-                    marginTop: 10,
-                    flexGrow: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#808080",
-                      fontFamily: "poppins",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Department Name
-                  </div>
-                  <div>
-                    <input
-                      title={"About Me"}
-                      placeholder={"I AM student"}
-                      value={singleUser.DepartmentName}
-                      className="input-field"
-                      onChange={handlechange}
-                      name="DepartmentName"
-                    />
-                  </div>
-                </div>
-              </div>
-
+            >
               <div
                 style={{
-                  marginTop: 20,
-                  justifyContent: "end",
+                  // marginTop: 50,
+                  marginLeft: 20,
+                  fontFamily: "poppins",
+                  fontWeight: "bold",
+                  fontSize: 22,
+                  textAlign: "start",
                 }}
               >
-                {/* here we have to place the follow button */}
+                {singleUser.Fname + ' ' + singleUser.LName}
               </div>
-            </div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            >
               <div
                 style={{
-                  fontFamily: "poppins",
-                  fontSize: 22,
-                  fontWeight: "bold",
-                  marginTop: 10,
+                  marginLeft: 20,
+                  fontSize: 16,
+                  color: "#9B9B9B",
+                  fontWeight: "500",
                 }}
-              ></div>
+              >
+                ndpatel.tech@gmail.com
+              </div>
             </div>
           </div>
+          {/* horizontal line */}
+          <div style={{ border: "2px solid #F5F7F9", marginTop: 20 }}></div>
+
+          {/* options */}
+          <SideBarOption
+            icon="person"
+            title="My Profile"
+            onClick={handleMyProfileClick}
+          />
+          <SideBarOption
+            icon="book"
+            title="My Project"
+            onClick={handleMyProjectClick}
+          />
+          <SideBarOption
+            icon="logout"
+            title="Logout"
+            onClick={handleLogoutClick}
+          />
         </div>
-      )}
+        {/* vertical line */}
+        <div
+          style={{
+            border: "2px solid #F5F7F9",
+            // height: "-webkit-fill-available",
+            // marginTop: "auto",
+            // marginBottom: "auto",
+            marginLeft: 20,
+          }}
+        >
+          {/* this is for line */}
+        </div>
+        {/* profile section */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginRight: "auto",
+            marginLeft: "auto",
+            textAlign: "start",
+            marginLeft: 40,
+            width: "-webkit-fill-available",
+          }}
+        >
+          {myProfile ? <Profile /> : <MyProjects />}
+          {/* <MyProjects /> */}
+          {/* <Profile /> */}
+        </div>
+      </div>)}
     </>
   );
 }

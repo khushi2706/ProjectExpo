@@ -3,8 +3,45 @@ import SideBarOption from "./SideBarOption";
 import { useNavigate } from "react-router-dom";
 import MyProjects from "./MyProjects";
 import Profile from "./Profile";
+import axios from "axios";
+import Cookies from 'universal-cookie'
+
 export default function MyProfile() {
   const history = useNavigate();
+  const [singleUser, setSingleUser] = useState();
+  const [user, setUser] = useState();
+  const cookies = new Cookies();
+  const studentId = cookies.get('uTypeId')
+
+  const sendReq = async () => {
+    const res = await axios
+      .get(`http://localhost:5000/api/student/getStudentById/${studentId}`)
+
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    //console.log("Data from API:" + data[0].Fname);
+    return data;
+  };
+
+  const sendReqForEmail = async (userId) => {
+    const res = await axios
+    .get(`http://localhost:5000/api/user/${userId}`)
+    .catch((err) => console.log("Error message for email request: "+err));
+    const data = await res.data;
+    return data;
+  };
+
+  useEffect(() => {
+    sendReq().then((data) => {
+      console.log(data);
+      setSingleUser(data);
+    });
+    console.log("UserID: "+singleUser.UserId);
+    sendReqForEmail(singleUser.UserId).then((data) => {
+      console.log("Called method sendReqForEmail: "+data);
+      setUser(data);
+    });
+  }, []);
 
   const [myProfile, setMyProfile] = useState(true);
 
@@ -25,7 +62,7 @@ export default function MyProfile() {
 
   return (
     <>
-      <div
+      {singleUser &&(<div
         style={{
           display: "flex",
           textAlign: "center",
@@ -61,7 +98,7 @@ export default function MyProfile() {
                   textAlign: "start",
                 }}
               >
-                Nikunj Patel
+                {singleUser.Fname + ' ' + singleUser.LName}
               </div>
 
               <div
@@ -124,7 +161,7 @@ export default function MyProfile() {
           {/* <MyProjects /> */}
           {/* <Profile /> */}
         </div>
-      </div>
+      </div>)}
     </>
   );
 }
