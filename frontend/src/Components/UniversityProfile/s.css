@@ -89,5 +89,7 @@
     display: flex;
     flex-direction: row;
     border: none;
+    justify-content: center;
+    color: black;
   }
 
