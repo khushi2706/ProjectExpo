@@ -28,11 +28,7 @@ export default function Header(props) {
                   Project
                 </NavLink>
               </div>
-              <div className="tab-container">
-                <NavLink className={(index==2)? "nav-link active" : "nav-link" } to="/UploadProject">
-                  Upload Project
-                </NavLink>
-              </div>
+             
               
               <div className="tab-container">
                 <NavLink className={(index==3)? "nav-link active" : "nav-link" } to="/requirement">
@@ -59,11 +55,7 @@ export default function Header(props) {
                   Contact
                 </NavLink>
               </div>
-              <div className="tab-container">
-                <NavLink className={(index==7)? "nav-link active" : "nav-link" } to="/Logout">
-                  Logout
-                </NavLink>
-              </div>
+             
             </div>
           </div>
 
@@ -79,7 +71,9 @@ export default function Header(props) {
               <NavLink className="nav-link" to="/login">
                 <div className="profile w-1 h-5">
                   <img
+
                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+
                     className="w-110 h-110 rounded-circle"
                     style={{ width: 70, height: 70 }}
                     height="100px"

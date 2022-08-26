@@ -2,15 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
 
-import ProjectDiv from "./ProjectDiv";
-import "./CSS/ProjectDiv.css";
-import Filterlist from "../../Assets/Images/Filter list.svg";
+import ProjectCard from '../Profile/ProjectCard';
+import "./CSS/ProjectDiv.css"
+
 import "../Filter/Filter.css";
-import TagImage from "../../Assets/Images/Tags.svg";
-import CodeImage from "../../Assets/Images/Code.svg";
-import calender from "../../Assets/Images/Calendar.svg";
-import university from "../../Assets/Images/University.svg";
-import CancelIcon from "@mui/icons-material/Cancel";
+import { Link } from "react-router-dom";
+
 
 // import './Filter.css'
 
@@ -54,14 +51,14 @@ export default function ProjectMain() {
     }
 
     if (tagList != "" && lang != "") {
-      alert("hi");
+    
       temp = temp.filter((ele) => {
         return ele.Tags.includes(lang);
       });
     }
 
     if (tagList != "" && timeframe != "") {
-      alert("hi");
+     
       temp = temp.filter((ele) => {
         console.log(ele.Date.getFullYear);
         return ele.Date.getFullYear === timeframe;
@@ -138,7 +135,8 @@ export default function ProjectMain() {
 
       <div className="flexforfilter">
         <div className="a_fillter">
-          <p style={{fontFamily:"poppins"}}>Applied Fillter</p>
+
+          <p  className="tag" style={{fontSize:"25px"}}>Applied Fillter</p>
           <div className="tags">
             {tagList.map((ele) => {
               return (
@@ -248,11 +246,11 @@ export default function ProjectMain() {
         </div>
       </div>
 
-      <div className="d-flex row mt-5 justify-content-center w-100">
+      <div className=" mt-5 justify-content-center" style={{marginLeft: 30}}>
         {projects &&
           projects.map((project, index) => (
-            <ProjectDiv key={index} id={project._id} project={project} />
-
+            <Link to={{ pathname: `/viewProject/${project._id}` }}><ProjectCard project={project} /></Link>
+            
           ))}
       </div>
     </>

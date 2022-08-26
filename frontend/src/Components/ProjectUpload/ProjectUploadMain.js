@@ -5,14 +5,21 @@ import Header from "../Common/Header";
 import ProgressBar from "./ProgressBar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import Cookies from 'universal-cookie'
 import { useParams } from "react-router-dom";
-
+import Cookies from 'universal-cookie'
 export default function ProjectUploadMain() {
+
   const cookies = new Cookies();
  
  const UserId = cookies.get('userId')
+
     var [tags, setTags] = useState("");
+    
+  const [tag, setTag] = useState("");
+  const [lang, setLang] = useState("");
+  const [tagList, setTaglist] = useState([]);
+  
+  const [timeframe, setTimeFrame] = useState("");
     var [ inputTag , setInputTag ] = useState({});
     let projId;
     const subId = useParams().SubId;
@@ -21,7 +28,6 @@ export default function ProjectUploadMain() {
       setTags(str);
     };
   
-
     const handleChange = (e) =>{
       console.log(e.target.name);
       
@@ -41,12 +47,12 @@ export default function ProjectUploadMain() {
         inputTag.PType = element.value;
       });
       
-      inputTag.UserId = UserId
+      inputTag.UserId = "62f9142c5cf6d43a8bbcc544"
        
       const ele = document.getElementsByName("isPrivete");
       
       inputTag.isPrivete = ele[0].checked;
-    
+      inputTag.Tags = tagList
       inputTag.SubjectId = subId
 
       console.log(inputTag);
@@ -71,6 +77,12 @@ export default function ProjectUploadMain() {
      
        
     }
+    const setToTaglist = (e, k) => {
+      if (e.keyCode == 13) {
+        setTaglist([...tagList, k]);
+        e.target.value = "";
+      }
+    };
      
     const sendReqToSet = async() => {
       
@@ -94,10 +106,6 @@ export default function ProjectUploadMain() {
 
     return ( 
       <>
-      {
-        UserId && 
-        <div>
-          
         <Header index="2"/>
        <div className="container " style={{fontFamily: 'poppins', marginTop: -30}}>
         <div className=" p-3 ">
@@ -196,14 +204,40 @@ export default function ProjectUploadMain() {
               </div>
             </div>
             </div>
-  
-            <div className="row" style={{textAlign: 'left', marginTop: -10, marginLeft:8}}>
+            <div className="form-group row" style={{marginTop: -10}}>
+            <label style={{textAlign: 'left',}} for="desc" className="col-sm-2 downn col-form-label">
+                <strong>Technology:</strong>
+              </label>
+            <input
+                  className="form-control form-input"
+                  name="tag"
+                  id="tag"
+                  placeholder="Ex. Web Development"
+                  onKeyUp={(e) => setToTaglist(e, timeframe)}
+                  onChange={(e) => setTimeFrame(e.target.value)}
+                />
+                </div>
+ 
+                <div className="a_fillter">
+
+                <div className="tags">
+                  {tagList.map((ele) => {
+                    return (
+                      <div className="tag">
+                        <p>{ele}</p>
+                        {/* <img src={('img/close.png')} alt="cross" className='close' onClick={}/> */}
+                      </div>
+                    );
+                  })}
+                </div>
+                </div>
+
+                <div className="row mt-3" style={{textAlign: 'left', marginTop: -10, marginLeft:8}}>
               <div className=" col-ms-10">
                  <input type="checkbox"  name="isPrivete"  id="isPrivete" />
                   <label htmlFor="isPrivete" style={{marginLeft: 10}}> Make it private</label>
               </div>
             </div>
-  
             <div className="justify-content align-center  mt-3 ">
               <div className="w-25" style={{textAlign: 'left'}}>
               <button type="submit" style={{height:"41px", boxShadow: "2px -1px 32px 0px rgba(44,94,255,0.36)"}} onClick={uploadProject} className=" search-bar-button  m-auto " >
@@ -215,9 +249,6 @@ export default function ProjectUploadMain() {
           </form>
         </div>
        </div>
-     
-        </div>
-      }
       </>
     );
   }

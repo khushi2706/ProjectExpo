@@ -6,7 +6,7 @@
     margin-right: 30px;
     border-radius: 15px;
     margin-top: 20px;
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 .card-container:hover {
@@ -17,9 +17,10 @@
     font-size: 20px;
     font-family: 'poppins';
     font-weight: bold;
-    text-decoration: none!important;
+    text-decoration: none !important;
     color: black;
 }
+
 .project-row1-card {
     display: flex;
     flex-direction: row;
@@ -31,7 +32,7 @@
     color: #787777;
     font-family: 'poppins';
     font-size: 16px;
-    font-weight: 600;
-    text-decoration: none!important;
+    font-weight: 500;
+    text-decoration: none !important;
     text-align: start;
 }

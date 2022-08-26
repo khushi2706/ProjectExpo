@@ -12,7 +12,7 @@ export default function ProjectDiv(props) {
     <div className="">
     <div className="container">
     <div className="row">
-    <div className="main-div mt-3 col-md-12 col-sm-6">
+    <div className="main-div mt-3 p-3 col-md-12 col-sm-6">
     <div className=" row">
     <div className="col-8 ccc">
       <Link style={{textDecoration:"none"}} to={{ pathname: `/viewProject/${project._id}` }}>
