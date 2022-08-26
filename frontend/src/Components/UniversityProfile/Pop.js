@@ -103,7 +103,7 @@ class Pop extends React.Component {
         />
       </div>
         </a>
-        <Modal show={this.state.modal} handleClose={(e) => this.modalClose(e)}>
+        <Modal show={this.state.modal} index={"0"} handleClose={(e) => this.modalClose(e)}>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Enter Department Name:</label>
