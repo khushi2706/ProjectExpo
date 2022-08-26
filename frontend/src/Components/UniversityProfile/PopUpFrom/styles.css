@@ -8,8 +8,9 @@
   .modal-container {
     position: absolute;
     width: 30%;
-    background: #d3ddfb;
+    background: #e7eaf4;
     left: 36%;
+    border-radius: 30px;
     /* top: 30%; */
     padding: 20px;
   }

@@ -125,7 +125,7 @@ class Pop extends React.Component {
     const { dept } = this.state;
     return (
        
-      <div className="App">
+      <div className="App" >
        
         <a href="javascript:;" onClick={(e) => this.modalOpen(e)}>
         <div
@@ -150,9 +150,9 @@ class Pop extends React.Component {
             
           <div
           style={{
-            color: "#808080",
+            color: "#02012e",
             fontFamily: "poppins",
-            fontWeight: "600",
+            fontWeight: "500",
           }}
         >
           Faculty Name<span style={{color:"red"}}>*</span>
@@ -169,9 +169,9 @@ class Pop extends React.Component {
           </div>
           <div
           style={{
-            color: "#808080",
+            color: "#02012e",
             fontFamily: "poppins",
-            fontWeight: "600",
+            fontWeight: "500",
           }}
         >
           Email<span style={{color:"red"}}>*</span>
@@ -188,9 +188,9 @@ class Pop extends React.Component {
           </div>
           <div
           style={{
-            color: "#808080",
+            color: "#02012e",
             fontFamily: "poppins",
-            fontWeight: "600",
+            fontWeight: "500",
           }}
         >
           Select Department<span style={{color:"red"}}>*</span>
@@ -211,9 +211,9 @@ class Pop extends React.Component {
 
         <div
         style={{
-          color: "#808080",
+          color: "#02012e",
           fontFamily: "poppins",
-          fontWeight: "600",
+          fontWeight: "500",
         }}
       >
         Post of Faculty<span style={{color:"red"}}>*</span>
@@ -230,9 +230,9 @@ class Pop extends React.Component {
           </div>
           <div
           style={{
-            color: "#808080",
+            color: "#02012e",
             fontFamily: "poppins",
-            fontWeight: "600",
+            fontWeight: "500",
           }}
         >
          Image Link
@@ -255,7 +255,6 @@ class Pop extends React.Component {
                 justifyContent: "center",
 
                 display: "flex",
-                marginBottom: "50px",
                 marginRight: "20px",
               }}
             >
