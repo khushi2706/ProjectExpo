@@ -11,6 +11,7 @@ export default function Logout() {
         cookie.remove("userId",{path: "/"});
         cookie.remove("authToken",{path: "/"});
         cookie.remove("userType",{path:"/"});
+        cookie.remove("uTypeId", {path: "/"})
 
     
   return (

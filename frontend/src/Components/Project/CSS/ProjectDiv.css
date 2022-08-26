@@ -86,12 +86,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-family: 'poppins';
 }
 .texxt{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .leftt{
@@ -251,3 +253,18 @@
     padding-left: 8px;
   }
 
+.row-container-cust {
+    display: flex;
+    flex-direction: row;
+}
+
+.rectangle {
+    cursor: pointer;
+}
+
+.heading-container {
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 23px;
+}

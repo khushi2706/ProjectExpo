@@ -1,11 +1,13 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./CSS/ProjectDiv.css";
 import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
+import PersonIcon from "@mui/icons-material/Person";
 import TagImage from "../../Assets/Images/Tags.svg";
 import axios from "axios";
+
 import Tag from '../Common/Tag';
 
 export default function ProjectView(props) {
@@ -20,11 +22,10 @@ export default function ProjectView(props) {
  const idd=props.id;
  const { id } = useParams();
 console.log(id);
+
   const sendRequest = async () => {
     const res = await axios
-      .get(
-        `http://localhost:5000/api/Project/${id}`
-      )
+      .get(`http://localhost:5000/api/Project/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     console.log(data);
@@ -69,13 +70,9 @@ console.log(id);
 
   useEffect(() => {
     sendRequest().then((data) => setUser(data.project));
-    console.log("-----------+");
-
+    // sendRequestForUserName(user.UserId).then(user);
     console.log(user);
-
-    
   }, []);
-  
 
   return (
     <>
@@ -102,6 +99,13 @@ console.log(id);
           >
             <StarIcon />
             {user.Rating}
+          </div>
+          <div
+            style={{ color: "rgba(44, 94, 255, 1)", marginTop: "16px" ,marginRight : "15px" }}
+            className="rectangle"
+            onClick={likeProject}
+          >
+            Plgarism {user.PlagRate} %
           </div>
 
         
@@ -146,7 +150,7 @@ console.log(id);
           </div>
     </div>
    }
-      
+ 
     </>
   );
 }

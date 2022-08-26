@@ -42,27 +42,30 @@ export default function MentorView() {
                 borderBottomLeftRadius: ".5rem"
               }}
             >
-              <img
-                src={mentor.MentorImg}
-                alt="Avatar"
-                className="img-fluid my-5"
-                style={{ width: 80 }}
-              />
+              
+                  <img
+                    src={mentor.MentorImg}
+                    className="w-110 h-110 mt-5 rounded-circle"
+                    style={{ width: 70, height: 70 }}
+                    height="100px"
+            />
+              <div className='mt-5'>
               <h5>{mentor.Name}</h5>
               <p>{mentor.Speciality}</p>
               <p>{mentor.TypeOfUser}</p>
+              </div>
             </div>
             <div className="col-md-8">
               <div className="card-body p-4">
-                <h6>Information</h6>
+                <h3 style={{fontFamily: 'poppins', fontWeight: 500}}>Information</h3>
                 <hr className="mt-0 mb-4" />
-                <div className="row pt-1">
-                  <div className="col-6 mb-3">
-                    <h6>Email</h6>
-                    <p className="text-muted">{mentor.Email}</p>
+                <div className=" pt-1">
+                  <div className="col-6 mb-3" style={{display: 'flex', flexDirection: 'row'}}>
+                    <div style={{fontFamily: 'poppins', fontWeight: 500}}>Email </div>
+                    <p style={{marginLeft: 20}} className="text-muted">{mentor.Email}</p>
                   </div>
                   <div className="col-6 mb-3">
-                    <h6>Telegram</h6>
+                    <div style={{fontFamily: 'poppins', textAlign: 'center' , fontWeight: 500}}><p>Telegram</p></div>
                     <a href={mentor.TelegramId} className="text-muted">{mentor.TelegramId}</a>
                   </div>
                 </div>

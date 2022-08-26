@@ -16,6 +16,8 @@ import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function ProjectMain() {
   const [isHandi, setishan] = useState(false);
+
+
   const [projects, setProjects] = useState();
   const [search, setsearch] = useState();
   const sendReq = async () => {
@@ -250,6 +252,7 @@ export default function ProjectMain() {
         {projects &&
           projects.map((project, index) => (
             <ProjectDiv key={index} id={project._id} project={project} />
+
           ))}
       </div>
     </>
