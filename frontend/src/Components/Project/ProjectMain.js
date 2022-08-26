@@ -4,6 +4,7 @@ import Header from "../Common/Header";
 import ProjectCard from '../Profile/ProjectCard';
 import "./CSS/ProjectDiv.css"
 import "../Filter/Filter.css";
+import { Link } from "react-router-dom";
 
 
 // import './Filter.css'
@@ -194,7 +195,7 @@ export default function ProjectMain() {
       <div className=" mt-5 justify-content-center" style={{marginLeft: 30}}>
         {projects &&
           projects.map((project, index) => (
-            <ProjectCard project={project} />
+            <Link to={{ pathname: `/viewProject/${project._id}` }}><ProjectCard project={project} /></Link>
             
           ))}
       </div>

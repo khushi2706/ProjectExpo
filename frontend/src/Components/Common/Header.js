@@ -72,7 +72,7 @@ export default function Header(props) {
               <NavLink className="nav-link" to="/login">
                 <div className="profile w-1 h-5">
                   <img
-                    src="https://picsum.photos/200"
+                    src="https://picsum.photos/200?random=2391"
                     className="w-110 h-110 rounded-circle"
                     style={{ width: 70, height: 70 }}
                     height="100px"

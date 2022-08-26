@@ -84,7 +84,10 @@ console.log(id);
       <span style={{textAlign:"left", marginLeft:"15px" ,fontSize:"26px", marginBottom:"15px",fontWeight:"600"}}>{user.PName}</span>
 
           <div className="texxt" style={{ color: "gray", textAlign: "left" }}>
-            <span>Nikunj Patel</span>
+
+          <Link style={{marginTop: 13}} to={{ pathname: `/StudentProfile/${user.UserId}` }}><span style={{color: 'black',}}>Nikunj Patel</span></Link>
+
+            
             <span>Updated at {user.Date.substring(0,10) }</span>
           </div>
           <div className="" style={{ color: "gray" ,textAlign: "left", marginLeft: "12px" }}>
