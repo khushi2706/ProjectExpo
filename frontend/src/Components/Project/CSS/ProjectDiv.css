@@ -221,6 +221,7 @@
     display: flex;
   }
   .short_filter .filter_container .filters .tag{
+    /* width: 20%; */
     display: block;
     align-items: center;
   }
@@ -236,14 +237,14 @@
     margin: 0 12px;
   }
   .short_filter .filter_container .filters .tag input{
-    background: #F5F6F9;
+    /* background: #F5F6F9;
     border-radius: 5px;
     border: none;
     outline: none;
-    height: 29px;
-    margin: 14px 0 41px;
-    width: 90%;
-    display: flex;
+    height: 29px; */
+    /* margin: 14px 0 41px; */
+    width: 73%;
+    /* display: flex;  */
     text-align: center;
   }
   .short_filter .filter_container .filters .tag input::placeholder{
