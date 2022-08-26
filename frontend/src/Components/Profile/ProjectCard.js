@@ -24,7 +24,7 @@ export default function ProjectCard(props) {
           <div className="project-row1-card">
             {/* <Tag title="BVM" customeStyle={myStyle} /> */}
             <div style={{ marginLeft: 20, marginTop: 2 }}>
-              <Ratings ratingVal="4.3K" />
+              <Ratings ratingVal={project.Rating} />
             </div>
           </div>
         </div>
