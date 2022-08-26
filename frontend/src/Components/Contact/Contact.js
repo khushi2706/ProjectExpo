@@ -36,7 +36,7 @@ const Contact = () => {
 
   return (
     <div>
-    <Header index="3"/>
+    <Header index="4"/>
         <div className=" cddd" style={{textAlign:"center"}}>Send As A Message</div>
       <div className="mb-4 d-flex justify-content-evenly flex-wrap">
         <div className="left my-4">
