@@ -13,7 +13,7 @@ var downloadId = '6305cceb8f36f44506e8b60c';
 zipper.zipToFile ({
     s3FolderName: downloadId
     , startKey: '' // could keep null
-    , zipFileName: 'C:/Downloads/' + downloadId +'.zip'
+    , zipFileName: 'C:\\Downloads\\' + downloadId +'.zip'
     , recursive: true
 }
 ,function(err,result){

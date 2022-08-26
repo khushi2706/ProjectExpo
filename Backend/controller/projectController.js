@@ -4,6 +4,8 @@ const axios = require('axios')
 const createReport = require("./Plag/createPlag");
 var nodemailer = require('nodemailer');
 
+var S3Zipper = require ('aws-s3-zipper');
+
 const getAllProjects = async (req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
 
@@ -370,8 +372,42 @@ const addRates = async (req, res, next) => {
   })
 }
 
+const downloadProject = async(req,res,next) =>{
+  res.set('Access-Control-Allow-Origin', '*');
+    const 
+      ProjectId
+     = req.params.ProjectId;
+
+    console.log(ProjectId);
+var config ={
+    accessKeyId: "AKIAS6G5ANL5655DKEHC",
+    secretAccessKey: "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",
+    region: "ap-south-1",
+    bucket: "projectexpo-projects"
+};
+var zipper = new S3Zipper(config);
+
+zipper.zipToFile ({
+    s3FolderName: ProjectId
+    , startKey: '' // could keep null
+    , zipFileName: 'C:\\Users\\Khushi\\Downloads\\downloadedPro.zip'
+    , recursive: true
+}
+,function(err,result){
+    if(err)
+        console.error(err);
+    else{
+        var lastFile = result.zippedFiles[result.zippedFiles.length-1];
+        if(lastFile)
+            console.log('last key ', lastFile.Key); // next time start from here
+    }
+});
+
+return res.status(200).json({msg : "done"});
+}
+
 module.exports = { getAllProjects , getProjectById , 
   getProjectByUserId , addNewProject ,
    getProjectBySubjectID , getProjectPlga ,
-   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink , getPlagarism , addRates }
+   searchTheProject , setPlaga , UpdateProjectLink, DownloadProjectLink , getPlagarism ,  addRates , downloadProject }
 

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { ReactDOM } from "react";
 import { NavLink } from "react-router-dom";
-import google_logo from "../../Assets/Images/google.svg";
 import axios from "axios";
 import Cookies from "universal-cookie";
 

@@ -32,7 +32,8 @@ const getAllUser = async (req, res, next) => {
 };
 
 const getUserById = async (req, res, next) => {
-  let userId = req.param.id;
+  const { id } = req.params;
+  const userId = id;
   console.log(userId);
   let user = "";
   try {
@@ -118,6 +119,7 @@ const addNewUser = async (req, res, next) => {
   }
 };
 
+
 const addNewFollower = async(req,res,next)=>{
 
   
@@ -143,4 +145,4 @@ const addNewFollower = async(req,res,next)=>{
   })
 }
 
-module.exports = { getAllUser, loginUser, addNewUser , addNewFollower };
+module.exports = { getAllUser, loginUser, addNewUser , addNewFollower , getUserById };

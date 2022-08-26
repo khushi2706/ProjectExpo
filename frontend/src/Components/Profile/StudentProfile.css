@@ -1,0 +1,140 @@
+.parent {
+    font-family: 'poppins';
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+}
+.languages-container {
+    font-family: 'poppins';
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.row-container-cus {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    text-align: left;
+    margin-top: 25px;
+}
+
+.row-container-cust {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    text-align: left;
+    margin-top: 25px;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.sign-in-input-field-container {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.sign-in-input-fields {
+    margin-left: 20px; 
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: poppins;
+}
+
+.name-title-container {
+    font-family: 'poppins';
+    margin-left: 70px;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.about-us-container {
+    text-align: left;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.profile-background-card {
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 2px rgba(224,220,224,1);
+    padding: 3px 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    
+}
+
+.college-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.college-text-container {
+    margin-left: 20px;
+}
+
+.skills-container {
+    font-weight: 600;
+}
+
+.skills-inner-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.circle:hover {
+    cursor: pointer;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    background-color: #2C5EFF;
+    padding: 3px 0px;
+    margin-left: 65px;
+}
+
+.button-title-container {
+    color: white;
+    margin-left: 5px;
+    font-size: 17px;
+}
+
+.button-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 8px;
+    margin-left: 30px;
+    background-color: #2C5EFF;
+    padding: 3px 0px;
+    margin-left: 65px;
+}
+
+.button-display:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+.parent-container {
+    background-color: #2C5EFF;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0px;
+    color: white;
+    font-family: 'poppins';
+    justify-content: center;
+    
+}
+.parent-container:hover {
+    cursor: pointer;
+    
+}
+
+.button-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
