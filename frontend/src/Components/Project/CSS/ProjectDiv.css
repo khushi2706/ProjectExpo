@@ -185,16 +185,7 @@
   .a_fillter .tags .tag img{
     padding-left: 6px;
   }
-  .short_filter{
-    width: 54%;
-    
-   
-    background: #FDFDFD;
-  
-    border: 4px solid #F5F7F9;
-    border-radius: 30px;
-    display: grid;
-  }
+ 
   .short_filter .title{
     display: flex;
     font-size: 21px;
@@ -301,11 +292,8 @@
 }
 
 .short_filter {
-  width: 54%;
-
-
+  width: 61%;
   background: #FDFDFD;
-
   border: 4px solid #F5F7F9;
   border-radius: 30px;
   display: grid;
@@ -364,7 +352,7 @@
   border: none;
   outline: none;
   height: 29px;
-  margin: 14px 0 41px;
+  margin: 10px;
   width: 90%;
   display: flex;
   text-align: center;
