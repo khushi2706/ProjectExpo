@@ -57,7 +57,7 @@ export default function StudentProfile() {
 
   return (
     <>
-      <Header />
+      <Header index="1"/>
       <div className="parent">
         <div
           className="profile-background-card profile-main-container"
