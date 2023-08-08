@@ -20,7 +20,7 @@
 
 # 🏆 ProjectExpo: Empowering Student Innovations 🌟
 
-ProjectExpo, the winning project of Smart India Hackathon 2022, is an integrated platform that revolutionizes student project management. 🚀
+ProjectExpo, the winning project of Smart India Hackathon 2022, is designed to cater to the diverse needs of students from different universities and colleges. It serves as a hub where students can not only present their innovative projects but also explore a rich repository of recommended projects aligned with their interests. This innovative platform offers a holistic solution for students, enabling them to showcase their projects, collaborate with peers, and supercharge their career prospects. 🚀
 
 Join ProjectExpo now and unleash your creativity, learn from others, and accelerate your career growth! 💡
 
