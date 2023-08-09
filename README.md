@@ -13,10 +13,11 @@
 [![Watchers](	https://img.shields.io/github/watchers/khushi2706/ProjectExpo?label=Watch&style=for-the-badge)](https://github.com/khushi2706/ProjectExpo/) 
 
 `ProjectExpo` an Integrated platform for projects taken up by the students of various universities/colleges.
-![bb](https://github.com/khushi2706/ProjectExpo/assets/77879603/a64d30e7-fd10-42fd-af55-e6fea84af209)
+![bb](https://github.com/khushi2706/ProjectExpo/assets/77879603/8e3b79ec-ff25-4581-9801-63a1734ab3a9)
 
 
-[![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)](https://youtu.be/OKKK1GOnlIU) 
+
+[![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)](#) 
 
 # 🏆 ProjectExpo: Empowering Student Innovations 🌟
 
@@ -28,55 +29,75 @@ Join ProjectExpo now and unleash your creativity, learn from others, and acceler
 
 📚 Integrated Project Repository
    - Students from various universities/colleges can showcase their projects, while others can explore and learn from a wide range of recommended projects based on their interests. 📂
-   - ![Screenshot 2023-06-26 141157](https://github.com/khushi2706/ProjectExpo/assets/77879603/984b675b-1b17-45e1-a202-52650f20b9eb)
-   - ![Screenshot 2023-06-26 141225](https://github.com/khushi2706/ProjectExpo/assets/77879603/f852b757-8bf3-4ec3-b48c-a2a841d1989a)
+   - ![Screenshot 2023-06-24 002911](https://github.com/khushi2706/ProjectExpo/assets/77879603/9fd3f42c-f80b-42c9-aff0-2a088a9bac22)
+
+   - ![Screenshot 2023-06-24 003034](https://github.com/khushi2706/ProjectExpo/assets/77879603/ad33bcf8-07ba-4ca2-a8c6-2a26cb6537e9)
+
  
    - Project with filtering and searching for fast access
-   - ![Screenshot (209)](https://github.com/khushi2706/ProjectExpo/assets/77879603/b1b807cf-5bef-4fd1-bd38-f46c5708dabe)
+   - ![Screenshot 2023-06-24 003314](https://github.com/khushi2706/ProjectExpo/assets/77879603/5ba2039f-4a57-4edc-9fa6-fcfcbdf01d68)
+
 
    - Detailed Project Description for easy understanding with Download feature
-   - ![Screenshot 2023-06-26 141247](https://github.com/khushi2706/ProjectExpo/assets/77879603/23217333-aab3-4794-b1f7-7c825324d4bd)
-   - ![Screenshot 2023-06-26 141307](https://github.com/khushi2706/ProjectExpo/assets/77879603/282aab0d-b533-4005-bb36-8fbbd1189a86)
+   - ![Screenshot 2023-06-24 003111](https://github.com/khushi2706/ProjectExpo/assets/77879603/e685d131-2526-4c34-bd12-124aac71bf9f)
+
+   - ![Screenshot 2023-06-26 141307](https://github.com/khushi2706/ProjectExpo/assets/77879603/281992eb-64bc-44bc-8179-9bc7c7afaf17)
+
 
 🔍 Project Upload and Plagiarism Checker 
    - Students of various university and colleges can upload their project with details description and with privacy option (pasting link generated bu aws s3 bucket)
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/4dafd24d-0c86-4b90-acba-302ff754c95e)
+   - ![Screenshot 2023-06-26 142445](https://github.com/khushi2706/ProjectExpo/assets/77879603/6159e41f-6d03-4f00-82c9-6dd515bef218)
+
 
    -  Maintain academic integrity with our built-in tool that performs thorough plagiarism checks, ensuring originality and authenticity. ✅
-   - ![Screenshot 2023-06-26 141247](https://github.com/khushi2706/ProjectExpo/assets/77879603/e1102616-52e5-4cb8-84bf-7c00f6e974c8)
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/c9363ade-d035-4ec3-8b9d-1f4b762807d3)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/4d3993ec-8b1e-447a-9d0a-5e3879b6a2b5)
+
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/15af046a-8152-49a2-a7ef-3b0e9b7834cd)
+
    
 💼 CareerBoost Reward System
    - Earn CareerBoost points based on project quality and plagiarism checks. Utilize these points to unlock job opportunities and secure interview calls from our partner companies. 🎉
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/ea86657e-7f61-4973-b3e4-ff141b65660d)
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/a53fa96f-6fc0-4886-b983-50b2077a7e32)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/ea9aedbc-8d12-4ed5-9541-d2576d979186)
+
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/901a4d38-bb24-48e7-90d6-7ae8ce47b9d8)
+
 
    - Recrutier can show user profile 
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/a77fb514-9a0b-4296-8b9d-6c589380f5ee)
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/e8276727-0875-482a-96bc-6a53fe9dab6f)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/d9a3ca54-a32d-4b27-82ce-0f838d975480)
+
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/e5659444-bd01-42cd-9ccc-19a6a08210b2)
+
 
 🔖 Personalized Project Recommendations
    - Get project recommendations tailored to your preferences, like and follow projects, and receive updates from project owners. Collaborate, learn, and grow together! 👥
    - Project Repository is already recommended based on likes and interest of users (here is code)
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/b624c2e5-29c9-4342-929e-8d537252fbb7)
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/f927f4ee-3cad-4d59-a4d0-51ce71e300b9)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/4d5974fa-9456-4041-9303-ae566e76320f)
+
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/5ab119ef-5bea-4303-8f97-be4c984d8448)
 
 🙋‍♂️ User Authentication
    - User can login or sign up with proper details and skillset
-   - ![Screenshot 2023-06-26 150247](https://github.com/khushi2706/ProjectExpo/assets/77879603/e2fca5ff-6624-42f8-9cbf-4df1afd7d9f7)
-   - ![Screenshot (211)](https://github.com/khushi2706/ProjectExpo/assets/77879603/f56c8e76-be6d-4112-a646-977c4889043b)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/a460d904-8428-4e52-99d1-e46e07340d16)
+
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/4c83ea5b-8075-4fad-bc6f-b6676f79ede7)
+
 
 🎓 College Admin Controls
    - College administrators have exclusive access to manage departments, subjects, faculty details, and assess student projects. They can also contribute through insightful blogs. 💼
-   - ![Screenshot 2023-06-26 115845](https://github.com/khushi2706/ProjectExpo/assets/77879603/1231efa9-1bc1-428c-b4d2-aa6fb7c491d9)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/62bce84a-5be0-405b-bafa-30e151eb9165)
+
    - College's Departments List
-   - ![Screenshot 2023-06-26 115914](https://github.com/khushi2706/ProjectExpo/assets/77879603/f99b66e4-4d86-4a6a-96d7-bb1b5a61083d)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/93be6bbf-28b3-45f1-94db-c901cde22163)
+
    - Add New Departments
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/43bb60ba-36f0-4499-882d-aaa984a0e0df)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/509c43b2-9ee3-4625-89f9-508e2ce96a80)
+
    - Faculties of College Page
-   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/d510bef0-d660-4f70-8246-b2c9d0c26249)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/ced281e0-bdcd-4e28-bcb3-dcd097531202)
+
    - Edit Your college's Assets
-   - ![Screenshot 2023-06-26 120119](https://github.com/khushi2706/ProjectExpo/assets/77879603/b7163ec6-39cc-497f-8e84-ba419c2aee69)
+   - ![image](https://github.com/khushi2706/ProjectExpo/assets/77879603/1e648f61-7afa-491c-864e-acb8052a6947)
+
 
 ## Tech stack
 
