@@ -17,7 +17,7 @@
 
 
 
-[![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)](#) 
+[![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)](https://www.youtube.com/watch?v=jY5aDmfv1Fc) 
 
 # 🏆 ProjectExpo: Empowering Student Innovations 🌟
 
@@ -136,7 +136,7 @@ To get started with ProjectExpo, follow these steps:
 ## Useful Links
 
 - [Github Website](https://github.io/khushi2716/ProjectExpo)
-- [Demo Video](https://youtu.be/OKKK1GOnlIU)
+- [Demo Video](https://www.youtube.com/watch?v=jY5aDmfv1Fc)
 
 ## Need help?
 
