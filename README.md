@@ -145,7 +145,7 @@ Feel free to contact me my team on
 - Yash Vala -- [LinkedIn](https://www.linkedin.com/in/yash-prajapati-vala-2829061a3/) 
 - Khushi Patel -- [LinkedIn](https://www.linkedin.com/in/khushi-patel-7854151b6/) 
 - Nikunj Patel -- [LinkedIn](https://www.linkedin.com/in/nikunj-patel-1b9374187/) 
-- Bhumit Bhedse -- [LinkedIn](https://www.linkedin.com/in/bhumitbedse/) 
+- Bhumit Bedse -- [LinkedIn](https://www.linkedin.com/in/bhumitbedse/) 
 - Rajveer Rathod -- [LinkedIn](https://www.linkedin.com/in/rajveer-rathod/) 
 
 ---------
